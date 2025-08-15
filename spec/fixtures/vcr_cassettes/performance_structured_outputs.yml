@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Generate a performance report
+        with 10 data items across different categories"}],"model":"openai/gpt-4o-mini","max_tokens":800,"response_format":{"type":"json_schema","json_schema":{"name":"performance_test","strict":true,"schema":{"type":"object","properties":{"title":{"type":"string"},"items":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"value":{"type":"number"},"metadata":{"type":"object","properties":{"category":{"type":"string"},"priority":{"type":"integer"}}}}}},"summary":{"type":"object","properties":{"total_items":{"type":"integer"},"average_value":{"type":"number"},"top_category":{"type":"string"}},"required":["total_items","average_value","top_category"],"additionalProperties":false}},"required":["title","items","summary"],"additionalProperties":false}}}}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - Global App
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sat, 04 Oct 2025 21:43:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9897db9e2ccaa1be-MSP
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: '{"error":{"message":"Provider returned error","code":400,"metadata":{"raw":"{\n  \"error\":
+        {\n    \"message\": \"Invalid schema for response_format ''performance_test'':
+        In context=(''properties'', ''items'', ''items''), ''additionalProperties''
+        is required to be supplied and to be false.\",\n    \"type\": \"invalid_request_error\",\n    \"param\":
+        \"response_format\",\n    \"code\": null\n  }\n}","provider_name":"Azure"}},"user_id":"user_2oXVHhLSnOmuZVA2xOTqDfGHofS"}'
+  recorded_at: Sat, 04 Oct 2025 21:43:59 GMT
+recorded_with: VCR 6.3.1

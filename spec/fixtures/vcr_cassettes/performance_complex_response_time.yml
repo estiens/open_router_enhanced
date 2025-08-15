@@ -1,0 +1,108 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Write a detailed analysis of
+        machine learning algorithms, covering supervised learning, unsupervised learning,
+        and reinforcement learning. Include examples and use cases for each type."}],"model":"openai/gpt-4o-mini","max_tokens":500}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - Global App
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 24 Sep 2025 19:46:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9844c9aeaeac4ca8-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        CiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAp7ImlkIjoiZ2VuLTE3NTg3NDMxODUtODR0ekpmQkdueHk0SmpaekRPa0YiLCJwcm92aWRlciI6Ik9wZW5BSSIsIm1vZGVsIjoib3BlbmFpL2dwdC00by1taW5pIiwib2JqZWN0IjoiY2hhdC5jb21wbGV0aW9uIiwiY3JlYXRlZCI6MTc1ODc0MzE4NSwiY2hvaWNlcyI6W3sibG9ncHJvYnMiOm51bGwsImZpbmlzaF9yZWFzb24iOiJsZW5ndGgiLCJuYXRpdmVfZmluaXNoX3JlYXNvbiI6Imxlbmd0aCIsImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiTWFjaGluZSBsZWFybmluZyAoTUwpIGlzIGEgc3Vic2V0IG9mIGFydGlmaWNpYWwgaW50ZWxsaWdlbmNlIHRoYXQgYWxsb3dzIHN5c3RlbXMgdG8gbGVhcm4gZnJvbSBkYXRhIHRvIG1ha2UgcHJlZGljdGlvbnMgb3IgZGVjaXNpb25zIHdpdGhvdXQgYmVpbmcgZXhwbGljaXRseSBwcm9ncmFtbWVkLiBJdCBpcyBicm9hZGx5IGNhdGVnb3JpemVkIGludG8gdGhyZWUgdHlwZXM6IHN1cGVydmlzZWQgbGVhcm5pbmcsIHVuc3VwZXJ2aXNlZCBsZWFybmluZywgYW5kIHJlaW5mb3JjZW1lbnQgbGVhcm5pbmcuIEVhY2ggdHlwZSBpcyBzdWl0ZWQgZm9yIGRpZmZlcmVudCBraW5kcyBvZiBwcm9ibGVtcyBhbmQgaGFzIGRpc3RpbmN0IG1ldGhvZG9sb2dpZXMsIGFsZ29yaXRobXMsIGFuZCBhcHBsaWNhdGlvbnMuXG5cbiMjIyAxLiBTdXBlcnZpc2VkIExlYXJuaW5nXG5cbioqT3ZlcnZpZXc6KipcblN1cGVydmlzZWQgbGVhcm5pbmcgaXMgYSB0eXBlIG9mIG1hY2hpbmUgbGVhcm5pbmcgd2hlcmUgdGhlIG1vZGVsIGlzIHRyYWluZWQgb24gYSBsYWJlbGVkIGRhdGFzZXQuIFRoZSB0cmFpbmluZyBkYXRhIGluY2x1ZGVzIGlucHV0LW91dHB1dCBwYWlycywgbWVhbmluZyB0aGF0IGZvciBlYWNoIGlucHV0LCB0aGUgY29ycmVzcG9uZGluZyBvdXRwdXQgKGxhYmVsKSBpcyBrbm93bi4gVGhlIG9iamVjdGl2ZSBpcyB0byBsZWFybiBhIG1hcHBpbmcgZnJvbSBpbnB1dHMgdG8gb3V0cHV0cywgc28gdGhhdCB3aGVuIG5ldywgdW5zZWVuIGRhdGEgaXMgcHJlc2VudGVkIHRvIHRoZSBtb2RlbCwgaXQgY2FuIHByZWRpY3QgdGhlIGNvcnJlY3Qgb3V0cHV0LlxuXG4qKkFsZ29yaXRobXM6Kipcbi0gKipMaW5lYXIgUmVncmVzc2lvbjoqKiBVc2VkIGZvciBwcmVkaWN0aW5nIGNvbnRpbnVvdXMgb3V0Y29tZXMuIEZvciBleGFtcGxlLCBwcmVkaWN0aW5nIHJlYWwgZXN0YXRlIHByaWNlcyBiYXNlZCBvbiB2YXJpb3VzIGZlYXR1cmVzIGxpa2Ugc2l6ZSBhbmQgbG9jYXRpb24uXG4tICoqTG9naXN0aWMgUmVncmVzc2lvbjoqKiBVc2VkIGZvciBiaW5hcnkgY2xhc3NpZmljYXRpb24gcHJvYmxlbXMsIHN1Y2ggYXMgc3BhbSBkZXRlY3Rpb24gaW4gZW1haWxzLlxuLSAqKkRlY2lzaW9uIFRyZWVzOioqIEEgZmxvd2NoYXJ0LWxpa2Ugc3RydWN0dXJlIHRoYXQgbWFrZXMgZGVjaXNpb25zIGJhc2VkIG9uIHRoZSBmZWF0dXJlcy4gSXQgY2FuIGJlIGFwcGxpZWQgaW4gdmFyaW91cyBhcmVhcyBsaWtlIGxvYW4gYXBwcm92YWwuXG4tICoqU3VwcG9ydCBWZWN0b3IgTWFjaGluZXMgKFNWTSk6KiogRWZmZWN0aXZlIGZvciBoaWdoLWRpbWVuc2lvbmFsIHNwYWNlcywgaWRlYWwgZm9yIGltYWdlIGNsYXNzaWZpY2F0aW9uIHRhc2tzLlxuLSAqKk5ldXJhbCBOZXR3b3JrczoqKiBQYXJ0aWN1bGFybHkgdXNlZnVsIGZvciBjb21wbGV4IGRhdGFzZXRzIGFuZCBhcHBsaWNhdGlvbnMsIHN1Y2ggYXMgaW1hZ2Ugb3Igc3BlZWNoIHJlY29nbml0aW9uLlxuXG4qKkV4YW1wbGVzIGFuZCBVc2UgQ2FzZXM6Kipcbi0gKipIZWFsdGhjYXJlOioqIFByZWRpY3RpbmcgZGlzZWFzZSBvdXRjb21lcyBiYXNlZCBvbiBwYXRpZW50IGRhdGEgKGUuZy4sIHByZWRpY3RpbmcgZGlhYmV0ZXMgb25zZXQpLlxuLSAqKkZpbmFuY2U6KiogQ3JlZGl0IHNjb3Jpbmcgc3lzdGVtcyBldmFsdWF0ZSB0aGUgbGlrZWxpaG9vZCB0aGF0IGEgY3VzdG9tZXIgd2lsbCBkZWZhdWx0IG9uIGEgbG9hbi5cbi0gKipNYXJrZXRpbmc6KiogVGFyZ2V0ZWQgYWR2ZXJ0aXNpbmcgYmFzZWQgb24gY3VzdG9tZXIgYmVoYXZpb3IgYW5kIHB1cmNoYXNpbmcgaGlzdG9yeS5cbi0gKipJbWFnZSBDbGFzc2lmaWNhdGlvbjoqKiBMYWJlbGluZyBpbWFnZXMgYXMg4oCYY2F04oCZIG9yIOKAmGRvZ+KAmSB1c2luZyBjb252b2x1dGlvbmFsIG5ldXJhbCBuZXR3b3JrcyAoQ05OcykuXG5cbiMjIyAyLiBVbnN1cGVydmlzZWQgTGVhcm5pbmdcblxuKipPdmVydmlldzoqKlxuVW5zdXBlcnZpc2VkIGxlYXJuaW5nIGludm9sdmVzIHRyYWluaW5nIGEgbW9kZWwgb24gZGF0YSB0aGF0IGRvZXMgbm90IGhhdmUgbGFiZWxlZCByZXNwb25zZXMuIFRoZSBtb2RlbCBhdHRlbXB0cyB0byBsZWFybiB0aGUgcGF0dGVybnMsIHN0cnVjdHVyZSwgb3IgZGlzdHJpYnV0aW9uIG9mIHRoZSBpbnB1dCBkYXRhIHdpdGhvdXQgZXhwbGljaXQgZ3VpZGFuY2Ugb24gd2hhdCB0aGUgb3V0cHV0IHNob3VsZCBiZS4gXG5cbioqQWxnb3JpdGhtczoqKlxuLSAqKkstTWVhbnMgQ2x1c3RlcmluZzoqKiBBIHBhcnRpdGlvbmluZyBtZXRob2QgdGhhdCBkaXZpZGVzIHRoZSBkYXRhc2V0IGludG8gZGlzdGluY3QgZ3JvdXBzIGJhc2VkIG9uIHNpbWlsYXJpdHkuIFVzZWQgZm9yIGN1c3RvbWVyIHNlZ21lbnRhdGlvbi5cbi0gKipIaWVyYXJjaGljYWwgQ2x1c3RlcmluZzoqKiBCdWlsZHMgYSB0cmVlIG9mIGNsdXN0ZXJzIGFuZCBjYW4gYmUgdXNlZnVsIGluIHRheG9ub21pZXMuXG4tICoqUHJpbmNpcGFsIENvbXBvbmVudCBBbmFseXNpcyAoUENBKToqKiBBIGRpbWVuc2lvbmFsaXR5IHJlZHVjdGlvbiB0ZWNobmlxdWUgdGhhdCBjb21wcmVzc2VzIGRhdGEgd2hpbGUgcmV0YWluaW5nIGltcG9ydGFudCBmZWF0dXJlcywgb2Z0ZW4gdXNlZCBpbiBub2lzZSByZWR1Y3Rpb24gYW5kIiwicmVmdXNhbCI6bnVsbCwicmVhc29uaW5nIjpudWxsfX1dLCJzeXN0ZW1fZmluZ2VycHJpbnQiOiJmcF81NjBhZjZlNTU5IiwidXNhZ2UiOnsicHJvbXB0X3Rva2VucyI6MzgsImNvbXBsZXRpb25fdG9rZW5zIjo1MDAsInRvdGFsX3Rva2VucyI6NTM4LCJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOnsiY2FjaGVkX3Rva2VucyI6MCwiYXVkaW9fdG9rZW5zIjowfSwiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6eyJyZWFzb25pbmdfdG9rZW5zIjowfX19
+  recorded_at: Wed, 24 Sep 2025 19:46:36 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1758743185-84tzJfBGnxy4JjZzDOkF
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - Global App
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 24 Sep 2025 19:46:37 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9844c9f37f9de02b-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"created_at":"2025-09-24T19:46:36.824994+00:00","model":"openai/gpt-4o-mini","app_id":null,"external_user":null,"streamed":true,"cancelled":false,"latency":350,"moderation_latency":null,"generation_time":10302,"tokens_prompt":38,"tokens_completion":500,"native_tokens_prompt":38,"native_tokens_completion":500,"native_tokens_completion_images":null,"native_tokens_reasoning":0,"native_tokens_cached":0,"num_media_prompt":null,"num_media_completion":0,"num_search_results":null,"origin":"","is_byok":false,"finish_reason":"length","native_finish_reason":"length","usage":0.0003057,"api_type":"completions","id":"gen-1758743185-84tzJfBGnxy4JjZzDOkF","upstream_id":"chatcmpl-CJPjWrBv4aA13s8cgJl2KM6BOUCpl","total_cost":0.0003057,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"OpenAI"}}'
+  recorded_at: Wed, 24 Sep 2025 19:46:37 GMT
+recorded_with: VCR 6.3.1

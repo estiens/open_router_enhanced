@@ -1,0 +1,129 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Test legacy initialization"}],"model":"openai/gpt-3.5-turbo"}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 24 Sep 2025 19:40:49 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9844c17479e7a200-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1758742848-an2hTzc6LrFCVto6v2Uw\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-3.5-turbo\",\"object\":\"chat.completion\",\"created\":1758742848,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Legacy
+        initialization is the process of setting up and initializing older systems
+        or software programs that may not have been updated to modern standards. Testing
+        this process involves verifying that the legacy system or software can still
+        be properly initialized and run without any issues.\\n\\nTo test legacy initialization,
+        follow these steps:\\n\\n1. Identify the legacy system or software that needs
+        to be initialized.\\n2. Review the documentation or specifications to understand
+        the required initialization process.\\n3. Set up a test environment that closely
+        resembles the production environment where the legacy system will be used.\\n4.
+        Follow the documented initialization process to set up the legacy system.\\n5.
+        Verify that the system has been initialized correctly by checking for any
+        error messages or issues.\\n6. Test the functionality of the legacy system
+        to ensure that it is working as expected.\\n7. Repeat the initialization process
+        multiple times to ensure reliability and consistency.\\n8. Document any issues
+        or challenges encountered during the initialization process.\\n9. Make any
+        necessary adjustments or updates to the initialization process to address
+        any issues that were identified.\\n10. Re-test the initialization process
+        to confirm that the changes have been effective.\\n\\nBy following these steps,
+        you can effectively test the initialization of legacy systems and ensure that
+        they can continue to be used and maintained in a reliable manner.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":10,\"completion_tokens\":249,\"total_tokens\":259,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0},\"completion_tokens_details\":{\"reasoning_tokens\":0}}}"
+  recorded_at: Wed, 24 Sep 2025 19:40:51 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1758742848-an2hTzc6LrFCVto6v2Uw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 24 Sep 2025 19:40:51 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9844c184e98a4c94-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1758742848-an2hTzc6LrFCVto6v2Uw
+        not found","code":404}}'
+  recorded_at: Wed, 24 Sep 2025 19:40:51 GMT
+recorded_with: VCR 6.3.1

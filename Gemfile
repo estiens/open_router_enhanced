@@ -6,14 +6,17 @@ source "https://rubygems.org"
 gemspec
 
 gem "activesupport", ">= 6.0"
+gem "json-schema"
 
-group :development do
+group :development, :test do
   gem "dotenv", ">= 2"
   gem "pry", ">= 0.14"
+  gem "vcr", "~> 6.2"
+  gem "webmock", "~> 3.19"
+end
+
+group :development do
   gem "rake", "~> 13.0"
   gem "rspec", "~> 3.0"
-  gem "rubocop", "~> 1.21"
-  gem "solargraph-rails", "~> 0.2.0.pre"
-  gem "sorbet"
-  gem "tapioca", require: false
+  gem "rubocop", require: false
 end

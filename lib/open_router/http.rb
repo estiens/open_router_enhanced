@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
+require "json"
+
 module OpenRouter
   module HTTP
     def get(path:)
-      conn.get(uri(path:)) do |req|
+      response = conn.get(uri(path:)) do |req|
         req.headers = headers
-      end&.body
+      end
+      normalize_body(response&.body)
     end
 
     def post(path:, parameters:)
-      conn.post(uri(path:)) do |req|
+      response = conn.post(uri(path:)) do |req|
         if parameters[:stream].respond_to?(:call)
           req.options.on_data = to_json_stream(user_proc: parameters[:stream])
           parameters[:stream] = true # Necessary to tell OpenRouter to stream.
@@ -17,23 +20,38 @@ module OpenRouter
 
         req.headers = headers
         req.body = parameters.to_json
-      end&.body
+      end
+      normalize_body(response&.body)
     end
 
     def multipart_post(path:, parameters: nil)
-      conn(multipart: true).post(uri(path:)) do |req|
+      response = conn(multipart: true).post(uri(path:)) do |req|
         req.headers = headers.merge({ "Content-Type" => "multipart/form-data" })
         req.body = multipart_parameters(parameters)
-      end&.body
+      end
+      normalize_body(response&.body)
     end
 
     def delete(path:)
-      conn.delete(uri(path:)) do |req|
+      response = conn.delete(uri(path:)) do |req|
         req.headers = headers
-      end&.body
+      end
+      normalize_body(response&.body)
     end
 
     private
+
+    # Normalize response body - parse JSON when middleware is not available
+    def normalize_body(body)
+      return body if OpenRouter::HAS_JSON_MW # Let middleware handle it
+      return body unless body.is_a?(String)
+
+      begin
+        JSON.parse(body)
+      rescue JSON::ParserError
+        body # Return original if not valid JSON
+      end
+    end
 
     # Given a proc, returns an outer proc that can be used to iterate over a JSON stream of chunks.
     # For each chunk, the inner user_proc is called giving it the JSON object. The JSON object could
@@ -46,7 +64,12 @@ module OpenRouter
     def to_json_stream(user_proc:)
       proc do |chunk, _|
         chunk.scan(/(?:data|error): (\{.*\})/i).flatten.each do |data|
-          user_proc.call(JSON.parse(data))
+          parsed_chunk = JSON.parse(data)
+
+          # Trigger on_stream_chunk callback if available
+          trigger_callbacks(:on_stream_chunk, parsed_chunk) if respond_to?(:trigger_callbacks)
+
+          user_proc.call(parsed_chunk)
         rescue JSON::ParserError
           # Ignore invalid JSON.
         end
@@ -57,16 +80,19 @@ module OpenRouter
       Faraday.new do |f|
         f.options[:timeout] = OpenRouter.configuration.request_timeout
         f.request(:multipart) if multipart
-        f.use MiddlewareErrors if @log_errors
+        # NOTE: Removed MiddlewareErrors reference - was undefined and @log_errors was never set
         f.response :raise_error
-        f.response :json
+        f.response :json if OpenRouter::HAS_JSON_MW
 
         OpenRouter.configuration.faraday_config&.call(f)
       end
     end
 
     def uri(path:)
-      File.join(OpenRouter.configuration.uri_base, OpenRouter.configuration.api_version, path)
+      base = OpenRouter.configuration.uri_base.sub(%r{/\z}, "")
+      ver = OpenRouter.configuration.api_version.to_s.sub(%r{^/}, "").sub(%r{/\z}, "")
+      p = path.to_s.sub(%r{^/}, "")
+      "#{base}/#{ver}/#{p}"
     end
 
     def headers

@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"List three colors"}],"model":"openai/gpt-3.5-turbo","stream":true,"max_tokens":50}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 04 Oct 2025 23:52:06 GMT
+      Content-Type:
+      - text/event-stream
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9898974c8f01a1d1-MSP
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: |+
+        : OPENROUTER PROCESSING
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":"1"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":"."},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":" Blue"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":"\n"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":"2"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":"."},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":" Green"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":"\n"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":"3"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":"."},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":" Red"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":"stop","native_finish_reason":"stop","logprobs":null}],"system_fingerprint":null}
+
+        data: {"id":"gen-1759621925-Tp9yW4fgH5gzDLp4Xe20","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion.chunk","created":1759621925,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"usage":{"prompt_tokens":10,"completion_tokens":11,"total_tokens":21,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+
+        data: [DONE]
+
+  recorded_at: Sat, 04 Oct 2025 23:52:06 GMT
+recorded_with: VCR 6.3.1
+...

@@ -25,9 +25,31 @@ RSpec.describe OpenRouter do
     describe "#complete" do
       let(:messages) { [{ role: "user", content: "What is the meaning of life?" }] }
       let(:extras) { { max_tokens: 100 } }
+      let(:mock_response) do
+        {
+          "id" => "chatcmpl-123",
+          "object" => "chat.completion",
+          "created" => 1_677_652_288,
+          "model" => "mistralai/mistral-7b-instruct:free",
+          "choices" => [
+            {
+              "index" => 0,
+              "message" => {
+                "role" => "assistant",
+                "content" => "The meaning of life is 42."
+              },
+              "finish_reason" => "stop"
+            }
+          ],
+          "usage" => {
+            "prompt_tokens" => 12,
+            "completion_tokens" => 8,
+            "total_tokens" => 20
+          }
+        }
+      end
 
       it "sends a POST request to the completions endpoint with the correct parameters" do
-        # let the call execute
         expect(client).to receive(:post).with(
           path: "/chat/completions",
           parameters: {
@@ -35,8 +57,11 @@ RSpec.describe OpenRouter do
             messages:,
             max_tokens: 100
           }
-        ).and_call_original
-        puts client.complete(messages, model: "mistralai/mistral-7b-instruct:free", extras:)
+        ).and_return(mock_response)
+
+        response = client.complete(messages, model: "mistralai/mistral-7b-instruct:free", extras:)
+        expect(response).to be_a(OpenRouter::Response)
+        expect(response.content).to eq("The meaning of life is 42.")
       end
     end
 

@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Analyze the text ''Ruby is a
+        programming language'' and provide detailed analysis"},{"role":"system","content":"Please
+        format your output as a JSON value that conforms to the following JSON Schema
+        specification:\n\n{\"name\":\"analysis_result\",\"strict\":true,\"schema\":{\"type\":\"object\",\"properties\":{\"summary\":{\"type\":\"string\",\"description\":\"Summary
+        of the analysis\"},\"details\":{\"type\":\"object\",\"properties\":{\"category\":{\"type\":\"string\",\"description\":\"Category
+        of analysis\"},\"confidence\":{\"type\":\"number\",\"description\":\"Confidence
+        score 0-1\"},\"keywords\":{\"type\":\"array\",\"description\":\"Relevant keywords\",\"items\":{\"type\":\"string\",\"description\":\"Individual
+        keyword\"}}},\"required\":[\"category\",\"confidence\",\"keywords\"],\"description\":\"Detailed
+        analysis\",\"additionalProperties\":false},\"requires_followup\":{\"type\":\"boolean\",\"description\":\"Whether
+        followup is needed\"}},\"required\":[\"summary\",\"details\",\"requires_followup\"],\"additionalProperties\":false}}\n\nYour
+        response should be valid JSON that matches this schema structure exactly.\n\nexample
+        format:\n```json\n{\"field1\": \"value1\", \"field2\": \"value2\"}\n```\n\nImportant
+        guidelines:\n- Ensure all required fields match the schema\n- Use proper JSON
+        formatting (no trailing commas)\n- Return ONLY the JSON - no other text or
+        explanations\n"}],"model":"openai/gpt-4o-mini","max_tokens":1000}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Aug 2025 08:02:48 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 97205edadbbfa1ef-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n{\"id\":\"gen-1755676968-Klm0K9P6ZrCuFnyxykRP\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1755676968,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n
+        \ \\\"summary\\\": \\\"Ruby is a programming language known for its simplicity
+        and productivity.\\\",\\n  \\\"details\\\": {\\n    \\\"category\\\": \\\"Programming
+        Language\\\",\\n    \\\"confidence\\\": 0.95,\\n    \\\"keywords\\\": [\\\"Ruby\\\",
+        \\\"programming\\\", \\\"language\\\", \\\"simplicity\\\", \\\"productivity\\\"]\\n
+        \ },\\n  \\\"requires_followup\\\": false\\n}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_560af6e559\",\"usage\":{\"prompt_tokens\":257,\"completion_tokens\":73,\"total_tokens\":330,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0},\"completion_tokens_details\":{\"reasoning_tokens\":0}}}"
+  recorded_at: Wed, 20 Aug 2025 08:02:51 GMT
+recorded_with: VCR 6.3.1
