@@ -1634,17 +1634,7 @@ We extend our heartfelt gratitude to:
 - **The OpenRouter Team** - For creating an amazing unified AI API
 - **The Ruby Community** - For continuous support and contributions
 
-## Maintainer & Consulting
-
-This enhanced fork is maintained by:
-
-**Eric Stiens**
-- Email: hello@ericstiens.dev
-- Website: [ericstiens.dev](http://ericstiens.dev)
-- GitHub: [@estiens](https://github.com/estiens)
-- Blog: [Low Level Magic](https://lowlevelmagic.io)
-
-### Need Help with AI Integration?
+## Consulting
 
 I'm available for consulting on Ruby AI applications, LLM integration, and building production-ready AI systems. My work extends beyond Ruby to include real-time AI orchestration, character-based AI systems, multi-agent architectures, and low-latency voice/streaming applications. Whether you need help with tool calling workflows, cost optimization, building AI characters with persistent memory, or orchestrating complex multi-model systems, I'd be happy to help.
 
