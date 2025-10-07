@@ -1262,7 +1262,7 @@ File.write("debug_usage.csv", csv_data)
 2. **Review examples**: Look at working examples in the `examples/` directory
 3. **Enable debug mode**: Turn on logging to see request/response details
 4. **Check OpenRouter status**: Visit [OpenRouter Status](https://status.openrouter.ai)
-5. **Open an issue**: Report bugs at [GitHub Issues](https://github.com/estiens/open_router/issues)
+5. **Open an issue**: Report bugs at [GitHub Issues](https://github.com/estiens/open_router_enhanced/issues)
 
 ## API Reference
 
@@ -1587,7 +1587,7 @@ end
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at <https://github.com/estiens/open_router>.
+Bug reports and pull requests are welcome on GitHub at <https://github.com/estiens/open_router_enhanced>.
 
 This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
 
@@ -1605,8 +1605,8 @@ We use a two-branch workflow:
 ### Development Setup
 
 ```bash
-git clone https://github.com/estiens/open_router.git
-cd open_router
+git clone https://github.com/estiens/open_router_enhanced.git
+cd open_router_enhanced
 bundle install
 bundle exec rspec
 ```
