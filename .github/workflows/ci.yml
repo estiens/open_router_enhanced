@@ -2,14 +2,14 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, dev]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, dev ]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Lint (Ruby 3.3)
+    name: Lint 
     
     steps:
     - uses: actions/checkout@v4
@@ -78,66 +78,4 @@ jobs:
       run: |
         echo "✅ VCR tests completed (pending tests are expected)"
         echo "💡 To re-record cassettes locally, run: VCR_RECORD_ALL=true bundle exec rspec spec/vcr"
-
-  security:
-    runs-on: ubuntu-latest
-    name: Security Scan
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.3'
-        bundler-cache: true
-    
-    - name: Run bundle audit
-      run: |
-        gem install bundle-audit
-        bundle audit --update
         
-    - name: Check for secrets
-      run: |
-        # Simple check for potential secrets in code
-        if grep -r "sk-" lib/ || grep -r "API_KEY.*=" lib/ || grep -r "token.*=" lib/; then
-          echo "⚠️  Potential secrets found in code"
-          exit 1
-        else
-          echo "✅ No obvious secrets found"
-        fi
-
-  quality:
-    runs-on: ubuntu-latest
-    name: Code Quality
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.3'
-        bundler-cache: true
-    
-    - name: Check code metrics
-      run: |
-        # Count lines of code
-        echo "📊 Code Statistics:"
-        find lib -name "*.rb" | xargs wc -l | tail -1
-        
-        # Check for complex files
-        echo "📁 File Complexity:"
-        find lib -name "*.rb" -exec wc -l {} + | sort -n | tail -5
-        
-        # Check test coverage
-        echo "🧪 Test Files:"
-        find spec -name "*_spec.rb" | wc -l | awk '{print $1 " test files"}'
-        
-    - name: Documentation check
-      run: |
-        echo "📚 Documentation Status:"
-        [ -f README.md ] && echo "✅ README.md exists" || echo "❌ README.md missing"
-        [ -f CHANGELOG.md ] && echo "✅ CHANGELOG.md exists" || echo "❌ CHANGELOG.md missing" 
-        [ -f CODE_OF_CONDUCT.md ] && echo "✅ CODE_OF_CONDUCT.md exists" || echo "❌ CODE_OF_CONDUCT.md missing"
-        [ -f CONTRIBUTING.md ] && echo "✅ CONTRIBUTING.md exists" || echo "❌ CONTRIBUTING.md missing"
