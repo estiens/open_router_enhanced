@@ -214,7 +214,7 @@ end
 
 ## Structured Outputs with Streaming
 
-Streaming works seamlessly with structured outputs:
+Streaming works seamlessly with structured outputs. The response is streamed in real-time, then validated and parsed after accumulation completes.
 
 ```ruby
 # Define schema
@@ -225,17 +225,32 @@ user_schema = OpenRouter::Schema.define("user") do
 end
 
 # Stream with structured output
+# IMPORTANT: accumulate_response must be true for structured outputs
 response = streaming_client.stream_complete(
   [{ role: "user", content: "Create a user: John Doe, 30, john@example.com" }],
   model: "openai/gpt-4o",
   response_format: user_schema,
-  accumulate_response: true
+  accumulate_response: true  # Required for structured_output access
 )
 
-# Access structured output after streaming
+# Access structured output after streaming completes
 user_data = response.structured_output
 puts "User: #{user_data['name']}, Age: #{user_data['age']}"
 ```
+
+### How Structured Outputs Work with Streaming
+
+1. **During Streaming**: Content chunks are streamed and displayed in real-time
+2. **After Accumulation**: The complete response is validated against your schema
+3. **Auto-Healing**: If enabled and needed, healing occurs after streaming completes
+4. **Validation**: Schema validation happens on the accumulated response
+
+**Important Notes:**
+- You must set `accumulate_response: true` to use `response.structured_output`
+- Auto-healing (if configured) happens after streaming completes, not during streaming
+- The `on_finish` callback receives the final, validated response
+
+For detailed information on auto-healing, native vs forced outputs, and troubleshooting, see the [Structured Outputs documentation](structured_outputs.md).
 
 ## Configuration Options
 

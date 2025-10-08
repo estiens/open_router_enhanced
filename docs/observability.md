@@ -104,11 +104,14 @@ end
 client.on(:on_healing) do |healing_data|
   if healing_data[:healed]
     puts "Successfully healed JSON response"
+    puts "Attempts: #{healing_data[:attempts]}"
   else
     puts "JSON healing failed: #{healing_data[:error]}"
   end
 end
 ```
+
+**Note**: For detailed information about when auto-healing triggers, how it works, and configuration options, see the [Structured Outputs documentation](structured_outputs.md#json-auto-healing).
 
 ### 4. Streaming Observability
 Enhanced streaming support with detailed event callbacks:
