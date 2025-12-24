@@ -7,7 +7,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"Give me a message and any additional
         information you think is relevant"}],"model":"openai/gpt-4o-mini","max_tokens":500,"response_format":{"type":"json_schema","json_schema":{"name":"flexible_response","strict":false,"schema":{"type":"object","properties":{"message":{"type":"string","description":"A
-        message"}},"required":["message"],"additionalProperties":true}}}}'
+        message"}},"required":["message"],"additionalProperties":true}}},"plugins":[{"id":"response-healing"}]}'
     headers:
       Authorization:
       - Bearer <OPENROUTER_API_KEY>
@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 20 Aug 2025 08:02:57 GMT
+      - Wed, 24 Dec 2025 23:17:54 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,13 +50,70 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 97205f0e8f1eacdb-MSP
+      - 9b33d0987823a1d0-MSP
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n{\"id\":\"gen-1755676976-W7uRs4SaYQBKJuie6ieN\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1755676976,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"message\\\":\\\"Hello!
-        I hope this message finds you well. If there's a specific topic or question
-        you're curious about, feel free to ask. I'm here to provide information, insights,
-        or assistance on a wide range of subjects, from technology and science to
-        art and culture. Don't hesitate to reach out for whatever you need!\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_560af6e559\",\"usage\":{\"prompt_tokens\":55,\"completion_tokens\":66,\"total_tokens\":121,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0},\"completion_tokens_details\":{\"reasoning_tokens\":0}}}"
-  recorded_at: Wed, 20 Aug 2025 08:02:58 GMT
+      string: "\n         \n\n         \n{\"id\":\"gen-1766618274-z4pSD4mOFTabuzG0ZRvM\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766618274,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"message\\\":\\\"Hello!
+        I hope this message finds you well. If you're looking for a specific topic
+        or need assistance with a particular question, feel free to ask! I'm here
+        to help you find information, whether it's about current events, general knowledge,
+        technology, or any other subject you're interested in. Additionally, remember
+        to stay curious and keep exploring new ideas!\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_644f11dd4d\",\"usage\":{\"prompt_tokens\":55,\"completion_tokens\":73,\"total_tokens\":128,\"cost\":0.00005205,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00000825,\"upstream_inference_completions_cost\":0.0000438},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Wed, 24 Dec 2025 23:17:55 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766618274-z4pSD4mOFTabuzG0ZRvM
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 24 Dec 2025 23:17:56 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b33d0a0fa43acd2-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766618274-z4pSD4mOFTabuzG0ZRvM
+        not found","code":404}}'
+  recorded_at: Wed, 24 Dec 2025 23:17:56 GMT
 recorded_with: VCR 6.3.1

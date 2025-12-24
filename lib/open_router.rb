@@ -38,6 +38,9 @@ module OpenRouter
     # Healing configuration
     attr_accessor :auto_heal_responses, :healer_model, :max_heal_attempts
 
+    # Native OpenRouter response healing (server-side)
+    attr_accessor :auto_native_healing
+
     # Cache configuration
     attr_accessor :cache_ttl
 
@@ -72,6 +75,9 @@ module OpenRouter
       self.auto_heal_responses = false
       self.healer_model = "openai/gpt-4o-mini"
       self.max_heal_attempts = 2
+
+      # Native OpenRouter healing (enabled by default for non-streaming structured outputs)
+      self.auto_native_healing = ENV.fetch("OPENROUTER_AUTO_NATIVE_HEALING", "true").downcase == "true"
 
       # Cache defaults
       self.cache_ttl = ENV.fetch("OPENROUTER_CACHE_TTL", DEFAULT_CACHE_TTL).to_i

@@ -366,7 +366,6 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
 
   describe "integration with different models", vcr: { cassette_name: "structured_outputs_different_models" } do
     it "works with different models that support structured outputs" do
-      pending "VCR cassette mismatch - needs re-recording with current API"
       messages = [
         { role: "user", content: "Give me a simple greeting message" }
       ]

@@ -5,10 +5,7 @@ http_interactions:
     uri: https://openrouter.ai/api/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Give me a simple message ''Hello
-        World'' with count 42"}],"model":"openai/gpt-4o-mini","max_tokens":500,"response_format":{"type":"json_schema","json_schema":{"name":"simple_response","strict":true,"schema":{"type":"object","properties":{"message":{"type":"string","description":"A
-        simple message"},"count":{"type":"integer","description":"A count (OpenRouter
-        requires all properties in required array)"}},"required":["message","count"],"additionalProperties":false}}},"plugins":[{"id":"response-healing"}]}'
+      string: '{"messages":[{"role":"user","content":"Hello"}],"model":"openai/gpt-4o-mini","plugins":[{"id":"response-healing","enabled":true}],"max_tokens":100}'
     headers:
       Authorization:
       - Bearer <OPENROUTER_API_KEY>
@@ -30,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:17:53 GMT
+      - Wed, 24 Dec 2025 23:24:12 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -51,15 +48,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b33d0902dd9a1d3-MSP
+      - 9b33d9ca6b6ee895-MSP
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"gen-1766618273-FTrrQpXSyIGRFppo3fqF","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion","created":1766618273,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"{\"message\":\"Hello
-        World\",\"count\":42}","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_644f11dd4d","usage":{"prompt_tokens":78,"completion_tokens":10,"total_tokens":88,"cost":0.0000177,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":null,"upstream_inference_prompt_cost":0.0000117,"upstream_inference_completions_cost":0.000006},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0}}}'
-  recorded_at: Wed, 24 Dec 2025 23:17:53 GMT
+      string: "\n         \n{\"id\":\"gen-1766618652-9JrMSS5HzPuknRNXBh93\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766618652,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Hello!
+        How can I assist you today?\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_644f11dd4d\",\"usage\":{\"prompt_tokens\":8,\"completion_tokens\":9,\"total_tokens\":17,\"cost\":0.0000066,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000012,\"upstream_inference_completions_cost\":0.0000054},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Wed, 24 Dec 2025 23:24:12 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766618273-FTrrQpXSyIGRFppo3fqF
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766618652-9JrMSS5HzPuknRNXBh93
     body:
       encoding: US-ASCII
       string: ''
@@ -80,11 +77,11 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 200
+      message: OK
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:17:53 GMT
+      - Wed, 24 Dec 2025 23:24:14 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -107,10 +104,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b33d0931d4e7816-MSP
+      - 9b33d9d4bb61a1e9-MSP
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766618273-FTrrQpXSyIGRFppo3fqF
-        not found","code":404}}'
-  recorded_at: Wed, 24 Dec 2025 23:17:53 GMT
+      string: '{"data":{"created_at":"2025-12-24T23:24:13.421922+00:00","model":"openai/gpt-4o-mini","app_id":179379,"external_user":null,"streamed":true,"cancelled":false,"latency":361,"moderation_latency":null,"generation_time":77,"tokens_prompt":1,"tokens_completion":9,"native_tokens_prompt":8,"native_tokens_completion":9,"native_tokens_completion_images":null,"native_tokens_reasoning":0,"native_tokens_cached":0,"num_media_prompt":null,"num_input_audio_prompt":null,"num_media_completion":0,"num_search_results":null,"origin":"https://github.com/OlympiaAI/open_router","is_byok":false,"finish_reason":"stop","native_finish_reason":"stop","usage":0.0000066,"api_type":"completions","id":"gen-1766618652-9JrMSS5HzPuknRNXBh93","upstream_id":"chatcmpl-CqSVA1gdV50MhGDWKm1nRPSmRFhvF","total_cost":0.0000066,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"OpenAI"}}'
+  recorded_at: Wed, 24 Dec 2025 23:24:14 GMT
 recorded_with: VCR 6.3.1

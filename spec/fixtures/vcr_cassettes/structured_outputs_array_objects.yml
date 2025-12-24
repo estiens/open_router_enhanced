@@ -18,7 +18,7 @@ http_interactions:
         format:\n```json\n{\"field1\": \"value1\", \"field2\": \"value2\"}\n```\n\nImportant
         guidelines:\n- Ensure all required fields match the schema\n- Use proper JSON
         formatting (no trailing commas)\n- Return ONLY the JSON - no other text or
-        explanations\n"}],"model":"openai/gpt-4o-mini","max_tokens":1000}'
+        explanations\n"}],"model":"openai/gpt-4o-mini","max_tokens":1000,"plugins":[{"id":"response-healing"}]}'
     headers:
       Authorization:
       - Bearer <OPENROUTER_API_KEY>
@@ -40,7 +40,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 20 Aug 2025 08:03:50 GMT
+      - Wed, 24 Dec 2025 23:17:51 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -61,12 +61,68 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 97206057aa2ca1c5-MSP
+      - 9b33d08039714ca5-MSP
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n{\"id\":\"gen-1755677029-ZNmdxDZLkzmyaoLc5iBU\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1755677029,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"```json\\n{\\\"tasks\\\":[{\\\"title\\\":\\\"writing
+      string: "\n         \n\n         \n{\"id\":\"gen-1766618270-f8MnDup5kDNzfPSmwB7t\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766618270,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"```json\\n{\\\"tasks\\\":[{\\\"title\\\":\\\"writing
         documentation\\\",\\\"priority\\\":\\\"high\\\",\\\"completed\\\":false},{\\\"title\\\":\\\"testing
         code\\\",\\\"priority\\\":\\\"medium\\\",\\\"completed\\\":false},{\\\"title\\\":\\\"reviewing
-        pull request\\\",\\\"priority\\\":\\\"low\\\",\\\"completed\\\":false}],\\\"total_count\\\":3}\\n```\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_560af6e559\",\"usage\":{\"prompt_tokens\":247,\"completion_tokens\":55,\"total_tokens\":302,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0},\"completion_tokens_details\":{\"reasoning_tokens\":0}}}"
-  recorded_at: Wed, 20 Aug 2025 08:03:50 GMT
+        pull request\\\",\\\"priority\\\":\\\"low\\\",\\\"completed\\\":false}],\\\"total_count\\\":3}\\n```\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":247,\"completion_tokens\":55,\"total_tokens\":302,\"cost\":0.00007005,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00003705,\"upstream_inference_completions_cost\":0.000033},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Wed, 24 Dec 2025 23:17:51 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766618270-f8MnDup5kDNzfPSmwB7t
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 24 Dec 2025 23:17:52 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b33d086ff6b4c94-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766618270-f8MnDup5kDNzfPSmwB7t
+        not found","code":404}}'
+  recorded_at: Wed, 24 Dec 2025 23:17:51 GMT
 recorded_with: VCR 6.3.1

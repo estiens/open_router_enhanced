@@ -19,7 +19,7 @@ http_interactions:
         format:\n```json\n{\"field1\": \"value1\", \"field2\": \"value2\"}\n```\n\nImportant
         guidelines:\n- Ensure all required fields match the schema\n- Use proper JSON
         formatting (no trailing commas)\n- Return ONLY the JSON - no other text or
-        explanations\n"}],"model":"openai/gpt-4o-mini","max_tokens":1000}'
+        explanations\n"}],"model":"openai/gpt-4o-mini","max_tokens":1000,"plugins":[{"id":"response-healing"}]}'
     headers:
       Authorization:
       - Bearer <OPENROUTER_API_KEY>
@@ -41,7 +41,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 20 Aug 2025 08:02:48 GMT
+      - Wed, 24 Dec 2025 23:17:49 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -62,15 +62,67 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 97205edadbbfa1ef-MSP
+      - 9b33d0777d644c9e-MSP
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
-        \        \n\n         \n{\"id\":\"gen-1755676968-Klm0K9P6ZrCuFnyxykRP\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1755676968,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n
-        \ \\\"summary\\\": \\\"Ruby is a programming language known for its simplicity
-        and productivity.\\\",\\n  \\\"details\\\": {\\n    \\\"category\\\": \\\"Programming
-        Language\\\",\\n    \\\"confidence\\\": 0.95,\\n    \\\"keywords\\\": [\\\"Ruby\\\",
-        \\\"programming\\\", \\\"language\\\", \\\"simplicity\\\", \\\"productivity\\\"]\\n
-        \ },\\n  \\\"requires_followup\\\": false\\n}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_560af6e559\",\"usage\":{\"prompt_tokens\":257,\"completion_tokens\":73,\"total_tokens\":330,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0},\"completion_tokens_details\":{\"reasoning_tokens\":0}}}"
-  recorded_at: Wed, 20 Aug 2025 08:02:51 GMT
+      string: "\n         \n\n         \n{\"id\":\"gen-1766618269-9ph999ZxVWzi3M6JMS2O\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766618269,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"```json\\n{\\\"summary\\\":\\\"Ruby
+        is a versatile programming language known for its simplicity and productivity.\\\",\\\"details\\\":{\\\"category\\\":\\\"Programming
+        Language\\\",\\\"confidence\\\":0.95,\\\"keywords\\\":[\\\"Ruby\\\",\\\"programming\\\",\\\"language\\\",\\\"simplicity\\\",\\\"productivity\\\"]},\\\"requires_followup\\\":false}\\n```\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":257,\"completion_tokens\":55,\"total_tokens\":312,\"cost\":0.00007155,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00003855,\"upstream_inference_completions_cost\":0.000033},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Wed, 24 Dec 2025 23:17:50 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766618269-9ph999ZxVWzi3M6JMS2O
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 24 Dec 2025 23:17:50 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b33d07f4cac7816-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766618269-9ph999ZxVWzi3M6JMS2O
+        not found","code":404}}'
+  recorded_at: Wed, 24 Dec 2025 23:17:50 GMT
 recorded_with: VCR 6.3.1

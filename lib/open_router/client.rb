@@ -95,17 +95,20 @@ module OpenRouter
     # @param model [String|Array] Model identifier, or array of model identifiers if you want to fallback to the next model in case of failure
     # @param providers [Array<String>] Optional array of provider identifiers, ordered by priority
     # @param transforms [Array<String>] Optional array of strings that tell OpenRouter to apply a series of transformations to the prompt before sending it to the model. Transformations are applied in-order
+    # @param plugins [Array<Hash>] Optional array of plugin hashes like [{id: "response-healing"}]. Available plugins: response-healing, web-search, pdf-inputs
     # @param tools [Array<Tool>] Optional array of Tool objects or tool definition hashes for function calling
     # @param tool_choice [String|Hash] Optional tool choice: "auto", "none", "required", or specific tool selection
     # @param response_format [Hash] Optional response format for structured outputs
+    # @param prediction [Hash] Optional predicted output for latency reduction, e.g. {type: "content", content: "predicted text"}
     # @param extras [Hash] Optional hash of model-specific parameters to send to the OpenRouter API
     # @param stream [Proc, nil] Optional callable object for streaming
     # @return [Response] The completion response wrapped in a Response object.
-    def complete(messages, model: "openrouter/auto", providers: [], transforms: [], tools: [], tool_choice: nil,
-                 response_format: nil, force_structured_output: nil, extras: {}, stream: nil)
-      parameters = prepare_base_parameters(messages, model, providers, transforms, stream, extras)
+    def complete(messages, model: "openrouter/auto", providers: [], transforms: [], plugins: [], tools: [], tool_choice: nil,
+                 response_format: nil, force_structured_output: nil, prediction: nil, extras: {}, stream: nil)
+      parameters = prepare_base_parameters(messages, model, providers, transforms, plugins, prediction, stream, extras)
       forced_extraction = configure_tools_and_structured_outputs!(parameters, model, tools, tool_choice,
                                                                   response_format, force_structured_output)
+      configure_plugins!(parameters, response_format, stream)
       validate_vision_support(model, messages)
 
       # Trigger before_request callbacks
@@ -267,12 +270,14 @@ module OpenRouter
     private
 
     # Prepare the base parameters for the API request
-    def prepare_base_parameters(messages, model, providers, transforms, stream, extras)
+    def prepare_base_parameters(messages, model, providers, transforms, plugins, prediction, stream, extras)
       parameters = { messages: messages.dup }
 
       configure_model_parameter!(parameters, model)
       configure_provider_parameter!(parameters, providers)
       configure_transforms_parameter!(parameters, transforms)
+      configure_plugins_parameter!(parameters, plugins)
+      configure_prediction_parameter!(parameters, prediction)
       configure_stream_parameter!(parameters, stream)
 
       parameters.merge!(extras)
@@ -299,9 +304,50 @@ module OpenRouter
       parameters[:transforms] = transforms if transforms.any?
     end
 
+    # Configure the plugins parameter if plugins are specified
+    def configure_plugins_parameter!(parameters, plugins)
+      parameters[:plugins] = plugins.dup if plugins.any?
+    end
+
+    # Configure the prediction parameter for latency optimization
+    def configure_prediction_parameter!(parameters, prediction)
+      parameters[:prediction] = prediction if prediction
+    end
+
     # Configure the stream parameter if streaming is enabled
     def configure_stream_parameter!(parameters, stream)
       parameters[:stream] = stream if stream
+    end
+
+    # Auto-add response-healing plugin when using structured outputs (non-streaming only)
+    # This leverages OpenRouter's native JSON healing for better reliability
+    def configure_plugins!(parameters, response_format, stream)
+      return unless should_auto_add_healing?(response_format, stream)
+
+      parameters[:plugins] ||= []
+
+      # Don't duplicate if user already specified response-healing
+      return if parameters[:plugins].any? { |p| p[:id] == "response-healing" || p["id"] == "response-healing" }
+
+      parameters[:plugins] << { id: "response-healing" }
+    end
+
+    # Determine if we should auto-add the response-healing plugin
+    def should_auto_add_healing?(response_format, stream)
+      return false unless configuration.auto_native_healing
+      return false if stream # Response healing doesn't work with streaming
+      return false unless response_format
+
+      # Check if response_format is a structured output type
+      case response_format
+      when OpenRouter::Schema
+        true
+      when Hash
+        type = response_format[:type] || response_format["type"]
+        %w[json_schema json_object].include?(type.to_s)
+      else
+        false
+      end
     end
 
     # Configure tools and structured outputs, returning forced_extraction flag

@@ -15,11 +15,13 @@ The [OpenRouter API](https://openrouter.ai/docs) is a single unified interface f
 - **[Structured Outputs](docs/structured_outputs.md)**: JSON Schema validation with automatic healing for non-native models
 - **[Smart Model Selection](docs/model_selection.md)**: Intelligent model selection with cost optimization and capability matching
 - **[Prompt Templates](docs/prompt_templates.md)**: Reusable prompt templates with variable interpolation and few-shot learning
+- **[Plugins](docs/plugins.md)**: OpenRouter plugins for web search, PDF inputs, and native response healing
 
 ### Performance & Reliability
 - **Model Registry**: Local caching and querying of OpenRouter model data with capability detection
 - **Enhanced Response Handling**: Rich Response objects with automatic parsing for tool calls and structured outputs
-- **Automatic Healing**: Self-healing responses for malformed JSON from models without native structured output support
+- **Native Response Healing**: Automatic server-side JSON repair via OpenRouter's response-healing plugin
+- **Client-Side Healing**: Self-healing responses for schema validation failures using LLM-based repair
 - **Model Fallbacks**: Automatic failover between models with graceful degradation
 - **Streaming Support**: Enhanced streaming client with callback system and response reconstruction
 

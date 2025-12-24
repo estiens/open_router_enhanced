@@ -202,9 +202,76 @@ api_response_schema = OpenRouter::Schema.from_hash("api_response", {
 })
 ```
 
-## JSON Auto-Healing
+## Native Response Healing (Server-Side)
 
-The gem can automatically repair malformed JSON responses or fix schema validation failures.
+OpenRouter provides a native response healing plugin that fixes malformed JSON **on the server** before it reaches your application. This is faster and free compared to client-side healing.
+
+### How It Works
+
+When enabled, OpenRouter's response-healing plugin automatically fixes:
+- Missing brackets, commas, and quotes
+- Trailing commas
+- Markdown-wrapped JSON (` ```json ... ``` `)
+- Text mixed with JSON
+- Unquoted object keys
+
+### Automatic Activation
+
+The gem **automatically enables** native healing for non-streaming structured output requests:
+
+```ruby
+# Native healing is automatically added for structured outputs
+response = client.complete(
+  messages,
+  model: "openai/gpt-4o-mini",
+  response_format: schema  # Triggers auto-add of response-healing plugin
+)
+```
+
+### Configuration
+
+```ruby
+OpenRouter.configure do |config|
+  # Enable/disable automatic native healing (default: true)
+  config.auto_native_healing = true
+end
+
+# Or via environment variable
+# OPENROUTER_AUTO_NATIVE_HEALING=false
+```
+
+### Manual Plugin Control
+
+You can also manually specify plugins:
+
+```ruby
+# Manually specify response-healing
+response = client.complete(
+  messages,
+  model: "openai/gpt-4o-mini",
+  plugins: [{ id: "response-healing" }],
+  response_format: { type: "json_object" }
+)
+
+# Combine with other plugins
+response = client.complete(
+  messages,
+  model: "openai/gpt-4o-mini",
+  plugins: [{ id: "web-search" }]
+)
+```
+
+### Limitations
+
+- **Non-streaming only**: Native healing doesn't work with streaming responses
+- **Syntax only**: Fixes JSON syntax errors but not schema validation failures
+- **Truncation**: May fail if response was truncated by `max_tokens`
+
+For schema validation and more complex healing, use the client-side auto-healing feature below.
+
+## JSON Auto-Healing (Client-Side)
+
+The gem can automatically repair malformed JSON responses or fix schema validation failures using a secondary LLM call.
 
 ### When Auto-Healing Triggers
 
