@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [1.2.1] - 2025-12-24
+
+### Fixed
+- Memoized `output_id` in `ResponsesToolResult` to ensure consistent IDs across multiple calls
+- Memoized `message_output` and `reasoning_output` finders in `ResponsesResponse` for performance
+
 ## [1.2.0] - 2025-12-24
 
 ### Added

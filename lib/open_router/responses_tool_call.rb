@@ -54,12 +54,13 @@ module OpenRouter
   class ResponsesToolResult
     include ToolResultBase
 
-    attr_reader :tool_call, :result, :error
+    attr_reader :tool_call, :result, :error, :output_id
 
     def initialize(tool_call, result = nil, error = nil)
       @tool_call = tool_call
       @result = result
       @error = error
+      @output_id = "fc_output_#{SecureRandom.hex(8)}"
     end
 
     # Convert to function_call_output format for conversation continuation
@@ -76,7 +77,7 @@ module OpenRouter
 
       {
         "type" => "function_call_output",
-        "id" => "fc_output_#{SecureRandom.hex(8)}",
+        "id" => @output_id,
         "call_id" => @tool_call.call_id,
         "output" => output_content
       }

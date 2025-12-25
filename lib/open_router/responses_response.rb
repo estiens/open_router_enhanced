@@ -182,11 +182,11 @@ module OpenRouter
     private
 
     def message_output
-      output.find { |o| o["type"] == "message" }
+      @message_output ||= output.find { |o| o["type"] == "message" }
     end
 
     def reasoning_output
-      output.find { |o| o["type"] == "reasoning" }
+      @reasoning_output ||= output.find { |o| o["type"] == "reasoning" }
     end
   end
 end
