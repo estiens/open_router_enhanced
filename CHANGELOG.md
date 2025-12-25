@@ -1,5 +1,20 @@
 ## [Unreleased]
 
+## [1.1.0] - 2025-12-24
+
+### Added
+- **Native Response Healing Plugin**: Automatic server-side JSON healing for structured outputs via OpenRouter's `response-healing` plugin (free, <1ms latency)
+- **Plugins Parameter**: Support for OpenRouter plugins (`web-search`, `pdf-inputs`, `response-healing`) via new `plugins:` parameter
+- **Prediction Parameter**: Latency optimization via `prediction:` parameter for predictable outputs
+- **Auto Native Healing**: Automatically enables `response-healing` plugin when using structured outputs (configurable via `auto_native_healing` setting)
+
+### Changed
+- Enhanced structured output workflow: native healing catches syntax errors server-side, client-side healing handles schema validation
+
+### Configuration
+- New `auto_native_healing` config option (default: `true`)
+- Environment variable: `OPENROUTER_AUTO_NATIVE_HEALING`
+
 ## [1.0.0] - 2025-10-07
 
 ### Major Features
