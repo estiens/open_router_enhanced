@@ -18,9 +18,7 @@ module OpenRouter
     end
 
     # Get the function name
-    def name
-      @name
-    end
+    attr_reader :name
 
     # Alias for consistency with ToolCall
     def function_name

@@ -48,9 +48,10 @@ module OpenRouter
     end
 
     # Check if reasoning was included in the response
-    def has_reasoning?
+    def reasoning?
       !reasoning_output.nil?
     end
+    alias has_reasoning? reasoning?
 
     # Get tool/function calls from the response as ResponsesToolCall objects
     #
@@ -68,9 +69,10 @@ module OpenRouter
       output.select { |o| o["type"] == "function_call" }
     end
 
-    def has_tool_calls?
+    def tool_calls?
       tool_calls.any?
     end
+    alias has_tool_calls? tool_calls?
 
     # Execute all tool calls and return results
     #
@@ -137,9 +139,7 @@ module OpenRouter
       end
 
       # Add assistant message if present
-      if message_output
-        input_items << message_output
-      end
+      input_items << message_output if message_output
 
       # Add follow-up user message if provided
       if follow_up_message
@@ -155,15 +155,15 @@ module OpenRouter
 
     # Token counts
     def input_tokens
-      usage.dig("input_tokens") || 0
+      usage["input_tokens"] || 0
     end
 
     def output_tokens
-      usage.dig("output_tokens") || 0
+      usage["output_tokens"] || 0
     end
 
     def total_tokens
-      usage.dig("total_tokens") || 0
+      usage["total_tokens"] || 0
     end
 
     def reasoning_tokens

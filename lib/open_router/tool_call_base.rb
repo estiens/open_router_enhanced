@@ -50,6 +50,7 @@ module OpenRouter
       !success?
     end
 
+    # Factory methods for creating tool results
     module ClassMethods
       # Create a failed result
       def failure(tool_call, error)

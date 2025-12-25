@@ -64,7 +64,10 @@ RSpec.describe OpenRouter::ToolCallBase do
       tc = test_class.new("my_func", '{"x": 1}')
 
       received = nil
-      tc.execute { |name, args| received = [name, args]; "ok" }
+      tc.execute do |name, args|
+        received = [name, args]
+        "ok"
+      end
 
       expect(received).to eq(["my_func", { "x" => 1 }])
     end

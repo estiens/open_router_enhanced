@@ -252,7 +252,7 @@ RSpec.describe OpenRouter::ResponsesResponse do
     subject(:response) { described_class.new(multi_tool_response) }
 
     it "executes all tool calls and returns results" do
-      results = response.execute_tool_calls do |name, args|
+      results = response.execute_tool_calls do |name, _args|
         case name
         when "get_weather" then { temp: 72 }
         when "get_time" then "3:00 PM"

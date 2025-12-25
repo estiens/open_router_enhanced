@@ -46,9 +46,9 @@ RSpec.describe OpenRouter::ResponsesToolCall do
   describe "#arguments" do
     it "parses the JSON arguments string" do
       expect(tool_call.arguments).to eq({
-        "location" => "San Francisco",
-        "units" => "celsius"
-      })
+                                          "location" => "San Francisco",
+                                          "units" => "celsius"
+                                        })
     end
 
     it "memoizes the parsed arguments" do
@@ -114,12 +114,12 @@ RSpec.describe OpenRouter::ResponsesToolCall do
   describe "#to_input_item" do
     it "converts to function_call format for conversation continuation" do
       expect(tool_call.to_input_item).to eq({
-        "type" => "function_call",
-        "id" => "fc_12345",
-        "call_id" => "call_abc123",
-        "name" => "get_weather",
-        "arguments" => '{"location":"San Francisco","units":"celsius"}'
-      })
+                                              "type" => "function_call",
+                                              "id" => "fc_12345",
+                                              "call_id" => "call_abc123",
+                                              "name" => "get_weather",
+                                              "arguments" => '{"location":"San Francisco","units":"celsius"}'
+                                            })
     end
   end
 
@@ -141,11 +141,11 @@ end
 RSpec.describe OpenRouter::ResponsesToolResult do
   let(:tool_call) do
     OpenRouter::ResponsesToolCall.new({
-      "id" => "fc_1",
-      "call_id" => "call_xyz",
-      "name" => "get_weather",
-      "arguments" => "{}"
-    })
+                                        "id" => "fc_1",
+                                        "call_id" => "call_xyz",
+                                        "name" => "get_weather",
+                                        "arguments" => "{}"
+                                      })
   end
 
   describe "#initialize" do

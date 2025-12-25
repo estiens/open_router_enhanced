@@ -9,6 +9,7 @@ require "pry"
 module OpenRouter
   class ServerError < StandardError; end
 
+  # rubocop:disable Metrics/ClassLength
   class Client
     include OpenRouter::HTTP
 
@@ -103,8 +104,10 @@ module OpenRouter
     # @param extras [Hash] Optional hash of model-specific parameters to send to the OpenRouter API
     # @param stream [Proc, nil] Optional callable object for streaming
     # @return [Response] The completion response wrapped in a Response object.
+    # rubocop:disable Metrics/ParameterLists
     def complete(messages, model: "openrouter/auto", providers: [], transforms: [], plugins: [], tools: [], tool_choice: nil,
                  response_format: nil, force_structured_output: nil, prediction: nil, extras: {}, stream: nil)
+      # rubocop:enable Metrics/ParameterLists
       parameters = prepare_base_parameters(messages, model, providers, transforms, plugins, prediction, stream, extras)
       forced_extraction = configure_tools_and_structured_outputs!(parameters, model, tools, tool_choice,
                                                                   response_format, force_structured_output)
@@ -666,4 +669,5 @@ module OpenRouter
       INSTRUCTION
     end
   end
+  # rubocop:enable Metrics/ClassLength
 end
