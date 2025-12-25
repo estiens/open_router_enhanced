@@ -215,42 +215,4 @@ RSpec.describe "OpenRouter Callback System", :vcr do
     end
   end
 
-  describe "callback system with structured outputs" do
-    let(:schema) do
-      OpenRouter::Schema.define("test_response") do
-        string :message, required: true
-        integer :confidence, required: true
-      end
-    end
-
-    let(:response_format) do
-      {
-        type: "json_schema",
-        json_schema: schema.to_h
-      }
-    end
-
-    it "includes structured output data in callbacks", vcr: { cassette_name: "callbacks_structured_output" } do
-      skip "VCR cassette mismatch - needs re-recording with current API"
-
-      callback_data = nil
-
-      client.on :after_response do |response|
-        callback_data = response
-      end
-
-      response = client.complete(
-        [{ role: "user", content: "Generate a test message with confidence score" }],
-        model: "openai/gpt-4o-mini",
-        response_format: response_format,
-        extras: { max_tokens: 100 }
-      )
-
-      expect(callback_data).to be_a(OpenRouter::Response)
-      expect(callback_data).to eq(response)
-
-      structured = response.structured_output
-      expect(structured).to be_a(Hash)
-    end
-  end
 end

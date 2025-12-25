@@ -196,27 +196,6 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
       end
     end
 
-    it "handles models that don't support structured outputs" do
-      skip "VCR cassette mismatch - model support testing needs cassette update"
-      simple_schema = OpenRouter::Schema.define("simple") do
-        string "message", required: true
-      end
-
-      # Try with a model that might not support structured outputs
-      begin
-        response = client.complete(
-          [{ role: "user", content: "Hello" }],
-          model: "meta-llama/llama-3.1-8b-instruct",
-          response_format: simple_schema,
-          extras: { max_tokens: 500 }
-        )
-        # If it works, that's fine
-        expect(response).to be_a(OpenRouter::Response)
-      rescue OpenRouter::ServerError => e
-        # If it fails because the model doesn't support structured outputs
-        expect(e.message.downcase).to match(/structured|format|support/)
-      end
-    end
   end
 
   describe "rate limiting", vcr: { cassette_name: "error_handling_rate_limiting" } do

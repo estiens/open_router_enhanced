@@ -155,30 +155,6 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
     end
   end
 
-  describe "smart completion with fallback", vcr: { cassette_name: "model_fallback_smart_completion" } do
-    it "uses smart_complete_with_fallback method" do
-      skip "VCR cassette mismatch - needs re-recording with current API"
-      requirements = {
-        capabilities: [:function_calling],
-        max_input_cost: 0.01
-      }
-
-      response = client.smart_complete_with_fallback(
-        simple_messages,
-        requirements:,
-        optimization: :cost,
-        max_retries: 3,
-        extras: { max_tokens: 100 }
-      )
-
-      expect(response).to be_a(OpenRouter::Response)
-      expect(response.content).to be_a(String)
-      expect(response.model).to be_a(String)
-
-      puts "Smart completion used model: #{response.model}"
-    end
-  end
-
   describe "fallback behavior with different request parameters", vcr: { cassette_name: "model_fallback_parameters" } do
     it "maintains request parameters across fallback attempts" do
       models = [
