@@ -214,5 +214,4 @@ RSpec.describe "OpenRouter Callback System", :vcr do
       expect(callback_data).to be_empty
     end
   end
-
 end

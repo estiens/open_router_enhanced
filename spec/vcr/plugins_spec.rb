@@ -24,7 +24,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
 
   describe "manual plugins parameter" do
     it "passes plugins array to API", vcr: { cassette_name: "plugins_manual_array" } do
-      # Note: json_object response_format requires "json" in the message
+      # NOTE: json_object response_format requires "json" in the message
       messages = [{ role: "user", content: "Say hello and return your response as json" }]
 
       response = client.complete(
@@ -182,7 +182,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
 
     context "when streaming is enabled" do
       it "does not add response-healing plugin (not supported for streaming)" do
-        # Note: Response healing only works for non-streaming requests
+        # NOTE: Response healing only works for non-streaming requests
         # This test verifies we don't add it when streaming
         messages = [{ role: "user", content: "Give me a greeting" }]
 

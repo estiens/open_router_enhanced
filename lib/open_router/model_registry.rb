@@ -367,9 +367,9 @@ module OpenRouter
         total_size = Dir.glob(File.join(CACHE_DIR, "**/*"))
                         .select { |f| File.file?(f) }
                         .sum do |f|
-          File.size(f)
-        rescue StandardError
-          0
+                          File.size(f)
+                        rescue StandardError
+                          0
         end
         total_size / (1024.0 * 1024.0)
       end

@@ -195,7 +195,6 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         expect(error.message.downcase).to match(/provider.*error|invalid.*schema/)
       end
     end
-
   end
 
   describe "rate limiting", vcr: { cassette_name: "error_handling_rate_limiting" } do

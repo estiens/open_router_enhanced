@@ -194,7 +194,6 @@ RSpec.describe "OpenRouter Prompt Templates", :vcr do
         end
       end
     end
-
   end
 
   describe "partial templates" do
