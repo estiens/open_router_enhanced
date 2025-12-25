@@ -999,7 +999,7 @@ end
 api_tool = OpenRouter::Tool.define do
   name "external_api"
   description "Call external REST APIs"
-  
+
   parameters do
     string :endpoint, required: true,
            description: "API endpoint URL"
@@ -1011,6 +1011,239 @@ api_tool = OpenRouter::Tool.define do
            description: "Request body for POST/PUT"
     integer :timeout, minimum: 1, maximum: 300, default: 30,
             description: "Request timeout in seconds"
+  end
+end
+```
+
+### Model Delegation Tool (AI-as-a-Tool)
+
+A powerful pattern where one model can delegate tasks to a different, specialized model and incorporate the results. This enables "multi-agent" workflows where you route specific subtasks to the best model for the job.
+
+```ruby
+# Define a tool that calls a different model
+specialist_tool = OpenRouter::Tool.define do
+  name "consult_specialist"
+  description "Consult a specialist AI model for specific tasks like code review, math, or creative writing. Use this when a task would benefit from a specialized model's expertise."
+
+  parameters do
+    string :task_type, required: true,
+           enum: ["code_review", "math_reasoning", "creative_writing", "analysis"],
+           description: "Type of task to delegate"
+    string :prompt, required: true,
+           description: "The specific question or task for the specialist"
+    string :context,
+           description: "Additional context to provide to the specialist"
+  end
+end
+
+# Tool executor that routes to different models
+class ModelDelegationExecutor
+  MODEL_ROUTING = {
+    "code_review" => "anthropic/claude-sonnet-4",
+    "math_reasoning" => "deepseek/deepseek-r1",
+    "creative_writing" => "anthropic/claude-sonnet-4",
+    "analysis" => "openai/gpt-4o"
+  }.freeze
+
+  def initialize(client)
+    @client = client
+  end
+
+  def execute(tool_call)
+    args = tool_call.arguments
+    task_type = args["task_type"]
+    prompt = args["prompt"]
+    context = args["context"]
+
+    # Select the appropriate specialist model
+    specialist_model = MODEL_ROUTING[task_type]
+
+    # Build the specialist prompt
+    specialist_messages = [
+      {
+        role: "system",
+        content: system_prompt_for(task_type)
+      },
+      {
+        role: "user",
+        content: context ? "Context: #{context}\n\nTask: #{prompt}" : prompt
+      }
+    ]
+
+    # Call the specialist model
+    specialist_response = @client.complete(
+      specialist_messages,
+      model: specialist_model
+    )
+
+    {
+      specialist_model: specialist_model,
+      task_type: task_type,
+      response: specialist_response.content
+    }
+  end
+
+  private
+
+  def system_prompt_for(task_type)
+    case task_type
+    when "code_review"
+      "You are an expert code reviewer. Analyze the code for bugs, security issues, and improvements."
+    when "math_reasoning"
+      "You are a mathematics expert. Solve problems step by step with clear explanations."
+    when "creative_writing"
+      "You are a creative writing expert. Help with storytelling, prose, and narrative."
+    when "analysis"
+      "You are an analytical expert. Provide thorough, well-reasoned analysis."
+    end
+  end
+end
+
+# Usage in a tool loop
+client = OpenRouter::Client.new
+executor = ModelDelegationExecutor.new(client)
+
+messages = [
+  { role: "user", content: "Review this Ruby code and also help me solve: what's the integral of x^2?" }
+]
+
+# Primary model (orchestrator)
+response = client.complete(
+  messages,
+  model: "openai/gpt-4o-mini",  # Fast, cheap orchestrator
+  tools: [specialist_tool],
+  tool_choice: "auto"
+)
+
+if response.has_tool_calls?
+  messages << response.to_message
+
+  response.tool_calls.each do |tool_call|
+    puts "Delegating #{tool_call.arguments['task_type']} to specialist..."
+
+    result = executor.execute(tool_call)
+    puts "Specialist (#{result[:specialist_model]}) responded"
+
+    messages << tool_call.to_result_message(result)
+  end
+
+  # Get final synthesized response from orchestrator
+  final_response = client.complete(
+    messages,
+    model: "openai/gpt-4o-mini",
+    tools: [specialist_tool]
+  )
+
+  puts final_response.content
+end
+```
+
+#### Advanced: Multi-Model Reasoning Pipeline
+
+```ruby
+# Chain multiple specialist consultations for complex tasks
+class ReasoningPipeline
+  def initialize(client)
+    @client = client
+  end
+
+  def solve_complex_problem(problem)
+    # Step 1: Break down the problem with a reasoning model
+    breakdown = consult_model(
+      model: "deepseek/deepseek-r1",
+      system: "Break this problem into smaller, solvable steps.",
+      prompt: problem
+    )
+
+    # Step 2: Solve each step with appropriate specialists
+    solutions = breakdown[:steps].map do |step|
+      model = select_model_for_step(step)
+      consult_model(
+        model: model,
+        system: "Solve this specific step thoroughly.",
+        prompt: step
+      )
+    end
+
+    # Step 3: Synthesize with a capable general model
+    consult_model(
+      model: "anthropic/claude-sonnet-4",
+      system: "Synthesize these solutions into a coherent final answer.",
+      prompt: "Problem: #{problem}\n\nStep solutions:\n#{solutions.join("\n\n")}"
+    )
+  end
+
+  private
+
+  def consult_model(model:, system:, prompt:)
+    response = @client.complete(
+      [
+        { role: "system", content: system },
+        { role: "user", content: prompt }
+      ],
+      model: model
+    )
+    response.content
+  end
+
+  def select_model_for_step(step)
+    # Route based on step content
+    case step
+    when /code|programming|function/i
+      "anthropic/claude-sonnet-4"
+    when /math|calculate|equation/i
+      "deepseek/deepseek-r1"
+    when /research|analyze|compare/i
+      "openai/gpt-4o"
+    else
+      "openai/gpt-4o-mini"
+    end
+  end
+end
+```
+
+#### Cost-Aware Model Routing
+
+```ruby
+# Route based on task complexity to optimize cost
+class CostAwareRouter
+  MODELS_BY_TIER = {
+    cheap: "openai/gpt-4o-mini",
+    standard: "openai/gpt-4o",
+    premium: "anthropic/claude-sonnet-4",
+    reasoning: "deepseek/deepseek-r1"
+  }.freeze
+
+  def initialize(client)
+    @client = client
+  end
+
+  def route_task(task, complexity: :auto)
+    tier = complexity == :auto ? estimate_complexity(task) : complexity
+    model = MODELS_BY_TIER[tier]
+
+    @client.complete(
+      [{ role: "user", content: task }],
+      model: model
+    )
+  end
+
+  private
+
+  def estimate_complexity(task)
+    # Quick heuristics for complexity
+    word_count = task.split.size
+
+    case
+    when task.match?(/prove|derive|analyze deeply|comprehensive/i)
+      :reasoning
+    when task.match?(/code|debug|security|architecture/i)
+      :premium
+    when word_count > 200 || task.match?(/compare|evaluate|synthesize/i)
+      :standard
+    else
+      :cheap
+    end
   end
 end
 ```
