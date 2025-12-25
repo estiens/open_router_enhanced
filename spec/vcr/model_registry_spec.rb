@@ -237,18 +237,14 @@ RSpec.describe "OpenRouter ModelRegistry", :vcr do
     end
   end
 
-  describe "error handling", vcr: { cassette_name: "model_registry_errors", allow_unused_http_interactions: true } do
+  describe "error handling" do
     it "handles network errors gracefully" do
-      # Temporarily modify API base to cause network error
-      original_base = OpenRouter::ModelRegistry::API_BASE
-      OpenRouter::ModelRegistry.const_set(:API_BASE, "https://invalid-domain-12345.com/api/v1")
+      # Stub Faraday to raise a connection error
+      allow(Faraday).to receive(:new).and_raise(Faraday::ConnectionFailed.new("Connection failed"))
 
       expect do
         OpenRouter::ModelRegistry.fetch_models_from_api
-      end.to raise_error(OpenRouter::ModelRegistryError, /Network error/)
-
-      # Restore original API base
-      OpenRouter::ModelRegistry.const_set(:API_BASE, original_base)
+      end.to raise_error(OpenRouter::ModelRegistryError, /Failed to fetch models/)
     end
   end
 

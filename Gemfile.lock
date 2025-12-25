@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    open_router_enhanced (1.2.1)
+    open_router_enhanced (1.2.2)
       activesupport (>= 6.0, < 9.0)
       dotenv (>= 2.0, < 4.0)
       faraday (>= 1.0, < 3.0)

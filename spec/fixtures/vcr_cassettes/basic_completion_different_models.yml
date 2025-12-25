@@ -108,4 +108,114 @@ http_interactions:
       string: '{"id":"gen-1755676928-rRI5ASisuTA622B4ouGh","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion","created":1755676928,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Hello,
         world!","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_560af6e559","usage":{"prompt_tokens":10,"completion_tokens":4,"total_tokens":14,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}'
   recorded_at: Wed, 20 Aug 2025 08:02:08 GMT
-recorded_with: VCR 6.3.1
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1755676927-7WlHzIQWGoPWoKYj3Arf
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 09:11:27 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b373609a98e4c9e-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"created_at":"2025-08-20T08:02:08.519552+00:00","model":"anthropic/claude-3-haiku","app_id":179379,"external_user":null,"streamed":true,"cancelled":false,"latency":337,"moderation_latency":null,"generation_time":47,"tokens_prompt":10,"tokens_completion":4,"native_tokens_prompt":10,"native_tokens_completion":7,"native_tokens_completion_images":null,"native_tokens_reasoning":0,"native_tokens_cached":0,"num_media_prompt":null,"num_input_audio_prompt":null,"num_media_completion":null,"num_search_results":null,"origin":"https://github.com/OlympiaAI/open_router","is_byok":false,"finish_reason":"stop","native_finish_reason":"stop","usage":0.00001125,"api_type":"completions","id":"gen-1755676927-7WlHzIQWGoPWoKYj3Arf","upstream_id":"msg_01VKrzXZzgv52QfCoztbTMR2","total_cost":0.00001125,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"Anthropic"}}'
+  recorded_at: Thu, 25 Dec 2025 09:11:27 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1755676928-rRI5ASisuTA622B4ouGh
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 09:11:27 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b37360aff81a1c9-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"created_at":"2025-08-20T08:02:09.04019+00:00","model":"openai/gpt-4o-mini","app_id":179379,"external_user":null,"streamed":true,"cancelled":false,"latency":333,"moderation_latency":null,"generation_time":27,"tokens_prompt":10,"tokens_completion":4,"native_tokens_prompt":10,"native_tokens_completion":4,"native_tokens_completion_images":null,"native_tokens_reasoning":0,"native_tokens_cached":0,"num_media_prompt":null,"num_input_audio_prompt":null,"num_media_completion":null,"num_search_results":null,"origin":"https://github.com/OlympiaAI/open_router","is_byok":false,"finish_reason":"stop","native_finish_reason":"stop","usage":0.0000039,"api_type":"completions","id":"gen-1755676928-rRI5ASisuTA622B4ouGh","upstream_id":"chatcmpl-C6Y3kpw0D1irM9CGM5QURHdvPzbR0","total_cost":0.0000039,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"OpenAI"}}'
+  recorded_at: Thu, 25 Dec 2025 09:11:27 GMT
+recorded_with: VCR 6.4.0

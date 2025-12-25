@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 require "json"
-require "net/http"
-require "uri"
+require "faraday"
 require "tmpdir"
 require "fileutils"
-require "openssl"
 
 module OpenRouter
   class ModelRegistryError < Error; end
@@ -18,30 +16,20 @@ module OpenRouter
     MAX_CACHE_SIZE_MB = 50 # Maximum cache size in megabytes
 
     class << self
-      # Fetch models from OpenRouter API
+      # Fetch models from OpenRouter API using Faraday for consistent SSL handling
       def fetch_models_from_api
-        uri = URI("#{API_BASE}/models")
-
-        # Use configurable timeout and SSL settings
-        http = Net::HTTP.new(uri.host, uri.port)
-        http.use_ssl = true
-        http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-        http.read_timeout = OpenRouter.configuration.model_registry_timeout
-        http.open_timeout = OpenRouter.configuration.model_registry_timeout
-
-        request = Net::HTTP::Get.new(uri)
-        response = http.request(request)
-
-        unless response.code == "200"
-          raise ModelRegistryError,
-                "Failed to fetch models from OpenRouter API: #{response.message}"
+        conn = Faraday.new(url: API_BASE) do |f|
+          f.options[:timeout] = OpenRouter.configuration.model_registry_timeout
+          f.options[:open_timeout] = OpenRouter.configuration.model_registry_timeout
+          f.response :raise_error
         end
 
+        response = conn.get("models")
         JSON.parse(response.body)
+      rescue Faraday::Error => e
+        raise ModelRegistryError, "Failed to fetch models from OpenRouter API: #{e.message}"
       rescue JSON::ParserError => e
         raise ModelRegistryError, "Failed to parse OpenRouter API response: #{e.message}"
-      rescue StandardError => e
-        raise ModelRegistryError, "Network error fetching models: #{e.message}"
       end
 
       # Ensure cache directory exists and set up cleanup

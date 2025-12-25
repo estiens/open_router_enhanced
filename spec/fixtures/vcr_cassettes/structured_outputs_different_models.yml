@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:17:57 GMT
+      - Thu, 25 Dec 2025 09:14:08 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,15 +50,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b33d0ab18be4c9d-MSP
+      - 9b3739f68cd9acde-MSP
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"gen-1766618277-hJIZ4Nbv2A1PTz2qUyyG","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion","created":1766618277,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"{\"message\":\"Hello!
-        Hope you''re having a wonderful day!\",\"count\":1}","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_644f11dd4d","usage":{"prompt_tokens":71,"completion_tokens":17,"total_tokens":88,"cost":0.00002085,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":null,"upstream_inference_prompt_cost":0.00001065,"upstream_inference_completions_cost":0.0000102},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0}}}'
-  recorded_at: Wed, 24 Dec 2025 23:17:58 GMT
+      string: "\n         \n{\"id\":\"gen-1766654047-Bwp6xrb6ifs5hrOr6U5O\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766654047,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"message\\\":\\\"Hello!
+        Hope you have a wonderful day!\\\",\\\"count\\\":1}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_644f11dd4d\",\"usage\":{\"prompt_tokens\":71,\"completion_tokens\":17,\"total_tokens\":88,\"cost\":0.00002085,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001065,\"upstream_inference_completions_cost\":0.0000102},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Thu, 25 Dec 2025 09:14:08 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766618277-hJIZ4Nbv2A1PTz2qUyyG
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766654047-Bwp6xrb6ifs5hrOr6U5O
     body:
       encoding: US-ASCII
       string: ''
@@ -83,7 +83,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:17:58 GMT
+      - Thu, 25 Dec 2025 09:14:08 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -106,12 +106,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b33d0ae49c0ad0c-MSP
+      - 9b3739fada34a221-MSP
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766618277-hJIZ4Nbv2A1PTz2qUyyG
+      string: '{"error":{"message":"Generation gen-1766654047-Bwp6xrb6ifs5hrOr6U5O
         not found","code":404}}'
-  recorded_at: Wed, 24 Dec 2025 23:17:58 GMT
+  recorded_at: Thu, 25 Dec 2025 09:14:08 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -148,7 +148,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:17:58 GMT
+      - Thu, 25 Dec 2025 09:14:10 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -169,15 +169,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b33d0afcf334c93-MSP
+      - 9b3739fbdce6acc9-MSP
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766618278-lzEVwixQlgmpxRFdR1pa\",\"provider\":\"Anthropic\",\"model\":\"anthropic/claude-3-haiku\",\"object\":\"chat.completion\",\"created\":1766618278,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"message\\\":\\\"Hello,
+      string: "\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1766654048-qjDJJipUkh3TRoxyNj1L\",\"provider\":\"Anthropic\",\"model\":\"anthropic/claude-3-haiku\",\"object\":\"chat.completion\",\"created\":1766654048,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"message\\\":\\\"Hello,
         how can I assist you today?\\\",\\\"count\\\":1}\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":184,\"completion_tokens\":20,\"total_tokens\":204,\"cost\":0.000071,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.000046,\"upstream_inference_completions_cost\":0.000025},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Wed, 24 Dec 2025 23:17:58 GMT
+  recorded_at: Thu, 25 Dec 2025 09:14:10 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766618278-lzEVwixQlgmpxRFdR1pa
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766654048-qjDJJipUkh3TRoxyNj1L
     body:
       encoding: US-ASCII
       string: ''
@@ -202,7 +202,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:17:59 GMT
+      - Thu, 25 Dec 2025 09:14:10 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -225,10 +225,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b33d0b3cc64e895-MSP
+      - 9b373a074f9aa1ef-MSP
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766618278-lzEVwixQlgmpxRFdR1pa
+      string: '{"error":{"message":"Generation gen-1766654048-qjDJJipUkh3TRoxyNj1L
         not found","code":404}}'
-  recorded_at: Wed, 24 Dec 2025 23:17:59 GMT
-recorded_with: VCR 6.3.1
+  recorded_at: Thu, 25 Dec 2025 09:14:10 GMT
+recorded_with: VCR 6.4.0

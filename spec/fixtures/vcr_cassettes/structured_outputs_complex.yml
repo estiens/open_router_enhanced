@@ -41,7 +41,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:17:49 GMT
+      - Thu, 25 Dec 2025 09:12:44 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -62,16 +62,20 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b33d0777d644c9e-MSP
+      - 9b3737e87a514c9c-MSP
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n{\"id\":\"gen-1766618269-9ph999ZxVWzi3M6JMS2O\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766618269,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"```json\\n{\\\"summary\\\":\\\"Ruby
-        is a versatile programming language known for its simplicity and productivity.\\\",\\\"details\\\":{\\\"category\\\":\\\"Programming
-        Language\\\",\\\"confidence\\\":0.95,\\\"keywords\\\":[\\\"Ruby\\\",\\\"programming\\\",\\\"language\\\",\\\"simplicity\\\",\\\"productivity\\\"]},\\\"requires_followup\\\":false}\\n```\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":257,\"completion_tokens\":55,\"total_tokens\":312,\"cost\":0.00007155,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00003855,\"upstream_inference_completions_cost\":0.000033},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Wed, 24 Dec 2025 23:17:50 GMT
+      string: "\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1766653963-pNupddwQyNcA09vdHK7H\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766653963,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n
+        \ \\\"summary\\\": \\\"Ruby is recognized as a programming language primarily
+        used for web development.\\\",\\n  \\\"details\\\": {\\n    \\\"category\\\":
+        \\\"Programming Languages\\\",\\n    \\\"confidence\\\": 0.95,\\n    \\\"keywords\\\":
+        [\\n      \\\"Ruby\\\",\\n      \\\"programming language\\\",\\n      \\\"web
+        development\\\",\\n      \\\"syntax\\\",\\n      \\\"object-oriented\\\"\\n
+        \   ]\\n  },\\n  \\\"requires_followup\\\": false\\n}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":257,\"completion_tokens\":83,\"total_tokens\":340,\"cost\":0.00008835,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00003855,\"upstream_inference_completions_cost\":0.0000498},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Thu, 25 Dec 2025 09:12:45 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766618269-9ph999ZxVWzi3M6JMS2O
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766653963-pNupddwQyNcA09vdHK7H
     body:
       encoding: US-ASCII
       string: ''
@@ -96,7 +100,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:17:50 GMT
+      - Thu, 25 Dec 2025 09:12:45 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -119,10 +123,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b33d07f4cac7816-MSP
+      - 9b3737f5cb9d4c9a-MSP
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766618269-9ph999ZxVWzi3M6JMS2O
+      string: '{"error":{"message":"Generation gen-1766653963-pNupddwQyNcA09vdHK7H
         not found","code":404}}'
-  recorded_at: Wed, 24 Dec 2025 23:17:50 GMT
-recorded_with: VCR 6.3.1
+  recorded_at: Thu, 25 Dec 2025 09:12:45 GMT
+recorded_with: VCR 6.4.0

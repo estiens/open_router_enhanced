@@ -54,4 +54,59 @@ http_interactions:
       string: "\n         \n{\"id\":\"gen-1755677028-g9554zHYxH7Y2clQthiB\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1755677028,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Hello!
         How can I assist you today?\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_560af6e559\",\"usage\":{\"prompt_tokens\":9,\"completion_tokens\":9,\"total_tokens\":18,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0},\"completion_tokens_details\":{\"reasoning_tokens\":0}}}"
   recorded_at: Wed, 20 Aug 2025 08:03:49 GMT
-recorded_with: VCR 6.3.1
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1755677028-g9554zHYxH7Y2clQthiB
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 09:11:31 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b3736237cb65116-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"created_at":"2025-08-20T08:03:49.478474+00:00","model":"openai/gpt-4o-mini","app_id":179379,"external_user":null,"streamed":true,"cancelled":false,"latency":330,"moderation_latency":null,"generation_time":95,"tokens_prompt":9,"tokens_completion":9,"native_tokens_prompt":9,"native_tokens_completion":9,"native_tokens_completion_images":null,"native_tokens_reasoning":0,"native_tokens_cached":0,"num_media_prompt":null,"num_input_audio_prompt":null,"num_media_completion":null,"num_search_results":null,"origin":"https://github.com/OlympiaAI/open_router","is_byok":false,"finish_reason":"stop","native_finish_reason":"stop","usage":0.00000675,"api_type":"completions","id":"gen-1755677028-g9554zHYxH7Y2clQthiB","upstream_id":"chatcmpl-C6Y5MsOX4B1EcBxEGSlHsLbjtA4id","total_cost":0.00000675,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"OpenAI"}}'
+  recorded_at: Thu, 25 Dec 2025 09:11:31 GMT
+recorded_with: VCR 6.4.0

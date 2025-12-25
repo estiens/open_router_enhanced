@@ -1,5 +1,17 @@
 ## [Unreleased]
 
+## [1.2.2] - 2025-12-25
+
+### Fixed
+- Fixed SSL certificate verification error in `ModelRegistry` by switching from `Net::HTTP` to `Faraday` for consistent HTTP handling across the gem
+
+### Added
+- New examples in `examples/` directory:
+  - `real_world_schemas_example.rb` - Practical structured data extraction scenarios
+  - `tool_loop_example.rb` - Complete Chat Completions API tool calling workflow
+  - `responses_api_example.rb` - Responses API with multi-turn tool loops
+  - `dynamic_model_switching_example.rb` - Runtime model selection and capability detection
+
 ## [1.2.1] - 2025-12-24
 
 ### Fixed

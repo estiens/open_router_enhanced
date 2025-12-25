@@ -54,4 +54,59 @@ http_interactions:
       string: '{"id":"gen-1755676930-ofBWR2qyvWYxy2v3NpcN","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion","created":1755676930,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Hello
         world!","refusal":null,"reasoning":null}}],"system_fingerprint":null,"usage":{"prompt_tokens":10,"completion_tokens":3,"total_tokens":13,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}'
   recorded_at: Wed, 20 Aug 2025 08:02:10 GMT
-recorded_with: VCR 6.3.1
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1755676930-ofBWR2qyvWYxy2v3NpcN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 09:11:27 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b37360e1bf64cb7-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"created_at":"2025-08-20T08:02:11.114078+00:00","model":"openai/gpt-3.5-turbo","app_id":179379,"external_user":null,"streamed":true,"cancelled":false,"latency":399,"moderation_latency":null,"generation_time":2,"tokens_prompt":10,"tokens_completion":3,"native_tokens_prompt":10,"native_tokens_completion":3,"native_tokens_completion_images":null,"native_tokens_reasoning":0,"native_tokens_cached":0,"num_media_prompt":null,"num_input_audio_prompt":null,"num_media_completion":null,"num_search_results":null,"origin":"https://github.com/OlympiaAI/open_router","is_byok":false,"finish_reason":"stop","native_finish_reason":"stop","usage":0.0000095,"api_type":"completions","id":"gen-1755676930-ofBWR2qyvWYxy2v3NpcN","upstream_id":"chatcmpl-C6Y3mAx2itDJcGDA8b2C0c0L1PgwY","total_cost":0.0000095,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"OpenAI"}}'
+  recorded_at: Thu, 25 Dec 2025 09:11:27 GMT
+recorded_with: VCR 6.4.0

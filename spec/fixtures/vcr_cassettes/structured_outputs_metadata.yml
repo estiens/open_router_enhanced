@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:17:54 GMT
+      - Thu, 25 Dec 2025 09:14:04 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,15 +50,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b33d093e992a1fd-MSP
+      - 9b3739e22b56a206-MSP
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766618273-NxOlqzI8LOs1zm3b8WQs\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766618273,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"message\\\":\\\"Hello!
-        Hope you have a great day!\\\",\\\"count\\\":1}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_644f11dd4d\",\"usage\":{\"prompt_tokens\":70,\"completion_tokens\":17,\"total_tokens\":87,\"cost\":0.0000207,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000105,\"upstream_inference_completions_cost\":0.0000102},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Wed, 24 Dec 2025 23:17:54 GMT
+      string: "\n         \n{\"id\":\"gen-1766654044-ZCMtDcVvWUtxA2GGpfHc\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766654044,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"message\\\":\\\"Hello!
+        How are you today?\\\",\\\"count\\\":1}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_644f11dd4d\",\"usage\":{\"prompt_tokens\":70,\"completion_tokens\":15,\"total_tokens\":85,\"cost\":0.0000195,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000105,\"upstream_inference_completions_cost\":0.000009},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Thu, 25 Dec 2025 09:14:04 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766618273-NxOlqzI8LOs1zm3b8WQs
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766654044-ZCMtDcVvWUtxA2GGpfHc
     body:
       encoding: US-ASCII
       string: ''
@@ -83,7 +83,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:17:54 GMT
+      - Thu, 25 Dec 2025 09:14:05 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -106,10 +106,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b33d09789351e27-MSP
+      - 9b3739e5ae7b511c-MSP
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766618273-NxOlqzI8LOs1zm3b8WQs
+      string: '{"error":{"message":"Generation gen-1766654044-ZCMtDcVvWUtxA2GGpfHc
         not found","code":404}}'
-  recorded_at: Wed, 24 Dec 2025 23:17:54 GMT
-recorded_with: VCR 6.3.1
+  recorded_at: Thu, 25 Dec 2025 09:14:05 GMT
+recorded_with: VCR 6.4.0
