@@ -18,10 +18,13 @@ end
 
 require_relative "open_router/http"
 require_relative "open_router/tool"
+require_relative "open_router/tool_call_base"
 require_relative "open_router/tool_call"
 require_relative "open_router/schema"
 require_relative "open_router/json_healer"
 require_relative "open_router/response"
+require_relative "open_router/responses_response"
+require_relative "open_router/responses_tool_call"
 require_relative "open_router/model_registry"
 require_relative "open_router/model_selector"
 require_relative "open_router/prompt_template"

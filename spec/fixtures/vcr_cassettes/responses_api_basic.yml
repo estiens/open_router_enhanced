@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"model":"openai/gpt-4o-mini","input":"What is 2 + 2? Reply with just
+        the number.","max_output_tokens":50}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 00:42:03 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b344bdc38e5a1cd-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object":"response","id":"gen-1766623323-xP3CcScmP4emTR4CUZxn","created_at":1766623323,"model":"openai/gpt-4o-mini","error":null,"output_text":"","output":[{"role":"assistant","type":"message","status":"completed","content":[{"type":"output_text","text":"4","annotations":[]}],"id":"msg_tmp_ic9c14a6qdm"}],"incomplete_details":null,"tools":[],"tool_choice":"auto","parallel_tool_calls":true,"max_output_tokens":50,"temperature":null,"top_p":null,"metadata":{},"background":false,"previous_response_id":null,"service_tier":"auto","truncation":null,"store":false,"instructions":null,"reasoning":null,"safety_identifier":null,"prompt_cache_key":null,"user":null,"usage":{"input_tokens":21,"input_tokens_details":{"cached_tokens":0},"output_tokens":1,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":22,"cost":0.00000375,"is_byok":false,"cost_details":{"upstream_inference_cost":null,"upstream_inference_input_cost":0.00000315,"upstream_inference_output_cost":6e-7}}}'
+  recorded_at: Thu, 25 Dec 2025 00:42:03 GMT
+recorded_with: VCR 6.4.0

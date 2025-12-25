@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"model":"openai/o4-mini","input":"What is 15% of 80? Show your reasoning.","reasoning":{"effort":"medium"},"max_output_tokens":500}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 00:42:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b344bdee9e5ad24-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        CiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAp7Im9iamVjdCI6InJlc3BvbnNlIiwiaWQiOiJnZW4tMTc2NjYyMzMyNC1xaXRuUlNuZnRESW40S2draWJ5RSIsImNyZWF0ZWRfYXQiOjE3NjY2MjMzMjQsIm1vZGVsIjoib3BlbmFpL280LW1pbmkiLCJlcnJvciI6bnVsbCwib3V0cHV0X3RleHQiOiIiLCJvdXRwdXQiOlt7InR5cGUiOiJyZWFzb25pbmciLCJpZCI6InJzXzA3YmUyMTU4M2ViNjI3NDIwMTY5NGM4ODVjYzQ4YzgxOTZiMzkwYzVjYWExMjYzMWUyIiwic3VtbWFyeSI6W3sidHlwZSI6InN1bW1hcnlfdGV4dCIsInRleHQiOiIqKkNhbGN1bGF0aW5nIGEgcGVyY2VudGFnZSoqXG5cblRoZSB1c2VyIHdhbnRzIHRvIGtub3cgd2hhdCAxNSUgb2YgODAgaXMsIGFuZCBJIHRoaW5rIGEgY2xlYXIgZXhwbGFuYXRpb24gaXMgZXNzZW50aWFsLiBGaXJzdCwgSSByZWNvZ25pemUgdGhhdCBwZXJjZW50IG1lYW5zIHBlciBodW5kcmVkLCBzbyBJIGNvbnZlcnQgMTUlIHRvIGEgZGVjaW1hbCBieSBkaXZpZGluZyBieSAxMDAsIHdoaWNoIGdpdmVzIG1lIDAuMTUuIFRoZW4sIEkgbXVsdGlwbHkgMC4xNSBieSA4MCB0byBnZXQgMTIuIFxuXG5UbyBpbGx1c3RyYXRlLCBJIGNhbiBhbHNvIGV4cGxhaW4gaXQgYXMgZm9sbG93czpcbjEuIENvbnZlcnQgMTUlIHRvIGRlY2ltYWw6IDAuMTUuXG4yLiBNdWx0aXBseTogMC4xNSAqIDgwID0gMTIuIFxuXG5TbywgdGhlIGFuc3dlciBpcyAxMiwgYW5kIEnigJlsbCBleHBsYWluIHRoaXMgc3RlcC1ieS1zdGVwIGZvciBjbGFyaXR5LiJ9XSwiZW5jcnlwdGVkX2NvbnRlbnQiOiJnQUFBQUFCcFRJaGd1c21rVmUtUkZCOGJOaEg2aVp4blc3NEpvRUVxOTMxVXpsV2ZEYVRzUEE3X3lKVlZSa0gwVHVSZXlaUUlfY04xQWZ2MEJXYWdLWE9qbzdXYUUxX284Zl9fLXg2VlROMDBYaElaU21LNzdOSEppYndFVWdDcjA0eEx1SlNEWlNidF9OSS1uZ29Uc2RlUUdrNnc0UFMzaUpNR3FWUkwyVFpEbm1BQ3V3UWd4czZpRmo3ZG4yMjU4UnAtZ1R0YW15ZXlKTzM5d21lbWtzU2c0TmdKWXVPd0pKaFV1UjRHZjRyeGdxUGltYjEwVGQyVHg3bXhVX3czbGdqTTdqVW5iYTJSNDlYM0xSaEZXc2ZTYTRVTERtbm1jZ3R3WGhvTm9HOVdPQTFzZjJGem1OSlpwTzBHN0VPVTBNWEl4RmVtNjMycnp2OUItYVBiVHBVajRvTlZmY1k4UHVDYWxDVnhYMWpJN3prY0pjTE5ldU1FLU54Ykd6M2ZIUlhGWm5mMEZUX1VleDFobGhMM20xR3FGYmhTaXlIWElkT19JLVc4ZmU2c0RWeDFGR0d3VzdzT1JiZHh2Qm85Vjc3QXJ0aGloaVNzaTF1TjhTTjljSjdpLTMxb29oSktOanI1YktJdkJPWjJVSEcyNDVyODFFcl9EM0kxN210TU9GZ0lFOWIyTk45ZTBybXhwMkpwMWhPc3gzYldaVjYtcnk1T0t2dzgtcm5CNy05Ykw0M29EWkwyX1Axalc5dFVJTXVCVTZMVlBHZXJKU3E2U1lyZl9rNlVzSVdvVW0yWC1DNnB2b0d1VjlmUGl6SndJN1hCeHF2emFYdTlzRWtsTGJlTlBFVUdFb05ZdWd3d2pLOEhiVkdUUDZaQTNLWUtrMDQwV2tJbGM0cGRGeVJXdGZlN1RNd2x6OTI0dElYeWo4b1pmWEFyZjh6OGp0QXhCZzB3NFlfb3kwM0FhVnkxenVQOTFuQ0lIMEg2M2R0RmM3aDRmc1ExZVhWZG54OVN5SjF0Mm9KTmRiai1rUGJXV0NOcV9CTi0yT2QxTUhCX0VYOGVnVW5vR3BOS2FQRXhtZWEyaEtySlBLTzFOZ2V0NWlPUlp0UzBvcWhNeWFoVmdqSUxDcF93TjdWUm1QWDVCVWJzTExNUWliRVU3bnlVenRIa0ZLUkItbTJqOGxGaFFsUmVtVFVuZ2J0WTYydF9EcG95OHRuYktKS1dEakpvZWpiUjk3WUJsN0dKUUVOSlVodUFQdzRmYkVwQ2pqN3JnbVVva1g3MVNMcWlCd2xHZUVTay1wMVR0S2w4cHlpd1hDbDI5ejdCTWtSVUc3ejkzOXZMajFoa1VzX2RkZWthR3RVbkRkLVdnQVptOWQxRm1iLWE5Mmpzd3hodWt6YkVUenpjZ3k1RXEzU19EU2V2UE5xMzJRV2p1SHVaeWJiejFrNzRIZU93eksxdFdtbzc1aEFmS082ZkdmazZXVFgzUmZmeW5DcXQ2ak9RV25nSTN1TlA1Y2Foc202WlQzY3I1U2pjMmRab1Z4MkhET0hlOXhybE0yTW13QVRGNmJDdjBRelc1RlE0Z0FSa3IxRzlicnBOQkFMZjcxT05hS1dITHRiQmFPeUxFN1dXRm1YbVU2MlFIODRKcFo4Y2M3UXZuSTJKWk9wclQ5dVdFOWh5OXplODh5OEhobTR5Zjg5M2h4NkRvbHJIQVgzNFZGcms4c0ZhNC1JMjc4akJiOVFGbk9ZQzZkaktEeVJnNFMwaGxVQVNieVEzdlBrY1FiZklKQ3dzQi1FNnRnM29PNkhFQzdZcERzMm4tWjRQb1Q2eUJ6SlVYYkx2UkRYclYwOXRHc0NhVk9NPSIsImZvcm1hdCI6Im9wZW5haS1yZXNwb25zZXMtdjEifSx7InJvbGUiOiJhc3Npc3RhbnQiLCJ0eXBlIjoibWVzc2FnZSIsInN0YXR1cyI6ImNvbXBsZXRlZCIsImNvbnRlbnQiOlt7InR5cGUiOiJvdXRwdXRfdGV4dCIsInRleHQiOiJUbyBmaW5kIDE1JSBvZiA4MDpcblxuMS4gQ29udmVydCB0aGUgcGVyY2VudGFnZSB0byBhIGRlY2ltYWw6XG4gICAxNSUgPSAxNSDDtyAxMDAgPSAwLjE1XG5cbjIuIE11bHRpcGx5IHRoYXQgZGVjaW1hbCBieSA4MDpcbiAgIDAuMTUgw5cgODAgPSAoMTUvMTAwKSDDlyA4MCA9ICgxNSDDlyA4MCkgw7cgMTAwID0gMSwyMDAgw7cgMTAwID0gMTJcblxuQW5zd2VyOiAxMiIsImFubm90YXRpb25zIjpbXX1dLCJpZCI6Im1zZ190bXBfeHM4ZGF1NnZkeGYifV0sImluY29tcGxldGVfZGV0YWlscyI6bnVsbCwidG9vbHMiOltdLCJ0b29sX2Nob2ljZSI6ImF1dG8iLCJwYXJhbGxlbF90b29sX2NhbGxzIjp0cnVlLCJtYXhfb3V0cHV0X3Rva2VucyI6NTAwLCJ0ZW1wZXJhdHVyZSI6bnVsbCwidG9wX3AiOm51bGwsIm1ldGFkYXRhIjp7fSwiYmFja2dyb3VuZCI6ZmFsc2UsInByZXZpb3VzX3Jlc3BvbnNlX2lkIjpudWxsLCJzZXJ2aWNlX3RpZXIiOiJhdXRvIiwidHJ1bmNhdGlvbiI6bnVsbCwic3RvcmUiOmZhbHNlLCJpbnN0cnVjdGlvbnMiOm51bGwsInJlYXNvbmluZyI6eyJlZmZvcnQiOiJtZWRpdW0ifSwic2FmZXR5X2lkZW50aWZpZXIiOm51bGwsInByb21wdF9jYWNoZV9rZXkiOm51bGwsInVzZXIiOm51bGwsInVzYWdlIjp7ImlucHV0X3Rva2VucyI6MTksImlucHV0X3Rva2Vuc19kZXRhaWxzIjp7ImNhY2hlZF90b2tlbnMiOjB9LCJvdXRwdXRfdG9rZW5zIjoxNTksIm91dHB1dF90b2tlbnNfZGV0YWlscyI6eyJyZWFzb25pbmdfdG9rZW5zIjo2NH0sInRvdGFsX3Rva2VucyI6MTc4LCJjb3N0IjowLjAwMDcyMDUsImlzX2J5b2siOmZhbHNlLCJjb3N0X2RldGFpbHMiOnsidXBzdHJlYW1faW5mZXJlbmNlX2Nvc3QiOm51bGwsInVwc3RyZWFtX2luZmVyZW5jZV9pbnB1dF9jb3N0IjowLjAwMDAyMDksInVwc3RyZWFtX2luZmVyZW5jZV9vdXRwdXRfY29zdCI6MC4wMDA2OTk2fX19
+  recorded_at: Thu, 25 Dec 2025 00:42:08 GMT
+recorded_with: VCR 6.4.0

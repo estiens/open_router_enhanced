@@ -1,0 +1,245 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"model":"openai/gpt-4o-mini","input":"What''s the weather like in
+        Tokyo?","tools":[{"type":"function","function":{"name":"get_weather","description":"Get
+        the current weather for a location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The
+        city name, e.g. San Francisco"},"units":{"type":"string","enum":["celsius","fahrenheit"],"description":"Temperature
+        units"}},"required":["location"]}}}],"max_output_tokens":200}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 01:12:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9b3479252e47ad12-MSP
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: '{"success":false,"error":{"name":"ZodError","message":"[\n  {\n    \"expected\":
+        \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"tools\",\n      0,\n      \"name\"\n    ],\n    \"message\":
+        \"Invalid input: expected string, received undefined\"\n  },\n  {\n    \"expected\":
+        \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"tools\",\n      0,\n      \"parameters\"\n    ],\n    \"message\":
+        \"Invalid input: expected record, received undefined\"\n  }\n]"}}'
+  recorded_at: Thu, 25 Dec 2025 01:12:58 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"model":"openai/gpt-4o-mini","input":"What''s the weather like in
+        Paris?","tools":[{"type":"function","function":{"name":"get_weather","description":"Get
+        the current weather for a location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The
+        city name, e.g. San Francisco"},"units":{"type":"string","enum":["celsius","fahrenheit"],"description":"Temperature
+        units"}},"required":["location"]}}}],"max_output_tokens":200}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 01:12:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9b3479257ce24c92-MSP
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: '{"success":false,"error":{"name":"ZodError","message":"[\n  {\n    \"expected\":
+        \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"tools\",\n      0,\n      \"name\"\n    ],\n    \"message\":
+        \"Invalid input: expected string, received undefined\"\n  },\n  {\n    \"expected\":
+        \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"tools\",\n      0,\n      \"parameters\"\n    ],\n    \"message\":
+        \"Invalid input: expected record, received undefined\"\n  }\n]"}}'
+  recorded_at: Thu, 25 Dec 2025 01:12:58 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"model":"openai/gpt-4o-mini","input":"What''s the weather like in
+        Tokyo?","tools":[{"type":"function","name":"get_weather","description":"Get
+        the current weather for a location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The
+        city name, e.g. San Francisco"},"units":{"type":"string","enum":["celsius","fahrenheit"],"description":"Temperature
+        units"}},"required":["location"]}}],"max_output_tokens":200}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 01:14:46 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b347bc82a73a20d-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n{\"object\":\"response\",\"id\":\"gen-1766625286-VDowtkzvEJhoaprLRGGT\",\"created_at\":1766625286,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_1ZstcNZQ53o8biQAdl95NFdl\",\"name\":\"get_weather\",\"arguments\":\"{\\\"location\\\":\\\"Tokyo\\\"}\",\"id\":\"call_1ZstcNZQ53o8biQAdl95NFdl\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"get_weather\",\"description\":\"Get
+        the current weather for a location\",\"parameters\":{\"type\":\"object\",\"properties\":{\"location\":{\"type\":\"string\",\"description\":\"The
+        city name, e.g. San Francisco\"},\"units\":{\"type\":\"string\",\"enum\":[\"celsius\",\"fahrenheit\"],\"description\":\"Temperature
+        units\"}},\"required\":[\"location\"]}}],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":200,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":77,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":14,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":91,\"cost\":0.00001995,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00001155,\"upstream_inference_output_cost\":0.0000084}}}"
+  recorded_at: Thu, 25 Dec 2025 01:14:46 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"model":"openai/gpt-4o-mini","input":"What''s the weather like in
+        Paris?","tools":[{"type":"function","name":"get_weather","description":"Get
+        the current weather for a location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The
+        city name, e.g. San Francisco"},"units":{"type":"string","enum":["celsius","fahrenheit"],"description":"Temperature
+        units"}},"required":["location"]}}],"max_output_tokens":200}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 01:14:47 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b347bcc4eefa1dd-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n{\"object\":\"response\",\"id\":\"gen-1766625287-GXyUg9ZbX0a0P2jjQDvf\",\"created_at\":1766625287,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_p6r0agTbuTDsLDzr6G36wQ5J\",\"name\":\"get_weather\",\"arguments\":\"{\\\"location\\\":\\\"Paris\\\"}\",\"id\":\"call_p6r0agTbuTDsLDzr6G36wQ5J\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"get_weather\",\"description\":\"Get
+        the current weather for a location\",\"parameters\":{\"type\":\"object\",\"properties\":{\"location\":{\"type\":\"string\",\"description\":\"The
+        city name, e.g. San Francisco\"},\"units\":{\"type\":\"string\",\"enum\":[\"celsius\",\"fahrenheit\"],\"description\":\"Temperature
+        units\"}},\"required\":[\"location\"]}}],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":200,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":77,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":14,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":91,\"cost\":0.00001995,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00001155,\"upstream_inference_output_cost\":0.0000084}}}"
+  recorded_at: Thu, 25 Dec 2025 01:14:47 GMT
+recorded_with: VCR 6.4.0

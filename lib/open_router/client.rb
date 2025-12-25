@@ -145,6 +145,48 @@ module OpenRouter
       response["data"]
     end
 
+    # Performs a request to the Responses API Beta (/api/v1/responses)
+    # This is an OpenAI-compatible stateless API with support for reasoning.
+    #
+    # @param input [String, Array] The input text or structured message array
+    # @param model [String] Model identifier (e.g., "openai/o4-mini")
+    # @param reasoning [Hash, nil] Optional reasoning config, e.g. {effort: "high"}
+    #   Effort levels: "minimal", "low", "medium", "high"
+    # @param tools [Array<Tool, Hash>] Optional array of tool definitions
+    # @param tool_choice [String, Hash, nil] Optional: "auto", "none", "required", or specific tool
+    # @param max_output_tokens [Integer, nil] Maximum tokens to generate
+    # @param temperature [Float, nil] Sampling temperature (0-2)
+    # @param top_p [Float, nil] Nucleus sampling parameter (0-1)
+    # @param extras [Hash] Additional parameters to pass to the API
+    # @return [ResponsesResponse] The response wrapped in a ResponsesResponse object
+    #
+    # @example Basic usage
+    #   response = client.responses("What is 2+2?", model: "openai/o4-mini")
+    #   puts response.content
+    #
+    # @example With reasoning
+    #   response = client.responses(
+    #     "Solve this step by step: What is 15% of 80?",
+    #     model: "openai/o4-mini",
+    #     reasoning: { effort: "high" }
+    #   )
+    #   puts response.reasoning_summary
+    #   puts response.content
+    def responses(input, model:, reasoning: nil, tools: [], tool_choice: nil,
+                  max_output_tokens: nil, temperature: nil, top_p: nil, extras: {})
+      parameters = { model: model, input: input }
+      parameters[:reasoning] = reasoning if reasoning
+      parameters[:tools] = serialize_tools_for_responses(tools) if tools.any?
+      parameters[:tool_choice] = tool_choice if tool_choice
+      parameters[:max_output_tokens] = max_output_tokens if max_output_tokens
+      parameters[:temperature] = temperature if temperature
+      parameters[:top_p] = top_p if top_p
+      parameters.merge!(extras)
+
+      raw = post(path: "/responses", parameters: parameters)
+      ResponsesResponse.new(raw)
+    end
+
     # Create a new ModelSelector for intelligent model selection
     #
     # @return [ModelSelector] A new ModelSelector instance
@@ -510,7 +552,8 @@ module OpenRouter
       end
     end
 
-    # Serialize tools to the format expected by OpenRouter API
+    # Serialize tools to the format expected by OpenRouter Chat Completions API
+    # Format: { type: "function", function: { name: ..., parameters: ... } }
     def serialize_tools(tools)
       tools.map do |tool|
         case tool
@@ -520,6 +563,34 @@ module OpenRouter
           tool
         else
           raise ArgumentError, "Tools must be Tool objects or hashes"
+        end
+      end
+    end
+
+    # Serialize tools to the flat format expected by Responses API
+    # Format: { type: "function", name: ..., parameters: ... }
+    def serialize_tools_for_responses(tools)
+      tools.map do |tool|
+        tool_hash = case tool
+                    when Tool
+                      tool.to_h
+                    when Hash
+                      tool.transform_keys(&:to_sym)
+                    else
+                      raise ArgumentError, "Tools must be Tool objects or hashes"
+                    end
+
+        # Flatten the nested function structure if present
+        if tool_hash[:function]
+          {
+            type: "function",
+            name: tool_hash[:function][:name],
+            description: tool_hash[:function][:description],
+            parameters: tool_hash[:function][:parameters]
+          }.compact
+        else
+          # Already in flat format
+          tool_hash
         end
       end
     end

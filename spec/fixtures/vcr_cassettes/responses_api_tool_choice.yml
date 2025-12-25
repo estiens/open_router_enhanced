@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"model":"openai/gpt-4o-mini","input":"What is 42 times 17?","tools":[{"type":"function","function":{"name":"calculate","description":"Perform
+        a mathematical calculation","parameters":{"type":"object","properties":{"expression":{"type":"string","description":"The
+        math expression to evaluate"}},"required":["expression"]}}}],"tool_choice":"required","max_output_tokens":200}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 01:12:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9b347925cc7328fe-MSP
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: '{"success":false,"error":{"name":"ZodError","message":"[\n  {\n    \"expected\":
+        \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"tools\",\n      0,\n      \"name\"\n    ],\n    \"message\":
+        \"Invalid input: expected string, received undefined\"\n  },\n  {\n    \"expected\":
+        \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"tools\",\n      0,\n      \"parameters\"\n    ],\n    \"message\":
+        \"Invalid input: expected record, received undefined\"\n  }\n]"}}'
+  recorded_at: Thu, 25 Dec 2025 01:12:58 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"model":"openai/gpt-4o-mini","input":"What is 42 times 17?","tools":[{"type":"function","name":"calculate","description":"Perform
+        a mathematical calculation","parameters":{"type":"object","properties":{"expression":{"type":"string","description":"The
+        math expression to evaluate"}},"required":["expression"]}}],"tool_choice":"required","max_output_tokens":200}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 25 Dec 2025 01:14:54 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b347bf3bc13348b-MSP
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n{\"object\":\"response\",\"id\":\"gen-1766625293-FTDEPfTFqRlM7derqs80\",\"created_at\":1766625293,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_GkeKLynAj33RLWtAbHInt92H\",\"name\":\"calculate\",\"arguments\":\"{\\\"expression\\\":\\\"42
+        * 17\\\"}\",\"id\":\"call_GkeKLynAj33RLWtAbHInt92H\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"calculate\",\"description\":\"Perform
+        a mathematical calculation\",\"parameters\":{\"type\":\"object\",\"properties\":{\"expression\":{\"type\":\"string\",\"description\":\"The
+        math expression to evaluate\"}},\"required\":[\"expression\"]}}],\"tool_choice\":\"required\",\"parallel_tool_calls\":true,\"max_output_tokens\":200,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":56,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":16,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":72,\"cost\":0.000018,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.0000084,\"upstream_inference_output_cost\":0.0000096}}}"
+  recorded_at: Thu, 25 Dec 2025 01:14:54 GMT
+recorded_with: VCR 6.4.0

@@ -1,5 +1,26 @@
 ## [Unreleased]
 
+## [1.2.0] - 2025-12-24
+
+### Added
+- **Responses API**: Full support for OpenRouter's Responses API Beta (`/api/v1/responses`)
+  - Simple string or structured array input
+  - Reasoning with configurable effort levels (`minimal`, `low`, `medium`, `high`)
+  - `ResponsesResponse` wrapper with convenient accessors
+- **Responses API Tool Calling**: Complete function calling support for Responses API
+  - `ResponsesToolCall` and `ResponsesToolResult` classes
+  - `execute_tool_calls` for easy tool execution with blocks
+  - `build_follow_up_input` for multi-turn tool conversations
+  - `tool_choice` parameter (`auto`, `required`, `none`)
+  - Automatic format conversion from Chat Completions tool format
+- **Shared Tool Call Infrastructure**: Extracted `ToolCallBase` and `ToolResultBase` modules
+  - DRY shared behavior for argument parsing and execution
+  - Consistent interface across Chat Completions and Responses APIs
+
+### Documentation
+- New `docs/responses_api.md` with comprehensive Responses API guide
+- Tool calling examples with Tool DSL and hash formats
+
 ## [1.1.0] - 2025-12-24
 
 ### Added
