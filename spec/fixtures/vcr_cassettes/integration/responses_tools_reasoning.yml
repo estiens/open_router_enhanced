@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"model":"openai/gpt-4o-mini","input":"I need to calculate 15% of 200.
+        Can you help?","reasoning":{"effort":"medium"},"tools":[{"type":"function","name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}],"tool_choice":"auto","max_output_tokens":300}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 21:08:42 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bcb6f9debeaec-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n{\"object\":\"response\",\"id\":\"gen-1766869721-2so7k9rb7lzFQSbCsfi1\",\"created_at\":1766869721,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_mb36cmB6EYoOYDj2OUJxcYdP\",\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"multiply\\\",\\\"a\\\":200,\\\"b\\\":0.15}\",\"id\":\"call_mb36cmB6EYoOYDj2OUJxcYdP\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"calculator\",\"description\":\"Perform
+        basic arithmetic operations\",\"parameters\":{\"type\":\"object\",\"properties\":{\"operation\":{\"type\":\"string\",\"description\":\"Operation:
+        add, subtract, multiply, divide\"},\"a\":{\"type\":\"number\",\"description\":\"First
+        number\"},\"b\":{\"type\":\"number\",\"description\":\"Second number\"}},\"required\":[\"operation\",\"a\",\"b\"]}}],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":300,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":{\"effort\":\"medium\"},\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":81,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":24,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":105,\"cost\":0.00002655,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00001215,\"upstream_inference_output_cost\":0.0000144}}}"
+  recorded_at: Sat, 27 Dec 2025 21:08:42 GMT
+recorded_with: VCR 6.4.0

@@ -300,12 +300,11 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         client.smart_complete(
           [{ role: "user", content: "Hello" }],
           requirements: {
-            capabilities: [:function_calling],
-            max_input_cost: 0.000001, # Impossibly low cost
-            min_context_length: 1_000_000 # Impossibly high context
+            # Use context length that no model can satisfy
+            min_context_length: 100_000_000 # 100 million tokens - impossible
           }
         )
-      end.to raise_error(OpenRouter::ServerError, /Network Error.*404/)
+      end.to raise_error(OpenRouter::ModelSelectionError)
     end
 
     it "handles smart_complete_with_fallback when all models fail" do

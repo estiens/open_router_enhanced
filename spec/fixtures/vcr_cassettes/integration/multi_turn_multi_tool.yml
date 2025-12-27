@@ -1,0 +1,417 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766868662-2BLnL8ruxXnwQV9QKB19
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 20:51:03 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bb19bfb88a216-YYZ
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766868662-2BLnL8ruxXnwQV9QKB19
+        not found","code":404}}'
+  recorded_at: Sat, 27 Dec 2025 20:51:03 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Look up user 12345 and tell
+        me their name"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_0thXAWLXuRYNpjUggjx7r9VV","type":"function","function":{"name":"lookup_user","arguments":"{\"user_id\":\"12345\"}"}}]},{"role":"tool","tool_call_id":"call_0thXAWLXuRYNpjUggjx7r9VV","content":"User
+        12345: John Doe, john@example.com, Premium member"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}},{"type":"function","function":{"name":"lookup_user","description":"Look
+        up user information by ID","parameters":{"type":"object","properties":{"user_id":{"type":"string","description":"The
+        user ID to look up"}},"required":["user_id"]}}},{"type":"function","function":{"name":"get_weather","description":"Get
+        current weather for a location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"City
+        name"},"units":{"type":"string","description":"Temperature units: celsius
+        or fahrenheit"}},"required":["location"]}}}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 20:51:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bb19daf28f846-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n{\"id\":\"gen-1766868663-8sSfG3MdjmEv7XItjK3Y\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766868663,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The
+        user's name is John Doe.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":183,\"completion_tokens\":8,\"total_tokens\":191,\"cost\":0.00003225,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00002745,\"upstream_inference_completions_cost\":0.0000048},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sat, 27 Dec 2025 20:51:04 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766868663-8sSfG3MdjmEv7XItjK3Y
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 20:51:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bb1a32f61a68b-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766868663-8sSfG3MdjmEv7XItjK3Y
+        not found","code":404}}'
+  recorded_at: Sat, 27 Dec 2025 20:51:04 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Look up user 12345 and tell
+        me their name"}],"model":"openai/gpt-4o-mini","max_tokens":200,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}},{"type":"function","function":{"name":"lookup_user","description":"Look
+        up user information by ID","parameters":{"type":"object","properties":{"user_id":{"type":"string","description":"The
+        user ID to look up"}},"required":["user_id"]}}},{"type":"function","function":{"name":"get_weather","description":"Get
+        current weather for a location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"City
+        name"},"units":{"type":"string","description":"Temperature units: celsius
+        or fahrenheit"}},"required":["location"]}}}],"tool_choice":"auto"}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 21:08:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bcb079abc4fa4-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n{\"id\":\"gen-1766869704-R1LOBSOH9OhmTPdJNZzj\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869704,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_CzKRGLaSRZPzRisrDH5ieVX2\",\"type\":\"function\",\"function\":{\"name\":\"lookup_user\",\"arguments\":\"{\\\"user_id\\\":\\\"12345\\\"}\"}}]}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":145,\"completion_tokens\":16,\"total_tokens\":161,\"cost\":0.00003135,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00002175,\"upstream_inference_completions_cost\":0.0000096},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sat, 27 Dec 2025 21:08:25 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869704-R1LOBSOH9OhmTPdJNZzj
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 21:08:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bcb0bfadcb7ac-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766869704-R1LOBSOH9OhmTPdJNZzj
+        not found","code":404}}'
+  recorded_at: Sat, 27 Dec 2025 21:08:25 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Look up user 12345 and tell
+        me their name"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_CzKRGLaSRZPzRisrDH5ieVX2","type":"function","function":{"name":"lookup_user","arguments":"{\"user_id\":\"12345\"}"}}]},{"role":"tool","tool_call_id":"call_CzKRGLaSRZPzRisrDH5ieVX2","content":"User
+        12345: John Doe, john@example.com, Premium member"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}},{"type":"function","function":{"name":"lookup_user","description":"Look
+        up user information by ID","parameters":{"type":"object","properties":{"user_id":{"type":"string","description":"The
+        user ID to look up"}},"required":["user_id"]}}},{"type":"function","function":{"name":"get_weather","description":"Get
+        current weather for a location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"City
+        name"},"units":{"type":"string","description":"Temperature units: celsius
+        or fahrenheit"}},"required":["location"]}}}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 21:08:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bcb0d7faaf83f-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"gen-1766869705-fP9faLlnFEFAgD3QObSV","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion","created":1766869705,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"The
+        user''s name is John Doe.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_c4585b5b9c","usage":{"prompt_tokens":183,"completion_tokens":8,"total_tokens":191,"cost":0.00003225,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":null,"upstream_inference_prompt_cost":0.00002745,"upstream_inference_completions_cost":0.0000048},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0}}}'
+  recorded_at: Sat, 27 Dec 2025 21:08:26 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869705-fP9faLlnFEFAgD3QObSV
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 21:08:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bcb105e5ef5fc-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766869705-fP9faLlnFEFAgD3QObSV
+        not found","code":404}}'
+  recorded_at: Sat, 27 Dec 2025 21:08:26 GMT
+recorded_with: VCR 6.4.0

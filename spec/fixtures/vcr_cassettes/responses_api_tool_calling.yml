@@ -153,7 +153,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 25 Dec 2025 01:14:46 GMT
+      - Sat, 27 Dec 2025 21:10:05 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -174,14 +174,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b347bc82a73a20d-MSP
+      - 9b4bcd786a15e24b-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"object\":\"response\",\"id\":\"gen-1766625286-VDowtkzvEJhoaprLRGGT\",\"created_at\":1766625286,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_1ZstcNZQ53o8biQAdl95NFdl\",\"name\":\"get_weather\",\"arguments\":\"{\\\"location\\\":\\\"Tokyo\\\"}\",\"id\":\"call_1ZstcNZQ53o8biQAdl95NFdl\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"get_weather\",\"description\":\"Get
+      string: "\n         \n{\"object\":\"response\",\"id\":\"gen-1766869804-63ljwwbVP0bqGDcBhPFo\",\"created_at\":1766869804,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_k1KWLCkM2DTFCa6nnmyNglp1\",\"name\":\"get_weather\",\"arguments\":\"{\\\"location\\\":\\\"Tokyo\\\"}\",\"id\":\"call_k1KWLCkM2DTFCa6nnmyNglp1\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"get_weather\",\"description\":\"Get
         the current weather for a location\",\"parameters\":{\"type\":\"object\",\"properties\":{\"location\":{\"type\":\"string\",\"description\":\"The
         city name, e.g. San Francisco\"},\"units\":{\"type\":\"string\",\"enum\":[\"celsius\",\"fahrenheit\"],\"description\":\"Temperature
         units\"}},\"required\":[\"location\"]}}],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":200,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":77,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":14,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":91,\"cost\":0.00001995,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00001155,\"upstream_inference_output_cost\":0.0000084}}}"
-  recorded_at: Thu, 25 Dec 2025 01:14:46 GMT
+  recorded_at: Sat, 27 Dec 2025 21:10:05 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/responses
@@ -213,7 +213,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 25 Dec 2025 01:14:47 GMT
+      - Sat, 27 Dec 2025 21:10:06 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -234,12 +234,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b347bcc4eefa1dd-MSP
+      - 9b4bcd7d49b272e5-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"object\":\"response\",\"id\":\"gen-1766625287-GXyUg9ZbX0a0P2jjQDvf\",\"created_at\":1766625287,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_p6r0agTbuTDsLDzr6G36wQ5J\",\"name\":\"get_weather\",\"arguments\":\"{\\\"location\\\":\\\"Paris\\\"}\",\"id\":\"call_p6r0agTbuTDsLDzr6G36wQ5J\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"get_weather\",\"description\":\"Get
+      string: "\n         \n{\"object\":\"response\",\"id\":\"gen-1766869805-DpLBpqAs72MkDm9JFzXh\",\"created_at\":1766869805,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_wmasEXYsvoIWWg5JB5JxD0uN\",\"name\":\"get_weather\",\"arguments\":\"{\\\"location\\\":\\\"Paris\\\"}\",\"id\":\"call_wmasEXYsvoIWWg5JB5JxD0uN\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"get_weather\",\"description\":\"Get
         the current weather for a location\",\"parameters\":{\"type\":\"object\",\"properties\":{\"location\":{\"type\":\"string\",\"description\":\"The
         city name, e.g. San Francisco\"},\"units\":{\"type\":\"string\",\"enum\":[\"celsius\",\"fahrenheit\"],\"description\":\"Temperature
         units\"}},\"required\":[\"location\"]}}],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":200,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":77,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":14,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":91,\"cost\":0.00001995,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00001155,\"upstream_inference_output_cost\":0.0000084}}}"
-  recorded_at: Thu, 25 Dec 2025 01:14:47 GMT
+  recorded_at: Sat, 27 Dec 2025 21:10:06 GMT
 recorded_with: VCR 6.4.0

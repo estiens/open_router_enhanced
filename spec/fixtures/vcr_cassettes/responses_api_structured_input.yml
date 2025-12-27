@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 25 Dec 2025 00:42:09 GMT
+      - Sat, 27 Dec 2025 21:10:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -49,12 +49,13 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b344c005885a1f1-MSP
+      - 9b4bcd68b8ef2276-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n{\"object\":\"response\",\"id\":\"gen-1766623329-icKYlyYiH19nimc5hz9N\",\"created_at\":1766623329,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"role\":\"assistant\",\"type\":\"message\",\"status\":\"incomplete\",\"content\":[{\"type\":\"output_text\",\"text\":\"The
-        color of the sky can vary depending on the time of day, weather conditions,
-        and location. During a clear day, the sky often appears blue due to the scattering
-        of sunlight by the atmosphere. At sunrise and sunset, it can take on shades\",\"annotations\":[]}],\"id\":\"msg_tmp_ij2cchi71rj\"}],\"incomplete_details\":null,\"tools\":[],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":50,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":13,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":50,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":63,\"cost\":0.00003195,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00000195,\"upstream_inference_output_cost\":0.00003}}}"
-  recorded_at: Thu, 25 Dec 2025 00:42:10 GMT
+      string: "\n         \n\n         \n\n         \n{\"object\":\"response\",\"id\":\"gen-1766869802-Vx8LndBq3c1eIM2ebqVB\",\"created_at\":1766869802,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"role\":\"assistant\",\"type\":\"message\",\"status\":\"incomplete\",\"content\":[{\"type\":\"output_text\",\"text\":\"The
+        color of the sky varies depending on several factors, including the time of
+        day, weather conditions, and atmospheric phenomena. During a clear day, the
+        sky appears blue due to Rayleigh scattering, where shorter wavelengths of
+        light (blue) scatter more than\",\"annotations\":[]}],\"id\":\"msg_tmp_xwsetaqphxl\"}],\"incomplete_details\":null,\"tools\":[],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":50,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":13,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":50,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":63,\"cost\":0.00003195,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00000195,\"upstream_inference_output_cost\":0.00003}}}"
+  recorded_at: Sat, 27 Dec 2025 21:10:03 GMT
 recorded_with: VCR 6.4.0

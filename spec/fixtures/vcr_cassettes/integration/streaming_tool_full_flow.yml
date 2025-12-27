@@ -1,0 +1,290 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"What is 25 + 37?"},{"role":"assistant","tool_calls":[{"id":"call_8zqDQ564qZx9eAkQBOcWmbwa","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":37}"}}]},{"role":"tool","tool_call_id":"call_8zqDQ564qZx9eAkQBOcWmbwa","content":"62.0"}],"model":"openai/gpt-4o-mini","stream":true,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}],"extras":{"max_tokens":100}}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 21:00:32 GMT
+      Content-Type:
+      - text/event-stream
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9b4bbf6fe97191ef-ORD
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: |+
+        : OPENROUTER PROCESSING
+
+        : OPENROUTER PROCESSING
+
+        : OPENROUTER PROCESSING
+
+        : OPENROUTER PROCESSING
+
+        : OPENROUTER PROCESSING
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":"The"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" result"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" of"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" \\("},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" "},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":"25"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" +"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" "},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":"37"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" \\"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":")"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" is"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" \\("},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" "},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":"62"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":" \\"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":")."},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":"stop","native_finish_reason":"stop","logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869230-rbzLXjedt430RWGKd5Yg","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869230,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"usage":{"prompt_tokens":106,"completion_tokens":18,"total_tokens":124,"cost":0.0000267,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":null,"upstream_inference_prompt_cost":0.0000159,"upstream_inference_completions_cost":0.0000108},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0}}}
+
+        data: [DONE]
+
+  recorded_at: Sat, 27 Dec 2025 21:00:33 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"What is 25 + 37?"}],"model":"openai/gpt-4o-mini","stream":true,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}],"tool_choice":"auto","extras":{"max_tokens":300}}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 21:09:08 GMT
+      Content-Type:
+      - text/event-stream
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9b4bcc125e48f851-ORD
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: |+
+        : OPENROUTER PROCESSING
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"id":"call_JqVGsYJvBnKqGpmbEnELRvkX","type":"function","function":{"name":"calculator","arguments":""}}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"{\""},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"operation"},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"\":\""},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"add"},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"\",\""},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"a"},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"\":"},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"25"},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":",\""},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"b"},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"\":"},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"37"},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":null,"tool_calls":[{"index":0,"function":{"arguments":"}"},"type":"function"}]},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":"tool_calls","native_finish_reason":"tool_calls","logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869747-jgshvspbSTYClfkq6HwM","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869747,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"usage":{"prompt_tokens":74,"completion_tokens":22,"total_tokens":96,"cost":0.0000243,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":null,"upstream_inference_prompt_cost":0.0000111,"upstream_inference_completions_cost":0.0000132},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0}}}
+
+        data: [DONE]
+
+  recorded_at: Sat, 27 Dec 2025 21:09:08 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"What is 25 + 37?"},{"role":"assistant","tool_calls":[{"id":"call_JqVGsYJvBnKqGpmbEnELRvkX","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":37}"}}]},{"role":"tool","tool_call_id":"call_JqVGsYJvBnKqGpmbEnELRvkX","content":"62.0"}],"model":"openai/gpt-4o-mini","stream":true,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}],"extras":{"max_tokens":100}}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 21:09:08 GMT
+      Content-Type:
+      - text/event-stream
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9b4bcc170d4d874b-ORD
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: |+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":"25"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":" +"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":" "},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":"37"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":" equals"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":" "},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":"62"},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":"."},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":"stop","native_finish_reason":"stop","logprobs":null}],"system_fingerprint":"fp_3683ee3deb"}
+
+        data: {"id":"gen-1766869748-KeTe7rrLxdEQhVJGiDsp","provider":"OpenAI","model":"openai/gpt-4o-mini","object":"chat.completion.chunk","created":1766869748,"choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null,"native_finish_reason":null,"logprobs":null}],"usage":{"prompt_tokens":106,"completion_tokens":9,"total_tokens":115,"cost":0.0000213,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":null,"upstream_inference_prompt_cost":0.0000159,"upstream_inference_completions_cost":0.0000054},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0}}}
+
+        data: [DONE]
+
+  recorded_at: Sat, 27 Dec 2025 21:09:08 GMT
+recorded_with: VCR 6.4.0
+...

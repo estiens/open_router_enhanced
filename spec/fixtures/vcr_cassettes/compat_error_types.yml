@@ -27,7 +27,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Wed, 24 Sep 2025 19:40:51 GMT
+      - Sat, 27 Dec 2025 21:07:23 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -35,7 +35,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 9844c1866bc74c94-MSP
+      - 9b4bc98899a10c26-YYZ
       Access-Control-Allow-Origin:
       - "*"
       Vary:
@@ -51,6 +51,6 @@ http_interactions:
       - cloudflare
     body:
       encoding: UTF-8
-      string: '{"error":{"message":"No auth credentials found","code":401}}'
-  recorded_at: Wed, 24 Sep 2025 19:40:51 GMT
-recorded_with: VCR 6.3.1
+      string: '{"error":{"message":"No cookie auth credentials found","code":401}}'
+  recorded_at: Sat, 27 Dec 2025 21:07:23 GMT
+recorded_with: VCR 6.4.0

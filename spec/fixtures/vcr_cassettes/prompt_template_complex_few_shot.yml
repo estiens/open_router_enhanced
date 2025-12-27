@@ -1,64 +1,6 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://openrouter.ai/api/v1/chat/completions
-    body:
-      encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"You are a code translator. Convert
-        Python to JavaScript. Examples:\n\nPython: print(''Hello World'')\nJavaScript:
-        console.log(''Hello World'');\n\nPython: x = [1, 2, 3]\nfor i in x:\n    print(i)\nJavaScript:
-        const x = [1, 2, 3];\nfor (const i of x) {\n    console.log(i);\n}\n\nConvert
-        this Python code: def greet(name):\n    return f''Hello {name}''"}],"model":"openai/gpt-3.5-turbo","max_tokens":200}'
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 04 Oct 2025 23:51:35 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9898968cec9da1f4-MSP
-    body:
-      encoding: ASCII-8BIT
-      string: '{"id":"gen-1759621895-lkJXW0Fgbpumv6ilXR3e","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion","created":1759621895,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"JavaScript:
-        function greet(name) {\n    return `Hello ${name}`;\n}","refusal":null,"reasoning":null}}],"system_fingerprint":null,"usage":{"prompt_tokens":102,"completion_tokens":15,"total_tokens":117,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}'
-  recorded_at: Sat, 04 Oct 2025 23:51:35 GMT
-- request:
     method: get
     uri: https://openrouter.ai/api/v1/generation?id=gen-1759621895-lkJXW0Fgbpumv6ilXR3e
     body:
@@ -112,4 +54,118 @@ http_interactions:
       string: '{"error":{"message":"Generation gen-1759621895-lkJXW0Fgbpumv6ilXR3e
         not found","code":404}}'
   recorded_at: Sat, 04 Oct 2025 23:51:35 GMT
-recorded_with: VCR 6.3.1
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"You are a code translator. Convert
+        Python to JavaScript. Examples:\n\nPython: print(''Hello World'')\nJavaScript:
+        console.log(''Hello World'');\n\nPython: x = [1, 2, 3]\nfor i in x:\n    print(i)\nJavaScript:
+        const x = [1, 2, 3];\nfor (const i of x) {\n    console.log(i);\n}\n\nConvert
+        this Python code: def greet(name):\n    return f''Hello {name}''"}],"model":"openai/gpt-3.5-turbo","max_tokens":200}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 21:09:53 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bcd2f18ca2220-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"gen-1766869793-RwlUzFcGpoWmOqUh120j","provider":"OpenAI","model":"openai/gpt-3.5-turbo","object":"chat.completion","created":1766869793,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"JavaScript:
+        \nfunction greet(name) {\n    return `Hello ${name}`\n}","refusal":null,"reasoning":null}}],"system_fingerprint":null,"usage":{"prompt_tokens":102,"completion_tokens":16,"total_tokens":118,"cost":0.000075,"is_byok":false,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0,"video_tokens":0},"cost_details":{"upstream_inference_cost":null,"upstream_inference_prompt_cost":0.000051,"upstream_inference_completions_cost":0.000024},"completion_tokens_details":{"reasoning_tokens":0,"image_tokens":0}}}'
+  recorded_at: Sat, 27 Dec 2025 21:09:53 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869793-RwlUzFcGpoWmOqUh120j
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 21:09:53 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bcd327ae59121-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766869793-RwlUzFcGpoWmOqUh120j
+        not found","code":404}}'
+  recorded_at: Sat, 27 Dec 2025 21:09:53 GMT
+recorded_with: VCR 6.4.0

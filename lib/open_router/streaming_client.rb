@@ -36,19 +36,21 @@ module OpenRouter
     # @param model [String|Array] Model identifier or array of models for fallback
     # @param accumulate_response [Boolean] Whether to accumulate and return complete response
     # @param extras [Hash] Additional parameters for the completion request
+    # @param block [Proc] Optional block to call for each chunk (in addition to registered callbacks)
     # @return [Response, nil] Complete response if accumulate_response is true, nil otherwise
-    def stream_complete(messages, model: "openrouter/auto", accumulate_response: true, **extras)
+    def stream_complete(messages, model: "openrouter/auto", accumulate_response: true, **extras, &block)
       response_accumulator = ResponseAccumulator.new if accumulate_response
 
-      # Set up streaming handler
-      stream_handler = build_stream_handler(response_accumulator)
+      # Set up streaming handler (pass optional per-call block)
+      stream_handler = build_stream_handler(response_accumulator, &block)
 
       # Trigger start callback
       trigger_streaming_callbacks(:on_start, { model: model, messages: messages })
 
       begin
         # Execute the streaming request
-        complete(messages, model: model, stream: stream_handler, **extras)
+        # Note: extras must be passed as a hash, not splatted, to match complete()'s signature
+        complete(messages, model: model, stream: stream_handler, extras: extras)
 
         # Return accumulated response if requested
         if accumulate_response && response_accumulator
@@ -92,10 +94,13 @@ module OpenRouter
 
     private
 
-    def build_stream_handler(accumulator)
+    def build_stream_handler(accumulator, &per_call_block)
       proc do |chunk|
         # Trigger chunk callback
         trigger_streaming_callbacks(:on_chunk, chunk)
+
+        # Call per-call block if provided (used by #stream method)
+        per_call_block&.call(chunk)
 
         # Accumulate if needed
         accumulator&.add_chunk(chunk)

@@ -138,7 +138,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Wed, 24 Dec 2025 23:19:02 GMT
+      - Sat, 27 Dec 2025 21:07:45 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -146,7 +146,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 9b33d2389dd0a203-MSP
+      - 9b4bca08ada9c85f-YYZ
       Access-Control-Allow-Origin:
       - "*"
       Vary:
@@ -167,5 +167,5 @@ http_interactions:
         ''invalid_type'' is not valid under any of the given schemas.\",\n    \"type\":
         \"invalid_request_error\",\n    \"param\": \"response_format\",\n    \"code\":
         null\n  }\n}","provider_name":"Azure"}},"user_id":"user_2oXVHhLSnOmuZVA2xOTqDfGHofS"}'
-  recorded_at: Wed, 24 Dec 2025 23:19:02 GMT
-recorded_with: VCR 6.3.1
+  recorded_at: Sat, 27 Dec 2025 21:07:45 GMT
+recorded_with: VCR 6.4.0

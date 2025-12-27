@@ -176,16 +176,19 @@ RSpec.describe OpenRouter::StreamingClient do
   end
 
   describe "#stream" do
-    before do
-      # Mock streaming response
-      allow(client).to receive(:stream_complete) do |*_args, **_kwargs, &block|
-        mock_chunks = [
-          { "choices" => [{ "delta" => { "content" => "Hello" } }] },
-          { "choices" => [{ "delta" => { "content" => " world" } }] },
-          { "choices" => [{ "delta" => {} }] }
-        ]
+    let(:stream_chunks) do
+      [
+        { "choices" => [{ "delta" => { "content" => "Hello" } }] },
+        { "choices" => [{ "delta" => { "content" => " world" } }] },
+        { "choices" => [{ "delta" => {} }] }
+      ]
+    end
 
-        mock_chunks.each { |chunk| block&.call(chunk) }
+    before do
+      # Mock the underlying complete method (the actual HTTP call)
+      # This is what stream_complete calls internally
+      allow(client).to receive(:complete) do |*_args, **kwargs|
+        stream_chunks.each { |chunk| kwargs[:stream].call(chunk) } if kwargs[:stream]
         nil
       end
     end
@@ -207,15 +210,33 @@ RSpec.describe OpenRouter::StreamingClient do
     end
 
     it "passes model parameter correctly" do
-      expect(client).to receive(:stream_complete).with(
+      expect(client).to receive(:complete).with(
         [{ role: "user", content: "Hello" }],
-        hash_including(model: "openai/gpt-4o-mini", accumulate_response: false)
+        hash_including(model: "openai/gpt-4o-mini")
       )
 
       client.stream(
         [{ role: "user", content: "Hello" }],
         model: "openai/gpt-4o-mini"
-      ) { |chunk| }
+      ) { |_chunk| }
+    end
+
+    it "also triggers on_chunk callbacks in addition to block" do
+      callback_chunks = []
+      block_content = []
+
+      client.on_stream(:on_chunk) { |chunk| callback_chunks << chunk }
+
+      client.stream([{ role: "user", content: "Hello" }]) do |content|
+        block_content << content
+      end
+
+      # Block receives extracted content
+      expect(block_content).to eq(["Hello", " world"])
+
+      # Callbacks receive raw chunks
+      expect(callback_chunks.length).to eq(3)
+      expect(callback_chunks.first.dig("choices", 0, "delta", "content")).to eq("Hello")
     end
   end
 

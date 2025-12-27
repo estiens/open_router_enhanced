@@ -88,7 +88,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 25 Dec 2025 01:14:54 GMT
+      - Sat, 27 Dec 2025 21:10:07 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -109,12 +109,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b347bf3bc13348b-MSP
+      - 9b4bcd831a9eab04-YYZ
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n{\"object\":\"response\",\"id\":\"gen-1766625293-FTDEPfTFqRlM7derqs80\",\"created_at\":1766625293,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_GkeKLynAj33RLWtAbHInt92H\",\"name\":\"calculate\",\"arguments\":\"{\\\"expression\\\":\\\"42
-        * 17\\\"}\",\"id\":\"call_GkeKLynAj33RLWtAbHInt92H\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"calculate\",\"description\":\"Perform
+      string: "\n         \n\n         \n{\"object\":\"response\",\"id\":\"gen-1766869806-DBy2XNxXiGwcTN2LLWEw\",\"created_at\":1766869806,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_EzqYgahGnIuozlqtOxA493c0\",\"name\":\"calculate\",\"arguments\":\"{\\\"expression\\\":\\\"42
+        * 17\\\"}\",\"id\":\"call_EzqYgahGnIuozlqtOxA493c0\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"calculate\",\"description\":\"Perform
         a mathematical calculation\",\"parameters\":{\"type\":\"object\",\"properties\":{\"expression\":{\"type\":\"string\",\"description\":\"The
         math expression to evaluate\"}},\"required\":[\"expression\"]}}],\"tool_choice\":\"required\",\"parallel_tool_calls\":true,\"max_output_tokens\":200,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":56,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":16,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":72,\"cost\":0.000018,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.0000084,\"upstream_inference_output_cost\":0.0000096}}}"
-  recorded_at: Thu, 25 Dec 2025 01:14:54 GMT
+  recorded_at: Sat, 27 Dec 2025 21:10:07 GMT
 recorded_with: VCR 6.4.0

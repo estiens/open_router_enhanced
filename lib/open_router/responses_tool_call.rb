@@ -25,6 +25,11 @@ module OpenRouter
       @name
     end
 
+    # Type is always "function" for tool calls (for consistency with ToolCall)
+    def type
+      "function"
+    end
+
     # Build result for execute method (required by ToolCallBase)
     def build_result(result, error = nil)
       ResponsesToolResult.new(self, result, error)

@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"model":"openai/gpt-4o-mini","input":"What''s the weather like in
+        San Francisco?","tools":[{"type":"function","name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}},{"type":"function","name":"get_weather","description":"Get
+        current weather for a location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"City
+        name"}},"required":["location"]}},{"type":"function","name":"web_search","description":"Search
+        the web for information","parameters":{"type":"object","properties":{"query":{"type":"string","description":"Search
+        query"},"num_results":{"type":"integer","description":"Number of results (default:
+        5)"}},"required":["query"]}}],"tool_choice":"auto","max_output_tokens":200}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 27 Dec 2025 20:51:16 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b4bb1ebbe47a6ee-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object":"response","id":"gen-1766868676-GcO9D8jt9roYi1KkYuCk","created_at":1766868676,"model":"openai/gpt-4o-mini","error":null,"output_text":"","output":[{"type":"function_call","call_id":"call_8iCVawC1uvAXeaemFgAAcRwb","name":"get_weather","arguments":"{\"location\":\"San
+        Francisco\"}","id":"call_8iCVawC1uvAXeaemFgAAcRwb"}],"incomplete_details":null,"tools":[{"type":"function","name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}},{"type":"function","name":"get_weather","description":"Get
+        current weather for a location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"City
+        name"}},"required":["location"]}},{"type":"function","name":"web_search","description":"Search
+        the web for information","parameters":{"type":"object","properties":{"query":{"type":"string","description":"Search
+        query"},"num_results":{"type":"integer","description":"Number of results (default:
+        5)"}},"required":["query"]}}],"tool_choice":"auto","parallel_tool_calls":true,"max_output_tokens":200,"temperature":null,"top_p":null,"metadata":{},"background":false,"previous_response_id":null,"service_tier":"auto","truncation":null,"store":false,"instructions":null,"reasoning":null,"safety_identifier":null,"prompt_cache_key":null,"user":null,"usage":{"input_tokens":137,"input_tokens_details":{"cached_tokens":0},"output_tokens":15,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":152,"cost":0.00002955,"is_byok":false,"cost_details":{"upstream_inference_cost":null,"upstream_inference_input_cost":0.00002055,"upstream_inference_output_cost":0.000009}}}'
+  recorded_at: Sat, 27 Dec 2025 20:51:16 GMT
+recorded_with: VCR 6.4.0
