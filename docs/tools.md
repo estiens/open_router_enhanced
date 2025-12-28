@@ -9,7 +9,7 @@ The OpenRouter gem provides comprehensive support for OpenRouter's function call
 weather_tool = OpenRouter::Tool.define do
   name "get_weather"
   description "Get current weather for a location"
-  
+
   parameters do
     string :location, required: true, description: "City name or coordinates"
     string :units, enum: ["celsius", "fahrenheit"], description: "Temperature units"
@@ -23,6 +23,37 @@ response = client.complete(
   tools: [weather_tool],
   tool_choice: "auto"
 )
+```
+
+## Using CompletionOptions (v2.0+)
+
+For cleaner, reusable configurations, use the `CompletionOptions` class:
+
+```ruby
+# Create reusable tool configuration
+tool_opts = OpenRouter::CompletionOptions.new(
+  model: "anthropic/claude-3.5-sonnet",
+  tools: [weather_tool, calculator_tool],
+  tool_choice: "auto",
+  max_tokens: 1000
+)
+
+# Use with complete
+response = client.complete(messages, tool_opts)
+
+# Override tool_choice per request
+response = client.complete(messages, tool_opts, tool_choice: "required")
+
+# Configure parallel tool calling
+parallel_opts = OpenRouter::CompletionOptions.new(
+  model: "openai/gpt-4o",
+  tools: tools,
+  tool_choice: "auto",
+  parallel_tool_calls: true  # Allow multiple tool calls simultaneously
+)
+```
+
+All keyword argument patterns continue to work for backward compatibility.
 
 # Handle tool calls
 if response.has_tool_calls?

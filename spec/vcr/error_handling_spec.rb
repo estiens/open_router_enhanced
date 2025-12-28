@@ -17,7 +17,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         invalid_key_client.complete(
           [{ role: "user", content: "Hello" }],
           model: "openai/gpt-3.5-turbo",
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
       end.to raise_error(Faraday::UnauthorizedError) do |error|
         expect(error.response[:status]).to eq(401)
@@ -31,7 +31,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         no_key_client.complete(
           [{ role: "user", content: "Hello" }],
           model: "openai/gpt-3.5-turbo",
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
       end.to raise_error(Faraday::UnauthorizedError)
     end
@@ -43,7 +43,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         client.complete(
           [{ role: "user", content: "Hello" }],
           model: "nonexistent/fake-model-12345",
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         expect(error.message.downcase).to include("model")
@@ -57,7 +57,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
       response = client.complete(
         [{ role: "user", content: "Hello" }],
         model: "openai/gpt-4", # GPT-4 might have restrictions
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
       # If it succeeds, that's fine - the model is available
       expect(response).to be_a(OpenRouter::Response)
@@ -74,7 +74,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
       response = client.complete(
         [{ role: "user", content: "Hello" }],
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: -1 } # Negative value accepted by API
+        max_tokens: -1 # Negative value accepted by API
       )
       expect(response).to be_present
       expect(response.content).to be_present
@@ -85,10 +85,8 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         client.complete(
           [{ role: "user", content: "Hello" }],
           model: "openai/gpt-3.5-turbo",
-          extras: {
-            max_tokens: 50,
-            temperature: 5.0 # Invalid - should be 0-2
-          }
+          max_tokens: 50,
+          temperature: 5.0 # Invalid - should be 0-2
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         expect(error.message.downcase).to include("temperature")
@@ -100,7 +98,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         client.complete(
           [], # Empty messages
           model: "openai/gpt-3.5-turbo",
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         expect(error.message.downcase).to include("message")
@@ -112,7 +110,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         client.complete(
           [{ invalid: "structure" }], # Missing role and content
           model: "openai/gpt-3.5-turbo",
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         expect(error.message.downcase).to match(/input|token|message|role|content/)
@@ -141,7 +139,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
           [{ role: "user", content: "Use a tool" }],
           model: "openai/gpt-4o-mini",
           tools: [invalid_tool],
-          extras: { max_tokens: 500 }
+          max_tokens: 500
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         expect(error.message.downcase).to match(/tool|parameter|schema|provider|error/)
@@ -160,7 +158,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
           model: "openai/gpt-4o-mini",
           tools: [simple_tool],
           tool_choice: { type: "function", function: { name: "nonexistent_tool" } },
-          extras: { max_tokens: 500 }
+          max_tokens: 500
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         expect(error.message.downcase).to match(/tool|provider|error/)
@@ -189,7 +187,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
           model: "openai/gpt-4o-mini",
           response_format: invalid_schema,
           force_structured_output: false, # Force native mode to test schema validation
-          extras: { max_tokens: 500 }
+          max_tokens: 500
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         expect(error.message.downcase).to match(/provider.*error|invalid.*schema/)
@@ -206,7 +204,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         response = client.complete(
           [{ role: "user", content: "Request #{i}" }],
           model: "openai/gpt-3.5-turbo",
-          extras: { max_tokens: 10 }
+          max_tokens: 10
         )
         expect(response).to be_a(OpenRouter::Response)
       end
@@ -232,7 +230,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         response = timeout_client.complete(
           [{ role: "user", content: "This is a simple request" }],
           model: "openai/gpt-3.5-turbo",
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
         # If it completes quickly, that's fine
         expect(response).to be_a(OpenRouter::Response)
@@ -258,7 +256,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         client.complete(
           [{ role: "user", content: "Hello" }],
           model: "definitely-nonexistent-model-name-12345",
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         expect(error.message).to be_a(String)
@@ -330,7 +328,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         client.complete(
           [{ role: "user", content: "Hello" }],
           model: "nonexistent/model",
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         # Error message should be informative
@@ -347,7 +345,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
         client.complete(
           [{ role: "user", content: "Hello" }],
           model: "invalid-model-name",
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         # Should extract the actual error message from the API response
@@ -375,7 +373,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
           response = client.complete(
             [{ role: "user", content: "Request #{i}" }],
             model:,
-            extras: { max_tokens: 20 }
+            max_tokens: 20
           )
           results << { success: true, response: }
         rescue OpenRouter::ServerError => e

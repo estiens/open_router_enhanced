@@ -267,7 +267,7 @@ RSpec.describe "Responses API + Tool Calling Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       # Both should have tool calls for a math question

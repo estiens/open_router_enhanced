@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"model":"openai/gpt-4o-mini","input":"Generate a random number between
-        1 and 10.","max_output_tokens":50,"temperature":0.0}'
+        1 and 10.","temperature":0.0}'
     headers:
       Authorization:
       - Bearer <OPENROUTER_API_KEY>
@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:10:04 GMT
+      - Sun, 28 Dec 2025 19:22:32 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -49,10 +49,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcd728f5222eb-ORD
+      - 9b536d4ceada02a2-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"object\":\"response\",\"id\":\"gen-1766869803-S2PGBTJkhYZcsQgyWasI\",\"created_at\":1766869803,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"role\":\"assistant\",\"type\":\"message\",\"status\":\"completed\",\"content\":[{\"type\":\"output_text\",\"text\":\"Sure!
-        The random number generated is 7.\",\"annotations\":[]}],\"id\":\"msg_tmp_a3skeecvcf6\"}],\"incomplete_details\":null,\"tools\":[],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":50,\"temperature\":0,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":18,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":10,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":28,\"cost\":0.0000087,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.0000027,\"upstream_inference_output_cost\":0.000006}}}"
-  recorded_at: Sat, 27 Dec 2025 21:10:04 GMT
+      string: '{"object":"response","id":"gen-1766949751-qQvamWN8pUGk0FTlLEAC","created_at":1766949751,"model":"openai/gpt-4o-mini","error":null,"output_text":"","output":[{"role":"assistant","type":"message","status":"completed","content":[{"type":"output_text","text":"Sure!
+        The random number generated is 7.","annotations":[]}],"id":"msg_tmp_b6ej3vi8kt"}],"incomplete_details":null,"tools":[],"tool_choice":"auto","parallel_tool_calls":true,"max_output_tokens":null,"temperature":0,"top_p":null,"metadata":{},"background":false,"previous_response_id":null,"service_tier":"auto","truncation":null,"store":false,"instructions":null,"reasoning":null,"safety_identifier":null,"prompt_cache_key":null,"user":null,"usage":{"input_tokens":18,"input_tokens_details":{"cached_tokens":0},"output_tokens":10,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":28,"cost":0.0000087,"is_byok":false,"cost_details":{"upstream_inference_cost":null,"upstream_inference_input_cost":0.0000027,"upstream_inference_output_cost":0.000006}}}'
+  recorded_at: Sun, 28 Dec 2025 19:22:32 GMT
 recorded_with: VCR 6.4.0

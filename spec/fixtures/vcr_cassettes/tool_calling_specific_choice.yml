@@ -2,7 +2,62 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766654052-AyRcl6JWUyb6OLhvuWmE
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949285-8PYCu1kOIutyIkwhpEHY
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:14:46 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5361efade0a24d-YYZ
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"created_at":"2025-12-28T19:14:46.592805+00:00","model":"openai/gpt-4o-mini","app_id":179379,"external_user":null,"streamed":true,"cancelled":false,"latency":230,"moderation_latency":null,"generation_time":160,"tokens_prompt":155,"tokens_completion":14,"native_tokens_prompt":119,"native_tokens_completion":13,"native_tokens_completion_images":null,"native_tokens_reasoning":0,"native_tokens_cached":0,"num_media_prompt":null,"num_input_audio_prompt":null,"num_media_completion":0,"num_search_results":null,"origin":"https://github.com/OlympiaAI/open_router","is_byok":false,"finish_reason":"tool_calls","native_finish_reason":"stop","usage":0.00002565,"api_type":"completions","id":"gen-1766949285-8PYCu1kOIutyIkwhpEHY","upstream_id":"chatcmpl-CrqVxUatQ9BvCaqV1z0HTiLMv69xf","total_cost":0.00002565,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"OpenAI"}}'
+  recorded_at: Sun, 28 Dec 2025 19:14:46 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949492-GdSeFKcPYNIK9NHlRRZ0
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +82,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Thu, 25 Dec 2025 09:14:12 GMT
+      - Sun, 28 Dec 2025 19:18:13 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,12 +105,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b373a162dc8acdb-MSP
+      - 9b5366fd9f678052-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766654052-AyRcl6JWUyb6OLhvuWmE
+      string: '{"error":{"message":"Generation gen-1766949492-GdSeFKcPYNIK9NHlRRZ0
         not found","code":404}}'
-  recorded_at: Thu, 25 Dec 2025 09:14:12 GMT
+  recorded_at: Sun, 28 Dec 2025 19:18:13 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -88,7 +143,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:10:31 GMT
+      - Sun, 28 Dec 2025 19:22:56 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -109,14 +164,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bce1e78ee0010-ORD
+      - 9b536de5da5dfa19-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869831-HDf1XMZeXbtg8xH0JVzW\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869831,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_3tDoIbQo4adJatKCQTAfVBpe\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"add\\\",\\\"a\\\":5,\\\"b\\\":3}\"}}]}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":119,\"completion_tokens\":13,\"total_tokens\":132,\"cost\":0.00002565,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001785,\"upstream_inference_completions_cost\":0.0000078},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:10:32 GMT
+      string: "\n         \n{\"id\":\"gen-1766949776-9Qu1xhsSlbzEKpKet4RT\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949776,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_p9coZW2nvtWhBYRyScRAxKFe\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"add\\\",\\\"a\\\":5,\\\"b\\\":10}\"}}]}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":119,\"completion_tokens\":13,\"total_tokens\":132,\"cost\":0.00002565,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001785,\"upstream_inference_completions_cost\":0.0000078},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:22:56 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869831-HDf1XMZeXbtg8xH0JVzW
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949776-9Qu1xhsSlbzEKpKet4RT
     body:
       encoding: US-ASCII
       string: ''
@@ -141,7 +196,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:10:32 GMT
+      - Sun, 28 Dec 2025 19:22:57 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -164,10 +219,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bce226f33d836-ORD
+      - 9b536de9dbc8e277-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869831-HDf1XMZeXbtg8xH0JVzW
+      string: '{"error":{"message":"Generation gen-1766949776-9Qu1xhsSlbzEKpKet4RT
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:10:32 GMT
+  recorded_at: Sun, 28 Dec 2025 19:22:57 GMT
 recorded_with: VCR 6.4.0

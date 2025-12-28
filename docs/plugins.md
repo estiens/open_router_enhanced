@@ -31,6 +31,40 @@ response = client.complete(
 )
 ```
 
+## Using CompletionOptions with Plugins (v2.0+)
+
+For cleaner, reusable configurations, use the `CompletionOptions` class:
+
+```ruby
+# Create reusable plugin configuration
+web_search_opts = OpenRouter::CompletionOptions.new(
+  model: "openai/gpt-4o-mini",
+  plugins: [{ id: "web-search" }]
+)
+
+# Use across multiple calls
+response = client.complete(messages, web_search_opts)
+
+# Combine multiple plugins with other options
+research_opts = OpenRouter::CompletionOptions.new(
+  model: "openai/gpt-4o",
+  plugins: [
+    { id: "web-search" },
+    { id: "pdf-inputs" }
+  ],
+  max_tokens: 2000,
+  temperature: 0.3
+)
+
+# Add prediction for latency optimization
+fast_opts = OpenRouter::CompletionOptions.new(
+  model: "openai/gpt-4o",
+  prediction: { type: "content", content: "The answer is..." }
+)
+```
+
+All keyword argument patterns continue to work for backward compatibility.
+
 ## Response Healing Plugin
 
 The response-healing plugin fixes common JSON formatting issues server-side:

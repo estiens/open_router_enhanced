@@ -43,7 +43,7 @@ RSpec.describe "Model Fallback + Structured Outputs Integration", :vcr do
         messages,
         model: models,
         response_format: simple_schema,
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -74,7 +74,7 @@ RSpec.describe "Model Fallback + Structured Outputs Integration", :vcr do
         messages,
         model: models,
         response_format: complex_schema,
-        extras: { max_tokens: 400 }
+        max_tokens: 400
       )
 
       structured = response.structured_output
@@ -105,7 +105,7 @@ RSpec.describe "Model Fallback + Structured Outputs Integration", :vcr do
         messages,
         model: models,
         response_format: simple_schema,
-        extras: { max_tokens: 150 }
+        max_tokens: 150
       )
 
       structured = response.structured_output
@@ -131,10 +131,8 @@ RSpec.describe "Model Fallback + Structured Outputs Integration", :vcr do
         messages,
         model: models,
         response_format: simple_schema,
-        extras: {
-          max_tokens: 50,
-          temperature: 0.1
-        }
+        max_tokens: 50,
+        temperature: 0.1
       )
 
       structured = response.structured_output
@@ -174,7 +172,7 @@ RSpec.describe "Model Fallback + Structured Outputs Integration", :vcr do
         tools: [lookup_tool],
         tool_choice: "auto",
         response_format: simple_schema,
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -213,7 +211,7 @@ RSpec.describe "Model Fallback + Structured Outputs Integration", :vcr do
         messages1,
         model: models,
         response_format: simple_schema,
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(response1.structured_output).to be_a(Hash)
@@ -229,7 +227,7 @@ RSpec.describe "Model Fallback + Structured Outputs Integration", :vcr do
         messages2,
         model: models,
         response_format: simple_schema,
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       structured = response2.structured_output
@@ -255,7 +253,7 @@ RSpec.describe "Model Fallback + Structured Outputs Integration", :vcr do
           messages,
           model: models,
           response_format: simple_schema,
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
       end.to raise_error(OpenRouter::ServerError)
     end
@@ -277,7 +275,7 @@ RSpec.describe "Model Fallback + Structured Outputs Integration", :vcr do
         messages,
         model: models,
         response_format: simple_schema,
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(response.usage).to be_a(Hash)
@@ -305,7 +303,7 @@ RSpec.describe "Model Fallback + Structured Outputs Integration", :vcr do
         messages,
         model: models,
         response_format: simple_schema,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       # Verify all metadata is present

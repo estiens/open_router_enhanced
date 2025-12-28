@@ -12,7 +12,7 @@ RSpec.describe "OpenRouter Configuration Scenarios", :vcr do
       response = client.complete(
         [{ role: "user", content: "Hello with explicit token" }],
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 30 }
+        max_tokens: 30
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -216,7 +216,7 @@ RSpec.describe "OpenRouter Configuration Scenarios", :vcr do
         client.complete(
           [{ role: "user", content: "Test with invalid token" }],
           model: "openai/gpt-3.5-turbo",
-          extras: { max_tokens: 10 }
+          max_tokens: 10
         )
       end.to raise_error(Faraday::UnauthorizedError)
     end

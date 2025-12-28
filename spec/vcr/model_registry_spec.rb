@@ -263,7 +263,7 @@ RSpec.describe "OpenRouter ModelRegistry", :vcr do
           response = client.complete(
             [{ role: "user", content: "Hello" }],
             model: model_id,
-            extras: { max_tokens: 10 }
+            max_tokens: 10
           )
 
           expect(response).to be_a(OpenRouter::Response)

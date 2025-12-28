@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1758743182-ZuzMuR1Hde7V5M23TC5J
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949103-bzPR0dk0Rv5FqV88uxc9
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 24 Sep 2025 19:46:23 GMT
+      - Sun, 28 Dec 2025 19:11:44 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,6 +36,8 @@ http_interactions:
       - keep-alive
       Access-Control-Allow-Origin:
       - "*"
+      Cache-Control:
+      - private, no-store
       Vary:
       - Accept-Encoding
       Permissions-Policy:
@@ -48,12 +50,68 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9844c99d2ee7ad0b-MSP
+      - 9b535d7ff8330298-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1758743182-ZuzMuR1Hde7V5M23TC5J
+      string: '{"error":{"message":"Generation gen-1766949103-bzPR0dk0Rv5FqV88uxc9
         not found","code":404}}'
-  recorded_at: Wed, 24 Sep 2025 19:46:23 GMT
+  recorded_at: Sun, 28 Dec 2025 19:11:44 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949310-FTcYifL55tyPh1nCHif4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:15:11 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5362894f8f088a-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949310-FTcYifL55tyPh1nCHif4
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:15:11 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -81,7 +139,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:07:20 GMT
+      - Sun, 28 Dec 2025 19:19:54 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -102,18 +160,18 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bc975bc84e235-ORD
+      - 9b5369719ff74fa9-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869640-cklsmxStPHpt6NEgPKRv\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-3.5-turbo\",\"object\":\"chat.completion\",\"created\":1766869640,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"To
-        conduct an original complete method test, follow these steps:\\n\\n1. Define
-        the problem or question you want to address with the test. This could be to
-        evaluate the effectiveness of a new product, measure the impact of a particular
-        intervention, or assess the\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":11,\"completion_tokens\":50,\"total_tokens\":61,\"cost\":0.0000805,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000055,\"upstream_inference_completions_cost\":0.000075},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:07:21 GMT
+      string: "\n         \n\n         \n{\"id\":\"gen-1766949593-VNU8XCvcrHatYfamoECQ\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-3.5-turbo\",\"object\":\"chat.completion\",\"created\":1766949593,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"To
+        test the original complete method, follow these steps:\\n\\n1. Define the
+        objectives and parameters of the method: Determine what you want to achieve
+        with the method and the specific criteria that need to be met.\\n\\n2. Gather
+        all necessary materials and resources:\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":11,\"completion_tokens\":50,\"total_tokens\":61,\"cost\":0.0000805,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000055,\"upstream_inference_completions_cost\":0.000075},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:19:54 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869640-cklsmxStPHpt6NEgPKRv
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949593-VNU8XCvcrHatYfamoECQ
     body:
       encoding: US-ASCII
       string: ''
@@ -138,7 +196,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:07:21 GMT
+      - Sun, 28 Dec 2025 19:19:55 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -161,10 +219,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bc97a4a19544f-YYZ
+      - 9b5369786ab65c8f-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869640-cklsmxStPHpt6NEgPKRv
+      string: '{"error":{"message":"Generation gen-1766949593-VNU8XCvcrHatYfamoECQ
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:07:21 GMT
+  recorded_at: Sun, 28 Dec 2025 19:19:55 GMT
 recorded_with: VCR 6.4.0

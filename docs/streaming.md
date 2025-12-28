@@ -22,6 +22,38 @@ response = streaming_client.stream_complete(
 puts response.content  # Complete response after streaming
 ```
 
+## Using CompletionOptions (v2.0+)
+
+For cleaner, reusable configurations, use the `CompletionOptions` class:
+
+```ruby
+# Create reusable streaming configuration
+stream_opts = OpenRouter::CompletionOptions.new(
+  model: "openai/gpt-4o-mini",
+  temperature: 0.8,
+  max_tokens: 2000
+)
+
+# Use with stream_complete
+response = streaming_client.stream_complete(
+  messages,
+  stream_opts,
+  accumulate_response: true
+)
+
+# Use with simple stream method
+streaming_client.stream(messages, stream_opts) do |chunk|
+  print chunk
+end
+
+# Override specific values per-request
+streaming_client.stream(messages, stream_opts, temperature: 0.2) do |chunk|
+  print chunk
+end
+```
+
+All keyword argument patterns continue to work for backward compatibility.
+
 ## Streaming with Callbacks
 
 The streaming client supports extensive callback events for monitoring and custom processing.

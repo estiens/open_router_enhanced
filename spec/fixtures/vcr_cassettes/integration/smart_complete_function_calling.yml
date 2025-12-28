@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 20:57:43 GMT
+      - Sun, 28 Dec 2025 19:13:09 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -48,15 +48,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bbb586895eaf8-ORD
+      - 9b535f8b090bf608-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n{\"id\":\"gen-1766869062-1nRoWYmod2LqnMAY9Etp\",\"provider\":\"Xiaomi\",\"model\":\"xiaomi/mimo-v2-flash:free\",\"object\":\"chat.completion\",\"created\":1766869062,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Hello!
+      string: "\n         \n{\"id\":\"gen-1766949188-emOe87yzSWaGhRLrnyok\",\"provider\":\"Xiaomi\",\"model\":\"xiaomi/mimo-v2-flash:free\",\"object\":\"chat.completion\",\"created\":1766949188,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Hello!
         How can I help you today?\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":38,\"completion_tokens\":10,\"total_tokens\":48,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 20:57:44 GMT
+  recorded_at: Sun, 28 Dec 2025 19:13:09 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869062-1nRoWYmod2LqnMAY9Etp
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949188-emOe87yzSWaGhRLrnyok
     body:
       encoding: US-ASCII
       string: ''
@@ -81,7 +81,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 20:57:44 GMT
+      - Sun, 28 Dec 2025 19:13:09 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -104,10 +104,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bbb634c1b114a-ORD
+      - 9b535f914946e811-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869062-1nRoWYmod2LqnMAY9Etp
+      string: '{"error":{"message":"Generation gen-1766949188-emOe87yzSWaGhRLrnyok
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 20:57:44 GMT
+  recorded_at: Sun, 28 Dec 2025 19:13:09 GMT
 recorded_with: VCR 6.4.0

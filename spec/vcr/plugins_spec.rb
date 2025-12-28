@@ -32,7 +32,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
         model: "openai/gpt-4o-mini",
         plugins: [{ id: "response-healing" }],
         response_format: { type: "json_object" },
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -75,7 +75,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
           messages,
           model: "openai/gpt-4o-mini",
           response_format: simple_schema,
-          extras: { max_tokens: 200 }
+          max_tokens: 200
         )
 
         expect(response).to be_a(OpenRouter::Response)
@@ -93,7 +93,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
           messages,
           model: "openai/gpt-4o-mini",
           response_format: { type: "json_object" },
-          extras: { max_tokens: 200 }
+          max_tokens: 200
         )
 
         expect(response).to be_a(OpenRouter::Response)
@@ -112,7 +112,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
           model: "openai/gpt-4o-mini",
           plugins: [{ id: "response-healing" }],
           response_format: simple_schema,
-          extras: { max_tokens: 200 }
+          max_tokens: 200
         )
 
         expect(response).to be_a(OpenRouter::Response)
@@ -146,7 +146,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
           model: "openai/gpt-4o-mini",
           plugins: [{ id: "some-other-plugin" }],
           response_format: simple_schema,
-          extras: { max_tokens: 200 }
+          max_tokens: 200
         )
 
         # Verify response-healing was appended
@@ -170,7 +170,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
             messages,
             model: "openai/gpt-4o-mini",
             response_format: simple_schema,
-            extras: { max_tokens: 200 }
+            max_tokens: 200
           )
 
           expect(response).to be_a(OpenRouter::Response)
@@ -197,7 +197,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
             model: "openai/gpt-4o-mini",
             response_format: simple_schema,
             stream: stream_proc,
-            extras: { max_tokens: 200 }
+            max_tokens: 200
           )
         end.not_to raise_error
       end
@@ -212,7 +212,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         plugins: [{ id: "response-healing", enabled: true }],
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -226,7 +226,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         plugins: [{ id: "response-healing", enabled: false }],
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -240,7 +240,7 @@ RSpec.describe "OpenRouter Plugins Support", :vcr do
       response = client.complete(
         messages,
         model: "openai/gpt-4o-mini",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(response).to be_a(OpenRouter::Response)

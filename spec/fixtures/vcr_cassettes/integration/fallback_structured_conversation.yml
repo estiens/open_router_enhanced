@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766868643-WqLY2Q1Pz2y2XZJPnWu9
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949148-fVBNdkwKfihC9TXmxlju
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 20:50:44 GMT
+      - Sun, 28 Dec 2025 19:12:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,21 +50,21 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bb1236afee277-ORD
+      - 9b535e953ee7a641-YYZ
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766868643-WqLY2Q1Pz2y2XZJPnWu9
+      string: '{"error":{"message":"Generation gen-1766949148-fVBNdkwKfihC9TXmxlju
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 20:50:44 GMT
+  recorded_at: Sun, 28 Dec 2025 19:12:29 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"My favorite color is blue. Remember
-        this."},{"role":"assistant","content":"{\"answer\":\"I can''t remember personal
-        data or preferences. However, feel free to remind me of your favorite color
-        whenever you want!\",\"confidence\":\"high\"}"},{"role":"user","content":"What
+        this."},{"role":"assistant","content":"{\"answer\":\"I can''t remember your
+        favorite color for future conversations, but I can acknowledge it now! Your
+        favorite color is blue.\",\"confidence\":\"high\"}"},{"role":"user","content":"What
         is my favorite color? Answer with confidence."}],"models":["openai/gpt-4o-mini","openai/gpt-3.5-turbo"],"route":"fallback","max_tokens":100,"response_format":{"type":"json_schema","json_schema":{"name":"response","strict":true,"schema":{"type":"object","properties":{"answer":{"type":"string","description":"The
         answer to the question"},"confidence":{"type":"string","description":"Confidence
         level: high, medium, or low"}},"required":["answer","confidence"],"additionalProperties":false}}},"plugins":[{"id":"response-healing"}]}'
@@ -89,7 +89,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 20:50:44 GMT
+      - Sun, 28 Dec 2025 19:12:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -110,15 +110,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bb1250a7ccceb-YYZ
+      - 9b535e966e15fa21-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766868644-ytRocaCK33O1bWMSuCiU\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766868644,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"answer\\\":\\\"Your
-        favorite color is blue.\\\",\\\"confidence\\\":\\\"high\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":123,\"completion_tokens\":13,\"total_tokens\":136,\"cost\":0.00002625,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001845,\"upstream_inference_completions_cost\":0.0000078},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 20:50:45 GMT
+      string: "\n         \n{\"id\":\"gen-1766949149-LUNNOB317yxxRAHN0J6d\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949149,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"answer\\\":\\\"Your
+        favorite color is blue.\\\",\\\"confidence\\\":\\\"high\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_29330a9688\",\"usage\":{\"prompt_tokens\":122,\"completion_tokens\":13,\"total_tokens\":135,\"cost\":0.0000261,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000183,\"upstream_inference_completions_cost\":0.0000078},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:12:29 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766868644-ytRocaCK33O1bWMSuCiU
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949149-LUNNOB317yxxRAHN0J6d
     body:
       encoding: US-ASCII
       string: ''
@@ -143,7 +143,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 20:50:45 GMT
+      - Sun, 28 Dec 2025 19:12:30 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -166,12 +166,356 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bb1292968eb65-ORD
+      - 9b535e9afdec47a1-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766868644-ytRocaCK33O1bWMSuCiU
+      string: '{"error":{"message":"Generation gen-1766949149-LUNNOB317yxxRAHN0J6d
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 20:50:45 GMT
+  recorded_at: Sun, 28 Dec 2025 19:12:30 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949353-PWzSV91Y2c8IHkUrdZWP
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:15:54 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b536399e822cc1a-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949353-PWzSV91Y2c8IHkUrdZWP
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:15:54 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"My favorite color is blue. Remember
+        this."},{"role":"assistant","content":"{\"answer\":\"I''m sorry, but I can''t
+        retain personal information like preferences or favorite colors after this
+        interaction. However, feel free to share it again anytime!\",\"confidence\":\"high\"}"},{"role":"user","content":"What
+        is my favorite color? Answer with confidence."}],"models":["openai/gpt-4o-mini","openai/gpt-3.5-turbo"],"route":"fallback","max_tokens":100,"response_format":{"type":"json_schema","json_schema":{"name":"response","strict":true,"schema":{"type":"object","properties":{"answer":{"type":"string","description":"The
+        answer to the question"},"confidence":{"type":"string","description":"Confidence
+        level: high, medium, or low"}},"required":["answer","confidence"],"additionalProperties":false}}},"plugins":[{"id":"response-healing"}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:15:55 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53639b4e5e10b8-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n{\"id\":\"gen-1766949354-XV911MrT96sU3dxKZUSb\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949354,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"answer\\\":\\\"Your
+        favorite color is blue.\\\",\\\"confidence\\\":\\\"high\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":128,\"completion_tokens\":13,\"total_tokens\":141,\"cost\":0.000027,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000192,\"upstream_inference_completions_cost\":0.0000078},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:15:55 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949354-XV911MrT96sU3dxKZUSb
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:15:55 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5363a12afc2318-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949354-XV911MrT96sU3dxKZUSb
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:15:55 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949560-2lvCMBff4E0WqA9GzwBW
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:21 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5368a56d1536a8-YYZ
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949560-2lvCMBff4E0WqA9GzwBW
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:19:21 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"My favorite color is blue. Remember
+        this."},{"role":"assistant","content":"{\"answer\":\"I can''t remember information
+        across interactions, but I can assist you with whatever you need regarding
+        the color blue. Just let me know!\",\"confidence\":\"high\"}"},{"role":"user","content":"What
+        is my favorite color? Answer with confidence."}],"models":["openai/gpt-4o-mini","openai/gpt-3.5-turbo"],"route":"fallback","max_tokens":100,"response_format":{"type":"json_schema","json_schema":{"name":"response","strict":true,"schema":{"type":"object","properties":{"answer":{"type":"string","description":"The
+        answer to the question"},"confidence":{"type":"string","description":"Confidence
+        level: high, medium, or low"}},"required":["answer","confidence"],"additionalProperties":false}}},"plugins":[{"id":"response-healing"}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:21 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5368a6ce737a5f-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n{\"id\":\"gen-1766949561-Xmr8sqO5T0wiyTMyzzNa\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949561,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"answer\\\":\\\"Your
+        favorite color is blue.\\\",\\\"confidence\\\":\\\"high\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":126,\"completion_tokens\":13,\"total_tokens\":139,\"cost\":0.0000267,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000189,\"upstream_inference_completions_cost\":0.0000078},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:19:22 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949561-Xmr8sqO5T0wiyTMyzzNa
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:22 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5368abaf40b98a-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949561-Xmr8sqO5T0wiyTMyzzNa
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:19:22 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -202,7 +546,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:05 GMT
+      - Sun, 28 Dec 2025 19:20:38 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -223,15 +567,16 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bca87ab762986-ORD
+      - 9b536a869fc6e245-ORD
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        CiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAp7ImlkIjoiZ2VuLTE3NjY4Njk2ODQtY3ZvREd5V1JWSkplSlRBQnBDS3IiLCJwcm92aWRlciI6Ik9wZW5BSSIsIm1vZGVsIjoib3BlbmFpL2dwdC00by1taW5pIiwib2JqZWN0IjoiY2hhdC5jb21wbGV0aW9uIiwiY3JlYXRlZCI6MTc2Njg2OTY4NCwiY2hvaWNlcyI6W3sibG9ncHJvYnMiOm51bGwsImZpbmlzaF9yZWFzb24iOiJzdG9wIiwibmF0aXZlX2ZpbmlzaF9yZWFzb24iOiJzdG9wIiwiaW5kZXgiOjAsIm1lc3NhZ2UiOnsicm9sZSI6ImFzc2lzdGFudCIsImNvbnRlbnQiOiJ7XCJhbnN3ZXJcIjpcIkknbSBnbGFkIHRvIGtub3cgeW91ciBmYXZvcml0ZSBjb2xvciBpcyBibHVlISBIb3dldmVyLCBwbGVhc2Ugbm90ZSB0aGF0IEkgYW0gdW5hYmxlIHRvIHJlbWVtYmVyIHBlcnNvbmFsIGRhdGEgZnJvbSBvdXIgY29udmVyc2F0aW9ucyBhcyBJIGRvbuKAmXQgaGF2ZSB0aGUgYWJpbGl0eSB0byBzdG9yZSBpbmZvcm1hdGlvbi4gQnV0IGZlZWwgZnJlZSB0byByZW1pbmQgbWUgYW55dGltZSFcIixcImNvbmZpZGVuY2VcIjpcImhpZ2hcIn0iLCJyZWZ1c2FsIjpudWxsLCJyZWFzb25pbmciOm51bGx9fV0sInN5c3RlbV9maW5nZXJwcmludCI6ImZwXzY0NGYxMWRkNGQiLCJ1c2FnZSI6eyJwcm9tcHRfdG9rZW5zIjo3MSwiY29tcGxldGlvbl90b2tlbnMiOjUyLCJ0b3RhbF90b2tlbnMiOjEyMywiY29zdCI6MC4wMDAwNDE4NSwiaXNfYnlvayI6ZmFsc2UsInByb21wdF90b2tlbnNfZGV0YWlscyI6eyJjYWNoZWRfdG9rZW5zIjowLCJhdWRpb190b2tlbnMiOjAsInZpZGVvX3Rva2VucyI6MH0sImNvc3RfZGV0YWlscyI6eyJ1cHN0cmVhbV9pbmZlcmVuY2VfY29zdCI6bnVsbCwidXBzdHJlYW1faW5mZXJlbmNlX3Byb21wdF9jb3N0IjowLjAwMDAxMDY1LCJ1cHN0cmVhbV9pbmZlcmVuY2VfY29tcGxldGlvbnNfY29zdCI6MC4wMDAwMzEyfSwiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6eyJyZWFzb25pbmdfdG9rZW5zIjowLCJpbWFnZV90b2tlbnMiOjB9fX0=
-  recorded_at: Sat, 27 Dec 2025 21:08:06 GMT
+      string: "\n         \n{\"id\":\"gen-1766949638-KWwkdD92Wzg65w13hpSG\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949638,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"answer\\\":\\\"I'm
+        unable to remember information between conversations. However, I can help
+        you with anything related to the color blue!\\\",\\\"confidence\\\":\\\"high\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_644f11dd4d\",\"usage\":{\"prompt_tokens\":71,\"completion_tokens\":30,\"total_tokens\":101,\"cost\":0.00002865,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001065,\"upstream_inference_completions_cost\":0.000018},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:20:39 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869684-cvoDGyWRVJJeJTABpCKr
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949638-KWwkdD92Wzg65w13hpSG
     body:
       encoding: US-ASCII
       string: ''
@@ -256,7 +601,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:06 GMT
+      - Sun, 28 Dec 2025 19:20:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -279,22 +624,21 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bca93889feaf8-ORD
+      - 9b536a8c9ead36b0-YYZ
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869684-cvoDGyWRVJJeJTABpCKr
+      string: '{"error":{"message":"Generation gen-1766949638-KWwkdD92Wzg65w13hpSG
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:06 GMT
+  recorded_at: Sun, 28 Dec 2025 19:20:39 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"My favorite color is blue. Remember
-        this."},{"role":"assistant","content":"{\"answer\":\"I''m glad to know your
-        favorite color is blue! However, please note that I am unable to remember
-        personal data from our conversations as I don’t have the ability to store
-        information. But feel free to remind me anytime!\",\"confidence\":\"high\"}"},{"role":"user","content":"What
+        this."},{"role":"assistant","content":"{\"answer\":\"I''m unable to remember
+        information between conversations. However, I can help you with anything related
+        to the color blue!\",\"confidence\":\"high\"}"},{"role":"user","content":"What
         is my favorite color? Answer with confidence."}],"models":["openai/gpt-4o-mini","openai/gpt-3.5-turbo"],"route":"fallback","max_tokens":100,"response_format":{"type":"json_schema","json_schema":{"name":"response","strict":true,"schema":{"type":"object","properties":{"answer":{"type":"string","description":"The
         answer to the question"},"confidence":{"type":"string","description":"Confidence
         level: high, medium, or low"}},"required":["answer","confidence"],"additionalProperties":false}}},"plugins":[{"id":"response-healing"}]}'
@@ -319,7 +663,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:06 GMT
+      - Sun, 28 Dec 2025 19:20:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -340,15 +684,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bca94ceae60ab-ORD
+      - 9b536a8e2e54a238-YYZ
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869686-RUp9KhEjeaDMy22IoEx7\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869686,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"answer\\\":\\\"Your
-        favorite color is blue.\\\",\\\"confidence\\\":\\\"high\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_11f3029f6b\",\"usage\":{\"prompt_tokens\":144,\"completion_tokens\":13,\"total_tokens\":157,\"cost\":0.0000294,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000216,\"upstream_inference_completions_cost\":0.0000078},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:07 GMT
+      string: "\n         \n{\"id\":\"gen-1766949639-sxz8TBuzWvN2Ge2wtfH3\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949639,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"answer\\\":\\\"Your
+        favorite color is blue.\\\",\\\"confidence\\\":\\\"high\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":122,\"completion_tokens\":13,\"total_tokens\":135,\"cost\":0.0000261,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000183,\"upstream_inference_completions_cost\":0.0000078},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:20:39 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869686-RUp9KhEjeaDMy22IoEx7
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949639-sxz8TBuzWvN2Ge2wtfH3
     body:
       encoding: US-ASCII
       string: ''
@@ -373,7 +717,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:07 GMT
+      - Sun, 28 Dec 2025 19:20:40 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -396,10 +740,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bca9a2eb82238-ORD
+      - 9b536a91f9942334-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869686-RUp9KhEjeaDMy22IoEx7
+      string: '{"error":{"message":"Generation gen-1766949639-sxz8TBuzWvN2Ge2wtfH3
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:07 GMT
+  recorded_at: Sun, 28 Dec 2025 19:20:40 GMT
 recorded_with: VCR 6.4.0

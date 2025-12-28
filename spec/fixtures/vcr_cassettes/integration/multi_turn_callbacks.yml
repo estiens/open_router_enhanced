@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766868671-2Tw4Ylu2c0mGzYq36YuQ
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949174-kh1VljBpB1gRMPm8O17M
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 20:51:12 GMT
+      - Sun, 28 Dec 2025 19:12:55 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,18 +50,18 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bb1d11db5e245-ORD
+      - 9b535f3b6bc99d03-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766868671-2Tw4Ylu2c0mGzYq36YuQ
+      string: '{"error":{"message":"Generation gen-1766949174-kh1VljBpB1gRMPm8O17M
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 20:51:12 GMT
+  recorded_at: Sun, 28 Dec 2025 19:12:55 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"What is 3 + 4?"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_LCBrpRT1bkXFxORbMotlxjfI","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":3,\"b\":4}"}}]},{"role":"tool","tool_call_id":"call_LCBrpRT1bkXFxORbMotlxjfI","content":"7"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+      string: '{"messages":[{"role":"user","content":"What is 3 + 4?"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_OkKPtXuJm4dr9w7TyNXrk59Z","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":3,\"b\":4}"}}]},{"role":"tool","tool_call_id":"call_OkKPtXuJm4dr9w7TyNXrk59Z","content":"7"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
         basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
         add, subtract, multiply, divide"},"a":{"type":"number","description":"First
         number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}]}'
@@ -86,7 +86,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 20:51:12 GMT
+      - Sun, 28 Dec 2025 19:12:56 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -107,15 +107,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bb1d2fabf22f2-ORD
+      - 9b535f3cad3feaf5-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766868672-R4YaVBWKvrdeD7K7Ju03\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766868672,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The
-        result of \\\\(3 + 4\\\\) is \\\\(7\\\\).\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_3683ee3deb\",\"usage\":{\"prompt_tokens\":104,\"completion_tokens\":16,\"total_tokens\":120,\"cost\":0.0000252,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000156,\"upstream_inference_completions_cost\":0.0000096},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 20:51:13 GMT
+      string: "\n         \n{\"id\":\"gen-1766949175-BkZppvfEdIBMG78l6RDR\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949175,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The
+        result of 3 + 4 is 7.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_3683ee3deb\",\"usage\":{\"prompt_tokens\":104,\"completion_tokens\":13,\"total_tokens\":117,\"cost\":0.0000234,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000156,\"upstream_inference_completions_cost\":0.0000078},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:12:56 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766868672-R4YaVBWKvrdeD7K7Ju03
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949175-BkZppvfEdIBMG78l6RDR
     body:
       encoding: US-ASCII
       string: ''
@@ -140,7 +140,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 20:51:13 GMT
+      - Sun, 28 Dec 2025 19:12:56 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -163,12 +163,350 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bb1d76acbfa25-ORD
+      - 9b535f421f5ec071-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766868672-R4YaVBWKvrdeD7K7Ju03
+      string: '{"error":{"message":"Generation gen-1766949175-BkZppvfEdIBMG78l6RDR
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 20:51:13 GMT
+  recorded_at: Sun, 28 Dec 2025 19:12:56 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949377-ZEdymEqt10WcVs0SahAX
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:16:18 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53642ebde4e80c-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949377-ZEdymEqt10WcVs0SahAX
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:16:18 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"What is 3 + 4?"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_3PZa5Y3urRicqq60EyCowAfb","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":3,\"b\":4}"}}]},{"role":"tool","tool_call_id":"call_3PZa5Y3urRicqq60EyCowAfb","content":"7"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:16:18 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b536430081ae822-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n{\"id\":\"gen-1766949378-fbf50cFOksAn02rYKVX7\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949378,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"3
+        + 4 equals 7.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_3683ee3deb\",\"usage\":{\"prompt_tokens\":104,\"completion_tokens\":9,\"total_tokens\":113,\"cost\":0.000021,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000156,\"upstream_inference_completions_cost\":0.0000054},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:16:19 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949378-fbf50cFOksAn02rYKVX7
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:16:19 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5364339c11e12f-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949378-fbf50cFOksAn02rYKVX7
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:16:19 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949577-6qpqdCHPyzdNBudhfLmI
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53690e2cf6ab00-YYZ
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949577-6qpqdCHPyzdNBudhfLmI
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:19:38 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"What is 3 + 4?"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_VGYOv3vVpVpzSJoPajxrz6vF","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":3,\"b\":4}"}}]},{"role":"tool","tool_call_id":"call_VGYOv3vVpVpzSJoPajxrz6vF","content":"7"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
+        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53690f8bd5f46c-YYZ
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n{\"id\":\"gen-1766949578-HfP9uo2g1AOVonSYYNJf\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949578,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"3
+        + 4 equals 7.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_3683ee3deb\",\"usage\":{\"prompt_tokens\":104,\"completion_tokens\":9,\"total_tokens\":113,\"cost\":0.000021,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000156,\"upstream_inference_completions_cost\":0.0000054},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:19:38 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949578-HfP9uo2g1AOVonSYYNJf
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53691359d4a641-YYZ
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949578-HfP9uo2g1AOVonSYYNJf
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:19:38 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -199,7 +537,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:35 GMT
+      - Sun, 28 Dec 2025 19:21:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -220,14 +558,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb491e090ed2-ORD
+      - 9b536b193ccc1151-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869715-BOrKMgN9rK7OqHRikC5s\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869715,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_WzUbWzUjvSg3DIowSQLK7p6i\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"add\\\",\\\"a\\\":3,\\\"b\\\":4}\"}}]}}],\"system_fingerprint\":\"fp_3683ee3deb\",\"usage\":{\"prompt_tokens\":74,\"completion_tokens\":22,\"total_tokens\":96,\"cost\":0.0000243,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000111,\"upstream_inference_completions_cost\":0.0000132},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:36 GMT
+      string: "\n         \n{\"id\":\"gen-1766949661-klgMW7yy5WRafEC6LpCr\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949661,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_Qme9GfV3LaYc2PhEtI2Lup9g\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"add\\\",\\\"a\\\":3,\\\"b\\\":4}\"}}]}}],\"system_fingerprint\":\"fp_3683ee3deb\",\"usage\":{\"prompt_tokens\":74,\"completion_tokens\":22,\"total_tokens\":96,\"cost\":0.0000243,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000111,\"upstream_inference_completions_cost\":0.0000132},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:21:02 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869715-BOrKMgN9rK7OqHRikC5s
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949661-klgMW7yy5WRafEC6LpCr
     body:
       encoding: US-ASCII
       string: ''
@@ -252,7 +590,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:36 GMT
+      - Sun, 28 Dec 2025 19:21:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -275,18 +613,18 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb4dc861233f-ORD
+      - 9b536b1e8f4010e1-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869715-BOrKMgN9rK7OqHRikC5s
+      string: '{"error":{"message":"Generation gen-1766949661-klgMW7yy5WRafEC6LpCr
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:36 GMT
+  recorded_at: Sun, 28 Dec 2025 19:21:02 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"What is 3 + 4?"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_WzUbWzUjvSg3DIowSQLK7p6i","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":3,\"b\":4}"}}]},{"role":"tool","tool_call_id":"call_WzUbWzUjvSg3DIowSQLK7p6i","content":"7"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+      string: '{"messages":[{"role":"user","content":"What is 3 + 4?"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_Qme9GfV3LaYc2PhEtI2Lup9g","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":3,\"b\":4}"}}]},{"role":"tool","tool_call_id":"call_Qme9GfV3LaYc2PhEtI2Lup9g","content":"7"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
         basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
         add, subtract, multiply, divide"},"a":{"type":"number","description":"First
         number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}]}'
@@ -311,7 +649,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:37 GMT
+      - Sun, 28 Dec 2025 19:21:03 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -332,15 +670,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb4f8b270008-ORD
+      - 9b536b1feb7360a8-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n{\"id\":\"gen-1766869716-jHVml5TfpMGXeL0wAXmV\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869716,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The
-        result of \\\\( 3 + 4 \\\\) is \\\\( 7 \\\\).\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_3683ee3deb\",\"usage\":{\"prompt_tokens\":104,\"completion_tokens\":18,\"total_tokens\":122,\"cost\":0.0000264,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000156,\"upstream_inference_completions_cost\":0.0000108},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:37 GMT
+      string: "\n         \n{\"id\":\"gen-1766949662-3LcJAQjT0FSJYmSWqXBt\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949662,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"3
+        + 4 equals 7.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_3683ee3deb\",\"usage\":{\"prompt_tokens\":104,\"completion_tokens\":9,\"total_tokens\":113,\"cost\":0.000021,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000156,\"upstream_inference_completions_cost\":0.0000054},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:21:03 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869716-jHVml5TfpMGXeL0wAXmV
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949662-3LcJAQjT0FSJYmSWqXBt
     body:
       encoding: US-ASCII
       string: ''
@@ -365,7 +703,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:37 GMT
+      - Sun, 28 Dec 2025 19:21:03 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -388,10 +726,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb5788da1060-ORD
+      - 9b536b259ed372e8-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869716-jHVml5TfpMGXeL0wAXmV
+      string: '{"error":{"message":"Generation gen-1766949662-3LcJAQjT0FSJYmSWqXBt
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:37 GMT
+  recorded_at: Sun, 28 Dec 2025 19:21:03 GMT
 recorded_with: VCR 6.4.0

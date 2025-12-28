@@ -29,7 +29,7 @@ RSpec.describe "OpenRouter Streaming", :vcr do
         messages,
         model: "openai/gpt-3.5-turbo",
         accumulate_response: true,
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(chunks).not_to be_empty
@@ -57,7 +57,7 @@ RSpec.describe "OpenRouter Streaming", :vcr do
       streaming_client.stream_complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(chunks).not_to be_empty
@@ -94,7 +94,7 @@ RSpec.describe "OpenRouter Streaming", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [simple_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(chunks).not_to be_empty
@@ -147,7 +147,7 @@ RSpec.describe "OpenRouter Streaming", :vcr do
       streaming_client.stream_complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       # Verify streaming completed - max_tokens is approximate with streaming
@@ -172,7 +172,8 @@ RSpec.describe "OpenRouter Streaming", :vcr do
       streaming_client.stream_complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { temperature: 0.1, max_tokens: 10 }
+        temperature: 0.1,
+        max_tokens: 10
       )
 
       expect(chunks).not_to be_empty
@@ -192,7 +193,7 @@ RSpec.describe "OpenRouter Streaming", :vcr do
         streaming_client.stream_complete(
           messages,
           model: ["some/nonexistent-model", "openai/gpt-3.5-turbo"],
-          extras: { max_tokens: 20 }
+          max_tokens: 20
         )
       end.to raise_error(OpenRouter::ServerError, /Bad Request/)
     end
@@ -208,7 +209,7 @@ RSpec.describe "OpenRouter Streaming", :vcr do
         messages,
         model: "openai/gpt-3.5-turbo",
         accumulate_response: true,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(accumulated_response).not_to be_nil
@@ -233,7 +234,7 @@ RSpec.describe "OpenRouter Streaming", :vcr do
       streaming_client.stream_complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(chunk_times).not_to be_empty

@@ -18,7 +18,7 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
         messages,
         requirements: {},
         optimization: :cost,
-        extras: { max_tokens: 10 }
+        max_tokens: 10
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -36,7 +36,7 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
         messages,
         requirements: { capabilities: [:function_calling] },
         optimization: :cost,
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -57,7 +57,7 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
         messages,
         requirements: { capabilities: [:structured_outputs] },
         optimization: :cost,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -75,7 +75,7 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
         messages,
         requirements: {},
         optimization: :performance,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -93,7 +93,7 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
         messages,
         requirements: { min_context_length: 8000 },
         optimization: :cost,
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -115,7 +115,7 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
           min_context_length: 4000
         },
         optimization: :cost,
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -135,7 +135,7 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
         requirements: { capabilities: [:function_calling] },
         optimization: :cost,
         max_retries: 3,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -159,11 +159,12 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
         requirements: {},
         optimization: :cost,
         max_retries: 2,
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       expect(response).to be_a(OpenRouter::Response)
-      expect(response.content).to be_present
+      # Some thinking models return empty content with reasoning instead
+      expect(response.content.present? || response.raw_response.dig("choices", 0, "message", "reasoning").present?).to be_truthy
     end
   end
 
@@ -191,7 +192,7 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
         optimization: :cost,
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -219,7 +220,7 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
         requirements: { capabilities: [:structured_outputs] },
         optimization: :cost,
         response_format: simple_schema,
-        extras: { max_tokens: 150 }
+        max_tokens: 150
       )
 
       expect(response).to be_a(OpenRouter::Response)

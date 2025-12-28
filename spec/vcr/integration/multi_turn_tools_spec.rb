@@ -81,7 +81,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(response1.has_tool_calls?).to be true
@@ -104,7 +104,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(response2.has_content?).to be true
@@ -114,8 +114,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
 
   describe "multiple sequential tool calls" do
     it "handles multiple tool calls in sequence across turns",
-       vcr: { cassette_name: "integration/multi_turn_sequential", record: :none },
-       skip: "Cassette needs re-recording with VCR_RECORD_NEW=true" do
+       vcr: { cassette_name: "integration/multi_turn_sequential" } do
       messages = [
         { role: "user", content: "First add 10 and 20, then multiply the result by 3" }
       ]
@@ -126,7 +125,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 300 }
+        max_tokens: 300
       )
 
       expect(response1.has_tool_calls?).to be true
@@ -148,7 +147,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 300 }
+        max_tokens: 300
       )
 
       # May have another tool call or final answer
@@ -168,7 +167,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
           messages,
           model: "openai/gpt-4o-mini",
           tools: [calculator_tool],
-          extras: { max_tokens: 100 }
+          max_tokens: 100
         )
 
         expect(response3.has_content?).to be true
@@ -193,7 +192,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 400 }
+        max_tokens: 400
       )
 
       expect(response1.has_tool_calls?).to be true
@@ -217,7 +216,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
-        extras: { max_tokens: 150 }
+        max_tokens: 150
       )
 
       expect(response2.has_content?).to be true
@@ -240,7 +239,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool, database_tool, weather_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(response1.has_tool_calls?).to be true
@@ -261,7 +260,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool, database_tool, weather_tool],
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(response2.has_content?).to be true
@@ -283,7 +282,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(response1.has_tool_calls?).to be true
@@ -297,7 +296,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
-        extras: { max_tokens: 150 }
+        max_tokens: 150
       )
 
       expect(response2.content).to include("42")
@@ -311,7 +310,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       if response3.has_tool_calls?
@@ -325,7 +324,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
           messages,
           model: "openai/gpt-4o-mini",
           tools: [calculator_tool],
-          extras: { max_tokens: 100 }
+          max_tokens: 100
         )
 
         expect(response4.content).to include("84")
@@ -347,7 +346,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(response1.has_tool_calls?).to be true
@@ -367,7 +366,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
-        extras: { max_tokens: 150 }
+        max_tokens: 150
       )
 
       expect(response2.has_content?).to be true
@@ -388,7 +387,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(response1.has_tool_calls?).to be true
@@ -417,7 +416,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(response2.content).to include("72")
@@ -442,7 +441,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(request_count).to eq(1)
@@ -457,7 +456,7 @@ RSpec.describe "Multi-Turn Tool Conversations Integration", :vcr do
           messages,
           model: "openai/gpt-4o-mini",
           tools: [calculator_tool],
-          extras: { max_tokens: 100 }
+          max_tokens: 100
         )
 
         expect(request_count).to eq(2)

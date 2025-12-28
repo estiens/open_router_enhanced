@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766654045-i88IUvdhKrT1Be2x3bWn
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949278-QKeezHQFHFVMUpTMzIIP
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Thu, 25 Dec 2025 09:14:06 GMT
+      - Sun, 28 Dec 2025 19:14:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,12 +50,68 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b3739ec4dd24cb7-MSP
+      - 9b5361c20e4f0558-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766654045-i88IUvdhKrT1Be2x3bWn
+      string: '{"error":{"message":"Generation gen-1766949278-QKeezHQFHFVMUpTMzIIP
         not found","code":404}}'
-  recorded_at: Thu, 25 Dec 2025 09:14:06 GMT
+  recorded_at: Sun, 28 Dec 2025 19:14:39 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949483-qZJHTShBIdsenAOuF3Ft
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:18:05 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5366cd0a96e82d-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949483-qZJHTShBIdsenAOuF3Ft
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:18:05 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -85,7 +141,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:10:23 GMT
+      - Sun, 28 Dec 2025 19:22:48 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -106,18 +162,20 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcdee5c33f501-ORD
+      - 9b536db0d9ce02ac-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n{\"id\":\"gen-1766869823-BsZAx1cYhP5eSyDIZzvG\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869823,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"message\\\":\\\"Hello!
-        I hope you're having a great day. If you have any questions or need assistance
-        with something specific, feel free to ask! Keep in mind that I'm here to help
-        provide information, tips, or guidance on various topics such as technology,
-        health, education, or general advice.\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_644f11dd4d\",\"usage\":{\"prompt_tokens\":55,\"completion_tokens\":61,\"total_tokens\":116,\"cost\":0.00004485,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00000825,\"upstream_inference_completions_cost\":0.0000366},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:10:25 GMT
+      string: "\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1766949767-eM3HHtuJjgcgrffCgpwT\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949767,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"message\\\":\\\"Hello!
+        Just a quick reminder that staying informed and connected is important for
+        personal growth and well-being. Whether it's keeping up with current events,
+        engaging in your passions, or maintaining relationships, these activities
+        enrich our lives. If you're looking for ways to expand your knowledge or connect
+        with others, consider joining a local club, taking an online course, or volunteering
+        in your community. Every little effort counts towards a more fulfilling life!\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_644f11dd4d\",\"usage\":{\"prompt_tokens\":55,\"completion_tokens\":88,\"total_tokens\":143,\"cost\":0.00006105,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00000825,\"upstream_inference_completions_cost\":0.0000528},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:22:49 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869823-BsZAx1cYhP5eSyDIZzvG
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949767-eM3HHtuJjgcgrffCgpwT
     body:
       encoding: US-ASCII
       string: ''
@@ -142,7 +200,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:10:25 GMT
+      - Sun, 28 Dec 2025 19:22:49 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -165,10 +223,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcdf6f92e86d2-ORD
+      - 9b536dbd8d96fc3a-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869823-BsZAx1cYhP5eSyDIZzvG
+      string: '{"error":{"message":"Generation gen-1766949767-eM3HHtuJjgcgrffCgpwT
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:10:25 GMT
+  recorded_at: Sun, 28 Dec 2025 19:22:49 GMT
 recorded_with: VCR 6.4.0

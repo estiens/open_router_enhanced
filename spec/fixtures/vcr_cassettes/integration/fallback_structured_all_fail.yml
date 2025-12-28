@@ -29,7 +29,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:07 GMT
+      - Sun, 28 Dec 2025 19:20:40 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -37,7 +37,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 9b4bca9bdbaa22fa-ORD
+      - 9b536a934f5eead0-ORD
       Access-Control-Allow-Origin:
       - "*"
       Vary:
@@ -55,5 +55,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"error":{"message":"invalid/nonexistent-model-1 is not a valid model
         ID","code":400},"user_id":"user_2oXVHhLSnOmuZVA2xOTqDfGHofS"}'
-  recorded_at: Sat, 27 Dec 2025 21:08:07 GMT
+  recorded_at: Sun, 28 Dec 2025 19:20:40 GMT
 recorded_with: VCR 6.4.0

@@ -10,7 +10,7 @@ RSpec.describe "Prediction Parameter", :vcr do
       [{ role: "user", content: "What is the capital of France?" }],
       model: "openai/gpt-4o-mini",
       prediction: { type: "content", content: "The capital of France is Paris." },
-      extras: { max_tokens: 50 }
+      max_tokens: 50
     )
 
     expect(response).to be_a(OpenRouter::Response)

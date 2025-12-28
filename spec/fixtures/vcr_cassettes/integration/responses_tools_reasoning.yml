@@ -9,7 +9,7 @@ http_interactions:
         Can you help?","reasoning":{"effort":"medium"},"tools":[{"type":"function","name":"calculator","description":"Perform
         basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
         add, subtract, multiply, divide"},"a":{"type":"number","description":"First
-        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}],"tool_choice":"auto","max_output_tokens":300}'
+        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}],"tool_choice":"auto"}'
     headers:
       Authorization:
       - Bearer <OPENROUTER_API_KEY>
@@ -31,7 +31,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:42 GMT
+      - Sun, 28 Dec 2025 19:21:07 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -52,12 +52,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb6f9debeaec-ORD
+      - 9b536b3ccc8ffa17-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n{\"object\":\"response\",\"id\":\"gen-1766869721-2so7k9rb7lzFQSbCsfi1\",\"created_at\":1766869721,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_mb36cmB6EYoOYDj2OUJxcYdP\",\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"multiply\\\",\\\"a\\\":200,\\\"b\\\":0.15}\",\"id\":\"call_mb36cmB6EYoOYDj2OUJxcYdP\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"calculator\",\"description\":\"Perform
+      string: "\n         \n{\"object\":\"response\",\"id\":\"gen-1766949667-O5iXlHYzUFZjQqxdyoun\",\"created_at\":1766949667,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"type\":\"function_call\",\"call_id\":\"call_niXmWY22iaGfrrJHv49Fydxf\",\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"multiply\\\",\\\"a\\\":200,\\\"b\\\":0.15}\",\"id\":\"call_niXmWY22iaGfrrJHv49Fydxf\"}],\"incomplete_details\":null,\"tools\":[{\"type\":\"function\",\"name\":\"calculator\",\"description\":\"Perform
         basic arithmetic operations\",\"parameters\":{\"type\":\"object\",\"properties\":{\"operation\":{\"type\":\"string\",\"description\":\"Operation:
         add, subtract, multiply, divide\"},\"a\":{\"type\":\"number\",\"description\":\"First
-        number\"},\"b\":{\"type\":\"number\",\"description\":\"Second number\"}},\"required\":[\"operation\",\"a\",\"b\"]}}],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":300,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":{\"effort\":\"medium\"},\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":81,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":24,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":105,\"cost\":0.00002655,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00001215,\"upstream_inference_output_cost\":0.0000144}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:42 GMT
+        number\"},\"b\":{\"type\":\"number\",\"description\":\"Second number\"}},\"required\":[\"operation\",\"a\",\"b\"]}}],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":null,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":{\"effort\":\"medium\"},\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":81,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":24,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":105,\"cost\":0.00002655,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00001215,\"upstream_inference_output_cost\":0.0000144}}}"
+  recorded_at: Sun, 28 Dec 2025 19:21:08 GMT
 recorded_with: VCR 6.4.0

@@ -27,7 +27,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:07:39 GMT
+      - Sun, 28 Dec 2025 19:20:15 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -35,7 +35,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 9b4bc9eb2ad15577-YYZ
+      - 9b5369f89ad9ead2-ORD
       Access-Control-Allow-Origin:
       - "*"
       Vary:
@@ -52,5 +52,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"error":{"message":"No cookie auth credentials found","code":401}}'
-  recorded_at: Sat, 27 Dec 2025 21:07:39 GMT
+  recorded_at: Sun, 28 Dec 2025 19:20:15 GMT
 recorded_with: VCR 6.4.0

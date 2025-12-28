@@ -17,6 +17,40 @@ response = client.responses(
 puts response.content  # => "Paris"
 ```
 
+## Using CompletionOptions (v2.0+)
+
+For cleaner, reusable configurations, use the `CompletionOptions` class:
+
+```ruby
+# Create reusable reasoning configuration
+reasoning_opts = OpenRouter::CompletionOptions.new(
+  model: "openai/o4-mini",
+  reasoning: { effort: "high" },
+  max_tokens: 1000
+)
+
+# Use with responses
+response = client.responses("Explain quantum entanglement", reasoning_opts)
+
+# Override specific values per-request
+response = client.responses(
+  "What is 15% of 80?",
+  reasoning_opts,
+  reasoning: { effort: "low" }  # Simpler problem, less reasoning needed
+)
+
+# Create tool-enabled responses configuration
+tool_opts = OpenRouter::CompletionOptions.new(
+  model: "openai/gpt-4o-mini",
+  tools: [weather_tool, calculator_tool],
+  tool_choice: "auto"
+)
+
+response = client.responses("What's the weather in Tokyo?", tool_opts)
+```
+
+All keyword argument patterns continue to work for backward compatibility.
+
 ## With Reasoning
 
 The Responses API supports reasoning with configurable effort levels:

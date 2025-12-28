@@ -1,407 +1,6 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869206-2aJbmnIclKNWBp2RoOx2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sat, 27 Dec 2025 21:00:08 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - private, no-store
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b4bbee54c6fb648-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869206-2aJbmnIclKNWBp2RoOx2
-        not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:00:08 GMT
-- request:
-    method: post
-    uri: https://openrouter.ai/api/v1/chat/completions
-    body:
-      encoding: UTF-8
-      string: '{"messages":[{"role":"system","content":"You are a helpful math assistant.
-        Always show your work."},{"role":"user","content":"I need to calculate 25
-        + 17"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_MD3rr6Iln1OLKv7Gil8IwoQh","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":17}"}}]},{"role":"tool","tool_call_id":"call_MD3rr6Iln1OLKv7Gil8IwoQh","content":"42"}],"model":"openai/gpt-4o-mini","max_tokens":150,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
-        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
-        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
-        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}]}'
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 27 Dec 2025 21:00:09 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b4bbee879cce1e7-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869208-BSPPBmf0or2EDzrmqYAG\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869208,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The
-        sum of 25 and 17 is 42.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":117,\"completion_tokens\":13,\"total_tokens\":130,\"cost\":0.00002535,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001755,\"upstream_inference_completions_cost\":0.0000078},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:00:09 GMT
-- request:
-    method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869208-BSPPBmf0or2EDzrmqYAG
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 27 Dec 2025 21:00:09 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - private, no-store
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b4bbeef6be81279-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"created_at":"2025-12-27T21:00:09.539541+00:00","model":"openai/gpt-4o-mini","app_id":179379,"external_user":null,"streamed":true,"cancelled":false,"latency":503,"moderation_latency":null,"generation_time":172,"tokens_prompt":123,"tokens_completion":12,"native_tokens_prompt":117,"native_tokens_completion":13,"native_tokens_completion_images":null,"native_tokens_reasoning":0,"native_tokens_cached":0,"num_media_prompt":null,"num_input_audio_prompt":null,"num_media_completion":0,"num_search_results":null,"origin":"https://github.com/OlympiaAI/open_router","is_byok":false,"finish_reason":"stop","native_finish_reason":"stop","usage":0.00002535,"api_type":"completions","id":"gen-1766869208-BSPPBmf0or2EDzrmqYAG","upstream_id":"chatcmpl-CrVgOgwo4I7gLRdflboYohc7DyLta","total_cost":0.00002535,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"OpenAI"}}'
-  recorded_at: Sat, 27 Dec 2025 21:00:09 GMT
-- request:
-    method: post
-    uri: https://openrouter.ai/api/v1/chat/completions
-    body:
-      encoding: UTF-8
-      string: '{"messages":[{"role":"system","content":"You are a helpful math assistant.
-        Always show your work."},{"role":"user","content":"I need to calculate 25
-        + 17"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_MD3rr6Iln1OLKv7Gil8IwoQh","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":17}"}}]},{"role":"tool","tool_call_id":"call_MD3rr6Iln1OLKv7Gil8IwoQh","content":"42"},{"role":"assistant","content":"The
-        sum of 25 and 17 is 42."},{"role":"user","content":"Now double that result"}],"model":"openai/gpt-4o-mini","max_tokens":200,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
-        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
-        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
-        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}],"tool_choice":"auto"}'
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 27 Dec 2025 21:00:11 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b4bbef25b61fa1b-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n{\"id\":\"gen-1766869210-41YOhVU8iFNgsY5as6a2\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869210,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_2uejCcPvG2S309kNd29uV8VD\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"multiply\\\",\\\"a\\\":42,\\\"b\\\":2}\"}}]}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":141,\"completion_tokens\":22,\"total_tokens\":163,\"cost\":0.00003435,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00002115,\"upstream_inference_completions_cost\":0.0000132},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:00:11 GMT
-- request:
-    method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869210-41YOhVU8iFNgsY5as6a2
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sat, 27 Dec 2025 21:00:11 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - private, no-store
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b4bbefd2be6cca4-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869210-41YOhVU8iFNgsY5as6a2
-        not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:00:11 GMT
-- request:
-    method: post
-    uri: https://openrouter.ai/api/v1/chat/completions
-    body:
-      encoding: UTF-8
-      string: '{"messages":[{"role":"system","content":"You are a helpful math assistant.
-        Always show your work."},{"role":"user","content":"I need to calculate 25
-        + 17"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_MD3rr6Iln1OLKv7Gil8IwoQh","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":17}"}}]},{"role":"tool","tool_call_id":"call_MD3rr6Iln1OLKv7Gil8IwoQh","content":"42"},{"role":"assistant","content":"The
-        sum of 25 and 17 is 42."},{"role":"user","content":"Now double that result"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_2uejCcPvG2S309kNd29uV8VD","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"multiply\",\"a\":42,\"b\":2}"}}]},{"role":"tool","tool_call_id":"call_2uejCcPvG2S309kNd29uV8VD","content":"84"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
-        basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
-        add, subtract, multiply, divide"},"a":{"type":"number","description":"First
-        number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}]}'
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 27 Dec 2025 21:00:12 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b4bbf000b951236-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869212-PPN1Udows2seagNhreAp\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869212,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Doubling
-        the result gives us 84.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":171,\"completion_tokens\":10,\"total_tokens\":181,\"cost\":0.00003165,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00002565,\"upstream_inference_completions_cost\":0.000006},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:00:12 GMT
-- request:
-    method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869212-PPN1Udows2seagNhreAp
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sat, 27 Dec 2025 21:00:13 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - private, no-store
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b4bbf061a37eb01-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869212-PPN1Udows2seagNhreAp
-        not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:00:13 GMT
-- request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
     body:
@@ -433,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:27 GMT
+      - Sun, 28 Dec 2025 19:22:00 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -454,14 +53,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb11bf3875e4-ORD
+      - 9b536c835852eafd-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869706-sP1Ku46sbgDdVJJyssEv\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869706,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_bhnyeKUpLVxmXsCql7STDejS\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"add\\\",\\\"a\\\":25,\\\"b\\\":17}\"}}]}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":87,\"completion_tokens\":22,\"total_tokens\":109,\"cost\":0.00002625,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001305,\"upstream_inference_completions_cost\":0.0000132},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:27 GMT
+      string: "\n         \n{\"id\":\"gen-1766949719-C2f0T6pTyEZbyXgzM3np\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949719,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_ltBchToOvO694YfZPG3AAiyY\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"add\\\",\\\"a\\\":25,\\\"b\\\":17}\"}}]}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":87,\"completion_tokens\":22,\"total_tokens\":109,\"cost\":0.00002625,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001305,\"upstream_inference_completions_cost\":0.0000132},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:22:00 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869706-sP1Ku46sbgDdVJJyssEv
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949719-C2f0T6pTyEZbyXgzM3np
     body:
       encoding: US-ASCII
       string: ''
@@ -486,7 +85,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:27 GMT
+      - Sun, 28 Dec 2025 19:22:00 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -509,12 +108,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb16fdb711cd-ORD
+      - 9b536c87ee42f5fb-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869706-sP1Ku46sbgDdVJJyssEv
+      string: '{"error":{"message":"Generation gen-1766949719-C2f0T6pTyEZbyXgzM3np
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:27 GMT
+  recorded_at: Sun, 28 Dec 2025 19:22:00 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -522,7 +121,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"system","content":"You are a helpful math assistant.
         Always show your work."},{"role":"user","content":"I need to calculate 25
-        + 17"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_bhnyeKUpLVxmXsCql7STDejS","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":17}"}}]},{"role":"tool","tool_call_id":"call_bhnyeKUpLVxmXsCql7STDejS","content":"42"}],"model":"openai/gpt-4o-mini","max_tokens":150,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+        + 17"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_ltBchToOvO694YfZPG3AAiyY","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":17}"}}]},{"role":"tool","tool_call_id":"call_ltBchToOvO694YfZPG3AAiyY","content":"42"}],"model":"openai/gpt-4o-mini","max_tokens":150,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
         basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
         add, subtract, multiply, divide"},"a":{"type":"number","description":"First
         number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}]}'
@@ -547,7 +146,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:28 GMT
+      - Sun, 28 Dec 2025 19:22:00 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -568,15 +167,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb185bbaa1e0-YYZ
+      - 9b536c89ec28eb5e-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869707-a6GmA622WyFlZWG6k8SV\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869707,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The
+      string: "\n         \n{\"id\":\"gen-1766949720-rtK6TiDLYpT3kArkyaTu\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949720,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"The
         result of \\\\( 25 + 17 \\\\) is \\\\( 42 \\\\).\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":117,\"completion_tokens\":18,\"total_tokens\":135,\"cost\":0.00002835,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001755,\"upstream_inference_completions_cost\":0.0000108},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:28 GMT
+  recorded_at: Sun, 28 Dec 2025 19:22:01 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869707-a6GmA622WyFlZWG6k8SV
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949720-rtK6TiDLYpT3kArkyaTu
     body:
       encoding: US-ASCII
       string: ''
@@ -601,7 +200,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:28 GMT
+      - Sun, 28 Dec 2025 19:22:01 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -624,12 +223,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb1d5f133a53-YYZ
+      - 9b536c8e3a84a2a1-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869707-a6GmA622WyFlZWG6k8SV
+      string: '{"error":{"message":"Generation gen-1766949720-rtK6TiDLYpT3kArkyaTu
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:28 GMT
+  recorded_at: Sun, 28 Dec 2025 19:22:01 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -637,7 +236,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"system","content":"You are a helpful math assistant.
         Always show your work."},{"role":"user","content":"I need to calculate 25
-        + 17"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_bhnyeKUpLVxmXsCql7STDejS","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":17}"}}]},{"role":"tool","tool_call_id":"call_bhnyeKUpLVxmXsCql7STDejS","content":"42"},{"role":"assistant","content":"The
+        + 17"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_ltBchToOvO694YfZPG3AAiyY","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":17}"}}]},{"role":"tool","tool_call_id":"call_ltBchToOvO694YfZPG3AAiyY","content":"42"},{"role":"assistant","content":"The
         result of \\( 25 + 17 \\) is \\( 42 \\)."},{"role":"user","content":"Now double
         that result"}],"model":"openai/gpt-4o-mini","max_tokens":200,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
         basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
@@ -664,7 +263,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:29 GMT
+      - Sun, 28 Dec 2025 19:22:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -685,14 +284,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb1e8a4c10bf-ORD
+      - 9b536c8f89cbc071-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869708-ozjZWMIbwAs3Kc4md1Rl\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869708,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_mVRrUCjgxNo9apJ1iFDwMS6i\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"multiply\\\",\\\"a\\\":42,\\\"b\\\":2}\"}}]}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":146,\"completion_tokens\":22,\"total_tokens\":168,\"cost\":0.0000351,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000219,\"upstream_inference_completions_cost\":0.0000132},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:29 GMT
+      string: "\n         \n{\"id\":\"gen-1766949721-2SwPX3EDDlHGeWccgUQq\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949721,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_7hpvbSTkmHKuiIO7PmNfPrJ6\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"multiply\\\",\\\"a\\\":42,\\\"b\\\":2}\"}}]}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":146,\"completion_tokens\":22,\"total_tokens\":168,\"cost\":0.0000351,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000219,\"upstream_inference_completions_cost\":0.0000132},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:22:02 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869708-ozjZWMIbwAs3Kc4md1Rl
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949721-2SwPX3EDDlHGeWccgUQq
     body:
       encoding: US-ASCII
       string: ''
@@ -717,7 +316,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:29 GMT
+      - Sun, 28 Dec 2025 19:22:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -740,12 +339,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb243b61e80c-ORD
+      - 9b536c94aecd2316-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869708-ozjZWMIbwAs3Kc4md1Rl
+      string: '{"error":{"message":"Generation gen-1766949721-2SwPX3EDDlHGeWccgUQq
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:29 GMT
+  recorded_at: Sun, 28 Dec 2025 19:22:02 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -753,9 +352,9 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"system","content":"You are a helpful math assistant.
         Always show your work."},{"role":"user","content":"I need to calculate 25
-        + 17"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_bhnyeKUpLVxmXsCql7STDejS","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":17}"}}]},{"role":"tool","tool_call_id":"call_bhnyeKUpLVxmXsCql7STDejS","content":"42"},{"role":"assistant","content":"The
+        + 17"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_ltBchToOvO694YfZPG3AAiyY","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"add\",\"a\":25,\"b\":17}"}}]},{"role":"tool","tool_call_id":"call_ltBchToOvO694YfZPG3AAiyY","content":"42"},{"role":"assistant","content":"The
         result of \\( 25 + 17 \\) is \\( 42 \\)."},{"role":"user","content":"Now double
-        that result"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_mVRrUCjgxNo9apJ1iFDwMS6i","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"multiply\",\"a\":42,\"b\":2}"}}]},{"role":"tool","tool_call_id":"call_mVRrUCjgxNo9apJ1iFDwMS6i","content":"84"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
+        that result"},{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_7hpvbSTkmHKuiIO7PmNfPrJ6","type":"function","function":{"name":"calculator","arguments":"{\"operation\":\"multiply\",\"a\":42,\"b\":2}"}}]},{"role":"tool","tool_call_id":"call_7hpvbSTkmHKuiIO7PmNfPrJ6","content":"84"}],"model":"openai/gpt-4o-mini","max_tokens":100,"tools":[{"type":"function","function":{"name":"calculator","description":"Perform
         basic arithmetic operations","parameters":{"type":"object","properties":{"operation":{"type":"string","description":"Operation:
         add, subtract, multiply, divide"},"a":{"type":"number","description":"First
         number"},"b":{"type":"number","description":"Second number"}},"required":["operation","a","b"]}}}]}'
@@ -780,7 +379,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:30 GMT
+      - Sun, 28 Dec 2025 19:22:03 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -801,15 +400,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb255d6045f5-ORD
+      - 9b536c964ae7dcf3-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869709-rDgjMKhfAjLmfCxWgF7f\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869709,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Doubling
-        the result gives \\\\( 2 \\\\times 42 = 84 \\\\).\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":176,\"completion_tokens\":18,\"total_tokens\":194,\"cost\":0.0000372,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000264,\"upstream_inference_completions_cost\":0.0000108},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:30 GMT
+      string: "\n         \n{\"id\":\"gen-1766949722-FjOFjQDOzTugE87hsyAI\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949722,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Doubling
+        the result gives \\\\( 42 \\\\times 2 = 84 \\\\).\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":176,\"completion_tokens\":18,\"total_tokens\":194,\"cost\":0.0000372,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000264,\"upstream_inference_completions_cost\":0.0000108},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:22:03 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869709-rDgjMKhfAjLmfCxWgF7f
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949722-FjOFjQDOzTugE87hsyAI
     body:
       encoding: US-ASCII
       string: ''
@@ -834,7 +433,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:30 GMT
+      - Sun, 28 Dec 2025 19:22:03 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -857,10 +456,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcb2aaf6de938-ORD
+      - 9b536c9abef91064-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869709-rDgjMKhfAjLmfCxWgF7f
+      string: '{"error":{"message":"Generation gen-1766949722-FjOFjQDOzTugE87hsyAI
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:30 GMT
+  recorded_at: Sun, 28 Dec 2025 19:22:03 GMT
 recorded_with: VCR 6.4.0

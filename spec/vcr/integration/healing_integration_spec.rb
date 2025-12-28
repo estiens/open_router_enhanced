@@ -29,7 +29,7 @@ RSpec.describe "JSON Healing Pipeline Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: strict_schema,
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -53,7 +53,7 @@ RSpec.describe "JSON Healing Pipeline Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: strict_schema,
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       structured = response.structured_output
@@ -93,7 +93,7 @@ RSpec.describe "JSON Healing Pipeline Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: complex_schema,
-        extras: { max_tokens: 300 }
+        max_tokens: 300
       )
 
       structured = response.structured_output
@@ -123,7 +123,7 @@ RSpec.describe "JSON Healing Pipeline Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: strict_schema,
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       # The callback may or may not be triggered depending on whether healing was needed
@@ -155,7 +155,7 @@ RSpec.describe "JSON Healing Pipeline Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: array_schema,
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       structured = response.structured_output
@@ -179,7 +179,7 @@ RSpec.describe "JSON Healing Pipeline Integration", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: strict_schema,
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       # Should still work but without healing plugin
@@ -200,7 +200,7 @@ RSpec.describe "JSON Healing Pipeline Integration", :vcr do
         model: "openai/gpt-4o-mini",
         response_format: strict_schema,
         force_structured_output: true,
-        extras: { max_tokens: 300 }
+        max_tokens: 300
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -227,7 +227,7 @@ RSpec.describe "JSON Healing Pipeline Integration", :vcr do
         messages,
         model: models,
         response_format: strict_schema,
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       structured = response.structured_output

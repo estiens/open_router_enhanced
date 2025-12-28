@@ -2,7 +2,63 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869347-QzsyzjOeNJG4Y4c0K12Z
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949204-c6YGeCyr69XwTNiGx2Pk
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:13:28 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53600aefb202b4-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949204-c6YGeCyr69XwTNiGx2Pk
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:13:28 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949405-eM2GVVzwPcsssOoDDBnB
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +83,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:02:38 GMT
+      - Sun, 28 Dec 2025 19:16:51 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,11 +106,125 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bc28f6d1a89ee-ORD
+      - 9b5364fa8fba8052-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"created_at":"2025-12-27T21:02:37.87881+00:00","model":"allenai/olmo-3.1-32b-think-20251215:free","app_id":179379,"external_user":null,"streamed":true,"cancelled":false,"latency":1382,"moderation_latency":null,"generation_time":8228,"tokens_prompt":5,"tokens_completion":150,"native_tokens_prompt":56,"native_tokens_completion":150,"native_tokens_completion_images":null,"native_tokens_reasoning":183,"native_tokens_cached":48,"num_media_prompt":null,"num_input_audio_prompt":null,"num_media_completion":0,"num_search_results":null,"origin":"https://github.com/OlympiaAI/open_router","is_byok":false,"finish_reason":"length","native_finish_reason":"length","usage":0,"api_type":"completions","id":"gen-1766869347-QzsyzjOeNJG4Y4c0K12Z","upstream_id":"chatcmpl-9a77bb9f06aeb42b","total_cost":0,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"Parasail"}}'
-  recorded_at: Sat, 27 Dec 2025 21:02:38 GMT
+      string: '{"data":{"created_at":"2025-12-28T19:16:51.117385+00:00","model":"allenai/olmo-3.1-32b-think-20251215:free","app_id":179379,"external_user":null,"streamed":true,"cancelled":false,"latency":604,"moderation_latency":null,"generation_time":4837,"tokens_prompt":5,"tokens_completion":150,"native_tokens_prompt":56,"native_tokens_completion":150,"native_tokens_completion_images":null,"native_tokens_reasoning":169,"native_tokens_cached":48,"num_media_prompt":null,"num_input_audio_prompt":null,"num_media_completion":0,"num_search_results":null,"origin":"https://github.com/OlympiaAI/open_router","is_byok":false,"finish_reason":"length","native_finish_reason":"length","usage":0,"api_type":"completions","id":"gen-1766949405-eM2GVVzwPcsssOoDDBnB","upstream_id":"chatcmpl-ab222c2815b9a4ee","total_cost":0,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"Parasail"}}'
+  recorded_at: Sun, 28 Dec 2025 19:16:51 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Say hello in JSON format"}],"model":"allenai/olmo-3.1-32b-think:free","max_tokens":150,"response_format":{"type":"json_schema","json_schema":{"name":"greeting","strict":true,"schema":{"type":"object","properties":{"message":{"type":"string","description":"A
+        greeting message"}},"required":["message"],"additionalProperties":false}}},"plugins":[{"id":"response-healing"}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:07 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53684b099da3d4-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n{\"id\":\"gen-1766949546-nl31m896L3jAFPn1PkZY\",\"provider\":\"Parasail\",\"model\":\"allenai/olmo-3.1-32b-think:free\",\"object\":\"chat.completion\",\"created\":1766949546,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":\"
+        key\",\"reasoning_details\":[{\"format\":\"unknown\",\"index\":0,\"type\":\"reasoning.text\",\"text\":\"
+        key\"}]}}],\"usage\":{\"prompt_tokens\":56,\"completion_tokens\":150,\"total_tokens\":206,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":48,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":174,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:19:12 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949546-nl31m896L3jAFPn1PkZY
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:13 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5368711dbbb0fc-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949546-nl31m896L3jAFPn1PkZY
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:19:13 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -83,7 +253,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:09:01 GMT
+      - Sun, 28 Dec 2025 19:21:33 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -104,33 +274,35 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcbec389cdd6d-ORD
+      - 9b536be01b95eabf-ORD
     body:
       encoding: ASCII-8BIT
       string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
-        \        \n\n         \n\n         \n\n         \n{\"id\":\"gen-1766869741-Jhm7vnDGTAgT96oBwl0Z\",\"provider\":\"Parasail\",\"model\":\"allenai/olmo-3.1-32b-think:free\",\"object\":\"chat.completion\",\"created\":1766869741,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":\"Okay,
+        \        \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1766949693-J9Le9zoQQaYHAyH5M7Qi\",\"provider\":\"Parasail\",\"model\":\"allenai/olmo-3.1-32b-think:free\",\"object\":\"chat.completion\",\"created\":1766949693,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":\"Okay,
         the user asked me to say hello in JSON format. Let me think about how to approach
-        this.\\n\\nFirst, I need to recall the user's instructions. The user mentioned
-        that I'm Olmo, an AI assistant from Ai2, with a cutoff date of December 2024,
-        and my model weights are on Hugging Face. But the main task here is to respond
-        with a hello message in JSON.\\n\\nThe user's request is straightforward,
-        but I should make sure the JSON is correctly formatted. They might be testing
-        if I can generate structured data. Let me check the example response they
-        provided. Wait, actually, in the conversation history, the assistant's response
-        is a JSON object with a \\\"message\\\" key. So the expected output\",\"reasoning_details\":[{\"format\":\"unknown\",\"index\":0,\"type\":\"reasoning.text\",\"text\":\"Okay,
+        this.\\n\\nFirst, I need to recall the instructions. The user wants the response
+        in JSON. The example given in the system prompt shows a specific structure
+        with \\\"response\\\" and \\\"explanation\\\". But wait, the user's query
+        is just to say hello, so maybe they just want a simple JSON with a greeting.
+        However, the system prompt says that when I generate responses, I should include
+        both the response and an explanation. Let me check the exact system message
+        again.\\n\\nThe system message says: \\\"When I generate responses, I will
+        always follow this JSON format. The JSON will include a 'response' field with
+        my answer, and an '\",\"reasoning_details\":[{\"format\":\"unknown\",\"index\":0,\"type\":\"reasoning.text\",\"text\":\"Okay,
         the user asked me to say hello in JSON format. Let me think about how to approach
-        this.\\n\\nFirst, I need to recall the user's instructions. The user mentioned
-        that I'm Olmo, an AI assistant from Ai2, with a cutoff date of December 2024,
-        and my model weights are on Hugging Face. But the main task here is to respond
-        with a hello message in JSON.\\n\\nThe user's request is straightforward,
-        but I should make sure the JSON is correctly formatted. They might be testing
-        if I can generate structured data. Let me check the example response they
-        provided. Wait, actually, in the conversation history, the assistant's response
-        is a JSON object with a \\\"message\\\" key. So the expected output\"}]}}],\"usage\":{\"prompt_tokens\":56,\"completion_tokens\":150,\"total_tokens\":206,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":48,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":174,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:09:05 GMT
+        this.\\n\\nFirst, I need to recall the instructions. The user wants the response
+        in JSON. The example given in the system prompt shows a specific structure
+        with \\\"response\\\" and \\\"explanation\\\". But wait, the user's query
+        is just to say hello, so maybe they just want a simple JSON with a greeting.
+        However, the system prompt says that when I generate responses, I should include
+        both the response and an explanation. Let me check the exact system message
+        again.\\n\\nThe system message says: \\\"When I generate responses, I will
+        always follow this JSON format. The JSON will include a 'response' field with
+        my answer, and an '\"}]}}],\"usage\":{\"prompt_tokens\":56,\"completion_tokens\":150,\"total_tokens\":206,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":48,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":179,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:21:38 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869741-Jhm7vnDGTAgT96oBwl0Z
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949693-J9Le9zoQQaYHAyH5M7Qi
     body:
       encoding: US-ASCII
       string: ''
@@ -155,7 +327,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:09:05 GMT
+      - Sun, 28 Dec 2025 19:21:38 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -178,10 +350,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcc067993cca4-ORD
+      - 9b536bfd5b59eade-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869741-Jhm7vnDGTAgT96oBwl0Z
+      string: '{"error":{"message":"Generation gen-1766949693-J9Le9zoQQaYHAyH5M7Qi
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:09:05 GMT
+  recorded_at: Sun, 28 Dec 2025 19:21:38 GMT
 recorded_with: VCR 6.4.0

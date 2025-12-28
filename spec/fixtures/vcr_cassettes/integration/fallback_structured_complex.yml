@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766868636-Dn9clLM512DCVVlIGCnU
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949142-0Huyf8TrQwMIDzkGPG7S
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 20:50:39 GMT
+      - Sun, 28 Dec 2025 19:12:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,12 +50,124 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bb102cb00eaf8-ORD
+      - 9b535e7868d2e180-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766868636-Dn9clLM512DCVVlIGCnU
+      string: '{"error":{"message":"Generation gen-1766949142-0Huyf8TrQwMIDzkGPG7S
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 20:50:39 GMT
+  recorded_at: Sun, 28 Dec 2025 19:12:24 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949346-XtpKTv7XZuRxcrtG8a1j
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:15:49 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53637cad650249-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949346-XtpKTv7XZuRxcrtG8a1j
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:15:49 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949553-Lmttp2fBSpyQ9STnv8fW
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:16 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5368891beb61c7-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949553-Lmttp2fBSpyQ9STnv8fW
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:19:16 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -89,7 +201,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:07:57 GMT
+      - Sun, 28 Dec 2025 19:20:32 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -110,26 +222,25 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bca570d9bd7f1-ORD
+      - 9b536a604ae9eac6-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
-        \        \n\n         \n\n         \n{\"id\":\"gen-1766869676-QVrfN8uyqIXylApfJve5\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869676,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"summary\\\":\\\"Ruby
-        is a dynamic, open-source programming language known for its simplicity and
-        productivity. It supports multiple programming paradigms and is particularly
-        popular for web development through frameworks like Ruby on Rails. Ruby emphasizes
-        human-readable code and has an active community contributing to its ecosystem.\\\",\\\"key_points\\\":[\\\"Ruby
-        features a flexible syntax that prioritizes simplicity and productivity, making
-        it an accessible choice for beginners and seasoned developers alike.\\\",\\\"The
-        Ruby on Rails framework has significantly influenced web development, enabling
-        rapid application development and simplifying common tasks.\\\",\\\"Ruby supports
-        multiple programming paradigms, including procedural, object-oriented, and
-        functional programming, allowing developers to choose the best approach for
-        their projects.\\\"],\\\"metadata\\\":{\\\"topic\\\":\\\"Ruby programming\\\",\\\"word_count\\\":115}}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":134,\"completion_tokens\":142,\"total_tokens\":276,\"cost\":0.0001053,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000201,\"upstream_inference_completions_cost\":0.0000852},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:00 GMT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1766949632-rwmTGOg0Ew1Dj6txFbEX\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949632,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"summary\\\":\\\"Ruby
+        is a dynamic, object-oriented programming language known for its simplicity
+        and productivity. It is widely used for web development, particularly with
+        the Ruby on Rails framework, emphasizing convention over configuration to
+        facilitate rapid application development.\\\",\\\"key_points\\\":[\\\"Ruby
+        is known for its elegant syntax that is easy to read and write, making it
+        suitable for beginners and experienced developers alike.\\\",\\\"The Ruby
+        on Rails framework revolutionized web development by promoting rapid prototyping
+        and development, using conventions to streamline the process.\\\",\\\"Ruby's
+        strong community support and extensive libraries (gems) enhance productivity
+        and provide tools for various applications beyond web development.\\\"],\\\"metadata\\\":{\\\"topic\\\":\\\"Ruby
+        programming\\\",\\\"word_count\\\":159}}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":134,\"completion_tokens\":134,\"total_tokens\":268,\"cost\":0.0001005,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000201,\"upstream_inference_completions_cost\":0.0000804},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:20:34 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869676-QVrfN8uyqIXylApfJve5
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949632-rwmTGOg0Ew1Dj6txFbEX
     body:
       encoding: US-ASCII
       string: ''
@@ -154,7 +265,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:00 GMT
+      - Sun, 28 Dec 2025 19:20:34 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -177,10 +288,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bca6e4d246af6-ORD
+      - 9b536a6f78f741cb-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869676-QVrfN8uyqIXylApfJve5
+      string: '{"error":{"message":"Generation gen-1766949632-rwmTGOg0Ew1Dj6txFbEX
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:00 GMT
+  recorded_at: Sun, 28 Dec 2025 19:20:34 GMT
 recorded_with: VCR 6.4.0

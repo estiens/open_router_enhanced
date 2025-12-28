@@ -31,7 +31,8 @@ RSpec.describe "Simple Healing Test", :vcr do
         messages,
         model: "openai/gpt-4o-2024-08-06", # Model that supports structured outputs
         response_format: basic_schema,
-        extras: { max_tokens: 200, temperature: 0.3 }
+        max_tokens: 200,
+        temperature: 0.3
       )
 
       structured = response.structured_output(auto_heal: true)
@@ -57,7 +58,7 @@ RSpec.describe "Simple Healing Test", :vcr do
       response = client.complete(
         messages,
         model: "openai/gpt-4o-mini",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response.content).to be_a(String)

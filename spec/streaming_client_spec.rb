@@ -210,10 +210,12 @@ RSpec.describe OpenRouter::StreamingClient do
     end
 
     it "passes model parameter correctly" do
-      expect(client).to receive(:complete).with(
-        [{ role: "user", content: "Hello" }],
-        hash_including(model: "openai/gpt-4o-mini")
-      )
+      expect(client).to receive(:complete) do |messages, options, **kwargs|
+        expect(messages).to eq([{ role: "user", content: "Hello" }])
+        expect(options).to be_a(OpenRouter::CompletionOptions)
+        expect(options.model).to eq("openai/gpt-4o-mini")
+        expect(kwargs[:stream]).to be_a(Proc)
+      end
 
       client.stream(
         [{ role: "user", content: "Hello" }],

@@ -35,6 +35,37 @@ puts user["age"]     # => 30
 puts user["email"]   # => "john@example.com"
 ```
 
+## Using CompletionOptions (v2.0+)
+
+For cleaner, reusable configurations, use the `CompletionOptions` class:
+
+```ruby
+# Create reusable structured output configuration
+struct_opts = OpenRouter::CompletionOptions.new(
+  model: "openai/gpt-4o",
+  response_format: user_schema,
+  max_tokens: 500,
+  temperature: 0.1  # Lower temperature for more deterministic outputs
+)
+
+# Use across multiple calls
+response1 = client.complete(messages1, struct_opts)
+response2 = client.complete(messages2, struct_opts)
+
+# Override for specific requests
+creative_opts = struct_opts.merge(temperature: 0.8)
+response3 = client.complete(messages3, creative_opts)
+
+# Control forced structured output behavior
+opts_with_force = OpenRouter::CompletionOptions.new(
+  model: "some-model",
+  response_format: schema,
+  force_structured_output: true  # Override auto-detection
+)
+```
+
+All keyword argument patterns continue to work for backward compatibility.
+
 ## Key Concepts: JSON Content vs Structured Outputs
 
 **Important: These are fundamentally different features.**

@@ -16,7 +16,7 @@ RSpec.describe "OpenRouter Backward Compatibility", :vcr do
       response = client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response).to respond_to(:dig)
@@ -28,7 +28,7 @@ RSpec.describe "OpenRouter Backward Compatibility", :vcr do
       response = client.complete(
         [{ role: "user", content: "Hash access test" }],
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 30 }
+        max_tokens: 30
       )
 
       expect(response["id"]).to be_a(String)
@@ -43,11 +43,9 @@ RSpec.describe "OpenRouter Backward Compatibility", :vcr do
       response = client.complete(
         [{ role: "user", content: "Parameter compatibility test" }],
         model: "openai/gpt-3.5-turbo",
-        extras: {
-          max_tokens: 40,
-          temperature: 0.7,
-          top_p: 0.9
-        }
+        max_tokens: 40,
+        temperature: 0.7,
+        top_p: 0.9
       )
 
       expect(response).to be_a(OpenRouter::Response)

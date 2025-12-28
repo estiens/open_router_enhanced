@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"What is the capital of France?
-        One word answer."}],"model":"nvidia/nemotron-nano-12b-v2-vl:free","max_tokens":50}'
+        One word answer."}],"model":"qwen/qwen3-4b:free","max_tokens":50}'
     headers:
       Authorization:
       - Bearer <OPENROUTER_API_KEY>
@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:14:29 GMT
+      - Sun, 28 Dec 2025 19:13:19 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -49,20 +49,20 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bd3e74e3d55fa-ORD
+      - 9b535fcf89b6000f-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n{\"id\":\"gen-1766870068-twaj6JOf1LIQt3U35Ogx\",\"provider\":\"Nvidia\",\"model\":\"nvidia/nemotron-nano-12b-v2-vl:free\",\"object\":\"chat.completion\",\"created\":1766870068,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":\"Okay,
-        so the user is asking for the capital of France, and they want a one-word
-        answer. Let me start by recalling what I know about France's capital. I remember
-        that France is a country in Europe, and its capital is a\",\"reasoning_details\":[{\"format\":\"unknown\",\"index\":0,\"type\":\"reasoning.text\",\"text\":\"Okay,
-        so the user is asking for the capital of France, and they want a one-word
-        answer. Let me start by recalling what I know about France's capital. I remember
-        that France is a country in Europe, and its capital is a\"}]}}],\"usage\":{\"prompt_tokens\":23,\"completion_tokens\":50,\"total_tokens\":73,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":55,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:14:29 GMT
+      string: "\n         \n{\"id\":\"gen-1766949199-DUIjUCHoSNmpWMeXpJ9v\",\"provider\":\"Venice\",\"model\":\"qwen/qwen3-4b:free\",\"object\":\"chat.completion\",\"created\":1766949199,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":\"<think>\\nOkay,
+        the user is asking for the capital of France in a one-word answer. Let me
+        think. France is a country in Europe. The capital is usually the main city
+        that serves as the political, economic, and cultural center. From\",\"reasoning_details\":[{\"format\":null,\"index\":0,\"type\":\"reasoning.text\",\"text\":\"<think>\\nOkay,
+        the user is asking for the capital of France in a one-word answer. Let me
+        think. France is a country in Europe. The capital is usually the main city
+        that serves as the political, economic, and cultural center. From\"}]}}],\"usage\":{\"prompt_tokens\":732,\"completion_tokens\":50,\"total_tokens\":782,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":58,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:13:19 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766870068-twaj6JOf1LIQt3U35Ogx
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949199-DUIjUCHoSNmpWMeXpJ9v
     body:
       encoding: US-ASCII
       string: ''
@@ -87,7 +87,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:14:29 GMT
+      - Sun, 28 Dec 2025 19:13:20 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -110,10 +110,291 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bd3ee6cf22191-ORD
+      - 9b535fd3abbbf7fc-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766870068-twaj6JOf1LIQt3U35Ogx
+      string: '{"error":{"message":"Generation gen-1766949199-DUIjUCHoSNmpWMeXpJ9v
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:14:29 GMT
+  recorded_at: Sun, 28 Dec 2025 19:13:20 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949400-HDNH7rs2Ao294gv6PiVg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:16:40 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5364bb386ce120-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949400-HDNH7rs2Ao294gv6PiVg
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:16:40 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"What is the capital of France?
+        One word answer."}],"model":"qwen/qwen3-coder:free","max_tokens":50}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b536825fc43eadf-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n{\"id\":\"gen-1766949540-jktARZoFADmKtqIWScnO\",\"provider\":\"Venice\",\"model\":\"qwen/qwen3-coder:free\",\"object\":\"chat.completion\",\"created\":1766949540,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Paris\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":703,\"completion_tokens\":1,\"total_tokens\":704,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:19:01 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949540-jktARZoFADmKtqIWScnO
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53682c0a4c47a1-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949540-jktARZoFADmKtqIWScnO
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:19:01 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"What is the capital of France?
+        One word answer."}],"model":"z-ai/glm-4.5-air:free","max_tokens":50}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:21:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 9b536ba96dacb0fc-ORD
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: '{"error":{"message":"Provider returned error","code":400,"metadata":{"raw":"{\"code\":400,\"msg\":\"not
+        found\"}","provider_name":"AtlasCloud"}},"user_id":"user_2oXVHhLSnOmuZVA2xOTqDfGHofS"}'
+  recorded_at: Sun, 28 Dec 2025 19:21:25 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"What is the capital of France?
+        One word answer."}],"model":"nvidia/nemotron-nano-12b-v2-vl:free","max_tokens":50}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:21:27 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b536bb63b13aa6d-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n{\"id\":\"gen-1766949686-QhqEZqXf5kCk94NFGjSR\",\"provider\":\"Nvidia\",\"model\":\"nvidia/nemotron-nano-12b-v2-vl:free\",\"object\":\"chat.completion\",\"created\":1766949686,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":\"Okay,
+        so the user is asking, \\\"What is the capital of France? One word answer.\\\"
+        Let me think. I know France is a country in Europe. The capital cities are
+        usually the most well-known cities, but sometimes people get confused between\",\"reasoning_details\":[{\"format\":\"unknown\",\"index\":0,\"type\":\"reasoning.text\",\"text\":\"Okay,
+        so the user is asking, \\\"What is the capital of France? One word answer.\\\"
+        Let me think. I know France is a country in Europe. The capital cities are
+        usually the most well-known cities, but sometimes people get confused between\"}]}}],\"usage\":{\"prompt_tokens\":23,\"completion_tokens\":50,\"total_tokens\":73,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":58,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:21:27 GMT
 recorded_with: VCR 6.4.0

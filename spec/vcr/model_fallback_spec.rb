@@ -22,7 +22,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
       response = client.complete(
         simple_messages,
         model: models,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -54,7 +54,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
       response = client.complete(
         simple_messages,
         model: models,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response.content).to be_a(String)
@@ -77,7 +77,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
         simple_messages,
         model: models,
         providers: ["openai"],
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response.content).to be_a(String)
@@ -111,7 +111,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
         model: models,
         tools: [simple_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -143,7 +143,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
         simple_messages,
         model: models,
         response_format: simple_schema,
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response.content).to be_a(String)
@@ -165,11 +165,9 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
       response = client.complete(
         simple_messages,
         model: models,
-        extras: {
-          max_tokens: 20,
-          temperature: 0.7,
-          top_p: 0.9
-        }
+        max_tokens: 20,
+        temperature: 0.7,
+        top_p: 0.9
       )
 
       expect(response.content).to be_a(String)
@@ -189,7 +187,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
       response = client.complete(
         simple_messages,
         model: models,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response.content).to be_a(String)
@@ -221,7 +219,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
         client.complete(
           simple_messages,
           model: models,
-          extras: { max_tokens: 50 }
+          max_tokens: 50
         )
       end.to raise_error(OpenRouter::ServerError) do |error|
         expect(error.message.downcase).to include("not a valid model")
@@ -240,7 +238,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
       first_response = client.complete(
         [{ role: "user", content: "My name is Alice. Remember this." }],
         model: models,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(first_response.content).to be_a(String)
@@ -255,7 +253,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
       second_response = client.complete(
         conversation,
         model: models,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(second_response.content).to be_a(String)
@@ -274,7 +272,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
       response = client.complete(
         simple_messages,
         model: models,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       # All standard response fields should be present
@@ -308,7 +306,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
       response = client.complete(
         simple_messages,
         model: models,
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       end_time = Time.now
@@ -333,7 +331,7 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
       response = client.complete(
         simple_messages,
         model: models,
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       # The route should be set to "fallback" internally when using model arrays

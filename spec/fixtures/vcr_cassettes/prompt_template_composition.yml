@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1759621897-fiC7CI4gAsbTKzTkpAob
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949254-A9Etjd5HbxEG0GJgbSF3
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 04 Oct 2025 23:51:38 GMT
+      - Sun, 28 Dec 2025 19:14:15 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,6 +36,8 @@ http_interactions:
       - keep-alive
       Access-Control-Allow-Origin:
       - "*"
+      Cache-Control:
+      - private, no-store
       Vary:
       - Accept-Encoding
       Permissions-Policy:
@@ -48,12 +50,68 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9898969fe92dacf6-MSP
+      - 9b53612d9dfff4e8-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1759621897-fiC7CI4gAsbTKzTkpAob
+      string: '{"error":{"message":"Generation gen-1766949254-A9Etjd5HbxEG0GJgbSF3
         not found","code":404}}'
-  recorded_at: Sat, 04 Oct 2025 23:51:38 GMT
+  recorded_at: Sun, 28 Dec 2025 19:14:15 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949459-VbyIjAiSFA1V7bLkOTCE
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:17:41 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b536633fdea10b7-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949459-VbyIjAiSFA1V7bLkOTCE
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:17:41 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -83,7 +141,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:09:55 GMT
+      - Sun, 28 Dec 2025 19:22:25 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -104,21 +162,22 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcd3b69fa22ed-ORD
+      - 9b536d2048e57b1b-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869795-i4KZYcqDWnUnUtigBqo2\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-3.5-turbo\",\"object\":\"chat.completion\",\"created\":1766869795,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"This
-        code is a simple print statement that outputs \\\"hello\\\" to the console.
-        There are no obvious security vulnerabilities in this code. \\n\\nIn terms
-        of performance, there is not much to review as it is a very basic operation.
-        However, if this print statement were to be part of a larger codebase that
-        is performance-critical, it would be important to ensure that printing is
-        done efficiently and does not impact the overall performance of the program.\\n\\nOverall,
-        this code snippet is secure and has no performance issues.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":37,\"completion_tokens\":102,\"total_tokens\":139,\"cost\":0.0001715,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000185,\"upstream_inference_completions_cost\":0.000153},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:09:56 GMT
+      string: "\n         \n\n         \n{\"id\":\"gen-1766949744-1wYoIMmQ0RSxMtF0zXjf\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-3.5-turbo\",\"object\":\"chat.completion\",\"created\":1766949744,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"This
+        code is a simple one-liner that prints 'hello' to the console. From a security
+        and performance perspective, there are no apparent issues with this code snippet.
+        \\n\\nHowever, in a more complex codebase, it is good practice to ensure that
+        any user input that is passed to functions such as `print()` is properly sanitized
+        to prevent security vulnerabilities like injection attacks.\\n\\nIn terms
+        of performance, printing a static string like 'hello' is very efficient and
+        should not cause any performance issues. \\n\\nOverall, this code snippet
+        is safe and efficient.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":37,\"completion_tokens\":110,\"total_tokens\":147,\"cost\":0.0001835,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.0000185,\"upstream_inference_completions_cost\":0.000165},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:22:25 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869795-i4KZYcqDWnUnUtigBqo2
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949744-1wYoIMmQ0RSxMtF0zXjf
     body:
       encoding: US-ASCII
       string: ''
@@ -143,7 +202,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:09:56 GMT
+      - Sun, 28 Dec 2025 19:22:26 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -166,10 +225,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcd432fef6058-ORD
+      - 9b536d27ae8972eb-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869795-i4KZYcqDWnUnUtigBqo2
+      string: '{"error":{"message":"Generation gen-1766949744-1wYoIMmQ0RSxMtF0zXjf
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:09:56 GMT
+  recorded_at: Sun, 28 Dec 2025 19:22:26 GMT
 recorded_with: VCR 6.4.0

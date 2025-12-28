@@ -54,7 +54,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: simple_schema,
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -82,7 +82,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
         model: "openai/gpt-4o-mini",
         response_format: complex_schema,
         force_structured_output: true, # Force extraction mode for complex schemas
-        extras: { max_tokens: 1000 }
+        max_tokens: 1000
       )
 
       structured = response.structured_output
@@ -123,7 +123,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
         model: "openai/gpt-4o-mini",
         response_format: array_schema,
         force_structured_output: true, # Force extraction mode for complex schemas
-        extras: { max_tokens: 1000 }
+        max_tokens: 1000
       )
 
       structured = response.structured_output
@@ -173,7 +173,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format:,
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       structured = response.structured_output
@@ -193,7 +193,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: simple_schema,
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       structured = response.structured_output
@@ -284,7 +284,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: simple_schema,
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       # Test that all normal response fields are present
@@ -324,7 +324,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: non_strict_schema,
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       structured = response.structured_output
@@ -347,7 +347,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: simple_schema,
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       # Test hash with Schema object as response_format
@@ -355,7 +355,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: { type: "json_schema", json_schema: simple_schema },
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       # Both should work and return structured output
@@ -375,7 +375,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
         messages,
         model: "openai/gpt-4o-mini",
         response_format: simple_schema,
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response_gpt.structured_output).to be_a(Hash)
@@ -389,7 +389,7 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
           messages,
           model: "anthropic/claude-3-haiku",
           response_format: simple_schema,
-          extras: { max_tokens: 500 }
+          max_tokens: 500
         )
 
         expect(response_claude.structured_output).to be_a(Hash) if response_claude.structured_output

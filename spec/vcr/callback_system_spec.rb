@@ -22,7 +22,7 @@ RSpec.describe "OpenRouter Callback System", :vcr do
       response = client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       expect(callback_data).to be_a(Hash)
@@ -42,7 +42,7 @@ RSpec.describe "OpenRouter Callback System", :vcr do
       result = client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       expect(callback_data).to be_a(OpenRouter::Response)
@@ -74,7 +74,7 @@ RSpec.describe "OpenRouter Callback System", :vcr do
         [{ role: "user", content: "What is 5 + 3?" }],
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       if response.has_tool_calls?
@@ -117,7 +117,7 @@ RSpec.describe "OpenRouter Callback System", :vcr do
       client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       expect(callback_results).to eq([
@@ -140,7 +140,7 @@ RSpec.describe "OpenRouter Callback System", :vcr do
       client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       expect(execution_order).to eq(%i[first second])
@@ -158,10 +158,8 @@ RSpec.describe "OpenRouter Callback System", :vcr do
       client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: {
-          max_tokens: 30,
-          temperature: 0.5
-        }
+        max_tokens: 30,
+        temperature: 0.5
       )
 
       expect(callback_data).to include(
@@ -182,7 +180,7 @@ RSpec.describe "OpenRouter Callback System", :vcr do
       client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       expect(callback_data).to be_a(OpenRouter::Response)
@@ -208,7 +206,7 @@ RSpec.describe "OpenRouter Callback System", :vcr do
       client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 20 }
+        max_tokens: 20
       )
 
       expect(callback_data).to be_empty

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869070-PrAbBiHe0TrQadQzSsnO
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949195-IA2XB7n4K8Lw7r5GbQdL
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 20:57:52 GMT
+      - Sun, 28 Dec 2025 19:13:17 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,12 +50,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bbb974ff372e5-ORD
+      - 9b535fc0ed597dd6-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869070-PrAbBiHe0TrQadQzSsnO
+      string: '{"error":{"message":"Generation gen-1766949195-IA2XB7n4K8Lw7r5GbQdL
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 20:57:52 GMT
+  recorded_at: Sun, 28 Dec 2025 19:13:17 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -83,7 +83,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:56 GMT
+      - Sun, 28 Dec 2025 19:19:00 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -104,15 +104,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcbc78dc610e4-ORD
+      - 9b53681efa4913d1-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n{\"id\":\"gen-1766869735-sugp6AqxJciGAbPRIQu8\",\"provider\":\"Xiaomi\",\"model\":\"xiaomi/mimo-v2-flash:free\",\"object\":\"chat.completion\",\"created\":1766869735,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Hello!
-        How can I help you today?\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":38,\"completion_tokens\":10,\"total_tokens\":48,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:56 GMT
+      string: "\n         \n{\"id\":\"gen-1766949539-0QeUmDxFpDiBzxkpPyYJ\",\"provider\":\"Xiaomi\",\"model\":\"xiaomi/mimo-v2-flash:free\",\"object\":\"chat.completion\",\"created\":1766949539,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Hi
+        there! How can I help you today?\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":38,\"completion_tokens\":11,\"total_tokens\":49,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:19:00 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869735-sugp6AqxJciGAbPRIQu8
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949539-0QeUmDxFpDiBzxkpPyYJ
     body:
       encoding: US-ASCII
       string: ''
@@ -137,7 +137,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:56 GMT
+      - Sun, 28 Dec 2025 19:19:00 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -160,10 +160,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcbce5c41a641-YYZ
+      - 9b5368240d010010-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869735-sugp6AqxJciGAbPRIQu8
+      string: '{"error":{"message":"Generation gen-1766949539-0QeUmDxFpDiBzxkpPyYJ
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:56 GMT
+  recorded_at: Sun, 28 Dec 2025 19:19:00 GMT
 recorded_with: VCR 6.4.0

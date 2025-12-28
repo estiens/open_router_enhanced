@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869400-W7lDuBv5z58fRtAVu4rV
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949147-SsY6sEnxPbzarQrzWi7g
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:03:21 GMT
+      - Sun, 28 Dec 2025 19:12:28 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,12 +50,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bc39dbd74170f-ORD
+      - 9b535e8ecbe8e26e-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869400-W7lDuBv5z58fRtAVu4rV
+      string: '{"error":{"message":"Generation gen-1766949147-SsY6sEnxPbzarQrzWi7g
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:03:21 GMT
+  recorded_at: Sun, 28 Dec 2025 19:12:28 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -88,7 +88,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:04 GMT
+      - Sun, 28 Dec 2025 19:19:19 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -109,15 +109,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bca7ff9d86162-ORD
+      - 9b5368992fac86d2-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n{\"id\":\"gen-1766869683-DceP0X0K9Sjy2x9EQz5L\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869683,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"topic\\\":\\\"Ruby
+      string: "\n         \n{\"id\":\"gen-1766949559-Fhcc9085XRih4SwEBdVQ\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949559,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"topic\\\":\\\"Ruby
         programming language\\\"}\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":\"fp_8bbc38b4db\",\"usage\":{\"prompt_tokens\":113,\"completion_tokens\":16,\"total_tokens\":129,\"cost\":0.00002655,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001695,\"upstream_inference_completions_cost\":0.0000096},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:08:04 GMT
+  recorded_at: Sun, 28 Dec 2025 19:19:20 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869683-DceP0X0K9Sjy2x9EQz5L
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949559-Fhcc9085XRih4SwEBdVQ
     body:
       encoding: US-ASCII
       string: ''
@@ -142,7 +142,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:08:04 GMT
+      - Sun, 28 Dec 2025 19:19:20 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -165,10 +165,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bca864c02dadb-ORD
+      - 9b53689ecad1e26c-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869683-DceP0X0K9Sjy2x9EQz5L
+      string: '{"error":{"message":"Generation gen-1766949559-Fhcc9085XRih4SwEBdVQ
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:08:04 GMT
+  recorded_at: Sun, 28 Dec 2025 19:19:20 GMT
 recorded_with: VCR 6.4.0

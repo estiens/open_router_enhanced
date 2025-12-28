@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766654057-728oG74i1PRieHU4glSx
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949291-kQdJoHh5gRJDsZsv82FT
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Thu, 25 Dec 2025 09:14:18 GMT
+      - Sun, 28 Dec 2025 19:14:52 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -50,12 +50,68 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b373a3b3e81ad1e-MSP
+      - 9b5362146ad1615a-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766654057-728oG74i1PRieHU4glSx
+      string: '{"error":{"message":"Generation gen-1766949291-kQdJoHh5gRJDsZsv82FT
         not found","code":404}}'
-  recorded_at: Thu, 25 Dec 2025 09:14:18 GMT
+  recorded_at: Sun, 28 Dec 2025 19:14:52 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949498-rMfcVRTuA68yMcNW2Um7
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:18:19 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5367211f98ef30-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949498-rMfcVRTuA68yMcNW2Um7
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:18:19 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -86,7 +142,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:10:38 GMT
+      - Sun, 28 Dec 2025 19:23:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -107,14 +163,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bce454fb09d03-ORD
+      - 9b536e0a8952f7d2-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869837-xx2Fz469Myidj3bRdi3z\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766869837,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_44exOS1w0lcW5mqxmkuo2oAj\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"add\\\",\\\"a\\\":7,\\\"b\\\":3}\"}}]}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":77,\"completion_tokens\":22,\"total_tokens\":99,\"cost\":0.00002475,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001155,\"upstream_inference_completions_cost\":0.0000132},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:10:38 GMT
+      string: "\n         \n\n         \n\n         \n{\"id\":\"gen-1766949782-5oAZ2dtFd11K5VcrRlvh\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-4o-mini\",\"object\":\"chat.completion\",\"created\":1766949782,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"tool_calls\",\"native_finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":null,\"tool_calls\":[{\"index\":0,\"id\":\"call_NMDHGan9DdAAJTjyN0OHGvcH\",\"type\":\"function\",\"function\":{\"name\":\"calculator\",\"arguments\":\"{\\\"operation\\\":\\\"add\\\",\\\"a\\\":7,\\\"b\\\":3}\"}}]}}],\"system_fingerprint\":\"fp_c4585b5b9c\",\"usage\":{\"prompt_tokens\":77,\"completion_tokens\":22,\"total_tokens\":99,\"cost\":0.00002475,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.00001155,\"upstream_inference_completions_cost\":0.0000132},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:23:03 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869837-xx2Fz469Myidj3bRdi3z
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949782-5oAZ2dtFd11K5VcrRlvh
     body:
       encoding: US-ASCII
       string: ''
@@ -139,7 +195,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:10:38 GMT
+      - Sun, 28 Dec 2025 19:23:03 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -162,10 +218,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bce4a4ba6fa23-ORD
+      - 9b536e135b574783-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869837-xx2Fz469Myidj3bRdi3z
+      string: '{"error":{"message":"Generation gen-1766949782-5oAZ2dtFd11K5VcrRlvh
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:10:38 GMT
+  recorded_at: Sun, 28 Dec 2025 19:23:03 GMT
 recorded_with: VCR 6.4.0

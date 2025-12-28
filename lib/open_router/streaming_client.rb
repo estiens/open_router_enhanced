@@ -33,24 +33,34 @@ module OpenRouter
     # Enhanced streaming completion with better event handling and response reconstruction
     #
     # @param messages [Array<Hash>] Array of message hashes
-    # @param model [String|Array] Model identifier or array of models for fallback
+    # @param options [CompletionOptions, Hash, nil] Options object or hash with configuration
     # @param accumulate_response [Boolean] Whether to accumulate and return complete response
-    # @param extras [Hash] Additional parameters for the completion request
+    # @param kwargs [Hash] Additional options (merged with options parameter)
     # @param block [Proc] Optional block to call for each chunk (in addition to registered callbacks)
     # @return [Response, nil] Complete response if accumulate_response is true, nil otherwise
-    def stream_complete(messages, model: "openrouter/auto", accumulate_response: true, **extras, &block)
+    #
+    # @example Simple usage (unchanged)
+    #   client.stream_complete(messages, model: "gpt-4")
+    #
+    # @example With CompletionOptions
+    #   opts = CompletionOptions.new(model: "gpt-4", temperature: 0.7)
+    #   client.stream_complete(messages, opts)
+    #
+    # @example Options with overrides
+    #   client.stream_complete(messages, base_opts, temperature: 0.9)
+    def stream_complete(messages, options = nil, accumulate_response: true, **kwargs, &block)
+      opts = normalize_options(options, kwargs)
       response_accumulator = ResponseAccumulator.new if accumulate_response
 
       # Set up streaming handler (pass optional per-call block)
       stream_handler = build_stream_handler(response_accumulator, &block)
 
       # Trigger start callback
-      trigger_streaming_callbacks(:on_start, { model: model, messages: messages })
+      trigger_streaming_callbacks(:on_start, { model: opts.model, messages: messages })
 
       begin
-        # Execute the streaming request
-        # Note: extras must be passed as a hash, not splatted, to match complete()'s signature
-        complete(messages, model: model, stream: stream_handler, extras: extras)
+        # Execute the streaming request using parent's complete method
+        complete(messages, opts, stream: stream_handler)
 
         # Return accumulated response if requested
         if accumulate_response && response_accumulator
@@ -70,22 +80,26 @@ module OpenRouter
     # Stream with a simple block interface
     #
     # @param messages [Array<Hash>] Array of message hashes
-    # @param model [String|Array] Model identifier
+    # @param options [CompletionOptions, Hash, nil] Options object or hash with configuration
+    # @param kwargs [Hash] Additional options (merged with options parameter)
     # @param block [Proc] Block to call for each content chunk
-    # @param extras [Hash] Additional parameters
     #
-    # @example
+    # @example Simple usage (unchanged)
     #   client.stream(messages, model: "openai/gpt-4o-mini") do |chunk|
     #     print chunk
     #   end
-    def stream(messages, model: "openrouter/auto", **extras, &block)
+    #
+    # @example With CompletionOptions
+    #   opts = CompletionOptions.new(model: "gpt-4", temperature: 0.7)
+    #   client.stream(messages, opts) { |chunk| print chunk }
+    def stream(messages, options = nil, **kwargs, &block)
       raise ArgumentError, "Block required for streaming" unless block_given?
 
       stream_complete(
         messages,
-        model: model,
+        options,
         accumulate_response: false,
-        **extras
+        **kwargs
       ) do |chunk|
         content = extract_content_from_chunk(chunk)
         block.call(content) if content

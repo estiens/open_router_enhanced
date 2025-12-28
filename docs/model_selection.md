@@ -15,6 +15,36 @@ model = OpenRouter::ModelSelector.new
 response = client.complete(messages, model: model, tools: tools)
 ```
 
+## Using CompletionOptions with Model Selection (v2.0+)
+
+Combine model selection with `CompletionOptions` for powerful, reusable configurations:
+
+```ruby
+# Select model dynamically
+model = OpenRouter::ModelSelector.new
+                                 .require(:function_calling, :structured_outputs)
+                                 .optimize_for(:cost)
+                                 .choose
+
+# Create reusable options with the selected model
+opts = OpenRouter::CompletionOptions.new(
+  model: model,
+  tools: my_tools,
+  max_tokens: 1000
+)
+
+# Use across multiple calls
+response = client.complete(messages, opts)
+
+# Or use fallback model arrays directly in options
+fallback_opts = OpenRouter::CompletionOptions.new(
+  model: ["anthropic/claude-3.5-sonnet", "openai/gpt-4o", "google/gemini-pro"],
+  route: "fallback"
+)
+```
+
+All keyword argument patterns continue to work for backward compatibility.
+
 ## ModelSelector API
 
 The `ModelSelector` class provides a fluent interface for building complex model selection criteria.

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1758743184-3DtgSfF9aIKQlKgRIZHe
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949106-MbkosLowzwAynR1Pmz9h
     body:
       encoding: US-ASCII
       string: ''
@@ -27,118 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 24 Sep 2025 19:46:24 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9844c9a8c8abacee-MSP
-    body:
-      encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1758743184-3DtgSfF9aIKQlKgRIZHe
-        not found","code":404}}'
-  recorded_at: Wed, 24 Sep 2025 19:46:24 GMT
-- request:
-    method: post
-    uri: https://openrouter.ai/api/v1/chat/completions
-    body:
-      encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Parameter compatibility test"}],"model":"openai/gpt-3.5-turbo","max_tokens":40,"temperature":0.7,"top_p":0.9}'
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sat, 27 Dec 2025 21:07:23 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b4bc982b8df8f4c-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: "\n         \n{\"id\":\"gen-1766869642-XW62hjXxwPi9AEspnwpD\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-3.5-turbo\",\"object\":\"chat.completion\",\"created\":1766869642,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Parameter
-        compatibility testing is a type of software testing that evaluates whether
-        different parameters or configurations are compatible with each other and
-        do not cause any conflicts or errors. This type of testing is particularly
-        important in systems that\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":10,\"completion_tokens\":40,\"total_tokens\":50,\"cost\":0.000065,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.000005,\"upstream_inference_completions_cost\":0.00006},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:07:23 GMT
-- request:
-    method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869642-XW62hjXxwPi9AEspnwpD
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sat, 27 Dec 2025 21:07:23 GMT
+      - Sun, 28 Dec 2025 19:11:47 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -161,10 +50,178 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bc9874b6db8f3-YYZ
+      - 9b535d926e7d72d1-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869642-XW62hjXxwPi9AEspnwpD
+      string: '{"error":{"message":"Generation gen-1766949106-MbkosLowzwAynR1Pmz9h
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:07:23 GMT
+  recorded_at: Sun, 28 Dec 2025 19:11:47 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949312-QGfgmAR1uWGUdTUIPlNc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:15:13 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b536298ef0aeae8-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949312-QGfgmAR1uWGUdTUIPlNc
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:15:13 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Parameter compatibility test"}],"model":"openai/gpt-3.5-turbo","temperature":0.7,"top_p":0.9,"max_tokens":40}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:56 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53697f1f460ea2-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n{\"id\":\"gen-1766949596-KEot4GokAo5aRwhPqdie\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-3.5-turbo\",\"object\":\"chat.completion\",\"created\":1766949596,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Parameter
+        compatibility test is a type of software testing that ensures that different
+        parameters or inputs are compatible with each other and do not cause any issues
+        or errors in the system. This type of testing is important for\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":10,\"completion_tokens\":40,\"total_tokens\":50,\"cost\":0.000065,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.000005,\"upstream_inference_completions_cost\":0.00006},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:19:56 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949596-KEot4GokAo5aRwhPqdie
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:19:56 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b5369835e02eaf3-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949596-KEot4GokAo5aRwhPqdie
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:19:56 GMT
 recorded_with: VCR 6.4.0

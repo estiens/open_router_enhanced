@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"model":"openai/gpt-4o-mini","input":[{"type":"message","role":"user","content":[{"type":"input_text","text":"What
-        color is the sky?"}]}],"max_output_tokens":50}'
+        color is the sky?"}]}]}'
     headers:
       Authorization:
       - Bearer <OPENROUTER_API_KEY>
@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:10:02 GMT
+      - Sun, 28 Dec 2025 19:22:30 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -49,13 +49,17 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcd68b8ef2276-ORD
+      - 9b536d403fdb024e-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n{\"object\":\"response\",\"id\":\"gen-1766869802-Vx8LndBq3c1eIM2ebqVB\",\"created_at\":1766869802,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"role\":\"assistant\",\"type\":\"message\",\"status\":\"incomplete\",\"content\":[{\"type\":\"output_text\",\"text\":\"The
-        color of the sky varies depending on several factors, including the time of
-        day, weather conditions, and atmospheric phenomena. During a clear day, the
-        sky appears blue due to Rayleigh scattering, where shorter wavelengths of
-        light (blue) scatter more than\",\"annotations\":[]}],\"id\":\"msg_tmp_xwsetaqphxl\"}],\"incomplete_details\":null,\"tools\":[],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":50,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":13,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":50,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":63,\"cost\":0.00003195,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00000195,\"upstream_inference_output_cost\":0.00003}}}"
-  recorded_at: Sat, 27 Dec 2025 21:10:03 GMT
+      string: "\n         \n\n         \n\n         \n\n         \n{\"object\":\"response\",\"id\":\"gen-1766949749-1UCaySeAAKA6RnyIHMrp\",\"created_at\":1766949749,\"model\":\"openai/gpt-4o-mini\",\"error\":null,\"output_text\":\"\",\"output\":[{\"role\":\"assistant\",\"type\":\"message\",\"status\":\"completed\",\"content\":[{\"type\":\"output_text\",\"text\":\"The
+        sky appears blue during the daytime due to a phenomenon called Rayleigh scattering,
+        where shorter blue wavelengths of sunlight are scattered in all directions
+        by the gases and particles in the atmosphere. However, the color of the sky
+        can change depending on various factors, such as the time of day, weather
+        conditions, and atmospheric particles. For example, during sunrise or sunset,
+        the sky can take on hues of orange, pink, and red. On cloudy or overcast days,
+        the sky may appear gray. At night, the sky can look black with stars or other
+        celestial bodies visible.\",\"annotations\":[]}],\"id\":\"msg_tmp_5xypds9vrw6\"}],\"incomplete_details\":null,\"tools\":[],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"max_output_tokens\":null,\"temperature\":null,\"top_p\":null,\"metadata\":{},\"background\":false,\"previous_response_id\":null,\"service_tier\":\"auto\",\"truncation\":null,\"store\":false,\"instructions\":null,\"reasoning\":null,\"safety_identifier\":null,\"prompt_cache_key\":null,\"user\":null,\"usage\":{\"input_tokens\":13,\"input_tokens_details\":{\"cached_tokens\":0},\"output_tokens\":115,\"output_tokens_details\":{\"reasoning_tokens\":0},\"total_tokens\":128,\"cost\":0.00007095,\"is_byok\":false,\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_input_cost\":0.00000195,\"upstream_inference_output_cost\":0.000069}}}"
+  recorded_at: Sun, 28 Dec 2025 19:22:31 GMT
 recorded_with: VCR 6.4.0

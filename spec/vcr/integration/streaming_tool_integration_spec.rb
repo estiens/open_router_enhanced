@@ -69,7 +69,7 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [weather_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 300 }
+        max_tokens: 300
       )
 
       expect(chunks).not_to be_empty
@@ -107,7 +107,7 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [weather_tool, calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 300 }
+        max_tokens: 300
       )
 
       expect(chunks).not_to be_empty
@@ -144,7 +144,7 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 300 }
+        max_tokens: 300
       )
 
       expect(tool_call_id).to be_present
@@ -188,7 +188,7 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
         continued_messages,
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(final_chunks).not_to be_empty
@@ -209,7 +209,7 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
         tools: [weather_tool],
         tool_choice: "auto",
         accumulate_response: true,
-        extras: { max_tokens: 300 }
+        max_tokens: 300
       )
 
       expect(accumulated_response).to be_a(OpenRouter::Response)
@@ -241,7 +241,7 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [weather_tool],
         tool_choice: "required",
-        extras: { max_tokens: 300 }
+        max_tokens: 300
       )
 
       expect(tool_call_received).to be true
@@ -267,7 +267,7 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [weather_tool],
         tool_choice: "none",
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(tool_call_received).to be false
@@ -287,7 +287,7 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
           messages,
           model: "invalid/nonexistent-model",
           tools: [weather_tool],
-          extras: { max_tokens: 100 }
+          max_tokens: 100
         )
       end.to raise_error(OpenRouter::ServerError)
     end
@@ -315,7 +315,7 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(callback_count).to be > 0

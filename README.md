@@ -198,6 +198,89 @@ end
 
 **[Full configuration documentation](docs/configuration.md)**
 
+## CompletionOptions
+
+For complex requests with many parameters, use `CompletionOptions` to organize your configuration:
+
+```ruby
+# Create reusable options
+opts = OpenRouter::CompletionOptions.new(
+  model: "anthropic/claude-3.5-sonnet",
+  temperature: 0.7,
+  max_tokens: 1000,
+  tools: [weather_tool],
+  providers: ["anthropic"]
+)
+
+# Use with complete()
+response = client.complete(messages, opts)
+
+# Override specific values
+response = client.complete(messages, opts, temperature: 0.9)
+
+# All these styles work (backward compatible):
+client.complete(messages, model: "gpt-4")                    # kwargs
+client.complete(messages, { model: "gpt-4" })                 # hash
+client.complete(messages, opts)                              # options object
+client.complete(messages, opts, temperature: 0.5)            # options + override
+```
+
+### Available Parameters
+
+```ruby
+OpenRouter::CompletionOptions.new(
+  # Model selection
+  model: "gpt-4",                      # Model ID or array for fallback
+  route: "fallback",                   # Routing strategy
+
+  # Sampling parameters
+  temperature: 0.7,                    # 0.0-2.0
+  top_p: 0.9,                         # Nucleus sampling
+  top_k: 50,                          # Top-K sampling
+  frequency_penalty: 0.5,             # -2.0 to 2.0
+  presence_penalty: 0.3,              # -2.0 to 2.0
+  repetition_penalty: 1.1,            # 0.0-2.0
+  min_p: 0.05,                        # Minimum probability
+  top_a: 0.1,                         # Dynamic filtering
+  seed: 42,                           # Reproducibility
+
+  # Output control
+  max_tokens: 1000,                   # Max completion tokens
+  max_completion_tokens: 1000,        # Preferred over max_tokens
+  stop: ["\n", "END"],                # Stop sequences
+  logprobs: true,                     # Return log probabilities
+  top_logprobs: 5,                    # Number of top logprobs
+  logit_bias: { "50256" => -100 },    # Token biasing
+  response_format: schema,            # Structured output
+  parallel_tool_calls: true,          # Allow parallel calls
+
+  # Tools
+  tools: [weather_tool],              # Tool definitions
+  tool_choice: "auto",                # auto, none, required, or specific
+
+  # OpenRouter routing
+  providers: ["anthropic", "openai"], # Simple provider ordering
+  provider: {                         # Full provider config
+    order: ["anthropic"],
+    quantizations: ["fp16"],
+    allow_fallbacks: true
+  },
+  transforms: ["middle-out"],         # Message transforms
+  plugins: [{ id: "web-search" }],    # OpenRouter plugins
+  prediction: { type: "content", content: "..." }, # Latency optimization
+  metadata: { request_id: "abc123" }, # Custom metadata
+  user: "user_123",                   # User identifier
+  session_id: "session_456",          # Session grouping
+
+  # Responses API
+  reasoning: { effort: "high" },      # For reasoning models
+
+  # Client-side
+  force_structured_output: true,      # Force schema injection
+  extras: { custom_param: "value" }   # Pass-through params
+)
+```
+
 ## Features
 
 ### Tool Calling

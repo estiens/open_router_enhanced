@@ -20,7 +20,7 @@ RSpec.describe "OpenRouter Prompt Templates", :vcr do
       response = client.complete(
         [{ role: "user", content: prompt }],
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -49,7 +49,7 @@ RSpec.describe "OpenRouter Prompt Templates", :vcr do
       response = client.complete(
         [{ role: "system", content: prompt }, { role: "user", content: "Explain quantum computing" }],
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 150 }
+        max_tokens: 150
       )
 
       expect(response.content.downcase).to include("quantum")
@@ -75,7 +75,7 @@ RSpec.describe "OpenRouter Prompt Templates", :vcr do
       response = client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 10 }
+        max_tokens: 10
       )
 
       expect(messages).to be_an(Array)
@@ -106,7 +106,7 @@ RSpec.describe "OpenRouter Prompt Templates", :vcr do
       response = client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 200 }
+        max_tokens: 200
       )
 
       expect(response.content).to include("function")
@@ -140,7 +140,7 @@ RSpec.describe "OpenRouter Prompt Templates", :vcr do
       response = client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 100 }
+        max_tokens: 100
       )
 
       expect(messages.length).to eq(4) # system + user + assistant + user
@@ -175,7 +175,7 @@ RSpec.describe "OpenRouter Prompt Templates", :vcr do
       response = client.complete(
         [{ role: "system", content: composed_prompt }, { role: "user", content: "Review this code: print('hello')" }],
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 150 }
+        max_tokens: 150
       )
 
       expect(composed_prompt).to include("technical assistant")
@@ -214,7 +214,7 @@ RSpec.describe "OpenRouter Prompt Templates", :vcr do
       response = client.complete(
         [{ role: "user", content: prompt }],
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(prompt).to include("Water boils at 100°C")

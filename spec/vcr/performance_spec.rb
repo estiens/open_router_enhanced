@@ -18,7 +18,7 @@ RSpec.describe "OpenRouter Performance Regression Tests", :vcr do
       @response = client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
     end
 
@@ -35,7 +35,7 @@ RSpec.describe "OpenRouter Performance Regression Tests", :vcr do
       @response = client.complete(
         messages,
         model: "openai/gpt-4o-mini",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
     end
 

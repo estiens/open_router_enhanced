@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1759621892-6tk2y9X8ztvoUWNbXfO4
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949249-XZBB1RvI5C2on6GJUGv4
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 04 Oct 2025 23:51:34 GMT
+      - Sun, 28 Dec 2025 19:14:11 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,6 +36,8 @@ http_interactions:
       - keep-alive
       Access-Control-Allow-Origin:
       - "*"
+      Cache-Control:
+      - private, no-store
       Vary:
       - Accept-Encoding
       Permissions-Policy:
@@ -48,12 +50,68 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 989896859b9dad0e-MSP
+      - 9b536111ea9be7f8-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1759621892-6tk2y9X8ztvoUWNbXfO4
+      string: '{"error":{"message":"Generation gen-1766949249-XZBB1RvI5C2on6GJUGv4
         not found","code":404}}'
-  recorded_at: Sat, 04 Oct 2025 23:51:34 GMT
+  recorded_at: Sun, 28 Dec 2025 19:14:11 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949455-MyyMGB9qnsJTgwVN1i7v
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Dec 2025 19:17:36 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Vary:
+      - Accept-Encoding
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9b53661739d4e230-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1766949455-MyyMGB9qnsJTgwVN1i7v
+        not found","code":404}}'
+  recorded_at: Sun, 28 Dec 2025 19:17:36 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
@@ -83,7 +141,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:09:50 GMT
+      - Sun, 28 Dec 2025 19:22:21 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -104,25 +162,22 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcd1b8b4672cb-ORD
+      - 9b536d081ed1e133-ORD
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1766869790-QG8DI5mEsCnM2njgODKI\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-3.5-turbo\",\"object\":\"chat.completion\",\"created\":1766869790,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Quantum
-        computing is a type of computing that uses the principles of quantum mechanics
-        to perform operations on data. Traditional computers use bits to process and
-        store information, where each bit can be either a 0 or a 1. In contrast, quantum
-        computers use quantum bits, or qubits, which can exist in multiple states
-        simultaneously due to a phenomenon called superposition.\\n\\nThis allows
-        quantum computers to perform calculations much faster than classical computers
-        for certain types of problems. Additionally, qubits can also be entangled,
-        meaning the state of one qubit can affect the state of another, enabling quantum
-        computers to process information in a highly interconnected way.\\n\\nOverall,
-        quantum computing has the potential to revolutionize fields such as cryptography,
-        materials science, optimization, and artificial intelligence\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":38,\"completion_tokens\":150,\"total_tokens\":188,\"cost\":0.000244,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.000019,\"upstream_inference_completions_cost\":0.000225},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
-  recorded_at: Sat, 27 Dec 2025 21:09:51 GMT
+      string: "\n         \n\n         \n{\"id\":\"gen-1766949740-VXFQk9CD2M3LdwsK1MBV\",\"provider\":\"OpenAI\",\"model\":\"openai/gpt-3.5-turbo\",\"object\":\"chat.completion\",\"created\":1766949740,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"Quantum
+        computing is a cutting-edge technology that uses quantum mechanics principles
+        to perform computations. In traditional computers, data is processed in binary
+        form (0s and 1s), while quantum computers use quantum bits, or qubits, which
+        can exist in multiple states simultaneously thanks to a property called superposition.
+        This unique ability allows quantum computers to tackle complex problems much
+        faster than classical computers. Quantum computing has the potential to revolutionize
+        various fields like cryptography, drug discovery, and optimization, by solving
+        problems that are currently intractable with classical computing methods.\",\"refusal\":null,\"reasoning\":null}}],\"system_fingerprint\":null,\"usage\":{\"prompt_tokens\":38,\"completion_tokens\":110,\"total_tokens\":148,\"cost\":0.000184,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0.000019,\"upstream_inference_completions_cost\":0.000165},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0}}}"
+  recorded_at: Sun, 28 Dec 2025 19:22:21 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766869790-QG8DI5mEsCnM2njgODKI
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949740-VXFQk9CD2M3LdwsK1MBV
     body:
       encoding: US-ASCII
       string: ''
@@ -147,7 +202,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sat, 27 Dec 2025 21:09:52 GMT
+      - Sun, 28 Dec 2025 19:22:22 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -170,10 +225,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b4bcd271d59356a-ORD
+      - 9b536d0f9ca7aca8-ORD
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766869790-QG8DI5mEsCnM2njgODKI
+      string: '{"error":{"message":"Generation gen-1766949740-VXFQk9CD2M3LdwsK1MBV
         not found","code":404}}'
-  recorded_at: Sat, 27 Dec 2025 21:09:52 GMT
+  recorded_at: Sun, 28 Dec 2025 19:22:22 GMT
 recorded_with: VCR 6.4.0

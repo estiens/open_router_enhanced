@@ -68,7 +68,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -99,7 +99,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [hash_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response.has_tool_calls?).to be true
@@ -122,7 +122,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool, weather_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response.has_tool_calls?).to be true
@@ -145,7 +145,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool, weather_tool],
         tool_choice: { type: "function", function: { name: "calculator" } },
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response.has_tool_calls?).to be true
@@ -163,7 +163,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "required",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response.has_tool_calls?).to be true
@@ -179,7 +179,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "none",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response.has_tool_calls?).to be false
@@ -201,7 +201,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response.has_tool_calls?).to be true
@@ -240,7 +240,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         updated_messages,
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(final_response.has_content?).to be true
@@ -259,7 +259,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       # May have multiple tool calls or one call that handles both
@@ -286,7 +286,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       # Test Response.to_message
@@ -322,7 +322,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "required", # Force tool usage
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response.has_tool_calls?).to be true
@@ -423,7 +423,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [complex_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       expect(response.has_tool_calls?).to be true
@@ -452,7 +452,7 @@ RSpec.describe "OpenRouter Tool Calling", :vcr do
         model: "openai/gpt-4o-mini",
         tools: [calculator_tool],
         tool_choice: "auto",
-        extras: { max_tokens: 500 }
+        max_tokens: 500
       )
 
       # Test Response structure

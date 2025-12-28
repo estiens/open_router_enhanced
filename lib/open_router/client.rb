@@ -4,7 +4,6 @@ require "active_support/core_ext/object/blank"
 require "active_support/core_ext/hash/indifferent_access"
 
 require_relative "http"
-require "pry"
 
 module OpenRouter
   class ServerError < StandardError; end
@@ -92,27 +91,31 @@ module OpenRouter
     end
 
     # Performs a chat completion request to the OpenRouter API.
-    # @param messages [Array<Hash>] Array of message hashes with role and content, like [{role: "user", content: "What is the meaning of life?"}]
-    # @param model [String|Array] Model identifier, or array of model identifiers if you want to fallback to the next model in case of failure
-    # @param providers [Array<String>] Optional array of provider identifiers, ordered by priority
-    # @param transforms [Array<String>] Optional array of strings that tell OpenRouter to apply a series of transformations to the prompt before sending it to the model. Transformations are applied in-order
-    # @param plugins [Array<Hash>] Optional array of plugin hashes like [{id: "response-healing"}]. Available plugins: response-healing, web-search, pdf-inputs
-    # @param tools [Array<Tool>] Optional array of Tool objects or tool definition hashes for function calling
-    # @param tool_choice [String|Hash] Optional tool choice: "auto", "none", "required", or specific tool selection
-    # @param response_format [Hash] Optional response format for structured outputs
-    # @param prediction [Hash] Optional predicted output for latency reduction, e.g. {type: "content", content: "predicted text"}
-    # @param extras [Hash] Optional hash of model-specific parameters to send to the OpenRouter API
+    #
+    # @param messages [Array<Hash>] Array of message hashes with role and content
+    # @param options [CompletionOptions, Hash, nil] Options object or hash with configuration
     # @param stream [Proc, nil] Optional callable object for streaming
-    # @return [Response] The completion response wrapped in a Response object.
-    # rubocop:disable Metrics/ParameterLists
-    def complete(messages, model: "openrouter/auto", providers: [], transforms: [], plugins: [], tools: [], tool_choice: nil,
-                 response_format: nil, force_structured_output: nil, prediction: nil, extras: {}, stream: nil)
-      # rubocop:enable Metrics/ParameterLists
-      parameters = prepare_base_parameters(messages, model, providers, transforms, plugins, prediction, stream, extras)
-      forced_extraction = configure_tools_and_structured_outputs!(parameters, model, tools, tool_choice,
-                                                                  response_format, force_structured_output)
-      configure_plugins!(parameters, response_format, stream)
-      validate_vision_support(model, messages)
+    # @param kwargs [Hash] Additional options (merged with options parameter)
+    # @return [Response] The completion response wrapped in a Response object
+    #
+    # @example Simple usage (unchanged)
+    #   client.complete(messages, model: "gpt-4")
+    #
+    # @example With CompletionOptions
+    #   opts = CompletionOptions.new(model: "gpt-4", temperature: 0.7, tools: my_tools)
+    #   client.complete(messages, opts)
+    #
+    # @example Hash options
+    #   client.complete(messages, { model: "gpt-4", temperature: 0.7 })
+    #
+    # @example Options with override
+    #   client.complete(messages, base_opts, temperature: 0.9)
+    def complete(messages, options = nil, stream: nil, **kwargs)
+      opts = normalize_options(options, kwargs)
+      parameters = prepare_base_parameters(messages, opts, stream)
+      forced_extraction = configure_tools_and_structured_outputs!(parameters, opts)
+      configure_plugins!(parameters, opts.response_format, stream)
+      validate_vision_support(opts.model, messages)
 
       # Trigger before_request callbacks
       trigger_callbacks(:before_request, parameters)
@@ -120,10 +123,11 @@ module OpenRouter
       raw_response = execute_request(parameters)
       validate_response!(raw_response, stream)
 
-      response = build_response(raw_response, response_format, forced_extraction)
+      response = build_response(raw_response, opts.response_format, forced_extraction)
 
       # Track usage if enabled
-      @usage_tracker&.track(response, model: model.is_a?(String) ? model : model.first)
+      model_for_tracking = opts.model.is_a?(String) ? opts.model : opts.model.first
+      @usage_tracker&.track(response, model: model_for_tracking)
 
       # Trigger after_response callbacks
       trigger_callbacks(:after_response, response)
@@ -152,39 +156,42 @@ module OpenRouter
     # This is an OpenAI-compatible stateless API with support for reasoning.
     #
     # @param input [String, Array] The input text or structured message array
-    # @param model [String] Model identifier (e.g., "openai/o4-mini")
-    # @param reasoning [Hash, nil] Optional reasoning config, e.g. {effort: "high"}
-    #   Effort levels: "minimal", "low", "medium", "high"
-    # @param tools [Array<Tool, Hash>] Optional array of tool definitions
-    # @param tool_choice [String, Hash, nil] Optional: "auto", "none", "required", or specific tool
-    # @param max_output_tokens [Integer, nil] Maximum tokens to generate
-    # @param temperature [Float, nil] Sampling temperature (0-2)
-    # @param top_p [Float, nil] Nucleus sampling parameter (0-1)
-    # @param extras [Hash] Additional parameters to pass to the API
+    # @param options [CompletionOptions, Hash, nil] Options object or hash with configuration
+    # @param kwargs [Hash] Additional options (merged with options parameter)
     # @return [ResponsesResponse] The response wrapped in a ResponsesResponse object
     #
     # @example Basic usage
     #   response = client.responses("What is 2+2?", model: "openai/o4-mini")
     #   puts response.content
     #
-    # @example With reasoning
-    #   response = client.responses(
-    #     "Solve this step by step: What is 15% of 80?",
+    # @example With reasoning using CompletionOptions
+    #   opts = CompletionOptions.new(
     #     model: "openai/o4-mini",
     #     reasoning: { effort: "high" }
     #   )
+    #   response = client.responses("Solve this step by step: What is 15% of 80?", opts)
     #   puts response.reasoning_summary
     #   puts response.content
-    def responses(input, model:, reasoning: nil, tools: [], tool_choice: nil,
-                  max_output_tokens: nil, temperature: nil, top_p: nil, extras: {})
-      parameters = { model: model, input: input }
-      parameters[:reasoning] = reasoning if reasoning
-      parameters[:tools] = serialize_tools_for_responses(tools) if tools.any?
-      parameters[:tool_choice] = tool_choice if tool_choice
-      parameters[:max_output_tokens] = max_output_tokens if max_output_tokens
-      parameters[:temperature] = temperature if temperature
-      parameters[:top_p] = top_p if top_p
-      parameters.merge!(extras)
+    #
+    # @example With kwargs (still works)
+    #   response = client.responses("Question", model: "openai/o4-mini", reasoning: { effort: "high" })
+    def responses(input, options = nil, **kwargs)
+      opts = normalize_options(options, kwargs)
+
+      # Model is required for Responses API
+      if opts.model == "openrouter/auto"
+        raise ArgumentError, "model is required for responses API (cannot use default 'openrouter/auto')"
+      end
+
+      parameters = { model: opts.model, input: input }
+      parameters[:reasoning] = opts.reasoning if opts.reasoning
+      parameters[:tools] = serialize_tools_for_responses(opts.tools) if opts.has_tools?
+      parameters[:tool_choice] = opts.tool_choice if opts.tool_choice
+      # Prefer max_completion_tokens over max_tokens (consistent with complete() method)
+      parameters[:max_output_tokens] = opts.max_completion_tokens || opts.max_tokens if opts.max_completion_tokens || opts.max_tokens
+      parameters[:temperature] = opts.temperature if opts.temperature
+      parameters[:top_p] = opts.top_p if opts.top_p
+      parameters.merge!(opts.extras || {})
 
       raw = post(path: "/responses", parameters: parameters)
       ResponsesResponse.new(raw)
@@ -314,18 +321,47 @@ module OpenRouter
 
     private
 
+    # Normalize options from various input formats into CompletionOptions
+    #
+    # @param options [CompletionOptions, Hash, nil] Options object or hash
+    # @param kwargs [Hash] Additional keyword arguments
+    # @return [CompletionOptions] Normalized options object
+    def normalize_options(options, kwargs)
+      case options
+      when CompletionOptions
+        kwargs.empty? ? options : options.merge(**kwargs)
+      when Hash
+        # Symbolize keys to handle both string and symbol key hashes
+        symbolized = options.transform_keys(&:to_sym)
+        CompletionOptions.new(**symbolized.merge(kwargs))
+      when nil
+        CompletionOptions.new(**kwargs)
+      else
+        raise ArgumentError, "options must be CompletionOptions, Hash, or nil"
+      end
+    end
+
     # Prepare the base parameters for the API request
-    def prepare_base_parameters(messages, model, providers, transforms, plugins, prediction, stream, extras)
+    #
+    # @param messages [Array<Hash>] Array of message hashes
+    # @param opts [CompletionOptions] Normalized options object
+    # @param stream [Proc, nil] Optional streaming handler
+    # @return [Hash] Parameters hash for the API request
+    def prepare_base_parameters(messages, opts, stream)
       parameters = { messages: messages.dup }
 
-      configure_model_parameter!(parameters, model)
-      configure_provider_parameter!(parameters, providers)
-      configure_transforms_parameter!(parameters, transforms)
-      configure_plugins_parameter!(parameters, plugins)
-      configure_prediction_parameter!(parameters, prediction)
+      configure_model_parameter!(parameters, opts.model)
+      configure_provider_parameter!(parameters, opts)
+      configure_transforms_parameter!(parameters, opts.transforms)
+      configure_plugins_parameter!(parameters, opts.plugins)
+      configure_prediction_parameter!(parameters, opts.prediction)
       configure_stream_parameter!(parameters, stream)
+      configure_sampling_parameters!(parameters, opts)
+      configure_output_parameters!(parameters, opts)
+      configure_routing_parameters!(parameters, opts)
 
-      parameters.merge!(extras)
+      # Merge any extras last (allows overriding anything)
+      parameters.merge!(opts.extras || {})
       parameters
     end
 
@@ -339,9 +375,66 @@ module OpenRouter
       end
     end
 
-    # Configure the provider parameter if providers are specified
-    def configure_provider_parameter!(parameters, providers)
-      parameters[:provider] = { order: providers } if providers.any?
+    # Configure the provider parameter from options
+    #
+    # @param parameters [Hash] Request parameters hash
+    # @param opts [CompletionOptions] Options object
+    def configure_provider_parameter!(parameters, opts)
+      # Full provider config takes precedence over simple providers array
+      if opts.provider && !opts.provider.empty?
+        parameters[:provider] = opts.provider
+      elsif opts.providers.any?
+        parameters[:provider] = { order: opts.providers }
+      end
+
+      # Route parameter for fallback models
+      parameters[:route] = opts.route if opts.route
+    end
+
+    # Configure sampling parameters (temperature, top_p, etc.)
+    #
+    # @param parameters [Hash] Request parameters hash
+    # @param opts [CompletionOptions] Options object
+    def configure_sampling_parameters!(parameters, opts)
+      parameters[:temperature] = opts.temperature if opts.temperature
+      parameters[:top_p] = opts.top_p if opts.top_p
+      parameters[:top_k] = opts.top_k if opts.top_k
+      parameters[:frequency_penalty] = opts.frequency_penalty if opts.frequency_penalty
+      parameters[:presence_penalty] = opts.presence_penalty if opts.presence_penalty
+      parameters[:repetition_penalty] = opts.repetition_penalty if opts.repetition_penalty
+      parameters[:min_p] = opts.min_p if opts.min_p
+      parameters[:top_a] = opts.top_a if opts.top_a
+      parameters[:seed] = opts.seed if opts.seed
+    end
+
+    # Configure output control parameters
+    #
+    # @param parameters [Hash] Request parameters hash
+    # @param opts [CompletionOptions] Options object
+    def configure_output_parameters!(parameters, opts)
+      # Prefer max_completion_tokens over max_tokens if both are set
+      if opts.max_completion_tokens
+        parameters[:max_completion_tokens] = opts.max_completion_tokens
+      elsif opts.max_tokens
+        parameters[:max_tokens] = opts.max_tokens
+      end
+
+      parameters[:stop] = opts.stop if opts.stop
+      parameters[:logprobs] = opts.logprobs unless opts.logprobs.nil?
+      parameters[:top_logprobs] = opts.top_logprobs if opts.top_logprobs
+      parameters[:logit_bias] = opts.logit_bias if opts.logit_bias && !opts.logit_bias.empty?
+      parameters[:parallel_tool_calls] = opts.parallel_tool_calls unless opts.parallel_tool_calls.nil?
+      parameters[:verbosity] = opts.verbosity if opts.verbosity
+    end
+
+    # Configure OpenRouter-specific routing parameters
+    #
+    # @param parameters [Hash] Request parameters hash
+    # @param opts [CompletionOptions] Options object
+    def configure_routing_parameters!(parameters, opts)
+      parameters[:metadata] = opts.metadata if opts.metadata && !opts.metadata.empty?
+      parameters[:user] = opts.user if opts.user
+      parameters[:session_id] = opts.session_id if opts.session_id
     end
 
     # Configure the transforms parameter if transforms are specified
@@ -396,32 +489,42 @@ module OpenRouter
     end
 
     # Configure tools and structured outputs, returning forced_extraction flag
-    def configure_tools_and_structured_outputs!(parameters, model, tools, tool_choice, response_format,
-                                                force_structured_output)
-      configure_tool_calling!(parameters, model, tools, tool_choice)
-      configure_structured_outputs!(parameters, model, response_format, force_structured_output)
+    #
+    # @param parameters [Hash] Request parameters hash
+    # @param opts [CompletionOptions] Options object
+    # @return [Boolean] Whether forced extraction mode is being used
+    def configure_tools_and_structured_outputs!(parameters, opts)
+      configure_tool_calling!(parameters, opts)
+      configure_structured_outputs!(parameters, opts)
     end
 
     # Configure tool calling support
-    def configure_tool_calling!(parameters, model, tools, tool_choice)
-      return unless tools.any?
+    #
+    # @param parameters [Hash] Request parameters hash
+    # @param opts [CompletionOptions] Options object
+    def configure_tool_calling!(parameters, opts)
+      return unless opts.has_tools?
 
-      warn_if_unsupported(model, :function_calling, "tool calling")
-      parameters[:tools] = serialize_tools(tools)
-      parameters[:tool_choice] = tool_choice if tool_choice
+      warn_if_unsupported(opts.model, :function_calling, "tool calling")
+      parameters[:tools] = serialize_tools(opts.tools)
+      parameters[:tool_choice] = opts.tool_choice if opts.tool_choice
     end
 
     # Configure structured output support and return forced_extraction flag
-    def configure_structured_outputs!(parameters, model, response_format, force_structured_output)
-      return false unless response_format
+    #
+    # @param parameters [Hash] Request parameters hash
+    # @param opts [CompletionOptions] Options object
+    # @return [Boolean] Whether forced extraction mode is being used
+    def configure_structured_outputs!(parameters, opts)
+      return false unless opts.has_response_format?
 
-      force_structured_output = determine_forced_extraction_mode(model, force_structured_output)
+      force_extraction = determine_forced_extraction_mode(opts.model, opts.force_structured_output)
 
-      if force_structured_output
-        handle_forced_structured_output!(parameters, model, response_format)
+      if force_extraction
+        handle_forced_structured_output!(parameters, opts.model, opts.response_format)
         true
       else
-        handle_native_structured_output!(parameters, model, response_format)
+        handle_native_structured_output!(parameters, opts.model, opts.response_format)
         false
       end
     end

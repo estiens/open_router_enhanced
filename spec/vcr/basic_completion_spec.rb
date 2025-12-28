@@ -16,7 +16,7 @@ RSpec.describe "OpenRouter Basic Completions", :vcr do
       response = client.complete(
         simple_messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response).to be_a(OpenRouter::Response)
@@ -36,11 +36,9 @@ RSpec.describe "OpenRouter Basic Completions", :vcr do
       response = client.complete(
         simple_messages,
         model: "openai/gpt-3.5-turbo",
-        extras: {
-          max_tokens: 10,
-          temperature: 0.7,
-          top_p: 0.9
-        }
+        max_tokens: 10,
+        temperature: 0.7,
+        top_p: 0.9
       )
 
       expect(response.content).to be_a(String)
@@ -53,7 +51,7 @@ RSpec.describe "OpenRouter Basic Completions", :vcr do
       response = client.complete(
         simple_messages,
         model: "anthropic/claude-3-haiku",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response.content).to be_a(String)
@@ -65,7 +63,7 @@ RSpec.describe "OpenRouter Basic Completions", :vcr do
       response = client.complete(
         simple_messages,
         model: "openai/gpt-4o-mini",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response.content).to be_a(String)
@@ -85,7 +83,7 @@ RSpec.describe "OpenRouter Basic Completions", :vcr do
       response = client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response.content).to be_a(String)
@@ -103,7 +101,7 @@ RSpec.describe "OpenRouter Basic Completions", :vcr do
       response = client.complete(
         messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response.content).to be_a(String)
@@ -116,7 +114,7 @@ RSpec.describe "OpenRouter Basic Completions", :vcr do
       response = client.complete(
         simple_messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       # Test Response object methods
@@ -150,7 +148,7 @@ RSpec.describe "OpenRouter Basic Completions", :vcr do
       response = client.complete(
         simple_messages,
         model: "openai/gpt-3.5-turbo",
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       # Test hash-style access (backward compatibility)
@@ -174,7 +172,7 @@ RSpec.describe "OpenRouter Basic Completions", :vcr do
         simple_messages,
         model: "openai/gpt-3.5-turbo",
         providers: ["openai"],
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response.content).to be_a(String)
@@ -188,7 +186,7 @@ RSpec.describe "OpenRouter Basic Completions", :vcr do
         simple_messages,
         model: "openai/gpt-3.5-turbo",
         transforms: ["middle-out"],
-        extras: { max_tokens: 50 }
+        max_tokens: 50
       )
 
       expect(response.content).to be_a(String)
