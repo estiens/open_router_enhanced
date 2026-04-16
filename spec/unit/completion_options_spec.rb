@@ -56,7 +56,7 @@ RSpec.describe OpenRouter::CompletionOptions do
       options = described_class.new(
         model: "gpt-4",
         temperature: 0.5,
-        tools: []  # empty, should be excluded
+        tools: [] # empty, should be excluded
       )
 
       hash = options.to_h
@@ -97,7 +97,7 @@ RSpec.describe OpenRouter::CompletionOptions do
       options = described_class.new(
         max_tokens: 500,
         max_completion_tokens: 600,
-        stop: ["\n", "END"],
+        stop: %W[\n END],
         logprobs: true,
         top_logprobs: 5,
         logit_bias: { "123" => 10 },
@@ -109,7 +109,7 @@ RSpec.describe OpenRouter::CompletionOptions do
 
       expect(hash[:max_tokens]).to eq(500)
       expect(hash[:max_completion_tokens]).to eq(600)
-      expect(hash[:stop]).to eq(["\n", "END"])
+      expect(hash[:stop]).to eq(%W[\n END])
       expect(hash[:logprobs]).to eq(true)
       expect(hash[:top_logprobs]).to eq(5)
       expect(hash[:logit_bias]).to eq({ "123" => 10 })
@@ -119,7 +119,7 @@ RSpec.describe OpenRouter::CompletionOptions do
 
     it "includes OpenRouter routing parameters" do
       options = described_class.new(
-        providers: ["anthropic", "openai"],
+        providers: %w[anthropic openai],
         provider: { order: ["anthropic"], quantizations: ["fp16"] },
         transforms: ["middle-out"],
         plugins: [{ id: "web-search" }],
@@ -132,7 +132,7 @@ RSpec.describe OpenRouter::CompletionOptions do
 
       hash = options.to_h
 
-      expect(hash[:providers]).to eq(["anthropic", "openai"])
+      expect(hash[:providers]).to eq(%w[anthropic openai])
       expect(hash[:provider]).to eq({ order: ["anthropic"], quantizations: ["fp16"] })
       expect(hash[:transforms]).to eq(["middle-out"])
       expect(hash[:plugins]).to eq([{ id: "web-search" }])
@@ -216,33 +216,33 @@ RSpec.describe OpenRouter::CompletionOptions do
     end
   end
 
-  describe "#has_tools?" do
+  describe "#tools?" do
     it "returns true when tools are defined" do
       options = described_class.new(tools: [{ name: "test" }])
-      expect(options.has_tools?).to be true
+      expect(options.tools?).to be true
     end
 
     it "returns false when tools are empty" do
       options = described_class.new(tools: [])
-      expect(options.has_tools?).to be false
+      expect(options.tools?).to be false
     end
 
     it "returns false when tools are nil" do
       options = described_class.new
       options.tools = nil
-      expect(options.has_tools?).to be false
+      expect(options.tools?).to be false
     end
   end
 
-  describe "#has_response_format?" do
+  describe "#response_format?" do
     it "returns true when response_format is set" do
       options = described_class.new(response_format: { type: "json_object" })
-      expect(options.has_response_format?).to be true
+      expect(options.response_format?).to be true
     end
 
     it "returns false when response_format is nil" do
       options = described_class.new
-      expect(options.has_response_format?).to be false
+      expect(options.response_format?).to be false
     end
   end
 
@@ -303,9 +303,9 @@ RSpec.describe OpenRouter::CompletionOptions do
       options = described_class.new(model: "gpt-4", temperature: 0.7)
 
       expect(options.to_api_params).to eq({
-        model: "gpt-4",
-        temperature: 0.7
-      })
+                                            model: "gpt-4",
+                                            temperature: 0.7
+                                          })
     end
 
     it "works for a complex completion with tools and structured output" do
@@ -365,19 +365,19 @@ RSpec.describe OpenRouter::CompletionOptions do
       options = described_class.new(
         model: "gpt-4",
         provider: {
-          order: ["openai", "azure"],
+          order: %w[openai azure],
           allow_fallbacks: true,
           require_parameters: true,
-          quantizations: ["fp16", "bf16"],
+          quantizations: %w[fp16 bf16],
           max_price: { prompt: 0.01, completion: 0.03 }
         }
       )
 
       provider_config = options.to_api_params[:provider]
 
-      expect(provider_config[:order]).to eq(["openai", "azure"])
+      expect(provider_config[:order]).to eq(%w[openai azure])
       expect(provider_config[:allow_fallbacks]).to eq(true)
-      expect(provider_config[:quantizations]).to eq(["fp16", "bf16"])
+      expect(provider_config[:quantizations]).to eq(%w[fp16 bf16])
     end
   end
 end

@@ -12,7 +12,7 @@ module OpenRouter
   class Client
     include OpenRouter::HTTP
 
-    attr_reader :callbacks, :usage_tracker
+    attr_reader :callbacks, :usage_tracker, :configuration
 
     # Initializes the client with optional configurations.
     def initialize(access_token: nil, request_timeout: nil, uri_base: nil, extra_headers: {}, track_usage: true)
@@ -42,10 +42,6 @@ module OpenRouter
       # Initialize usage tracking
       @track_usage = track_usage
       @usage_tracker = UsageTracker.new if @track_usage
-    end
-
-    def configuration
-      @configuration
     end
 
     # Register a callback for a specific event
@@ -189,7 +185,7 @@ module OpenRouter
 
       parameters = { model: opts.model, input: input }
       parameters[:reasoning] = opts.reasoning if opts.reasoning
-      parameters[:tools] = serialize_tools_for_responses(opts.tools) if opts.has_tools?
+      parameters[:tools] = serialize_tools_for_responses(opts.tools) if opts.tools?
       parameters[:tool_choice] = opts.tool_choice if opts.tool_choice
       # Prefer max_completion_tokens over max_tokens (consistent with complete() method)
       parameters[:max_output_tokens] = opts.max_completion_tokens || opts.max_tokens if opts.max_completion_tokens || opts.max_tokens
@@ -507,7 +503,7 @@ module OpenRouter
     # @param parameters [Hash] Request parameters hash
     # @param opts [CompletionOptions] Options object
     def configure_tool_calling!(parameters, opts)
-      return unless opts.has_tools?
+      return unless opts.tools?
 
       warn_if_unsupported(opts.model, :function_calling, "tool calling")
       parameters[:tools] = serialize_tools(opts.tools)
@@ -520,7 +516,7 @@ module OpenRouter
     # @param opts [CompletionOptions] Options object
     # @return [Boolean] Whether forced extraction mode is being used
     def configure_structured_outputs!(parameters, opts)
-      return false unless opts.has_response_format?
+      return false unless opts.response_format?
 
       force_extraction = determine_forced_extraction_mode(opts.model, opts.force_structured_output)
 

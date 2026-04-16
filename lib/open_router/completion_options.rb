@@ -244,14 +244,14 @@ module OpenRouter
     # Check if this options object has any tools defined
     #
     # @return [Boolean]
-    def has_tools?
+    def tools?
       tools.is_a?(Array) && !tools.empty?
     end
 
     # Check if response format is configured
     #
     # @return [Boolean]
-    def has_response_format?
+    def response_format?
       !response_format.nil?
     end
 

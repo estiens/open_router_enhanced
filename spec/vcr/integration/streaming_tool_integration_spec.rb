@@ -54,14 +54,10 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
         next unless delta
 
         # Capture tool call deltas
-        if delta["tool_calls"]
-          tool_call_chunks << delta["tool_calls"]
-        end
+        tool_call_chunks << delta["tool_calls"] if delta["tool_calls"]
 
         # Capture content deltas
-        if delta["content"]
-          content_chunks << delta["content"]
-        end
+        content_chunks << delta["content"] if delta["content"]
       end
 
       streaming_client.stream_complete(
@@ -97,9 +93,7 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
       streaming_client.on_stream(:on_chunk) do |chunk|
         chunks << chunk
         delta = chunk.dig("choices", 0, "delta")
-        if delta&.dig("tool_calls", 0, "function", "name")
-          tool_call_function_name = delta.dig("tool_calls", 0, "function", "name")
-        end
+        tool_call_function_name = delta.dig("tool_calls", 0, "function", "name") if delta&.dig("tool_calls", 0, "function", "name")
       end
 
       streaming_client.stream_complete(
@@ -122,8 +116,6 @@ RSpec.describe "Streaming + Tool Calling Integration", :vcr do
       messages = [
         { role: "user", content: "What is 25 + 37?" }
       ]
-
-      accumulated_tool_calls = []
       tool_call_id = nil
       function_name = nil
       arguments_json = ""

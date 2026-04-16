@@ -23,9 +23,7 @@ module OpenRouter
     # Enhanced heal method that supports different healing contexts
     def heal(raw_text, schema, context: :generic)
       # Guard against re-entrant healing triggered by on_healing callbacks
-      if (Thread.current[:openrouter_heal_depth] || 0) > 0
-        raise StructuredOutputError, "Recursive healing detected — cannot heal from within a healing callback"
-      end
+      raise StructuredOutputError, "Recursive healing detected — cannot heal from within a healing callback" if (Thread.current[:openrouter_heal_depth] || 0).positive?
 
       Thread.current[:openrouter_heal_depth] = 1
 
