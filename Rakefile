@@ -40,7 +40,6 @@ namespace :models do
     puts " done. #{count} models cached."
   end
 
-
   desc "Display summary of available models"
   task :summary do
     require_relative "lib/open_router"
