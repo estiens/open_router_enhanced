@@ -244,7 +244,7 @@ RSpec.describe OpenRouter::ModelSelector do
         model, specs = selector.choose(return_specs: true)
         expect(model).to be_a(String)
         expect(specs).to be_a(Hash)
-        expect(specs).to have_key(:cost_per_1k_tokens)
+        expect(specs).to have_key(:cost_per_token)
         expect(specs).to have_key(:capabilities)
       end
     end
@@ -295,7 +295,7 @@ RSpec.describe OpenRouter::ModelSelector do
 
         # Verify the model is within budget
         model_info = OpenRouter::ModelRegistry.get_model_info(model)
-        expect(model_info[:cost_per_1k_tokens][:input]).to be <= 0.01
+        expect(model_info[:cost_per_token][:input]).to be <= 0.01
       end
 
       it "returns nil when no models are within budget" do
@@ -379,9 +379,9 @@ RSpec.describe OpenRouter::ModelSelector do
       it "handles nil created_at values safely" do
         # Mock data with nil created_at to test nil-safety
         models_with_nil = {
-          "model1" => { created_at: nil, cost_per_1k_tokens: { input: 0.01 } },
-          "model2" => { created_at: 1_677_652_288, cost_per_1k_tokens: { input: 0.01 } },
-          "model3" => { created_at: nil, cost_per_1k_tokens: { input: 0.01 } }
+          "model1" => { created_at: nil, cost_per_token: { input: 0.01 } },
+          "model2" => { created_at: 1_677_652_288, cost_per_token: { input: 0.01 } },
+          "model3" => { created_at: nil, cost_per_token: { input: 0.01 } }
         }
 
         allow(OpenRouter::ModelRegistry).to receive(:all_models).and_return(models_with_nil)
@@ -408,9 +408,9 @@ RSpec.describe OpenRouter::ModelSelector do
       it "handles nil context_length values safely" do
         # Mock data with nil context_length to test nil-safety
         models_with_nil = {
-          "model1" => { context_length: nil, cost_per_1k_tokens: { input: 0.01 } },
-          "model2" => { context_length: 8192, cost_per_1k_tokens: { input: 0.01 } },
-          "model3" => { context_length: nil, cost_per_1k_tokens: { input: 0.01 } }
+          "model1" => { context_length: nil, cost_per_token: { input: 0.01 } },
+          "model2" => { context_length: 8192, cost_per_token: { input: 0.01 } },
+          "model3" => { context_length: nil, cost_per_token: { input: 0.01 } }
         }
 
         allow(OpenRouter::ModelRegistry).to receive(:all_models).and_return(models_with_nil)
@@ -438,7 +438,7 @@ RSpec.describe OpenRouter::ModelSelector do
 
       # Verify they're sorted by cost (cheapest first)
       costs = models.map do |model|
-        OpenRouter::ModelRegistry.get_model_info(model)[:cost_per_1k_tokens][:input]
+        OpenRouter::ModelRegistry.get_model_info(model)[:cost_per_token][:input]
       end
       expect(costs).to eq(costs.sort)
     end
@@ -498,7 +498,7 @@ RSpec.describe OpenRouter::ModelSelector do
 
       # Should be the cheapest available model
       all_models = OpenRouter::ModelRegistry.all_models
-      cheapest_model = all_models.min_by { |_, specs| specs[:cost_per_1k_tokens][:input] }
+      cheapest_model = all_models.min_by { |_, specs| specs[:cost_per_token][:input] }
       expect(model).to eq(cheapest_model.first)
     end
   end

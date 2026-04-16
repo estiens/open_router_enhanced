@@ -122,8 +122,8 @@ RSpec.describe "OpenRouter API Contract Tests" do
 
       # Premium models should generally be more expensive than standard
       if premium_models.any? && standard_models.any?
-        avg_premium_cost = premium_models.values.map { |s| s[:cost_per_1k_tokens][:input] }.sum / premium_models.size
-        avg_standard_cost = standard_models.values.map { |s| s[:cost_per_1k_tokens][:input] }.sum / standard_models.size
+        avg_premium_cost = premium_models.values.map { |s| s[:cost_per_token][:input] }.sum / premium_models.size
+        avg_standard_cost = standard_models.values.map { |s| s[:cost_per_token][:input] }.sum / standard_models.size
 
         # This is a business logic assumption we should validate
         puts "Average premium model cost: $#{avg_premium_cost}"

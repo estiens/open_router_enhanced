@@ -10,13 +10,13 @@
 describe "Mutation testing examples" do
   # Example 1: Cost comparison logic
   # If someone accidentally changed < to <= in cost filtering:
-  # Original: specs[:cost_per_1k_tokens][:input] < max_cost
-  # Mutant:   specs[:cost_per_1k_tokens][:input] <= max_cost
+  # Original: specs[:cost_per_token][:input] < max_cost
+  # Mutant:   specs[:cost_per_token][:input] <= max_cost
 
   it "catches boundary condition mutations in cost filtering" do
     # Your current test at exactly the boundary would catch this:
     _, specs = OpenRouter::ModelRegistry.find_best_model(max_input_cost: 0.01)
-    expect(specs[:cost_per_1k_tokens][:input]).to be <= 0.01
+    expect(specs[:cost_per_token][:input]).to be <= 0.01
 
     # But you might want to add:
     model = OpenRouter::ModelRegistry.find_best_model(max_input_cost: 0.0049999)
@@ -44,8 +44,8 @@ describe "Mutation testing examples" do
 
   # Example 3: Strategy logic mutations
   # If someone accidentally switched the cost optimization:
-  # Original: models.min_by { |_, specs| specs[:cost_per_1k_tokens][:input] }
-  # Mutant:   models.max_by { |_, specs| specs[:cost_per_1k_tokens][:input] }
+  # Original: models.min_by { |_, specs| specs[:cost_per_token][:input] }
+  # Mutant:   models.max_by { |_, specs| specs[:cost_per_token][:input] }
 
   it "catches mutations in optimization strategy" do
     cost_selector = OpenRouter::ModelSelector.new.optimize_for(:cost)
@@ -53,8 +53,8 @@ describe "Mutation testing examples" do
 
     # Should be cheapest available model
     all_models = OpenRouter::ModelRegistry.all_models
-    cheapest_cost = all_models.values.map { |s| s[:cost_per_1k_tokens][:input] }.min
-    expect(cost_specs[:cost_per_1k_tokens][:input]).to eq(cheapest_cost)
+    cheapest_cost = all_models.values.map { |s| s[:cost_per_token][:input] }.min
+    expect(cost_specs[:cost_per_token][:input]).to eq(cheapest_cost)
   end
 
   # Example 4: Date comparison mutations

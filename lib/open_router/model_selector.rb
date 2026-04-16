@@ -343,7 +343,7 @@ module OpenRouter
       all_candidates = filter_by_providers(ModelRegistry.all_models)
       return nil if all_candidates.empty?
 
-      all_candidates.min_by { |_, specs| specs[:cost_per_1k_tokens][:input] }&.first
+      all_candidates.min_by { |_, specs| specs[:cost_per_token][:input] }&.first
     end
 
     # Get detailed information about the current selection criteria
@@ -426,18 +426,18 @@ module OpenRouter
     def apply_strategy_sorting(candidates)
       case @strategy
       when :cost
-        candidates.min_by { |_, specs| specs[:cost_per_1k_tokens][:input] }
+        candidates.min_by { |_, specs| specs[:cost_per_token][:input] }
       when :performance
         # Prefer premium tier, then by cost within tier
         candidates.min_by do |_, specs|
-          [specs[:performance_tier] == :premium ? 0 : 1, specs[:cost_per_1k_tokens][:input]]
+          [specs[:performance_tier] == :premium ? 0 : 1, specs[:cost_per_token][:input]]
         end
       when :latest
         candidates.max_by { |_, specs| (specs[:created_at] || 0).to_i }
       when :context
         candidates.max_by { |_, specs| (specs[:context_length] || 0).to_i }
       else
-        candidates.min_by { |_, specs| specs[:cost_per_1k_tokens][:input] }
+        candidates.min_by { |_, specs| specs[:cost_per_token][:input] }
       end
     end
 
@@ -445,17 +445,17 @@ module OpenRouter
     def apply_strategy_sorting_all(candidates)
       case @strategy
       when :cost
-        candidates.sort_by { |_, specs| specs[:cost_per_1k_tokens][:input] }
+        candidates.sort_by { |_, specs| specs[:cost_per_token][:input] }
       when :performance
         candidates.sort_by do |_, specs|
-          [specs[:performance_tier] == :premium ? 0 : 1, specs[:cost_per_1k_tokens][:input]]
+          [specs[:performance_tier] == :premium ? 0 : 1, specs[:cost_per_token][:input]]
         end
       when :latest
         candidates.sort_by { |_, specs| -(specs[:created_at] || 0).to_i }
       when :context
         candidates.sort_by { |_, specs| -(specs[:context_length] || 0).to_i }
       else
-        candidates.sort_by { |_, specs| specs[:cost_per_1k_tokens][:input] }
+        candidates.sort_by { |_, specs| specs[:cost_per_token][:input] }
       end
     end
   end

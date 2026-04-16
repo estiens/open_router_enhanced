@@ -30,6 +30,17 @@ task ci: %i[spec_all rubocop]
 
 # Model exploration tasks
 namespace :models do
+  desc "Fetch fresh model data from OpenRouter API and update local cache"
+  task :update do
+    require_relative "lib/open_router"
+
+    print "Fetching models from OpenRouter API..."
+    OpenRouter::ModelRegistry.refresh!
+    count = OpenRouter::ModelRegistry.all_models.size
+    puts " done. #{count} models cached."
+  end
+
+
   desc "Display summary of available models"
   task :summary do
     require_relative "lib/open_router"
@@ -59,18 +70,18 @@ namespace :models do
     end
 
     # Cost analysis
-    input_costs = models.values.map { |spec| spec[:cost_per_1k_tokens][:input] }.compact.sort
-    output_costs = models.values.map { |spec| spec[:cost_per_1k_tokens][:output] }.compact.sort
+    input_costs = models.values.map { |spec| spec[:cost_per_token][:input] }.compact.sort
+    output_costs = models.values.map { |spec| spec[:cost_per_token][:output] }.compact.sort
 
-    puts "\n💰 Cost Analysis (per 1k tokens):"
+    puts "\n💰 Cost Analysis (per million tokens):"
     puts "  Input tokens:"
-    puts "    Min:    $#{format("%.6f", input_costs.min)}"
-    puts "    Max:    $#{format("%.6f", input_costs.max)}"
-    puts "    Median: $#{format("%.6f", input_costs[input_costs.size / 2])}"
+    puts "    Min:    $#{format("%.4f", input_costs.min * 1_000_000)}"
+    puts "    Max:    $#{format("%.4f", input_costs.max * 1_000_000)}"
+    puts "    Median: $#{format("%.4f", input_costs[input_costs.size / 2] * 1_000_000)}"
     puts "  Output tokens:"
-    puts "    Min:    $#{format("%.6f", output_costs.min)}"
-    puts "    Max:    $#{format("%.6f", output_costs.max)}"
-    puts "    Median: $#{format("%.6f", output_costs[output_costs.size / 2])}"
+    puts "    Min:    $#{format("%.4f", output_costs.min * 1_000_000)}"
+    puts "    Max:    $#{format("%.4f", output_costs.max * 1_000_000)}"
+    puts "    Median: $#{format("%.4f", output_costs[output_costs.size / 2] * 1_000_000)}"
 
     # Context length analysis
     context_lengths = models.values.map { |spec| spec[:context_length] }.compact.sort
@@ -269,8 +280,8 @@ namespace :models do
   def self.display_model_info(model_id, specs, index)
     puts "#{(index + 1).to_s.rjust(3)}. #{model_id}"
     puts "     Name: #{specs[:name]}" if specs[:name]
-    puts "     Cost: $#{format("%.6f", specs[:cost_per_1k_tokens][:input])}/1k input, " \
-         "$#{format("%.6f", specs[:cost_per_1k_tokens][:output])}/1k output"
+    cpm = OpenRouter::ModelRegistry.cost_per_million(model_id)
+    puts "     Cost: $#{format("%.4f", cpm[:input])}/M input, $#{format("%.4f", cpm[:output])}/M output"
     puts "     Context: #{format_number_with_commas(specs[:context_length])} tokens"
     puts "     Capabilities: #{specs[:capabilities].join(", ")}"
     puts "     Tier: #{specs[:performance_tier]}"
@@ -318,17 +329,17 @@ namespace :models do
   def self.sort_by_strategy(candidates, strategy)
     case strategy
     when :cost
-      candidates.sort_by { |_, specs| specs[:cost_per_1k_tokens][:input] }
+      candidates.sort_by { |_, specs| specs[:cost_per_token][:input] }
     when :performance
       candidates.sort_by do |_, specs|
-        [specs[:performance_tier] == :premium ? 0 : 1, specs[:cost_per_1k_tokens][:input]]
+        [specs[:performance_tier] == :premium ? 0 : 1, specs[:cost_per_token][:input]]
       end
     when :latest
       candidates.sort_by { |_, specs| -(specs[:created_at] || 0).to_i }
     when :context
       candidates.sort_by { |_, specs| -(specs[:context_length] || 0).to_i }
     else
-      candidates.sort_by { |_, specs| specs[:cost_per_1k_tokens][:input] }
+      candidates.sort_by { |_, specs| specs[:cost_per_token][:input] }
     end
   end
 end

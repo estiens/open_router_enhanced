@@ -17,7 +17,7 @@ RSpec.describe OpenRouter::ModelRegistry do
 
       models = OpenRouter::ModelRegistry.fetch_and_cache_models
       expect(models).to have_key("mistralai/mistral-medium-3.1")
-      expect(models["mistralai/mistral-medium-3.1"]).to have_key(:cost_per_1k_tokens)
+      expect(models["mistralai/mistral-medium-3.1"]).to have_key(:cost_per_token)
       expect(models["mistralai/mistral-medium-3.1"]).to have_key(:capabilities)
     end
   end
@@ -44,8 +44,8 @@ RSpec.describe OpenRouter::ModelRegistry do
       expect(result).to have_key("test/model-without-pricing")
 
       model = result["test/model-without-pricing"]
-      expect(model[:cost_per_1k_tokens][:input]).to eq(0.0)
-      expect(model[:cost_per_1k_tokens][:output]).to eq(0.0)
+      expect(model[:cost_per_token][:input]).to eq(0.0)
+      expect(model[:cost_per_token][:output]).to eq(0.0)
     end
 
     it "handles determine_performance_tier with nil pricing after fix" do
@@ -106,7 +106,7 @@ RSpec.describe OpenRouter::ModelRegistry do
         model, specs = OpenRouter::ModelRegistry.find_best_model
         expect(model).to be_a(String)
         expect(specs).to be_a(Hash)
-        expect(specs).to have_key(:cost_per_1k_tokens)
+        expect(specs).to have_key(:cost_per_token)
         expect(specs).to have_key(:capabilities)
         # Should return cheapest model (ai21/jamba-mini-1.7 based on fixture data)
         expect(model).to eq("ai21/jamba-mini-1.7")
@@ -156,7 +156,7 @@ RSpec.describe OpenRouter::ModelRegistry do
         _, specs = OpenRouter::ModelRegistry.find_best_model(
           max_input_cost: 0.01
         )
-        expect(specs[:cost_per_1k_tokens][:input]).to be <= 0.01
+        expect(specs[:cost_per_token][:input]).to be <= 0.01
       end
 
       it "returns cheapest model when multiple options exist" do
@@ -168,8 +168,8 @@ RSpec.describe OpenRouter::ModelRegistry do
         all_qualifying = OpenRouter::ModelRegistry.models_meeting_requirements(
           max_input_cost: 0.05
         )
-        cheapest_cost = all_qualifying.min_by { |_, s| s[:cost_per_1k_tokens][:input] }&.last
-        expect(specs[:cost_per_1k_tokens][:input]).to eq(cheapest_cost[:cost_per_1k_tokens][:input])
+        cheapest_cost = all_qualifying.min_by { |_, s| s[:cost_per_token][:input] }&.last
+        expect(specs[:cost_per_token][:input]).to eq(cheapest_cost[:cost_per_token][:input])
       end
 
       it "returns nil when no models are within cost limit" do
@@ -258,7 +258,7 @@ RSpec.describe OpenRouter::ModelRegistry do
         )
 
         expect(specs[:capabilities]).to include(:function_calling)
-        expect(specs[:cost_per_1k_tokens][:input]).to be <= 0.02
+        expect(specs[:cost_per_token][:input]).to be <= 0.02
         expect(specs[:context_length]).to be >= 50_000
       end
 
@@ -336,7 +336,7 @@ RSpec.describe OpenRouter::ModelRegistry do
       info = OpenRouter::ModelRegistry.get_model_info(model)
 
       expect(info).to be_a(Hash)
-      expect(info).to have_key(:cost_per_1k_tokens)
+      expect(info).to have_key(:cost_per_token)
       expect(info).to have_key(:capabilities)
       expect(info).to have_key(:context_length)
       expect(info).to have_key(:performance_tier)
@@ -357,7 +357,7 @@ RSpec.describe OpenRouter::ModelRegistry do
       models.each do |model_name, specs|
         expect(model_name).to be_a(String)
         expect(specs).to be_a(Hash)
-        expect(specs).to have_key(:cost_per_1k_tokens)
+        expect(specs).to have_key(:cost_per_token)
         expect(specs).to have_key(:capabilities)
       end
     end
@@ -428,11 +428,11 @@ RSpec.describe OpenRouter::ModelRegistry do
 
     it "has valid cost structure for all models" do
       OpenRouter::ModelRegistry.all_models.each_value do |specs|
-        expect(specs[:cost_per_1k_tokens]).to be_a(Hash)
-        expect(specs[:cost_per_1k_tokens]).to have_key(:input)
-        expect(specs[:cost_per_1k_tokens]).to have_key(:output)
-        expect(specs[:cost_per_1k_tokens][:input]).to be >= 0
-        expect(specs[:cost_per_1k_tokens][:output]).to be >= 0
+        expect(specs[:cost_per_token]).to be_a(Hash)
+        expect(specs[:cost_per_token]).to have_key(:input)
+        expect(specs[:cost_per_token]).to have_key(:output)
+        expect(specs[:cost_per_token][:input]).to be >= 0
+        expect(specs[:cost_per_token][:output]).to be >= 0
       end
     end
 

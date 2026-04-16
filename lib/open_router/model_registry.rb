@@ -139,7 +139,7 @@ module OpenRouter
 
           models[model_id] = {
             name: model_data["name"],
-            cost_per_1k_tokens: {
+            cost_per_token: {
               input: model_data.dig("pricing", "prompt").to_f,
               output: model_data.dig("pricing", "completion").to_f
             },
@@ -262,10 +262,28 @@ module OpenRouter
         model_info = get_model_info(model)
         return 0 unless model_info
 
-        input_cost = (input_tokens / 1000.0) * model_info[:cost_per_1k_tokens][:input]
-        output_cost = (output_tokens / 1000.0) * model_info[:cost_per_1k_tokens][:output]
+        input_cost = input_tokens * model_info[:cost_per_token][:input]
+        output_cost = output_tokens * model_info[:cost_per_token][:output]
 
         input_cost + output_cost
+      end
+
+      # Cost per 1,000 tokens — { input: Float, output: Float } or nil
+      def cost_per_thousand(model)
+        info = get_model_info(model)
+        return nil unless info
+
+        { input: info[:cost_per_token][:input] * 1_000,
+          output: info[:cost_per_token][:output] * 1_000 }
+      end
+
+      # Cost per 1,000,000 tokens — { input: Float, output: Float } or nil
+      def cost_per_million(model)
+        info = get_model_info(model)
+        return nil unless info
+
+        { input: info[:cost_per_token][:input] * 1_000_000,
+          output: info[:cost_per_token][:output] * 1_000_000 }
       end
 
       private
@@ -279,11 +297,11 @@ module OpenRouter
         end
 
         # Check cost requirements
-        if requirements[:max_input_cost] && (specs[:cost_per_1k_tokens][:input] > requirements[:max_input_cost])
+        if requirements[:max_input_cost] && (specs[:cost_per_token][:input] > requirements[:max_input_cost])
           return false
         end
 
-        if requirements[:max_output_cost] && (specs[:cost_per_1k_tokens][:output] > requirements[:max_output_cost])
+        if requirements[:max_output_cost] && (specs[:cost_per_token][:output] > requirements[:max_output_cost])
           return false
         end
 
@@ -334,7 +352,7 @@ module OpenRouter
       def calculate_model_cost(specs, _requirements)
         # Simple cost calculation for sorting - could be made more sophisticated
         # For now, just use input token cost as the primary metric
-        specs[:cost_per_1k_tokens][:input]
+        specs[:cost_per_token][:input]
       end
 
       # Set up cleanup hook to manage cache size

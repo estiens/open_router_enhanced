@@ -8,19 +8,19 @@ RSpec.describe "OpenRouter Client Capability Validation" do
       "basic/text-model" => {
         name: "Basic Text Model",
         capabilities: [:chat],
-        cost_per_1k_tokens: { input: 0.0005, output: 0.001 },
+        cost_per_token: { input: 0.0005, output: 0.001 },
         context_length: 2048
       },
       "advanced/tool-model" => {
         name: "Advanced Tool Model",
         capabilities: %i[chat function_calling],
-        cost_per_1k_tokens: { input: 0.001, output: 0.002 },
+        cost_per_token: { input: 0.001, output: 0.002 },
         context_length: 4096
       },
       "vision/multimodal-model" => {
         name: "Vision Multimodal Model",
         capabilities: %i[chat vision structured_outputs],
-        cost_per_1k_tokens: { input: 0.01, output: 0.03 },
+        cost_per_token: { input: 0.01, output: 0.03 },
         context_length: 8192
       }
     }

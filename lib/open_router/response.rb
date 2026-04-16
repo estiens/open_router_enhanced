@@ -110,7 +110,12 @@ module OpenRouter
           end
         end
 
-        @structured_output ||= result
+        # Use a flag rather than ||= so nil results don't trigger re-parsing on every call
+        unless @structured_output_computed
+          @structured_output = result
+          @structured_output_computed = true
+        end
+        @structured_output
       when :gentle
         # New gentle mode: best-effort parsing, no healing, no validation
         content_to_parse = @forced_extraction ? extract_json_from_text(content) : content

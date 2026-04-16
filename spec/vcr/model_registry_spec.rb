@@ -83,17 +83,17 @@ RSpec.describe "OpenRouter ModelRegistry", :vcr do
 
       # Check required fields
       expect(gpt_model).to have_key(:name)
-      expect(gpt_model).to have_key(:cost_per_1k_tokens)
+      expect(gpt_model).to have_key(:cost_per_token)
       expect(gpt_model).to have_key(:context_length)
       expect(gpt_model).to have_key(:capabilities)
       expect(gpt_model).to have_key(:description)
       expect(gpt_model).to have_key(:performance_tier)
 
       # Check cost structure
-      expect(gpt_model[:cost_per_1k_tokens]).to have_key(:input)
-      expect(gpt_model[:cost_per_1k_tokens]).to have_key(:output)
-      expect(gpt_model[:cost_per_1k_tokens][:input]).to be_a(Float)
-      expect(gpt_model[:cost_per_1k_tokens][:output]).to be_a(Float)
+      expect(gpt_model[:cost_per_token]).to have_key(:input)
+      expect(gpt_model[:cost_per_token]).to have_key(:output)
+      expect(gpt_model[:cost_per_token][:input]).to be_a(Float)
+      expect(gpt_model[:cost_per_token][:output]).to be_a(Float)
 
       # Check capabilities
       expect(gpt_model[:capabilities]).to be_an(Array)
@@ -141,7 +141,7 @@ RSpec.describe "OpenRouter ModelRegistry", :vcr do
       model_info = OpenRouter::ModelRegistry.get_model_info("openai/gpt-3.5-turbo")
       expect(model_info).to be_a(Hash)
       expect(model_info[:name]).to be_a(String)
-      expect(model_info[:cost_per_1k_tokens]).to be_a(Hash)
+      expect(model_info[:cost_per_token]).to be_a(Hash)
 
       # Non-existent model should return nil
       expect(OpenRouter::ModelRegistry.get_model_info("nonexistent/model")).to be_nil
@@ -191,7 +191,7 @@ RSpec.describe "OpenRouter ModelRegistry", :vcr do
 
       # All returned models should be within cost constraint
       models.each_value do |specs|
-        expect(specs[:cost_per_1k_tokens][:input]).to be <= 0.00001
+        expect(specs[:cost_per_token][:input]).to be <= 0.00001
       end
     end
 
@@ -219,7 +219,7 @@ RSpec.describe "OpenRouter ModelRegistry", :vcr do
         model_id, model_specs = model_pair
         expect(model_id).to be_a(String)
         expect(model_specs[:capabilities]).to include(:function_calling)
-        expect(model_specs[:cost_per_1k_tokens][:input]).to be <= 0.01
+        expect(model_specs[:cost_per_token][:input]).to be <= 0.01
         expect(model_specs[:context_length]).to be >= 4000
       end
     end
