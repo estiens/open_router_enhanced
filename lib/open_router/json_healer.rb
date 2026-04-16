@@ -22,6 +22,13 @@ module OpenRouter
 
     # Enhanced heal method that supports different healing contexts
     def heal(raw_text, schema, context: :generic)
+      # Guard against re-entrant healing triggered by on_healing callbacks
+      if (Thread.current[:openrouter_heal_depth] || 0) > 0
+        raise StructuredOutputError, "Recursive healing detected — cannot heal from within a healing callback"
+      end
+
+      Thread.current[:openrouter_heal_depth] = 1
+
       candidate_json = extract_json_candidate(raw_text)
       raise StructuredOutputError, "No JSON-like content found in the response." if candidate_json.nil?
 
@@ -53,6 +60,8 @@ module OpenRouter
         # Escalate to LLM-based healing with proper context
         candidate_json = fix_with_healer_model(candidate_json, schema, e.message, e.class, original_content, context)
       end
+    ensure
+      Thread.current[:openrouter_heal_depth] = 0
     end
 
     private

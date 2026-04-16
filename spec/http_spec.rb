@@ -15,8 +15,8 @@ RSpec.describe OpenRouter::HTTP do
 
     context "edge cases with various slash combinations" do
       before do
-        allow(OpenRouter.configuration).to receive(:uri_base).and_return(base)
-        allow(OpenRouter.configuration).to receive(:api_version).and_return(version)
+        allow(client.configuration).to receive(:uri_base).and_return(base)
+        allow(client.configuration).to receive(:api_version).and_return(version)
       end
 
       context "when uri_base has trailing slash" do

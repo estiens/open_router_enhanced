@@ -144,7 +144,7 @@ RSpec.describe "Force structured output on unsupported models" do
         context "when auto_force_on_unsupported_models is false" do
           it "should NOT auto-force for unsupported models" do
             # Configure to disable auto-forcing
-            allow(OpenRouter.configuration).to receive(:auto_force_on_unsupported_models).and_return(false)
+            allow(client.configuration).to receive(:auto_force_on_unsupported_models).and_return(false)
 
             # Should use native mode (include response_format in API call) instead of forcing
             expect(client).to receive(:post) do |path:, parameters:|
@@ -162,7 +162,7 @@ RSpec.describe "Force structured output on unsupported models" do
         context "when auto_force_on_unsupported_models is true" do
           it "should auto-force for unsupported models (current behavior)" do
             # Configure to enable auto-forcing
-            allow(OpenRouter.configuration).to receive(:auto_force_on_unsupported_models).and_return(true)
+            allow(client.configuration).to receive(:auto_force_on_unsupported_models).and_return(true)
 
             expect(client).to receive(:post) do |path:, parameters:|
               expect(parameters).not_to have_key(:response_format) # Should be forced

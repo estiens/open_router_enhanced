@@ -33,7 +33,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
           model: "openai/gpt-3.5-turbo",
           max_tokens: 50
         )
-      end.to raise_error(Faraday::UnauthorizedError)
+      end.to raise_error(OpenRouter::ServerError, /access token missing/)
     end
   end
 

@@ -18,7 +18,7 @@ RSpec.describe OpenRouter do
 
     describe "#initialize" do
       it "yields the configuration" do
-        expect { |b| OpenRouter::Client.new(&b) }.to yield_with_args(OpenRouter.configuration)
+        expect { |b| OpenRouter::Client.new(&b) }.to yield_with_args(instance_of(OpenRouter::Configuration))
       end
     end
 

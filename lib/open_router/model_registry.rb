@@ -15,6 +15,8 @@ module OpenRouter
     CACHE_METADATA_FILE = File.join(CACHE_DIR, "cache_metadata.json")
     MAX_CACHE_SIZE_MB = 50 # Maximum cache size in megabytes
 
+    REGISTRY_MUTEX = Mutex.new
+
     class << self
       # Fetch models from OpenRouter API using Faraday for consistent SSL handling
       def fetch_models_from_api
@@ -83,9 +85,11 @@ module OpenRouter
 
       # Clear local cache (both files and memory)
       def clear_cache!
-        FileUtils.rm_rf(CACHE_DIR) if Dir.exist?(CACHE_DIR)
-        @processed_models = nil
-        @all_models = nil
+        REGISTRY_MUTEX.synchronize do
+          FileUtils.rm_rf(CACHE_DIR) if Dir.exist?(CACHE_DIR)
+          @processed_models = nil
+          @all_models = nil
+        end
       end
 
       # Refresh models data from API
@@ -246,7 +250,11 @@ module OpenRouter
 
       # Get all registered models (fetch from API if needed)
       def all_models
-        @all_models ||= fetch_and_cache_models
+        return @all_models if @all_models  # fast path without lock
+
+        REGISTRY_MUTEX.synchronize do
+          @all_models ||= fetch_and_cache_models
+        end
       end
 
       # Calculate estimated cost for a request

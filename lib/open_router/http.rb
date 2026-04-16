@@ -78,30 +78,30 @@ module OpenRouter
 
     def conn(multipart: false)
       Faraday.new do |f|
-        f.options[:timeout] = OpenRouter.configuration.request_timeout
+        f.options[:timeout] = configuration.request_timeout
         f.request(:multipart) if multipart
         # NOTE: Removed MiddlewareErrors reference - was undefined and @log_errors was never set
         f.response :raise_error
         f.response :json if OpenRouter::HAS_JSON_MW
 
-        OpenRouter.configuration.faraday_config&.call(f)
+        configuration.faraday_config&.call(f)
       end
     end
 
     def uri(path:)
-      base = OpenRouter.configuration.uri_base.sub(%r{/\z}, "")
-      ver = OpenRouter.configuration.api_version.to_s.sub(%r{^/}, "").sub(%r{/\z}, "")
+      base = configuration.uri_base.sub(%r{/\z}, "")
+      ver = configuration.api_version.to_s.sub(%r{^/}, "").sub(%r{/\z}, "")
       p = path.to_s.sub(%r{^/}, "")
-      "#{base}/#{ver}/#{p}"
+      [base, ver, p].reject(&:empty?).join("/")
     end
 
     def headers
       {
-        "Authorization" => "Bearer #{OpenRouter.configuration.access_token}",
+        "Authorization" => "Bearer #{configuration.access_token}",
         "Content-Type" => "application/json",
         "X-Title" => "OpenRouter Ruby Client",
         "HTTP-Referer" => "https://github.com/OlympiaAI/open_router"
-      }.merge(OpenRouter.configuration.extra_headers)
+      }.merge(configuration.extra_headers)
     end
 
     def multipart_parameters(parameters)

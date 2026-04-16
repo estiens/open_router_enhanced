@@ -16,11 +16,15 @@ module OpenRouter
 
     # Initializes the client with optional configurations.
     def initialize(access_token: nil, request_timeout: nil, uri_base: nil, extra_headers: {}, track_usage: true)
-      OpenRouter.configuration.access_token = access_token if access_token
-      OpenRouter.configuration.request_timeout = request_timeout if request_timeout
-      OpenRouter.configuration.uri_base = uri_base if uri_base
-      OpenRouter.configuration.extra_headers = extra_headers if extra_headers.any?
-      yield(OpenRouter.configuration) if block_given?
+      # Build a per-instance configuration to avoid mutating the global singleton,
+      # which would cause credential leakage across Client instances in concurrent use.
+      @configuration = OpenRouter.configuration.dup
+      @configuration.extra_headers = OpenRouter.configuration.extra_headers.dup
+      @configuration.access_token = access_token if access_token
+      @configuration.request_timeout = request_timeout if request_timeout
+      @configuration.uri_base = uri_base if uri_base
+      @configuration.extra_headers = @configuration.extra_headers.merge(extra_headers) if extra_headers.any?
+      yield(@configuration) if block_given?
 
       # Instance-level tracking of capability warnings to avoid memory leaks
       @capability_warnings_shown = Set.new
@@ -41,7 +45,7 @@ module OpenRouter
     end
 
     def configuration
-      OpenRouter.configuration
+      @configuration
     end
 
     # Register a callback for a specific event
