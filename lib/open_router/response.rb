@@ -165,12 +165,30 @@ module OpenRouter
     end
 
     # Content accessors
+    #
+    # Providers may return message content either as a plain String or as an
+    # array of content parts (e.g. multimodal responses). We normalize the
+    # array form down to its concatenated text so downstream consumers — and
+    # structured-output parsing in particular — always work with a String.
     def content
-      choices.first&.dig("message", "content")
+      normalize_content(choices.first&.dig("message", "content"))
     end
 
     def choices
       @raw_response["choices"] || []
+    end
+
+    # Reduce an array of content parts to a single text String. Non-array
+    # values (String/nil) are returned unchanged.
+    def normalize_content(raw)
+      return raw unless raw.is_a?(Array)
+
+      raw.filter_map do |part|
+        next part if part.is_a?(String)
+        next unless part.is_a?(Hash) && (part["type"] || part[:type]) == "text"
+
+        part["text"] || part[:text]
+      end.join
     end
 
     def usage
@@ -239,7 +257,10 @@ module OpenRouter
       return nil unless id && client
 
       @cost_estimate ||= client.query_generation_stats(id)&.dig("cost")
-    rescue StandardError
+    rescue StandardError => e
+      # Non-fatal: cost lookup needs an extra /generation call which can fail
+      # independently of the completion. Surface it rather than swallowing it.
+      client.trigger_callbacks(:on_error, e) if client.respond_to?(:trigger_callbacks)
       nil
     end
 

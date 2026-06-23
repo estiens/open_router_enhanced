@@ -62,18 +62,41 @@ module OpenRouter
     # @param user_proc [Proc] The inner proc to call for each JSON object in the chunk.
     # @return [Proc] An outer proc that iterates over a raw stream, converting it to JSON.
     def to_json_stream(user_proc:)
+      buffer = +""
+
       proc do |chunk, _|
-        chunk.scan(/(?:data|error): (\{.*\})/i).flatten.each do |data|
-          parsed_chunk = JSON.parse(data)
+        buffer << chunk
 
-          # Trigger on_stream_chunk callback if available
-          trigger_callbacks(:on_stream_chunk, parsed_chunk) if respond_to?(:trigger_callbacks)
-
-          user_proc.call(parsed_chunk)
-        rescue JSON::ParserError
-          # Ignore invalid JSON.
+        # SSE messages are newline-delimited. A single network chunk may contain
+        # several complete lines and/or end mid-line, so we only process whole
+        # lines and keep any trailing partial line buffered for the next chunk.
+        while (newline_index = buffer.index("\n"))
+          line = buffer.slice!(0..newline_index)
+          process_stream_line(line.chomp, user_proc)
         end
+
+        # A complete, well-formed data line may arrive without a trailing newline
+        # (e.g. the final event). Emit it eagerly once it fully parses; a partial
+        # line won't parse, so it stays buffered for the next chunk.
+        buffer.clear if process_stream_line(buffer, user_proc)
       end
+    end
+
+    # Returns true when a valid data/error line was parsed and dispatched.
+    def process_stream_line(line, user_proc)
+      match = line.match(/\A(?:data|error):\s*(\{.*\})\s*\z/i)
+      return false unless match
+
+      parsed_chunk = JSON.parse(match[1])
+
+      # Trigger on_stream_chunk callback if available
+      trigger_callbacks(:on_stream_chunk, parsed_chunk) if respond_to?(:trigger_callbacks)
+
+      user_proc.call(parsed_chunk)
+      true
+    rescue JSON::ParserError
+      # Ignore invalid JSON.
+      false
     end
 
     def conn(multipart: false)

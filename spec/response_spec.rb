@@ -198,6 +198,28 @@ RSpec.describe OpenRouter::Response do
       expect(output["location"]).to eq("London")
     end
 
+    it "parses structured output when message content is an array of content parts" do
+      multimodal_response = structured_response.dup
+      multimodal_response["choices"] = [
+        {
+          "index" => 0,
+          "message" => {
+            "role" => "assistant",
+            "content" => [
+              { "type" => "text",
+                "text" => '{"location": "Paris", "temperature": 21, "conditions": "Sunny"}' }
+            ]
+          },
+          "finish_reason" => "stop"
+        }
+      ]
+
+      response = OpenRouter::Response.new(multimodal_response, response_format:)
+
+      expect { response.structured_output }.not_to raise_error
+      expect(response.structured_output["location"]).to eq("Paris")
+    end
+
     it "handles hash response_format with explicit strict: false" do
       response_format_with_strict_false = {
         type: "json_schema",
@@ -324,6 +346,22 @@ RSpec.describe OpenRouter::Response do
     it "detects errors" do
       expect(response.error?).to be true
       expect(response.error_message).to eq("Invalid API key")
+    end
+  end
+
+  describe "#cost_estimate" do
+    let(:basic_resp) { OpenRouter::Response.new(basic_response) }
+
+    it "surfaces generation-stats failures via the on_error callback instead of swallowing them" do
+      failing_client = OpenRouter::Client.new(access_token: "test")
+      reported = []
+      failing_client.on(:on_error) { |e| reported << e }
+      allow(failing_client).to receive(:query_generation_stats).and_raise(OpenRouter::ServerError, "boom")
+
+      basic_resp.client = failing_client
+
+      expect(basic_resp.cost_estimate).to be_nil
+      expect(reported.map(&:message)).to include("boom")
     end
   end
 

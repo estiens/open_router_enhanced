@@ -184,7 +184,11 @@ module OpenRouter
 
       fallback_models.each do |model|
         return complete(messages, model:, **extras)
-      rescue StandardError => e
+      rescue ServerError => e
+        # Only model-specific/transient failures (normalized to ServerError)
+        # warrant trying the next model. Auth, configuration, and programming
+        # errors are not model-specific and must surface immediately rather
+        # than silently burning through every fallback.
         last_error = e
       end
 

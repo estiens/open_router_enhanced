@@ -238,21 +238,17 @@ module OpenRouter
       }
     end
 
-    # Estimate cost if not available from response
+    # Estimate cost if not available from response.
+    # Delegates to the registry's pricing calculation, which understands the
+    # processed model-info format (per-token input/output costs).
     def estimate_cost(model, prompt_tokens, completion_tokens)
       return 0 unless model
 
-      # Try to get pricing from model registry
-      model_data = ModelRegistry.get_model(model)
-      return 0 unless model_data
-
-      pricing = model_data["pricing"]
-      return 0 unless pricing
-
-      prompt_cost = (prompt_tokens / 1_000_000.0) * pricing["prompt"].to_f
-      completion_cost = (completion_tokens / 1_000_000.0) * pricing["completion"].to_f
-
-      prompt_cost + completion_cost
+      ModelRegistry.calculate_estimated_cost(
+        model,
+        input_tokens: prompt_tokens,
+        output_tokens: completion_tokens
+      )
     rescue StandardError
       0
     end

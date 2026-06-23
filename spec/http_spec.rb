@@ -111,4 +111,50 @@ RSpec.describe OpenRouter::HTTP do
       end.not_to raise_error
     end
   end
+
+  describe "#to_json_stream" do
+    it "parses a single complete SSE data line" do
+      received = []
+      stream = client.send(:to_json_stream, user_proc: ->(obj) { received << obj })
+
+      stream.call(%({"unused":true}\ndata: {"choices":[{"delta":{"content":"hi"}}]}\n), nil)
+
+      expect(received).to eq([{ "choices" => [{ "delta" => { "content" => "hi" } }] }])
+    end
+
+    it "reassembles a data line split across two network chunks" do
+      received = []
+      stream = client.send(:to_json_stream, user_proc: ->(obj) { received << obj })
+
+      # The JSON object is split mid-way across two chunks, as can happen at a
+      # TCP read boundary. The fragment must not be dropped.
+      stream.call(%(data: {"choices":[{"delta":{"con), nil)
+      stream.call(%(tent":"world"}}]}\n), nil)
+
+      expect(received).to eq([{ "choices" => [{ "delta" => { "content" => "world" } }] }])
+    end
+
+    it "ignores SSE comment lines and the [DONE] sentinel" do
+      received = []
+      stream = client.send(:to_json_stream, user_proc: ->(obj) { received << obj })
+
+      stream.call(": OPENROUTER PROCESSING\n\ndata: [DONE]\n", nil)
+
+      expect(received).to be_empty
+    end
+  end
+
+  describe "#validate_response!" do
+    it "does not raise NoMethodError when the body is a non-JSON String" do
+      expect do
+        client.send(:validate_response!, "upstream timeout, not json", nil)
+      end.not_to raise_error
+    end
+
+    it "raises a clean ServerError when the body carries an error hash" do
+      expect do
+        client.send(:validate_response!, { "error" => { "message" => "boom" } }, nil)
+      end.to raise_error(OpenRouter::ServerError, /boom/)
+    end
+  end
 end

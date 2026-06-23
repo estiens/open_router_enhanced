@@ -247,4 +247,41 @@ RSpec.describe OpenRouter::Client do
       end.to raise_error(ArgumentError, /Tools must be/)
     end
   end
+
+  describe "#smart_complete_with_fallback error handling" do
+    let(:messages) { [{ role: "user", content: "Hello" }] }
+    let(:selector) { instance_double(OpenRouter::ModelSelector) }
+
+    before do
+      allow(OpenRouter::ModelSelector).to receive(:new).and_return(selector)
+      allow(selector).to receive(:optimize_for).and_return(selector)
+      allow(selector).to receive(:choose_with_fallbacks).and_return(%w[model-a model-b])
+    end
+
+    it "tries the next model when a model fails with a retryable ServerError" do
+      calls = 0
+      allow(client).to receive(:complete) do
+        calls += 1
+        raise OpenRouter::ServerError, "model-a is down" if calls == 1
+
+        "recovered-response"
+      end
+
+      expect(client.smart_complete_with_fallback(messages)).to eq("recovered-response")
+      expect(calls).to eq(2)
+    end
+
+    it "propagates an authentication error immediately without burning through fallbacks" do
+      calls = 0
+      allow(client).to receive(:complete) do
+        calls += 1
+        raise Faraday::UnauthorizedError, "401 unauthorized"
+      end
+
+      expect do
+        client.smart_complete_with_fallback(messages)
+      end.to raise_error(Faraday::UnauthorizedError)
+      expect(calls).to eq(1)
+    end
+  end
 end

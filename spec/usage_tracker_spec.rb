@@ -85,16 +85,33 @@ RSpec.describe OpenRouter::UsageTracker do
                                 cost_estimate: nil,
                                 id: "test-789")
 
-      # Mock ModelRegistry for cost estimation
-      allow(OpenRouter::ModelRegistry).to receive(:get_model).and_return({
-                                                                           "pricing" => { "prompt" => "0.001",
-                                                                                          "completion" => "0.002" }
-                                                                         })
+      # Stub the REAL registry interface (get_model_info returns the processed
+      # internal shape with per-token costs), not the non-existent get_model.
+      allow(OpenRouter::ModelRegistry).to receive(:get_model_info)
+        .with("openai/gpt-4o-mini")
+        .and_return({ cost_per_token: { input: 0.0000005, output: 0.0000015 } })
 
       tracker.track(response_no_cost)
 
-      # Should estimate: (100/1_000_000 * 0.001) + (50/1_000_000 * 0.002) = 0.0000002
-      expect(tracker.total_cost).to be_within(0.0000001).of(0.0000002)
+      # Should estimate: (100 * 0.0000005) + (50 * 0.0000015) = 0.000125
+      expect(tracker.total_cost).to be_within(0.0000001).of(0.000125)
+    end
+
+    it "estimates zero cost when the model is unknown to the registry" do
+      response_no_cost = double("Response",
+                                model: "unknown/model",
+                                prompt_tokens: 100,
+                                completion_tokens: 50,
+                                cached_tokens: 10,
+                                cost_estimate: nil,
+                                id: "test-790")
+
+      allow(OpenRouter::ModelRegistry).to receive(:get_model_info)
+        .with("unknown/model").and_return(nil)
+
+      tracker.track(response_no_cost)
+
+      expect(tracker.total_cost).to eq(0)
     end
 
     it "handles nil responses gracefully" do

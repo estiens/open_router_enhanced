@@ -51,7 +51,10 @@ module OpenRouter
     end
 
     def validate_response!(raw_response, stream)
-      raise ServerError, raw_response.dig("error", "message") if raw_response.presence&.dig("error", "message").present?
+      # raw_response may be a raw String when the upstream body was not valid
+      # JSON (see HTTP#normalize_body), so only attempt #dig on a Hash.
+      error_message = raw_response.dig("error", "message") if raw_response.is_a?(Hash)
+      raise ServerError, error_message if error_message.present?
 
       return unless stream.blank? && raw_response.blank?
 
