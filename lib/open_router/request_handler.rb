@@ -5,8 +5,11 @@ module OpenRouter
   module RequestHandler
     private
 
-    def execute_request(parameters)
-      post(path: "/chat/completions", parameters: parameters)
+    def execute_request(parameters, request_headers: nil, response_meta: nil)
+      post_kwargs = { path: "/chat/completions", parameters: parameters }
+      post_kwargs[:request_headers] = request_headers if request_headers && !request_headers.empty?
+      post_kwargs[:response_meta] = response_meta if response_meta
+      post(**post_kwargs)
     rescue ConfigurationError => e
       trigger_callbacks(:on_error, e)
       raise ServerError, e.message

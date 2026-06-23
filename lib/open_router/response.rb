@@ -13,6 +13,9 @@ module OpenRouter
     attr_reader :raw_response, :response_format, :forced_extraction
     attr_accessor :client
 
+    # Response-cache metadata (populated from OpenRouter cache response headers).
+    attr_accessor :cache_status, :cache_age, :cache_ttl
+
     def initialize(raw_response, response_format: nil, forced_extraction: false)
       @raw_response = raw_response.is_a?(Hash) ? raw_response.with_indifferent_access : {}
       @response_format = response_format
@@ -176,6 +179,27 @@ module OpenRouter
 
     def choices
       @raw_response["choices"] || []
+    end
+
+    # Reasoning summary text emitted by reasoning-capable models (nil if absent).
+    def reasoning
+      choices.first&.dig("message", "reasoning")
+    end
+
+    # Structured reasoning trace: an array of detail blocks (reasoning.text,
+    # reasoning.summary, reasoning.encrypted, ...). Empty array when absent.
+    def reasoning_details
+      choices.first&.dig("message", "reasoning_details") || []
+    end
+
+    # True when the response carried any reasoning output.
+    def has_reasoning?
+      !reasoning.nil? || !reasoning_details.empty?
+    end
+
+    # True when this response was served from OpenRouter's response cache.
+    def cache_hit?
+      cache_status.to_s.casecmp("HIT").zero?
     end
 
     # Reduce an array of content parts to a single text String. Non-array

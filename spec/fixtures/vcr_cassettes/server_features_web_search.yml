@@ -1,0 +1,116 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Give me one recent headline
+        about space exploration."}],"model":"openai/gpt-4o-mini","tools":[{"type":"openrouter:web_search","parameters":{"max_results":1}}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 Jun 2026 17:05:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Generation-Id:
+      - gen-1782234347-Jm8FTkfoQv7UhIylgnDl
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a10514624b6f8f57-IAD
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        CiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKCiAgICAgICAgIAoKICAgICAgICAgCgogICAgICAgICAKeyJpZCI6Imdlbi0xNzgyMjM0MzQ3LUptOEZUa2ZvUXY3VWhJeWxnbkRsIiwib2JqZWN0IjoiY2hhdC5jb21wbGV0aW9uIiwiY3JlYXRlZCI6MTc4MjIzNDM0NywibW9kZWwiOiJvcGVuYWkvZ3B0LTRvLW1pbmkiLCJwcm92aWRlciI6Ik9wZW5BSSIsInN5c3RlbV9maW5nZXJwcmludCI6bnVsbCwic2VydmljZV90aWVyIjpudWxsLCJjaG9pY2VzIjpbeyJpbmRleCI6MCwibG9ncHJvYnMiOm51bGwsImZpbmlzaF9yZWFzb24iOiJzdG9wIiwibmF0aXZlX2ZpbmlzaF9yZWFzb24iOiJzdG9wIiwibWVzc2FnZSI6eyJyb2xlIjoiYXNzaXN0YW50IiwiY29udGVudCI6IkEgcmVjZW50IGhlYWRsaW5lIGFib3V0IHNwYWNlIGV4cGxvcmF0aW9uIGlzOiBcblxuKipcIjFzdC1vZi1pdHMta2luZCBtaXNzaW9uIHdpbGwgYXR0ZW1wdCB0byBzYXZlIGFnaW5nIHNwYWNlIHRlbGVzY29wZSB1c2luZyByb2JvdCBzcGFjZWNyYWZ0XCIqKiAtIEFCQyBOZXdzLiBcblxuVGhpcyBtaXNzaW9uIGludm9sdmVzIE5BU0EncyBTd2lmdCB0ZWxlc2NvcGUsIHdoaWNoIGlzIGF0IHJpc2sgb2YgYmVpbmcgZGVzdHJveWVkLiBBIHN0YXJ0dXAgbmFtZWQgS2F0YWx5c3QgU3BhY2UgaXMgY29sbGFib3JhdGluZyB3aXRoIE5BU0EgdG8gcmVzY3VlIGl0IHVzaW5nIGEgbmV3bHkgZGV2ZWxvcGVkIHJvYm90aWMgc3BhY2VjcmFmdCBuYW1lZCBMSU5LLiBUaGUgbWlzc2lvbiBhaW1zIHRvIGV4dGVuZCB0aGUgb2JzZXJ2YXRvcnkncyBvcGVyYXRpb25hbCBsaWZlIGJ5IGFwcHJveGltYXRlbHkgMTAgeWVhcnMuIFlvdSBjYW4gcmVhZCBtb3JlIFtoZXJlXShodHRwczovL2FiY25ld3MuY29tL0ludGVybmF0aW9uYWwvMXN0LWtpbmQtbWlzc2lvbi1hdHRlbXB0LXNhdmUtYWdpbmctc3BhY2UtdGVsZXNjb3BlL3N0b3J5P2lkPTEzNDEzMDk2NSkuIiwicmVmdXNhbCI6bnVsbCwicmVhc29uaW5nIjpudWxsLCJhbm5vdGF0aW9ucyI6W3sidHlwZSI6InVybF9jaXRhdGlvbiIsInVybF9jaXRhdGlvbiI6eyJ1cmwiOiJodHRwczovL2FiY25ld3MuY29tL0ludGVybmF0aW9uYWwvMXN0LWtpbmQtbWlzc2lvbi1hdHRlbXB0LXNhdmUtYWdpbmctc3BhY2UtdGVsZXNjb3BlL3N0b3J5P2lkPTEzNDEzMDk2NSIsInRpdGxlIjoiMXN0LW9mLWl0cy1raW5kIG1pc3Npb24gd2lsbCBhdHRlbXB0IHRvIHNhdmUgYWdpbmcgc3BhY2UgdGVsZXNjb3BlIHVzaW5nIHJvYm90IHNwYWNlY3JhZnQgLSBBQkMgTmV3cyIsInN0YXJ0X2luZGV4IjowLCJlbmRfaW5kZXgiOjAsImNvbnRlbnQiOiIjIDFzdC1vZi1pdHMta2luZCBtaXNzaW9uIHdpbGwgYXR0ZW1wdCB0byBzYXZlIGFnaW5nIHNwYWNlIHRlbGVzY29wZSB1c2luZyByb2JvdCBzcGFjZWNyYWZ0IC0gQUJDIE5ld3Ncbi4uLlxuMXN0LW9mLWl0cy1raW5kIG1pc3Npb24gd2lsbCBhdHRlbXB0IHRvIHNhdmUgYWdpbmcgc3BhY2UgdGVsZXNjb3BlIHVzaW5nIHJvYm90IHNwYWNlY3JhZnQgLSBBQkMgTmV3c1xuLi4uXG4jIDFzdC1vZi1pdHMta2luZCBtaXNzaW9uIHdpbGwgYXR0ZW1wdCB0byBzYXZlIGFnaW5nIHNwYWNlIHRlbGVzY29wZSB1c2luZyByb2JvdCBzcGFjZWNyYWZ0XG4uLi5cbk5BU0EncyBTd2lmdCB0ZWxlc2NvcGUgY291bGQgYmUgZGVzdHJveWVkIGluIG1vbnRocyBpZiBub3RoaW5nIGlzIGRvbmUuXG4uLi5cblN0YXJ0dXAgS2F0YWx5c3QgU3BhY2UgaXMgdGVhbWluZyB1cCB3aXRoIE5BU0EgdG8gdHJ5IGFuZCByZXNjdWUgdGhlIFN3aWZ0IHRlbGVzY29wZSB1c2luZyB0aGUgY29tcGFueeKAmXMgbmV3bHkgZGV2ZWxvcGVkIHJvYm90aWMgc3BhY2VjcmFmdC5cbi4uLlxuQnV0IGluIGEgZmlyc3Qtb2YtaXRzLWtpbmQgbWlzc2lvbiwgS2F0YWx5c3QgU3BhY2UsIGEgc3RhcnR1cCwgaXMgdGVhbWluZyB1cCB3aXRoIE5BU0EgdG8gdHJ5IGFuZCByZXNjdWUgU3dpZnQgdXNpbmcgdGhlIGNvbXBhbnkncyBuZXdseSBkZXZlbG9wZWQgcm9ib3RpYyBzcGFjZWNyYWZ0LCBMSU5LLlxuLi4uXG5UbyBzYXZlIHRoZSBzYXRlbGxpdGUgYmVmb3JlIHRpbWUgcnVucyBvdXQsIHRoZSBBcml6b25hLWJhc2VkIGNvbXBhbnkgYnVpbHQgaXRzIDkzNS1wb3VuZCByZXNjdWUgc3BhY2VjcmFmdCBpbiBqdXN0IDI1MCBkYXlzLiBMSU5LIHdhcyBkZXNpZ25lZCB0byBwaHlzaWNhbGx5IGludGVyYWN0IHdpdGggU3dpZnQgZGVzcGl0ZSB0aGUgb2JzZXJ2YXRvcnkgbm90IGJlaW5nIGRlc2lnbmVkIGZvciB0aGlzIGtpbmQgb2Ygb3BlcmF0aW9uLlxuLi4uXG5JZiBhbGwgZ29lcyBhcyBwbGFubmVkLCBMSU5LIHdpbGwgYmUgbGF1bmNoZWQgaW50byBzcGFjZSBvbiBTYXR1cmRheSBhYm9hcmQgYSBOb3J0aHJvcCBHcnVtbWFuIFBlZ2FzdXMgWEwgcm9ja2V0LCB3aGljaCB3aWxsIGJlIGxhdW5jaGVkIGZyb20gYSBMb2NraGVlZCBMLTEwMTEgVHJpU3RhciBjYXJyaWVyIGFpcmNyYWZ0IHRha2luZyBvZmYgZnJvbSBLd2FqYWxlaW4gQXRvbGwgaW4gdGhlIFNvdXRoIFBhY2lmaWMuXG4uLi5cbk9uY2UgaW4gb3JiaXQsIGl0IHdpbGwgdGFrZSBhYm91dCB0aHJlZSB3ZWVrcyBmb3IgTElOSyB0byByZW5kZXp2b3VzIHdpdGggYW5kIGNhcHR1cmUgdGhlIDIyLXllYXItb2xkIG9ic2VydmF0b3J5LiBPdmVyIHR3byB0byB0aHJlZSBtb250aHMsIHRoZSBzcGFjZWNyYWZ0IHdpbGwgdXNlIGl0cyB0aHJ1c3RlcnMgdG8gcmFpc2UgU3dpZnQgaW50byBhIG1vcmUgc3RhYmxlIG9yYml0LiBUaGUgdHdvIHdpbGwgdGhlbiBzZXBhcmF0ZSBhcyBMSU5LIGxvd2VycyBpdHNlbGYgYmFjayBpbnRvIEVhcnRoJ3MgYXRtb3NwaGVyZSwgd2hlcmUgaXQgd2lsbCBidXJuIHVwLCBrZWVwaW5nIGl0IGZyb20gYWRkaW5nIHRvIHRoZSByZXN0IG9mIHRoZSBzcGFjZSBkZWJyaXMgaW4gb3VyIG9yYml0LlxuLi4uXG5UaGUgaG9wZSBpcyB0aGF0IHRoZSBtYW5ldXZlciB3aWxsIGFkZCAxMCB5ZWFycyB0byB0aGUgbWlzc2lvbiBhbmQgYWxsb3cgTkFTQSB0byByZXN1bWUgaXRzIHNjaWVudGlmaWMgb3BlcmF0aW9ucy4gVGhlIHNwYWNlIGFnZW5jeSBoYWQgdG8gc3RvcCBtb3N0IG9mIHRoZSBvYnNlcnZhdG9yeSdzIHNjaWVudGlmaWMgb3BlcmF0aW9ucyB0byByZWR1Y2UgZHJhZyBhbmQgc2xvdyBpdHMgZGVzY2VudCBmcm9tIG9yYml0LlxuLi4uXG5UaGUgY2xvY2sgaXMgdGlja2luZyBmb3IgdGhlICQzMCBtaWxsaW9uIG1pc3Npb24gdG8gYmUgY29tcGxldGVkLiBBY2NvcmRpbmcgdG8gTkFTQSwgU3dpZnQgaXMgY3VycmVudGx5IGZhbGxpbmcgYXQgcm91Z2hseSBlaWdodCBraWxvbWV0ZXJzIHBlciBtb250aCwgYW5kIHRoZSBzcGFjZSBhZ2VuY3kgZXN0aW1hdGVzIGl0IHdpbGwgZHJvcCBiZWxvdyAzMDAga2lsb21ldGVycyBzb21ldGltZSBhcm91bmQgT2N0b2Jlci5cbi4uLlxuRWFydGgncyBvcmJpdCBpcyBsaXR0ZXJlZCB3aXRoIGxvdHMgb2YgYWdpbmcgc2F0ZWxsaXRlcy4gSWYgdGhlIG1pc3Npb24gaXMgc3VjY2Vzc2Z1bCwgTkFTQSBhbmQgS2F0YWx5c3QgaG9wZSBpdCBjb3VsZCBoZWxwIGVzdGFibGlzaCBhIGJsdWVwcmludCBmb3IgZnV0dXJlIHNhdGVsbGl0ZSByZXNjdWVzIHNvIGZld2VyIHNwYWNlY3JhZnQgYXJlIGFiYW5kb25lZC4gS2F0YWx5c3QgZW52aXNpb25zIGhhdmluZyBhIGZsZWV0IG9mIHNwYWNlY3JhZnQgdGhhdCBjYW4gcmVwYWlyLCByZWZ1ZWwgYW5kIHVwZ3JhZGUgc2F0ZWxsaXRlcyBpbiBuZWVkIG9mIGhlbHAuXG4uLi5cblRoZXJlJ3Mgbm9cbi4uLlxud2l0aCBOQVNBIHRvXG4uLi5cbnVzaW5nIHRoZSBjb21wYW55XG4uLi5cblRoZSBTd2lmdCBTcGFjZSBPYnNlcnZhdG9yeSBpcyBhXG4uLi5cbmJyaWdodGVzdCBhbmQgbW9zdCBwb3dlcmZ1bCBleHBsb3Npb25zXG4uLi5cbnRoZSB1bml2ZXJzZS5cbi4uLlxudWx0cmF2aW9sZXQsIFgtcmF5IGFuZCBnYW1tYS1cbi4uLlxudG8gc3R1ZHkgYmxhY2sgaG9sZXNcbi4uLlxuY29tZXRzIGFuZCBvdGhlciBjZWxlc3RpYWwgb2JqZWN0cy4ifX1dfX1dLCJ1c2FnZSI6eyJwcm9tcHRfdG9rZW5zIjo4MjgsImNvbXBsZXRpb25fdG9rZW5zIjoxNDYsInRvdGFsX3Rva2VucyI6OTc0LCJjb3N0IjowLjAwNTIxMTgsInByb21wdF90b2tlbnNfZGV0YWlscyI6eyJjYWNoZWRfdG9rZW5zIjowLCJjYWNoZV93cml0ZV90b2tlbnMiOjAsImF1ZGlvX3Rva2VucyI6MCwidmlkZW9fdG9rZW5zIjowfSwiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6eyJyZWFzb25pbmdfdG9rZW5zIjowLCJpbWFnZV90b2tlbnMiOjAsImF1ZGlvX3Rva2VucyI6MH0sImNvc3RfZGV0YWlscyI6eyJ1cHN0cmVhbV9pbmZlcmVuY2VfY29zdCI6MC4wMDAyMTE4LCJ1cHN0cmVhbV9pbmZlcmVuY2VfcHJvbXB0X2Nvc3QiOjAuMDAwMTI0MiwidXBzdHJlYW1faW5mZXJlbmNlX2NvbXBsZXRpb25zX2Nvc3QiOjAuMDAwMDg3NTk5OTk5OTk5OTk5OTl9LCJzZXJ2ZXJfdG9vbF91c2VfZGV0YWlscyI6eyJ3ZWJfc2VhcmNoX3JlcXVlc3RzIjoxLCJ0b29sX2NhbGxzX3JlcXVlc3RlZCI6MSwidG9vbF9jYWxsc19leGVjdXRlZCI6MX19fQ==
+  recorded_at: Tue, 23 Jun 2026 17:06:00 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1782234347-Jm8FTkfoQv7UhIylgnDl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 23 Jun 2026 17:06:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a10514b4ae87787b-IAD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1782234347-Jm8FTkfoQv7UhIylgnDl
+        not found","code":404}}'
+  recorded_at: Tue, 23 Jun 2026 17:06:01 GMT
+recorded_with: VCR 6.4.0

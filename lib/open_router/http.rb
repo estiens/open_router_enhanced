@@ -11,16 +11,21 @@ module OpenRouter
       normalize_body(response&.body)
     end
 
-    def post(path:, parameters:)
+    # @param request_headers [Hash, nil] extra headers merged over the base headers
+    #   for this request only (no shared mutable state).
+    # @param response_meta [Hash, nil] optional out-param; when given, populated
+    #   with { headers: <response headers> } so callers can read response metadata.
+    def post(path:, parameters:, request_headers: nil, response_meta: nil)
       response = conn.post(uri(path:)) do |req|
         if parameters[:stream].respond_to?(:call)
           req.options.on_data = to_json_stream(user_proc: parameters[:stream])
           parameters[:stream] = true # Necessary to tell OpenRouter to stream.
         end
 
-        req.headers = headers
+        req.headers = request_headers ? headers.merge(request_headers) : headers
         req.body = parameters.to_json
       end
+      capture_response_meta(response, response_meta)
       normalize_body(response&.body)
     end
 
@@ -40,6 +45,13 @@ module OpenRouter
     end
 
     private
+
+    # Populate the caller-provided out-param with response metadata, if given.
+    def capture_response_meta(response, response_meta)
+      return unless response_meta && response.respond_to?(:headers)
+
+      response_meta[:headers] = response.headers
+    end
 
     # Normalize response body - parse JSON when middleware is not available
     def normalize_body(body)

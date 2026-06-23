@@ -15,9 +15,16 @@ module OpenRouter
     def configure_tool_calling!(parameters, opts)
       return unless opts.tools?
 
-      warn_if_unsupported(opts.model, :function_calling, "tool calling")
+      # Server tools (e.g. openrouter:web_search) are executed by OpenRouter and
+      # don't require the model's :function_calling capability — only warn when
+      # at least one client-side function tool is present.
+      warn_if_unsupported(opts.model, :function_calling, "tool calling") if any_function_tool?(opts.tools)
       parameters[:tools] = serialize_tools(opts.tools)
       parameters[:tool_choice] = opts.tool_choice if opts.tool_choice
+    end
+
+    def any_function_tool?(tools)
+      tools.any? { |tool| !tool.is_a?(ServerTool) }
     end
 
     # Returns forced_extraction boolean
@@ -63,7 +70,7 @@ module OpenRouter
     def serialize_tools(tools)
       tools.map do |tool|
         case tool
-        when Tool
+        when Tool, ServerTool
           tool.to_h
         when Hash
           tool
@@ -76,6 +83,9 @@ module OpenRouter
     # Serialize tools to Responses API flat format: { type: "function", name:, parameters: }
     def serialize_tools_for_responses(tools)
       tools.map do |tool|
+        # Server tools keep the same flat { type:, parameters: } shape in both APIs.
+        next tool.to_h if tool.is_a?(ServerTool)
+
         tool_hash = case tool
                     when Tool
                       tool.to_h

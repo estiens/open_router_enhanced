@@ -1,0 +1,195 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"What is 17 * 23? Think briefly,
+        then state the number."}],"model":"deepseek/deepseek-r1","reasoning":{"effort":"low"}}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 Jun 2026 17:05:16 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Generation-Id:
+      - gen-1782234314-AmMxl4eJIOAXyPPvmkGj
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a1051392bf2355eb-IAD
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1782234314-AmMxl4eJIOAXyPPvmkGj\",\"object\":\"chat.completion\",\"created\":1782234314,\"model\":\"deepseek/deepseek-r1\",\"provider\":\"Novita\",\"system_fingerprint\":null,\"service_tier\":null,\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"message\":{\"role\":\"assistant\",\"content\":\"17
+        * 23 = 391.  \\n\\n**Calculation:**  \\n- 17 * 20 = 340  \\n- 17 * 3 = 51
+        \ \\n- 340 + 51 = 391  \\n\\n**Final Answer:**  \\n391\",\"refusal\":null,\"reasoning\":\"First,
+        the question is: \\\"What is 17 * 23?\\\" I need to think briefly and then
+        state the number. So, I should calculate this multiplication quickly.\\n\\nI
+        know that 17 and 23 are both prime numbers, but that might not help directly
+        with multiplication. I recall that multiplication can be done using various
+        methods, like the standard algorithm or breaking it down.\\n\\nLet me try
+        to compute 17 times 20 and 17 times 3 separately, since 23 is 20 + 3. That
+        might be easier.\\n\\nSo, 17 times 20: 17 * 20 = 340. Because 10 * 20 = 200,
+        and 7 * 20 = 140, so 200 + 140 = 340.\\n\\nThen, 17 times 3: 17 * 3 = 51.\\n\\nNow,
+        add them together: 340 + 51.\\n\\n340 + 50 = 390, and 390 + 1 = 391. So, 340
+        + 51 = 391.\\n\\nI could also think of it as 20 times 23 minus 3 times 23,
+        because 17 is 20 - 3.\\n\\nSo, 20 * 23 = 460.\\n\\n3 * 23 = 69.\\n\\nThen,
+        460 - 69. Since we're subtracting, it's like 20*23 minus 3*23, which should
+        be (20-3)*23 = 17*23.\\n\\nSo, 460 - 69: 460 - 70 = 390, but since 69 is one
+        less than 70, it's 390 + 1 = 391. Let me compute that properly.\\n\\n460 -
+        60 = 400, but 400 - 9 = 391? No:\\n\\n460 - 69: subtract 70 from 460 is 390,
+        but because I subtracted one more (since 70 is one more than 69), I need to
+        add back one. So, 390 + 1 = 391.\\n\\nDirectly: 460 - 69. 460 - 60 = 400,
+        then 400 - 9 = 391. Yes.\\n\\nI could use the multiplication table or just
+        know it.\\n\\nAnother way: 17 * 23.\\n\\nI know that 10*23 = 230, and 7*23
+        = 161, then 230 + 161.\\n\\n230 + 160 = 390, plus 1 is 391.\\n\\n230 + 161:
+        200 + 100 = 300, 30 + 60 = 90, 0 + 1 = 1, so 391.\\n\\nAll methods point to
+        391.\\n\\nI think I remember that 17*23 is 391. Let me confirm with addition:
+        23 seventeen times.\\n\\n23 + 23 = 46, +23 = 69, +23 = 92, +23 = 115, +23
+        = 138, +23 = 161, +23 = 184, +23 = 207, +23 = 230, +23 = 253, +23 = 276, +23
+        = 299, +23 = 322, +23 = 345, +23 = 368, +23 = 391. That's tedious, but it
+        works for 17 times: after 10 times it's 230, then 7 more: 230 + 161? No, better
+        to add step by step.\\n\\nStart from 0: 23, 46, 69, 92, 115, 138, 161, 184,
+        207, 230 (that's 10), 253 (11), 276 (12), 299 (13), 322 (14), 345 (15), 368
+        (16), 391 (17). Yes, 391.\\n\\nSo, I think it's consistent.\\n\\nTherefore,
+        the answer should be 391.\\n\\nThe question says \\\"think briefly, then state
+        the number.\\\" So I should just say the number.\\n\\nBut since this is a
+        response, I need to box it or something.\\n\\nIn the context, I think I should
+        state it clearly.\\n\\nSo, 17 times 23 is 391.\\n\",\"reasoning_details\":[{\"type\":\"reasoning.text\",\"text\":\"First,
+        the question is: \\\"What is 17 * 23?\\\" I need to think briefly and then
+        state the number. So, I should calculate this multiplication quickly.\\n\\nI
+        know that 17 and 23 are both prime numbers, but that might not help directly
+        with multiplication. I recall that multiplication can be done using various
+        methods, like the standard algorithm or breaking it down.\\n\\nLet me try
+        to compute 17 times 20 and 17 times 3 separately, since 23 is 20 + 3. That
+        might be easier.\\n\\nSo, 17 times 20: 17 * 20 = 340. Because 10 * 20 = 200,
+        and 7 * 20 = 140, so 200 + 140 = 340.\\n\\nThen, 17 times 3: 17 * 3 = 51.\\n\\nNow,
+        add them together: 340 + 51.\\n\\n340 + 50 = 390, and 390 + 1 = 391. So, 340
+        + 51 = 391.\\n\\nI could also think of it as 20 times 23 minus 3 times 23,
+        because 17 is 20 - 3.\\n\\nSo, 20 * 23 = 460.\\n\\n3 * 23 = 69.\\n\\nThen,
+        460 - 69. Since we're subtracting, it's like 20*23 minus 3*23, which should
+        be (20-3)*23 = 17*23.\\n\\nSo, 460 - 69: 460 - 70 = 390, but since 69 is one
+        less than 70, it's 390 + 1 = 391. Let me compute that properly.\\n\\n460 -
+        60 = 400, but 400 - 9 = 391? No:\\n\\n460 - 69: subtract 70 from 460 is 390,
+        but because I subtracted one more (since 70 is one more than 69), I need to
+        add back one. So, 390 + 1 = 391.\\n\\nDirectly: 460 - 69. 460 - 60 = 400,
+        then 400 - 9 = 391. Yes.\\n\\nI could use the multiplication table or just
+        know it.\\n\\nAnother way: 17 * 23.\\n\\nI know that 10*23 = 230, and 7*23
+        = 161, then 230 + 161.\\n\\n230 + 160 = 390, plus 1 is 391.\\n\\n230 + 161:
+        200 + 100 = 300, 30 + 60 = 90, 0 + 1 = 1, so 391.\\n\\nAll methods point to
+        391.\\n\\nI think I remember that 17*23 is 391. Let me confirm with addition:
+        23 seventeen times.\\n\\n23 + 23 = 46, +23 = 69, +23 = 92, +23 = 115, +23
+        = 138, +23 = 161, +23 = 184, +23 = 207, +23 = 230, +23 = 253, +23 = 276, +23
+        = 299, +23 = 322, +23 = 345, +23 = 368, +23 = 391. That's tedious, but it
+        works for 17 times: after 10 times it's 230, then 7 more: 230 + 161? No, better
+        to add step by step.\\n\\nStart from 0: 23, 46, 69, 92, 115, 138, 161, 184,
+        207, 230 (that's 10), 253 (11), 276 (12), 299 (13), 322 (14), 345 (15), 368
+        (16), 391 (17). Yes, 391.\\n\\nSo, I think it's consistent.\\n\\nTherefore,
+        the answer should be 391.\\n\\nThe question says \\\"think briefly, then state
+        the number.\\\" So I should just say the number.\\n\\nBut since this is a
+        response, I need to box it or something.\\n\\nIn the context, I think I should
+        state it clearly.\\n\\nSo, 17 times 23 is 391.\\n\",\"format\":\"unknown\",\"index\":0}]}}],\"usage\":{\"prompt_tokens\":21,\"completion_tokens\":923,\"total_tokens\":944,\"cost\":0.0023222,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0.0023222,\"upstream_inference_prompt_cost\":0.0000147,\"upstream_inference_completions_cost\":0.0023075},\"completion_tokens_details\":{\"reasoning_tokens\":873,\"image_tokens\":0,\"audio_tokens\":0}}}"
+  recorded_at: Tue, 23 Jun 2026 17:05:47 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1782234314-AmMxl4eJIOAXyPPvmkGj
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Tue, 23 Jun 2026 17:05:47 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a10514612ac30592-IAD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1782234314-AmMxl4eJIOAXyPPvmkGj
+        not found","code":404}}'
+  recorded_at: Tue, 23 Jun 2026 17:05:47 GMT
+recorded_with: VCR 6.4.0

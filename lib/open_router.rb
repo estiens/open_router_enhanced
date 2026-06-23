@@ -14,11 +14,16 @@ module OpenRouter
   class Error < StandardError; end
   class ConfigurationError < Error; end
   class CapabilityError < Error; end
+
+  # Reasoning effort levels accepted by the `reasoning: { effort: ... }` option.
+  # Ordered from most to least reasoning budget.
+  REASONING_EFFORT_LEVELS = %w[max xhigh high medium low minimal none].freeze
 end
 
 require_relative "open_router/http"
 require_relative "open_router/completion_options"
 require_relative "open_router/tool"
+require_relative "open_router/server_tool"
 require_relative "open_router/tool_call_base"
 require_relative "open_router/tool_call"
 require_relative "open_router/schema"

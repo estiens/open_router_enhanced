@@ -269,7 +269,7 @@ RSpec.describe OpenRouter::CompletionOptions do
         providers provider transforms plugins prediction route
         metadata user session_id
         reasoning
-        force_structured_output
+        force_structured_output cache
       ]
 
       expect(described_class::DEFAULTS.keys).to contain_exactly(*expected_keys)

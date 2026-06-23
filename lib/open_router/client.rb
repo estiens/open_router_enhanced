@@ -63,10 +63,15 @@ module OpenRouter
 
       trigger_callbacks(:before_request, parameters)
 
-      raw_response = execute_request(parameters)
+      # Only thread caching plumbing when caching is requested, so the common
+      # request path keeps its original (path:, parameters:) call signature.
+      response_meta = opts.cache ? {} : nil
+      raw_response = execute_request(parameters, request_headers: build_cache_headers(opts.cache),
+                                                 response_meta: response_meta)
       validate_response!(raw_response, stream)
 
       response = build_response(raw_response, opts.response_format, forced_extraction)
+      apply_cache_metadata!(response, response_meta) if response_meta
 
       model_for_tracking = opts.model.is_a?(String) ? opts.model : opts.model.first
       @usage_tracker&.track(response, model: model_for_tracking)
@@ -196,6 +201,28 @@ module OpenRouter
     end
 
     private
+
+    # Translate the `cache` option into OpenRouter response-cache request headers.
+    def build_cache_headers(cache)
+      return {} if cache.nil? || cache == false
+
+      headers = { "X-OpenRouter-Cache" => "true" }
+      if cache.is_a?(Hash)
+        headers["X-OpenRouter-Cache-TTL"] = cache[:ttl].to_s if cache[:ttl]
+        headers["X-OpenRouter-Cache-Clear"] = "true" if cache[:clear]
+      end
+      headers
+    end
+
+    # Attach cache status from the response headers onto the Response object.
+    def apply_cache_metadata!(response, response_meta)
+      headers = response_meta && response_meta[:headers]
+      return if headers.nil? || headers.empty?
+
+      response.cache_status = headers["x-openrouter-cache-status"]
+      response.cache_age = headers["x-openrouter-cache-age"]
+      response.cache_ttl = headers["x-openrouter-cache-ttl"]
+    end
 
     def normalize_options(options, kwargs)
       case options

@@ -139,8 +139,10 @@ module OpenRouter
     # Responses API specific
     # ═══════════════════════════════════════════════════════════════════════════
 
-    # @return [Hash, nil] Reasoning configuration for Responses API
-    #   Format: { effort: "minimal"|"low"|"medium"|"high" }
+    # @return [Hash, nil] Reasoning configuration (Chat Completions and Responses APIs)
+    #   Format: { effort: "max"|"xhigh"|"high"|"medium"|"low"|"minimal"|"none" }
+    #   or { max_tokens: Integer }, plus optional exclude:/enabled: flags.
+    #   See OpenRouter::REASONING_EFFORT_LEVELS.
     attr_accessor :reasoning
 
     # ═══════════════════════════════════════════════════════════════════════════
@@ -152,6 +154,12 @@ module OpenRouter
     #   false: Use native structured output
     #   nil: Auto-determine based on model capability
     attr_accessor :force_structured_output
+
+    # @return [Boolean, Hash, nil] Response caching control (sent as request headers)
+    #   true: enable caching with default TTL
+    #   { ttl: Integer }: enable caching with a custom TTL in seconds
+    #   { clear: true }: bypass and refresh the cached entry
+    attr_accessor :cache
 
     # All supported parameters with their defaults
     DEFAULTS = {
@@ -193,11 +201,12 @@ module OpenRouter
       # Responses API
       reasoning: nil,
       # Client-side
-      force_structured_output: nil
+      force_structured_output: nil,
+      cache: nil
     }.freeze
 
     # Parameters that are client-side only (not sent to API)
-    CLIENT_SIDE_PARAMS = %i[force_structured_output extras].freeze
+    CLIENT_SIDE_PARAMS = %i[force_structured_output cache extras].freeze
 
     # Initialize with keyword arguments
     #

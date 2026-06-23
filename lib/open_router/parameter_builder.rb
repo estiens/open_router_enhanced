@@ -14,6 +14,7 @@ module OpenRouter
       configure_transforms_parameter!(parameters, opts.transforms)
       configure_plugins_parameter!(parameters, opts.plugins)
       configure_prediction_parameter!(parameters, opts.prediction)
+      configure_reasoning_parameter!(parameters, opts.reasoning)
       configure_stream_parameter!(parameters, stream)
       configure_sampling_parameters!(parameters, opts)
       configure_output_parameters!(parameters, opts)
@@ -85,6 +86,10 @@ module OpenRouter
 
     def configure_prediction_parameter!(parameters, prediction)
       parameters[:prediction] = prediction if prediction
+    end
+
+    def configure_reasoning_parameter!(parameters, reasoning)
+      parameters[:reasoning] = reasoning if reasoning && !reasoning.empty?
     end
 
     def configure_stream_parameter!(parameters, stream)
