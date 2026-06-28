@@ -36,9 +36,9 @@ RSpec.describe OpenRouter::SubagentTool do
   end
 
   describe "validation" do
-    it "raises ArgumentError when model is missing" do
+    it "raises when model keyword is missing" do
       expect { described_class.new(instructions: "hi") }
-        .to raise_error(ArgumentError, /model is required/)
+        .to raise_error(ArgumentError, /missing keyword/)
     end
 
     it "raises ArgumentError when model is blank" do
@@ -50,6 +50,11 @@ RSpec.describe OpenRouter::SubagentTool do
   it "is a Tool so it serializes through the tools array" do
     tool = described_class.new(model: "z-ai/glm-5.2")
     expect(tool).to be_a(OpenRouter::Tool)
+  end
+
+  it "returns nil for parameters (server tool has no function parameters)" do
+    tool = described_class.new(model: "z-ai/glm-5.2")
+    expect(tool.parameters).to be_nil
   end
 
   describe "serialization through Client#complete" do

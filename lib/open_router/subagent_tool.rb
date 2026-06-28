@@ -15,7 +15,7 @@ module OpenRouter
   class SubagentTool < Tool
     SERVER_TOOL_TYPE = "openrouter:subagent"
 
-    def initialize(model: nil, instructions: nil, max_completion_tokens: nil,
+    def initialize(model:, instructions: nil, max_completion_tokens: nil,
                    temperature: nil, reasoning: nil)
       raise ArgumentError, "model is required for SubagentTool" if model.nil? || model.to_s.strip.empty?
 
@@ -40,6 +40,10 @@ module OpenRouter
 
     def description
       "OpenRouter subagent server tool (worker: #{@parameters_config[:model]})"
+    end
+
+    def parameters
+      nil
     end
   end
 end
