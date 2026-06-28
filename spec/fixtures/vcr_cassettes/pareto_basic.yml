@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Write a Ruby method that merges
+        two sorted arrays."}],"model":"openrouter/pareto-code","plugins":[{"id":"pareto-router","min_coding_score":0.5}],"max_tokens":200}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Jun 2026 20:57:56 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Generation-Id:
+      - gen-1782680276-s8fnafD1DQwQznRnGiOW
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a12f9b4dfbaefc79-CVG
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n{\"id\":\"gen-1782680276-s8fnafD1DQwQznRnGiOW\",\"object\":\"chat.completion\",\"created\":1782680276,\"model\":\"moonshotai/kimi-k2.6-20260420\",\"provider\":\"Novita\",\"system_fingerprint\":null,\"service_tier\":null,\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"message\":{\"role\":\"assistant\",\"content\":null,\"refusal\":null,\"reasoning\":\"
+        The user wants a Ruby method that merges two sorted arrays. This is a classic
+        algorithmic problem, similar to the merge step in merge sort.\\n\\nKey considerations:\\n1.
+        The input arrays are already sorted\\n2. Need to produce a new sorted array
+        containing all elements from both\\n3. Should handle edge cases: empty arrays,
+        arrays of different lengths, duplicate values\\n4. Time complexity should
+        be O(n + m) where n and m are the lengths of the two arrays\\n5. Space complexity
+        should be O(n + m) for the result\\n\\nApproach:\\n- Use two pointers, one
+        for each array\\n- Compare elements at current pointers\\n- Take the smaller
+        element and advance that pointer\\n- When one array is exhausted, append the
+        remainder of the other array\\n\\nAlternative approaches:\\n- Just concatenate
+        and sort: `a + b.sort` - but this is O((n+m) log(n+m)) and defeats the purpose\\n-
+        Built-in methods might exist but the user likely\",\"reasoning_details\":[{\"type\":\"reasoning.text\",\"text\":\"
+        The user wants a Ruby method that merges two sorted arrays. This is a classic
+        algorithmic problem, similar to the merge step in merge sort.\\n\\nKey considerations:\\n1.
+        The input arrays are already sorted\\n2. Need to produce a new sorted array
+        containing all elements from both\\n3. Should handle edge cases: empty arrays,
+        arrays of different lengths, duplicate values\\n4. Time complexity should
+        be O(n + m) where n and m are the lengths of the two arrays\\n5. Space complexity
+        should be O(n + m) for the result\\n\\nApproach:\\n- Use two pointers, one
+        for each array\\n- Compare elements at current pointers\\n- Take the smaller
+        element and advance that pointer\\n- When one array is exhausted, append the
+        remainder of the other array\\n\\nAlternative approaches:\\n- Just concatenate
+        and sort: `a + b.sort` - but this is O((n+m) log(n+m)) and defeats the purpose\\n-
+        Built-in methods might exist but the user likely\",\"format\":\"unknown\",\"index\":0}]}}],\"usage\":{\"prompt_tokens\":18,\"completion_tokens\":200,\"total_tokens\":218,\"cost\":0.0006944,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0.0006944,\"upstream_inference_prompt_cost\":0.0000144,\"upstream_inference_completions_cost\":0.00068},\"completion_tokens_details\":{\"reasoning_tokens\":235,\"image_tokens\":0,\"audio_tokens\":0}}}"
+  recorded_at: Sun, 28 Jun 2026 20:57:59 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1782680276-s8fnafD1DQwQznRnGiOW
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 28 Jun 2026 20:58:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a12f9b658b1fe6f3-CVG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1782680276-s8fnafD1DQwQznRnGiOW
+        not found","code":404}}'
+  recorded_at: Sun, 28 Jun 2026 20:58:00 GMT
+recorded_with: VCR 6.4.0
