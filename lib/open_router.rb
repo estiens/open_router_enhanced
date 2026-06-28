@@ -19,6 +19,7 @@ end
 require_relative "open_router/http"
 require_relative "open_router/completion_options"
 require_relative "open_router/tool"
+require_relative "open_router/subagent_tool"
 require_relative "open_router/tool_call_base"
 require_relative "open_router/tool_call"
 require_relative "open_router/schema"
