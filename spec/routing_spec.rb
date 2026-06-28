@@ -71,4 +71,51 @@ RSpec.describe OpenRouter::Routing do
         .to raise_error(ArgumentError, /min_coding_score/)
     end
   end
+
+  describe "#fuse" do
+    it "routes to openrouter/fusion with a fusion plugin (panel + judge)" do
+      expect(client).to receive(:post).with(
+        path: "/chat/completions",
+        parameters: hash_including(
+          model: "openrouter/fusion",
+          plugins: [{ id: "fusion",
+                      analysis_models: ["deepseek/deepseek-chat", "google/gemini-flash-1.5"],
+                      model: "deepseek/deepseek-chat" }]
+        )
+      ).and_return(mock_response)
+
+      client.fuse(messages,
+                  analysis_models: ["deepseek/deepseek-chat", "google/gemini-flash-1.5"],
+                  judge: "deepseek/deepseek-chat")
+    end
+
+    it "supports preset and max_tool_calls and omits nil fields" do
+      expect(client).to receive(:post).with(
+        path: "/chat/completions",
+        parameters: hash_including(
+          model: "openrouter/fusion",
+          plugins: [{ id: "fusion", preset: "general-budget", max_tool_calls: 4 }]
+        )
+      ).and_return(mock_response)
+
+      client.fuse(messages, preset: "general-budget", max_tool_calls: 4)
+    end
+
+    it "raises ArgumentError when analysis_models is empty" do
+      expect { client.fuse(messages, analysis_models: []) }
+        .to raise_error(ArgumentError, /analysis_models/)
+    end
+
+    it "raises ArgumentError when analysis_models has more than 8 entries" do
+      expect { client.fuse(messages, analysis_models: Array.new(9, "a/b")) }
+        .to raise_error(ArgumentError, /analysis_models/)
+    end
+
+    it "raises ArgumentError when max_tool_calls is out of range" do
+      expect { client.fuse(messages, max_tool_calls: 0) }
+        .to raise_error(ArgumentError, /max_tool_calls/)
+      expect { client.fuse(messages, max_tool_calls: 17) }
+        .to raise_error(ArgumentError, /max_tool_calls/)
+    end
+  end
 end
