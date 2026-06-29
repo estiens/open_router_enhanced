@@ -43,7 +43,7 @@ module OpenRouter
       @callbacks[event].each do |callback|
         callback.call(data)
       rescue StandardError => e
-        warn "[OpenRouter] Callback error for #{event}: #{e.message}"
+        OpenRouter.log_warning("[OpenRouter] Callback error for #{event}: #{e.message}")
       end
     end
   end

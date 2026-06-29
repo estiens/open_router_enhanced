@@ -53,14 +53,6 @@ module OpenRouter
       @raw_response.to_json(*args)
     end
 
-    # The concrete model the API/router actually used for this response.
-    # Useful for Pareto, Auto, and Fusion routing ("which model answered?").
-    #
-    # @return [String, nil]
-    def selected_model
-      @raw_response["model"]
-    end
-
     # Tool calling methods
     def tool_calls
       @tool_calls ||= parse_tool_calls
@@ -192,6 +184,10 @@ module OpenRouter
     def model
       @raw_response["model"]
     end
+
+    # Alias for #model — returns the concrete model the API/router used.
+    # Useful for Pareto, Auto, and Fusion routing ("which model answered?").
+    alias selected_model model
 
     def created
       @raw_response["created"]

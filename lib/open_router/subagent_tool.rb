@@ -15,7 +15,10 @@ module OpenRouter
   class SubagentTool < Tool
     SERVER_TOOL_TYPE = "openrouter:subagent"
 
-    def initialize(model:, instructions: nil, max_completion_tokens: nil,
+    # We deliberately do not call super: Tool#initialize expects a function
+    # definition with a name/description and validates it, neither of which a
+    # server tool has. The server-tool shape is built directly here instead.
+    def initialize(model:, instructions: nil, max_completion_tokens: nil, # rubocop:disable Lint/MissingSuper
                    temperature: nil, reasoning: nil)
       raise ArgumentError, "model is required for SubagentTool" if model.nil? || model.to_s.strip.empty?
 
@@ -27,7 +30,6 @@ module OpenRouter
         temperature: temperature,
         reasoning: reasoning
       }.compact
-      # Intentionally skip Tool#validate_definition! (no function name/description).
     end
 
     def to_h

@@ -45,6 +45,7 @@ The [OpenRouter API](https://openrouter.ai/docs) is a single unified interface f
   - [Tool Calling](#tool-calling)
   - [Structured Outputs](#structured-outputs)
   - [Smart Model Selection](#smart-model-selection)
+  - [Routing (Pareto & Fusion)](#routing-pareto--fusion)
   - [Prompt Templates](#prompt-templates)
   - [Streaming](#streaming)
   - [Usage Tracking](#usage-tracking)
@@ -382,6 +383,95 @@ models = OpenRouter::ModelSelector.new
 **Optimization strategies:** `:cost`, `:performance`, `:latest`, `:context`
 
 **[Complete Model Selection Documentation](docs/model_selection.md)**
+
+### Routing (Pareto & Fusion)
+
+OpenRouter offers two meta-routing modes that automatically pick or synthesize answers across models.
+
+#### Pareto Code Router
+
+Routes each request to the cheapest model that meets a configurable quality bar — useful when you want cost-optimised code completions without picking a specific model.
+
+```ruby
+# Cheapest model meeting default quality threshold
+response = client.pareto_complete([
+  { role: "user", content: "Write a binary search in Ruby" }
+])
+
+# Require a higher quality bar (0.0–1.0, higher = better)
+response = client.pareto_complete(
+  [{ role: "user", content: "Implement a red-black tree" }],
+  min_coding_score: 0.8,
+  max_tokens: 1000
+)
+
+# Which model actually answered?
+puts response.selected_model  # => "anthropic/claude-3.5-haiku"
+puts response.content
+```
+
+#### Fusion Router
+
+Fans a prompt out to a panel of models in parallel, then synthesises one answer with a judge model. Costs roughly 4–5× a single completion but can outperform any individual model.
+
+```ruby
+# Default panel (OpenRouter chooses)
+response = client.fuse([
+  { role: "user", content: "What is the best approach to distributed consensus?" }
+])
+
+# Custom panel + explicit judge
+response = client.fuse(
+  [{ role: "user", content: "Review this architecture" }],
+  analysis_models: [
+    "anthropic/claude-3.5-sonnet",
+    "openai/gpt-4o",
+    "google/gemini-2.0-flash-001"
+  ],
+  judge: "anthropic/claude-opus-4-5",
+  max_tokens: 2000
+)
+
+# Curated preset panels
+response = client.fuse(messages, preset: "general-budget")
+
+# selected_model reports the synthesis/judge model that produced the answer,
+# e.g. "anthropic/claude-opus-4-5" — not the "openrouter/fusion" router alias.
+puts response.selected_model
+puts response.content
+```
+
+> **Note:** Fusion fans out to every panel model plus a judge, so it costs roughly 4–5× a single completion. `min_coding_score` for Pareto is validated to `0.0–1.0`; `analysis_models` (1–8) and `max_tool_calls` (1–16) for Fusion are validated client-side.
+
+#### `SubagentTool`
+
+Wraps OpenRouter's built-in `openrouter:subagent` server tool so an LLM can spawn its own sub-completions during a tool-calling loop.
+
+```ruby
+subagent = OpenRouter::SubagentTool.new(
+  model: "anthropic/claude-3.5-haiku",  # required: the cheaper worker model
+  instructions: "Complete the task exactly as described. Be concise.", # optional
+  max_completion_tokens: 512            # optional (also: temperature:, reasoning:)
+)
+
+response = client.complete(
+  [{ role: "user", content: "Summarize the attached changelog into release notes." }],
+  model: "openai/gpt-4o",
+  tools: [subagent],
+  tool_choice: "auto"
+)
+```
+
+> The orchestrator decides whether to delegate. The gem's job is to build and send a valid `openrouter:subagent` tool; OpenRouter runs the worker server-side and feeds its result back into the orchestrator's generation.
+
+#### `Response#selected_model`
+
+All routing methods (`complete`, `pareto_complete`, `fuse`) return a `Response` object. Use `#selected_model` (alias for `#model`) to see which model OpenRouter ultimately used:
+
+```ruby
+response = client.pareto_complete(messages)
+puts response.selected_model  # e.g. "mistralai/codestral-2501"
+```
 
 ### Prompt Templates
 

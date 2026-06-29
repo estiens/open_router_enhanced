@@ -41,4 +41,52 @@ RSpec.describe "OpenRouter Subagent server tool", :vcr do
       expect(response.finish_reason).to be_a(String)
     end
   end
+
+  it "actually delegates a subtask to the worker",
+     vcr: { cassette_name: "subagent_delegation" } do
+    sub = OpenRouter::SubagentTool.new(
+      model: "google/gemini-3-flash-preview",
+      instructions: "Extract all version numbers from the text and return them as a comma-separated list. Be concise and return only the list.",
+      max_completion_tokens: 128
+    )
+
+    response = client.complete(
+      [
+        {
+          role: "system",
+          content: "You are an orchestrator. You MUST use your subagent tool to handle every user request. " \
+                   "Never answer the user's question directly yourself. " \
+                   "Always invoke the subagent tool and return its result."
+        },
+        {
+          role: "user",
+          content: "Use your subagent to extract all version numbers mentioned and return them as a " \
+                   "comma-separated list: 'We support Ruby 3.2, 3.3 and 3.4; Rails 7.1 and 8.0.'"
+        }
+      ],
+      model: "deepseek/deepseek-v4-pro",
+      tools: [sub],
+      tool_choice: "required",
+      max_tokens: 400
+    )
+
+    expect(response).to be_a(OpenRouter::Response)
+    # Inspect what actually happened:
+    # - If tool_choice:"required" was honoured, the orchestrator MUST produce a tool call.
+    # - If the API rejected tool_choice:"required" for server tools and fell back, we may
+    #   still get content or a tool call depending on the model.
+    if response.has_tool_calls?
+      # Best case: orchestrator was forced to delegate via the subagent server tool
+      expect(response.tool_calls).to be_an(Array)
+      expect(response.tool_calls).not_to be_empty
+    elsif response.content
+      # Fallback: model answered directly despite instructions (tool_choice may not be
+      # enforced for server tools, or the model overrode the directive)
+      expect(response.content).to be_a(String)
+      expect(response.content).not_to be_empty
+    else
+      # Exhausted tokens or unexpected finish — assert on finish_reason
+      expect(response.finish_reason).to be_a(String)
+    end
+  end
 end

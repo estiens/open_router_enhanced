@@ -35,7 +35,7 @@ module OpenRouter
       plugin = {
         id: "fusion",
         analysis_models: analysis_models,
-        model: judge,
+        model: judge, # OpenRouter Fusion plugin field is 'model', not 'judge'
         preset: preset&.to_s,
         max_tool_calls: max_tool_calls
       }.compact
@@ -49,25 +49,25 @@ module OpenRouter
     def validate_min_coding_score!(score)
       return if score.nil?
 
-      unless score.is_a?(Numeric) && score >= 0.0 && score <= 1.0
-        raise ArgumentError, "min_coding_score must be a number between 0.0 and 1.0 (got #{score.inspect})"
-      end
+      return if score.is_a?(Numeric) && score >= 0.0 && score <= 1.0
+
+      raise ArgumentError, "min_coding_score must be a number between 0.0 and 1.0 (got #{score.inspect})"
     end
 
     def validate_analysis_models!(models)
       return if models.nil?
 
-      unless models.is_a?(Array) && (1..8).cover?(models.size) && models.all? { |m| m.is_a?(String) && !m.strip.empty? }
-        raise ArgumentError, "analysis_models must be an array of 1–8 model id strings (got #{models.inspect})"
-      end
+      return if models.is_a?(Array) && (1..8).cover?(models.size) && models.all? { |m| m.is_a?(String) && !m.strip.empty? }
+
+      raise ArgumentError, "analysis_models must be an array of 1–8 model id strings (got #{models.inspect})"
     end
 
     def validate_max_tool_calls!(value)
       return if value.nil?
 
-      unless value.is_a?(Integer) && (1..16).cover?(value)
-        raise ArgumentError, "max_tool_calls must be an integer between 1 and 16 (got #{value.inspect})"
-      end
+      return if value.is_a?(Integer) && (1..16).cover?(value)
+
+      raise ArgumentError, "max_tool_calls must be an integer between 1 and 16 (got #{value.inspect})"
     end
 
     # Merge a router plugin into any caller-supplied plugins, de-duped by :id.

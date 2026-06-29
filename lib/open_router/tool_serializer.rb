@@ -39,10 +39,10 @@ module OpenRouter
       return force_structured_output unless force_structured_output.nil?
 
       if model.is_a?(String) &&
-         model != "openrouter/auto" &&
+         !model.start_with?("openrouter/") &&
          !ModelRegistry.has_capability?(model, :structured_outputs) &&
          configuration.auto_force_on_unsupported_models
-        warn "[OpenRouter] Model '#{model}' doesn't support native structured outputs. Automatically using forced extraction mode."
+        OpenRouter.log_warning("[OpenRouter] Model '#{model}' doesn't support native structured outputs. Automatically using forced extraction mode.")
         true
       else
         false

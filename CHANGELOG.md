@@ -1,5 +1,23 @@
 ## [Unreleased]
 
+## [2.2.0] - 2026-06-28
+
+### Added
+
+- **`Routing` mixin** (`OpenRouter::Routing`) included in `Client`, providing two new meta-routing methods:
+  - `pareto_complete(messages, min_coding_score: nil, **opts)` — routes to the cheapest model meeting a configurable quality bar via OpenRouter's Pareto Code Router (`openrouter/pareto-code`). `min_coding_score` is validated to `0.0–1.0`.
+  - `fuse(messages, analysis_models: nil, judge: nil, preset: nil, max_tool_calls: nil, **opts)` — fans a prompt out to a panel of models and synthesises one answer via OpenRouter's Fusion router (`openrouter/fusion`). `analysis_models` (1–8) and `max_tool_calls` (1–16) are validated.
+- **`SubagentTool`** (`OpenRouter::SubagentTool`) — wraps OpenRouter's `openrouter:subagent` server tool so an orchestrator model can delegate self-contained subtasks to a cheaper worker model mid-generation. Constructor: `model:` (required worker model) plus optional `instructions:`, `max_completion_tokens:`, `temperature:`, and `reasoning:`. Pass it via the normal `tools:` array to `complete`.
+- **`Response#selected_model`** — alias for `#model`; returns the concrete model OpenRouter resolved for routing responses (e.g. Pareto, Auto, Fusion).
+
+### Changed
+
+- Capability warning / strict-mode guards now exempt all `openrouter/`-prefixed meta-models (previously only `openrouter/auto` was exempt); this prevents spurious warnings or `CapabilityError` when using `pareto_complete` or `fuse` with tools or structured outputs.
+
+### Notes
+
+- These three OpenRouter platform features are still evolving server-side. The gem builds and validates the requests; routing/synthesis/delegation behaviour is performed by OpenRouter. Fusion fans out to every panel model plus a judge, so it costs roughly 4–5× a single completion. `pareto_complete` may resolve to a reasoning model that consumes a small `max_tokens` budget entirely on reasoning (returning `nil` content with `finish_reason: "length"`) — budget `max_tokens` accordingly.
+
 ## [2.0.0] - 2025-12-28
 
 ### Overview

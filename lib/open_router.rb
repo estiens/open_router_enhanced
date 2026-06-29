@@ -62,6 +62,10 @@ module OpenRouter
     # Default structured output mode configuration
     attr_accessor :default_structured_output_mode
 
+    # Optional logger. When set, gem warnings are routed through it (e.g. Rails.logger).
+    # When nil (default), warnings go to Kernel.warn → $stderr.
+    attr_accessor :logger
+
     DEFAULT_API_VERSION = "v1"
     DEFAULT_REQUEST_TIMEOUT = 120
     DEFAULT_URI_BASE = "https://openrouter.ai/api"
@@ -131,5 +135,13 @@ module OpenRouter
 
   def self.configure
     yield(configuration)
+  end
+
+  def self.log_warning(message)
+    if configuration.logger
+      configuration.logger.warn(message)
+    else
+      Kernel.warn(message)
+    end
   end
 end

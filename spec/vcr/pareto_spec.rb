@@ -15,7 +15,7 @@ RSpec.describe "OpenRouter Pareto Code Router", :vcr do
     # This is the primary assertion: pareto routing selects a concrete model, not the router alias.
     expect(response.selected_model).to be_a(String)
     expect(response.selected_model).not_to eq("openrouter/pareto-code")
-    # Note: when the selected model is a reasoning model and max_tokens is small,
+    # NOTE: when the selected model is a reasoning model and max_tokens is small,
     # the model may exhaust tokens during reasoning and return nil content.
     # The content check is conditional on what the real API returned.
     if response.content
