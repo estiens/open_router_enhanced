@@ -133,7 +133,7 @@ module OpenRouter
     rescue StandardError => e
       # If the healing call itself fails, we can't proceed.
       # Return the original broken content to let the loop fail naturally.
-      warn "[OpenRouter Warning] JSON healing request failed: #{e.message}"
+      OpenRouter.log_warning("[OpenRouter Warning] JSON healing request failed: #{e.message}")
 
       # Trigger callback for failed healing
       if @client.respond_to?(:trigger_callbacks)

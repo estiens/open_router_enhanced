@@ -135,7 +135,7 @@ module OpenRouter
       @streaming_callbacks[event].each do |callback|
         callback.call(data)
       rescue StandardError => e
-        warn "[OpenRouter] Streaming callback error for #{event}: #{e.message}"
+        OpenRouter.log_warning("[OpenRouter] Streaming callback error for #{event}: #{e.message}")
       end
     end
 

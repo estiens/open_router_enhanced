@@ -166,7 +166,7 @@ RSpec.describe OpenRouter::JsonHealer do
 
       before do
         allow(client).to receive(:complete).and_raise(StandardError, "Network error")
-        allow(healer).to receive(:warn) # Suppress warning in tests
+        allow(OpenRouter).to receive(:log_warning)
       end
 
       it "returns original content and lets the loop fail naturally" do

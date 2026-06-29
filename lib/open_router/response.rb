@@ -185,6 +185,10 @@ module OpenRouter
       @raw_response["model"]
     end
 
+    # Alias for #model — returns the concrete model the API/router used.
+    # Useful for Pareto, Auto, and Fusion routing ("which model answered?").
+    alias selected_model model
+
     def created
       @raw_response["created"]
     end
