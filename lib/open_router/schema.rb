@@ -30,22 +30,38 @@ module OpenRouter
 
     # Convert to the format expected by OpenRouter API
     def to_h
-      # Apply OpenRouter-specific transformations
-      openrouter_schema = @schema.dup
-
-      # OpenRouter/Azure requires ALL properties to be in the required array
-      # even if they are logically optional. This is a deviation from JSON Schema spec
-      # but necessary for compatibility.
-      if openrouter_schema[:properties]&.any?
-        all_properties = openrouter_schema[:properties].keys.map(&:to_s)
-        openrouter_schema[:required] = all_properties
-      end
-
       {
         name: @name,
         strict: @strict,
-        schema: openrouter_schema
+        schema: enforce_all_required(@schema)
       }
+    end
+
+    # OpenRouter / OpenAI strict mode requires EVERY object — at every nesting
+    # level, including nested objects and array items — to list all of its
+    # properties in its `required` array. Forcing this only at the top level
+    # makes nested objects come back with `required: []`, which strict providers
+    # reject with a 400. Walk the schema and enforce it recursively.
+    #
+    # (Optional fields are expressed in strict mode by adding "null" to the
+    # property's type union, not by omitting them from `required`.)
+    def enforce_all_required(node)
+      case node
+      when Hash
+        transformed = node.each_with_object({}) { |(key, value), acc| acc[key] = enforce_all_required(value) }
+
+        props = transformed[:properties] || transformed["properties"]
+        if props.is_a?(Hash) && props.any?
+          key = transformed.key?(:properties) ? :required : "required"
+          transformed[key] = props.keys.map(&:to_s)
+        end
+
+        transformed
+      when Array
+        node.map { |element| enforce_all_required(element) }
+      else
+        node
+      end
     end
 
     # Get the pure JSON Schema (respects required flags) for testing/validation

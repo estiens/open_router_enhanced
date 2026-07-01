@@ -147,11 +147,18 @@ module OpenRouter
     # Client-side options (not sent to API)
     # ═══════════════════════════════════════════════════════════════════════════
 
-    # @return [Boolean, nil] Override forced extraction mode for structured outputs
-    #   true: Force extraction via system message injection
-    #   false: Use native structured output
-    #   nil: Auto-determine based on model capability
-    attr_accessor :force_structured_output
+    # @return [Boolean, nil] Request provider-side native json_schema enforcement.
+    #   true:  Send response_format: { type: "json_schema", ... } (grammar-constrained,
+    #          only supported by some models/providers — can 400 on unsupported ones).
+    #   false/nil (default): Send response_format: { type: "json_object" } and describe
+    #          the schema in the prompt. Widely supported; validated/healed client-side.
+    attr_accessor :native
+
+    # @return [Boolean, nil] Validation strictness for structured outputs.
+    #   true:  Raise StructuredOutputError if the response doesn't match the schema.
+    #   false/nil (default): Best-effort — return the parsed JSON as-is.
+    #   When nil, falls back to configuration.structured_output_strict.
+    attr_accessor :strict
 
     # All supported parameters with their defaults
     DEFAULTS = {
@@ -193,11 +200,12 @@ module OpenRouter
       # Responses API
       reasoning: nil,
       # Client-side
-      force_structured_output: nil
+      native: nil,
+      strict: nil
     }.freeze
 
     # Parameters that are client-side only (not sent to API)
-    CLIENT_SIDE_PARAMS = %i[force_structured_output extras].freeze
+    CLIENT_SIDE_PARAMS = %i[native strict extras].freeze
 
     # Initialize with keyword arguments
     #

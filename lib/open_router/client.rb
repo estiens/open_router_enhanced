@@ -58,7 +58,10 @@ module OpenRouter
       opts = normalize_options(options, kwargs)
       parameters = prepare_base_parameters(messages, opts, stream)
       forced_extraction = configure_tools_and_structured_outputs!(parameters, opts)
-      configure_plugins!(parameters, opts.response_format, stream)
+      # Gate the response-healing plugin on what's actually on the wire — it requires
+      # response_format to be present, so keying off opts.response_format (intent) would
+      # attach it even when no response_format was sent and produce a 400.
+      configure_plugins!(parameters, parameters[:response_format], stream)
       validate_vision_support(opts.model, messages)
 
       trigger_callbacks(:before_request, parameters)
@@ -66,7 +69,7 @@ module OpenRouter
       raw_response = execute_request(parameters)
       validate_response!(raw_response, stream)
 
-      response = build_response(raw_response, opts.response_format, forced_extraction)
+      response = build_response(raw_response, opts.response_format, forced_extraction, strict: resolve_strict(opts.strict))
 
       model_for_tracking = opts.model.is_a?(String) ? opts.model : opts.model.first
       @usage_tracker&.track(response, model: model_for_tracking)
@@ -192,6 +195,13 @@ module OpenRouter
     end
 
     private
+
+    # Per-call `strict:` wins; otherwise fall back to the configured default.
+    def resolve_strict(strict)
+      return strict unless strict.nil?
+
+      configuration.structured_output_strict
+    end
 
     def normalize_options(options, kwargs)
       case options

@@ -20,43 +20,35 @@ module OpenRouter
       parameters[:tool_choice] = opts.tool_choice if opts.tool_choice
     end
 
-    # Returns forced_extraction boolean
+    # Configure the structured-output request.
+    #
+    # Default (native: false): ask the provider for a plain JSON object — the most
+    # widely supported response_format across models/providers — and describe the
+    # schema in the prompt. The model's capability registry never gates the request.
+    #
+    # Opt-in (native: true): send response_format: { type: "json_schema", ... } for
+    # grammar-constrained decoding. Only some models/providers support this; it can
+    # 400 on the rest, which is why it is explicit rather than auto-detected.
+    #
+    # Returns the lenient-extraction flag (true when the schema was injected into the
+    # prompt, so the response may need JSON extracted from surrounding text).
     def configure_structured_outputs!(parameters, opts)
       return false unless opts.response_format?
 
-      force_extraction = determine_forced_extraction_mode(opts.model, opts.force_structured_output)
+      schema = extract_schema(opts.response_format)
 
-      if force_extraction
-        handle_forced_structured_output!(parameters, opts.model, opts.response_format)
-        true
-      else
-        handle_native_structured_output!(parameters, opts.model, opts.response_format)
-        false
+      if opts.native && schema
+        warn_if_unsupported(opts.model, :structured_outputs, "structured outputs")
+        parameters[:response_format] = serialize_response_format(opts.response_format)
+        return false
       end
-    end
 
-    def determine_forced_extraction_mode(model, force_structured_output)
-      return force_structured_output unless force_structured_output.nil?
+      # Default json_object path.
+      parameters[:response_format] = { type: "json_object" }
+      return false unless schema
 
-      if model.is_a?(String) &&
-         model != "openrouter/auto" &&
-         !ModelRegistry.has_capability?(model, :structured_outputs) &&
-         configuration.auto_force_on_unsupported_models
-        warn "[OpenRouter] Model '#{model}' doesn't support native structured outputs. Automatically using forced extraction mode."
-        true
-      else
-        false
-      end
-    end
-
-    def handle_forced_structured_output!(parameters, model, response_format)
-      warn_if_unsupported(model, :structured_outputs, "structured outputs") if configuration.strict_mode
-      inject_schema_instructions!(parameters[:messages], response_format)
-    end
-
-    def handle_native_structured_output!(parameters, model, response_format)
-      warn_if_unsupported(model, :structured_outputs, "structured outputs")
-      parameters[:response_format] = serialize_response_format(response_format)
+      inject_schema_instructions!(parameters[:messages], schema)
+      true
     end
 
     # Serialize tools to Chat Completions API format: { type: "function", function: { name:, parameters: } }
@@ -113,8 +105,7 @@ module OpenRouter
       end
     end
 
-    def inject_schema_instructions!(messages, response_format)
-      schema = extract_schema(response_format)
+    def inject_schema_instructions!(messages, schema)
       return unless schema
 
       instruction_content = if schema.respond_to?(:get_format_instructions)
@@ -126,18 +117,15 @@ module OpenRouter
       messages << { role: "system", content: instruction_content }
     end
 
+    # Pull the schema out of a response_format. Returns nil for a plain
+    # { type: "json_object" } directive (no schema to describe or validate).
     def extract_schema(response_format)
       case response_format
       when Schema
         response_format
       when Hash
-        if response_format[:json_schema].is_a?(Schema)
-          response_format[:json_schema]
-        elsif response_format[:json_schema].is_a?(Hash)
-          response_format[:json_schema]
-        else
-          response_format
-        end
+        json_schema = response_format[:json_schema] || response_format["json_schema"]
+        json_schema if json_schema.is_a?(Schema) || json_schema.is_a?(Hash)
       end
     end
 

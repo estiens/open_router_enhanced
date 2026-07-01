@@ -36,7 +36,7 @@ RSpec.describe "Debug Healing" do
     expect(client).to receive(:complete).and_return(healed_response)
 
     begin
-      result = response.structured_output(auto_heal: true)
+      result = response.structured_output(mode: :strict, auto_heal: true)
       puts "Result: #{result.inspect}"
       expect(result).to eq({ "name" => "John", "age" => 30 })
     rescue StandardError => e

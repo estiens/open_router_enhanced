@@ -294,4 +294,138 @@ http_interactions:
       string: '{"error":{"message":"Generation gen-1766949632-rwmTGOg0Ew1Dj6txFbEX
         not found","code":404}}'
   recorded_at: Sun, 28 Dec 2025 19:20:34 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Analyze the topic ''Ruby programming''.
+        Provide a summary, 3 key points, and metadata including the topic name and
+        a word count estimate."},{"role":"system","content":"Please format your output
+        as a JSON value that conforms to the following JSON Schema specification:\n\n{\"name\":\"analysis\",\"strict\":true,\"schema\":{\"type\":\"object\",\"properties\":{\"summary\":{\"type\":\"string\",\"description\":\"Brief
+        summary\"},\"key_points\":{\"type\":\"array\",\"description\":\"Main points\",\"items\":{\"type\":\"string\",\"description\":\"A
+        key point\"}},\"metadata\":{\"type\":\"object\",\"properties\":{\"topic\":{\"type\":\"string\",\"description\":\"Main
+        topic\"},\"word_count\":{\"type\":\"integer\",\"description\":\"Approximate
+        word count\"}},\"required\":[\"topic\",\"word_count\"],\"description\":\"Analysis
+        metadata\",\"additionalProperties\":false}},\"required\":[\"summary\",\"key_points\",\"metadata\"],\"additionalProperties\":false}}\n\nYour
+        response should be valid JSON that matches this schema structure exactly.\n\nexample
+        format:\n```json\n{\"field1\": \"value1\", \"field2\": \"value2\"}\n```\n\nImportant
+        guidelines:\n- Ensure all required fields match the schema\n- Use proper JSON
+        formatting (no trailing commas)\n- Return ONLY the JSON - no other text or
+        explanations\n"}],"models":["openai/gpt-4o-mini","anthropic/claude-3-haiku"],"route":"fallback","max_tokens":400,"response_format":{"type":"json_object"},"plugins":[{"id":"response-healing"}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 29 Jun 2026 23:02:56 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Generation-Id:
+      - gen-1782774176-8YLyK8bULlOYHMTybG3l
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a1388fc83b37bebb-CVG
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1782774176-8YLyK8bULlOYHMTybG3l\",\"object\":\"chat.completion\",\"created\":1782774176,\"model\":\"openai/gpt-4o-mini\",\"provider\":\"Azure\",\"system_fingerprint\":\"fp_965c8b9ecf\",\"service_tier\":null,\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"message\":{\"role\":\"assistant\",\"content\":\"{\\n
+        \ \\\"summary\\\": \\\"Ruby is a dynamic, object-oriented programming language
+        known for its simplicity and productivity. It is designed for programmers
+        to enjoy coding, with a focus on elegant syntax and a strong emphasis on convention
+        over configuration. Ruby is widely used in web development, particularly with
+        the Ruby on Rails framework.\\\",\\n  \\\"key_points\\\": [\\n    \\\"Ruby
+        emphasizes simplicity and productivity, making it user-friendly for beginners.\\\",\\n
+        \   \\\"Ruby on Rails is a popular framework that enhances Ruby's capabilities
+        for web development.\\\",\\n    \\\"Ruby's object-oriented nature promotes
+        code reuse and maintainability.\\\"\\n  ],\\n  \\\"metadata\\\": {\\n    \\\"topic\\\":
+        \\\"Ruby programming\\\",\\n    \\\"word_count\\\": 120\\n  }\\n}\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":250,\"completion_tokens\":142,\"total_tokens\":392,\"cost\":0.0001227,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0.0001227,\"upstream_inference_prompt_cost\":0.0000375,\"upstream_inference_completions_cost\":0.0000852},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0,\"audio_tokens\":0}}}"
+  recorded_at: Mon, 29 Jun 2026 23:02:57 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1782774176-8YLyK8bULlOYHMTybG3l
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Mon, 29 Jun 2026 23:02:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a1388fd499f6f733-CVG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1782774176-8YLyK8bULlOYHMTybG3l
+        not found","code":404}}'
+  recorded_at: Mon, 29 Jun 2026 23:02:58 GMT
 recorded_with: VCR 6.4.0

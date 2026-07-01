@@ -240,8 +240,10 @@ RSpec.describe "OpenRouter Structured Outputs", :vcr do
 
       response = OpenRouter::Response.new(raw_response, response_format: simple_schema)
 
+      # Loose (default) is graceful; strict surfaces the parse failure.
+      expect(response.structured_output).to be_nil
       expect do
-        response.structured_output
+        response.structured_output(mode: :strict)
       end.to raise_error(OpenRouter::StructuredOutputError, /Failed to parse structured output/)
     end
   end

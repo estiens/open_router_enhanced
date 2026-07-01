@@ -269,7 +269,7 @@ RSpec.describe OpenRouter::CompletionOptions do
         providers provider transforms plugins prediction route
         metadata user session_id
         reasoning
-        force_structured_output
+        native strict
       ]
 
       expect(described_class::DEFAULTS.keys).to contain_exactly(*expected_keys)
@@ -293,8 +293,10 @@ RSpec.describe OpenRouter::CompletionOptions do
       expect(options.providers).to eq(["openai"])
 
       # Test a client-side param
-      options.force_structured_output = true
-      expect(options.force_structured_output).to eq(true)
+      options.native = true
+      expect(options.native).to eq(true)
+      options.strict = true
+      expect(options.strict).to eq(true)
     end
   end
 

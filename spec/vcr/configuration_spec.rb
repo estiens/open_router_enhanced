@@ -123,44 +123,35 @@ RSpec.describe "OpenRouter Configuration Scenarios", :vcr do
         response_format: {
           type: "json_schema",
           json_schema: schema.to_h
-        },
-        force_structured_output: true
+        }
       )
 
       response.client = mock_client
 
-      result = response.structured_output(auto_heal: true)
+      result = response.structured_output(mode: :strict, auto_heal: true)
       expect(result["name"]).to eq("Healed")
     end
   end
 
   describe "Structured Output Configuration" do
-    it "respects auto_force_on_unsupported_models setting", vcr: { cassette_name: "config_auto_force_enabled" } do
-      OpenRouter.configure do |config|
-        config.auto_force_on_unsupported_models = true
-      end
-
+    it "uses the json_object path regardless of model capability", vcr: { cassette_name: "config_json_object_default" } do
       client = OpenRouter::Client.new(access_token: base_token)
 
-      # Mock model capabilities to simulate unsupported model
-      allow(OpenRouter::ModelRegistry).to receive(:has_capability?)
-        .with("test/unsupported-model", :structured_outputs)
-        .and_return(false)
+      # The registry must NOT be consulted to decide how to request structured output.
+      expect(OpenRouter::ModelRegistry).not_to receive(:has_capability?)
 
-      allow(client).to receive(:post).and_return({
-                                                   "choices" => [{
-                                                     "message" => {
-                                                       "content" => '{"message": "Auto-forced response"}'
-                                                     }
-                                                   }]
-                                                 })
+      sent = nil
+      allow(client).to receive(:post) do |path:, parameters:| # rubocop:disable Lint/UnusedBlockArgument
+        sent = parameters
+        { "choices" => [{ "message" => { "content" => '{"message": "ok"}' } }] }
+      end
 
       schema = OpenRouter::Schema.define("simple") do
         string :message, required: true
       end
 
       response = client.complete(
-        [{ role: "user", content: "Test auto force" }],
+        [{ role: "user", content: "Test default path" }],
         model: "test/unsupported-model",
         response_format: {
           type: "json_schema",
@@ -168,13 +159,13 @@ RSpec.describe "OpenRouter Configuration Scenarios", :vcr do
         }
       )
 
-      result = response.structured_output
-      expect(result["message"]).to eq("Auto-forced response")
+      expect(sent[:response_format]).to eq({ type: "json_object" })
+      expect(response.structured_output["message"]).to eq("ok")
     end
 
-    it "respects default_structured_output_mode setting", vcr: { cassette_name: "config_default_mode" } do
+    it "respects structured_output_strict setting", vcr: { cassette_name: "config_default_mode" } do
       OpenRouter.configure do |config|
-        config.default_structured_output_mode = :gentle
+        config.structured_output_strict = false
       end
 
       client = OpenRouter::Client.new(access_token: base_token)

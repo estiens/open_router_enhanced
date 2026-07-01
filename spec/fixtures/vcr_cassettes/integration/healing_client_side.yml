@@ -226,4 +226,130 @@ http_interactions:
       string: '{"error":{"message":"Generation gen-1766949644-kx413NwemVoE927jjDZt
         not found","code":404}}'
   recorded_at: Sun, 28 Dec 2025 19:20:45 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Create a product: name=''Widget'',
+        price=29.99, tags=[''electronics'', ''gadget''], with SKU ''WDG-001'' in stock"},{"role":"system","content":"Please
+        format your output as a JSON value that conforms to the following JSON Schema
+        specification:\n\n{\"name\":\"product\",\"strict\":true,\"schema\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"Product
+        name\"},\"price\":{\"type\":\"number\",\"description\":\"Price in dollars\"},\"tags\":{\"type\":\"array\",\"description\":\"Product
+        tags\",\"items\":{\"type\":\"string\",\"description\":\"Tag name\"}},\"metadata\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\",\"description\":\"Product
+        SKU\"},\"in_stock\":{\"type\":\"boolean\",\"description\":\"Availability\"}},\"required\":[\"sku\",\"in_stock\"],\"description\":\"Additional
+        metadata\",\"additionalProperties\":false}},\"required\":[\"name\",\"price\",\"tags\",\"metadata\"],\"additionalProperties\":false}}\n\nYour
+        response should be valid JSON that matches this schema structure exactly.\n\nexample
+        format:\n```json\n{\"field1\": \"value1\", \"field2\": \"value2\"}\n```\n\nImportant
+        guidelines:\n- Ensure all required fields match the schema\n- Use proper JSON
+        formatting (no trailing commas)\n- Return ONLY the JSON - no other text or
+        explanations\n"}],"model":"openai/gpt-4o-mini","max_tokens":300,"response_format":{"type":"json_object"},"plugins":[{"id":"response-healing"}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 29 Jun 2026 23:03:08 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Generation-Id:
+      - gen-1782774187-vGQN2us7k4vOJ7doGEKX
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a13890106be755b4-CVG
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n{\"id\":\"gen-1782774187-vGQN2us7k4vOJ7doGEKX\",\"object\":\"chat.completion\",\"created\":1782774187,\"model\":\"openai/gpt-4o-mini\",\"provider\":\"OpenAI\",\"system_fingerprint\":\"fp_fff1d3b4b6\",\"service_tier\":null,\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"message\":{\"role\":\"assistant\",\"content\":\"{\\n
+        \ \\\"name\\\": \\\"Widget\\\",\\n  \\\"price\\\": 29.99,\\n  \\\"tags\\\":
+        [\\\"electronics\\\", \\\"gadget\\\"],\\n  \\\"metadata\\\": {\\n    \\\"sku\\\":
+        \\\"WDG-001\\\",\\n    \\\"in_stock\\\": true\\n  }\\n}\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":263,\"completion_tokens\":53,\"total_tokens\":316,\"cost\":0.00007125,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0.00007125,\"upstream_inference_prompt_cost\":0.00003945,\"upstream_inference_completions_cost\":0.0000318},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0,\"audio_tokens\":0}}}"
+  recorded_at: Mon, 29 Jun 2026 23:03:08 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1782774187-vGQN2us7k4vOJ7doGEKX
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Mon, 29 Jun 2026 23:03:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a13890196cfd55b4-CVG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1782774187-vGQN2us7k4vOJ7doGEKX
+        not found","code":404}}'
+  recorded_at: Mon, 29 Jun 2026 23:03:09 GMT
 recorded_with: VCR 6.4.0

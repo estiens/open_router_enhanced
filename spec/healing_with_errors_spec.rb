@@ -46,7 +46,7 @@ RSpec.describe "Self-healing with detailed error context" do
         OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => healed_json } }] })
       end
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
 
       expect(healing_prompt).to include("Invalid JSON")
       expect(healing_prompt).to include("unexpected token") # JSON parse error details
@@ -58,7 +58,7 @@ RSpec.describe "Self-healing with detailed error context" do
         OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => healed_json } }] })
       )
 
-      result = response.structured_output(auto_heal: true)
+      result = response.structured_output(mode: :strict, auto_heal: true)
       expect(result).to eq(JSON.parse(healed_json))
     end
   end
@@ -80,7 +80,7 @@ RSpec.describe "Self-healing with detailed error context" do
         OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => healed_json } }] })
       end
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
 
       expect(healing_prompt).to include("Schema validation failed")
       expect(healing_prompt).to include("age") # Field that failed
@@ -97,7 +97,7 @@ RSpec.describe "Self-healing with detailed error context" do
         OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => healed_json } }] })
       end
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
 
       # Check for specific validation errors
       expect(healing_prompt).to match(/age.*integer.*string/i) # Age should be integer, got string
@@ -110,7 +110,7 @@ RSpec.describe "Self-healing with detailed error context" do
         OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => healed_json } }] })
       )
 
-      result = response.structured_output(auto_heal: true)
+      result = response.structured_output(mode: :strict, auto_heal: true)
       expect(result).to eq(JSON.parse(healed_json))
     end
   end
@@ -142,7 +142,7 @@ RSpec.describe "Self-healing with detailed error context" do
         OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => healed_json } }] })
       end
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
 
       # Should include the full response with explanation
       expect(healing_prompt).to include("I'll create a user for you")
@@ -159,7 +159,7 @@ RSpec.describe "Self-healing with detailed error context" do
         OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => healed_json } }] })
       end
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
 
       expect(healing_prompt).to include("extract")
       expect(healing_prompt).to include("schema")
@@ -195,7 +195,7 @@ RSpec.describe "Self-healing with detailed error context" do
         end
       end
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
 
       # First heal should get parsed JSON, not full response
       expect(healing_prompts.first).to include('{"name": "Alice"')
@@ -221,7 +221,7 @@ RSpec.describe "Self-healing with detailed error context" do
       )
 
       expect do
-        response.structured_output(auto_heal: true)
+        response.structured_output(mode: :strict, auto_heal: true)
       end.to raise_error(OpenRouter::StructuredOutputError, /after 3 healing attempts/)
     end
 
@@ -232,7 +232,7 @@ RSpec.describe "Self-healing with detailed error context" do
       )
 
       expect do
-        response.structured_output(auto_heal: true)
+        response.structured_output(mode: :strict, auto_heal: true)
       end.to raise_error(OpenRouter::StructuredOutputError, /Last error:.*(age|status)/)
     end
   end
@@ -252,7 +252,7 @@ RSpec.describe "Self-healing with detailed error context" do
         OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => healed_json } }] })
       end
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
 
       expect(healing_prompt).to include("Validation Errors:")
       expect(healing_prompt).to include("Original Content to Fix:")
@@ -268,7 +268,7 @@ RSpec.describe "Self-healing with detailed error context" do
         OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => healed_json } }] })
       end
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
 
       expect(healing_prompt).to include(schema.to_h.to_json)
     end
@@ -285,7 +285,7 @@ RSpec.describe "Self-healing with detailed error context" do
       expect(mock_client).not_to receive(:complete)
 
       expect do
-        response.structured_output(auto_heal: false)
+        response.structured_output(mode: :strict, auto_heal: false)
       end.to raise_error(OpenRouter::StructuredOutputError)
     end
 

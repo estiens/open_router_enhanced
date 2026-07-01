@@ -58,8 +58,9 @@ module OpenRouter
       raise ServerError, "Empty response from OpenRouter. Might be worth retrying once or twice."
     end
 
-    def build_response(raw_response, response_format, forced_extraction)
-      response = Response.new(raw_response, response_format: response_format, forced_extraction: forced_extraction)
+    def build_response(raw_response, response_format, forced_extraction, strict: false)
+      response = Response.new(raw_response, response_format: response_format, forced_extraction: forced_extraction,
+                                            strict: strict)
       response.client = self
       response
     end
