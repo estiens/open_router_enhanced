@@ -59,10 +59,6 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
 
       expect(response.content).to be_a(String)
       expect(response.model).to be_a(String)
-
-      # The response should indicate which model was actually used
-      # This helps verify the fallback mechanism worked
-      puts "Used model: #{response.model}"
     end
   end
 
@@ -316,8 +312,6 @@ RSpec.describe "OpenRouter Model Fallback", :vcr do
       # Should complete in reasonable time (this is somewhat subjective)
       response_time = end_time - start_time
       expect(response_time).to be < 30 # 30 seconds max
-
-      puts "Fallback request completed in #{response_time.round(2)} seconds"
     end
   end
 

@@ -8,6 +8,7 @@ require_relative "callbacks"
 require_relative "parameter_builder"
 require_relative "tool_serializer"
 require_relative "request_handler"
+require_relative "routing"
 
 module OpenRouter
   class ServerError < StandardError; end
@@ -18,6 +19,7 @@ module OpenRouter
     include OpenRouter::ParameterBuilder
     include OpenRouter::ToolSerializer
     include OpenRouter::RequestHandler
+    include OpenRouter::Routing
 
     attr_reader :callbacks, :usage_tracker, :configuration
 

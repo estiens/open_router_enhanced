@@ -19,6 +19,7 @@ end
 require_relative "open_router/http"
 require_relative "open_router/completion_options"
 require_relative "open_router/tool"
+require_relative "open_router/subagent_tool"
 require_relative "open_router/tool_call_base"
 require_relative "open_router/tool_call"
 require_relative "open_router/schema"
@@ -30,6 +31,7 @@ require_relative "open_router/model_registry"
 require_relative "open_router/model_selector"
 require_relative "open_router/prompt_template"
 require_relative "open_router/usage_tracker"
+require_relative "open_router/routing"
 require_relative "open_router/client"
 require_relative "open_router/streaming_client"
 require_relative "open_router/version"
@@ -59,6 +61,10 @@ module OpenRouter
     # true: raise StructuredOutputError when the response doesn't match the schema.
     # Overridden per-call by the `strict:` option.
     attr_accessor :structured_output_strict
+
+    # Optional logger. When set, gem warnings are routed through it (e.g. Rails.logger).
+    # When nil (default), warnings go to Kernel.warn → $stderr.
+    attr_accessor :logger
 
     DEFAULT_API_VERSION = "v1"
     DEFAULT_REQUEST_TIMEOUT = 120
@@ -126,5 +132,13 @@ module OpenRouter
 
   def self.configure
     yield(configuration)
+  end
+
+  def self.log_warning(message)
+    if configuration.logger
+      configuration.logger.warn(message)
+    else
+      Kernel.warn(message)
+    end
   end
 end

@@ -70,7 +70,7 @@ module OpenRouter
     end
 
     def warn_if_unsupported(model, capability, feature_name)
-      return if model.is_a?(Array) || model == "openrouter/auto"
+      return if model.is_a?(Array) || model.to_s.start_with?("openrouter/")
       return if ModelRegistry.has_capability?(model, capability)
 
       if configuration.strict_mode
@@ -81,7 +81,7 @@ module OpenRouter
       warning_key = "#{model}:#{capability}"
       return if @capability_warnings_shown.include?(warning_key)
 
-      warn "[OpenRouter Warning] Model '#{model}' may not support #{feature_name} (missing :#{capability} capability). The request will still be attempted."
+      OpenRouter.log_warning("[OpenRouter Warning] Model '#{model}' may not support #{feature_name} (missing :#{capability} capability). The request will still be attempted.")
       @capability_warnings_shown << warning_key
     end
 
