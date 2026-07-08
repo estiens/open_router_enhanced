@@ -241,4 +241,135 @@ http_interactions:
       string: '{"error":{"message":"Generation gen-1766949761-FaAMBZzNYWVZOjykgpVx
         not found","code":404}}'
   recorded_at: Sun, 28 Dec 2025 19:22:43 GMT
+- request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Analyze the text ''Ruby is a
+        programming language'' and provide detailed analysis"},{"role":"system","content":"Please
+        format your output as a JSON value that conforms to the following JSON Schema
+        specification:\n\n{\"name\":\"analysis_result\",\"strict\":true,\"schema\":{\"type\":\"object\",\"properties\":{\"summary\":{\"type\":\"string\",\"description\":\"Summary
+        of the analysis\"},\"details\":{\"type\":\"object\",\"properties\":{\"category\":{\"type\":\"string\",\"description\":\"Category
+        of analysis\"},\"confidence\":{\"type\":\"number\",\"description\":\"Confidence
+        score 0-1\"},\"keywords\":{\"type\":\"array\",\"description\":\"Relevant keywords\",\"items\":{\"type\":\"string\",\"description\":\"Individual
+        keyword\"}}},\"required\":[\"category\",\"confidence\",\"keywords\"],\"description\":\"Detailed
+        analysis\",\"additionalProperties\":false},\"requires_followup\":{\"type\":\"boolean\",\"description\":\"Whether
+        followup is needed\"}},\"required\":[\"summary\",\"details\",\"requires_followup\"],\"additionalProperties\":false}}\n\nYour
+        response should be valid JSON that matches this schema structure exactly.\n\nexample
+        format:\n```json\n{\"field1\": \"value1\", \"field2\": \"value2\"}\n```\n\nImportant
+        guidelines:\n- Ensure all required fields match the schema\n- Use proper JSON
+        formatting (no trailing commas)\n- Return ONLY the JSON - no other text or
+        explanations\n"}],"model":"openai/gpt-4o-mini","max_tokens":1000,"response_format":{"type":"json_object"},"plugins":[{"id":"response-healing"}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 29 Jun 2026 23:01:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Generation-Id:
+      - gen-1782774063-iZktPoql2k51C0PuqxLC
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a1388d097f5155b4-CVG
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n{\"id\":\"gen-1782774063-iZktPoql2k51C0PuqxLC\",\"object\":\"chat.completion\",\"created\":1782774063,\"model\":\"openai/gpt-4o-mini\",\"provider\":\"Azure\",\"system_fingerprint\":\"fp_965c8b9ecf\",\"service_tier\":null,\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"message\":{\"role\":\"assistant\",\"content\":\"{\\n
+        \ \\\"summary\\\": \\\"Ruby is identified as a programming language, known
+        for its simplicity and productivity.\\\",\\n  \\\"details\\\": {\\n    \\\"category\\\":
+        \\\"Programming Languages\\\",\\n    \\\"confidence\\\": 0.95,\\n    \\\"keywords\\\":
+        [\\n      \\\"Ruby\\\",\\n      \\\"programming\\\",\\n      \\\"language\\\",\\n
+        \     \\\"simplicity\\\",\\n      \\\"productivity\\\"\\n    ]\\n  },\\n  \\\"requires_followup\\\":
+        false\\n}\",\"refusal\":null,\"reasoning\":null}}],\"usage\":{\"prompt_tokens\":257,\"completion_tokens\":85,\"total_tokens\":342,\"cost\":0.00008955,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0.00008955,\"upstream_inference_prompt_cost\":0.00003855,\"upstream_inference_completions_cost\":0.000051},\"completion_tokens_details\":{\"reasoning_tokens\":0,\"image_tokens\":0,\"audio_tokens\":0}}}"
+  recorded_at: Mon, 29 Jun 2026 23:01:05 GMT
+- request:
+    method: get
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1782774063-iZktPoql2k51C0PuqxLC
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Mon, 29 Jun 2026 23:01:05 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-store
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a1388d14084a74cc-CVG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"message":"Generation gen-1782774063-iZktPoql2k51C0PuqxLC
+        not found","code":404}}'
+  recorded_at: Mon, 29 Jun 2026 23:01:05 GMT
 recorded_with: VCR 6.4.0

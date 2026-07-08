@@ -215,10 +215,13 @@ RSpec.describe "Smart Model Selection Integration", :vcr do
         { role: "user", content: "Say hello in JSON format" }
       ]
 
+      # Optimize for performance (premium tier) rather than raw cost: the cheapest
+      # structured-output listings are often dead ":free" models that 404, which would
+      # make this test depend on volatile free-tier availability.
       response = client.smart_complete(
         messages,
         requirements: { capabilities: [:structured_outputs] },
-        optimization: :cost,
+        optimization: :performance,
         response_format: simple_schema,
         max_tokens: 150
       )

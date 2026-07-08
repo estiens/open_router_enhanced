@@ -136,7 +136,7 @@ RSpec.describe OpenRouter::Client do
       )
     end
 
-    it "includes response_format in the request with Schema object" do
+    it "sends native json_schema when native: true with a Schema object" do
       expect(client).to receive(:post).with(
         path: "/chat/completions",
         parameters: hash_including(
@@ -148,10 +148,10 @@ RSpec.describe OpenRouter::Client do
       ).and_return(mock_response)
 
       messages = [{ role: "user", content: "What's the weather in London?" }]
-      client.complete(messages, response_format: weather_schema)
+      client.complete(messages, response_format: weather_schema, native: true)
     end
 
-    it "includes response_format in the request with hash format" do
+    it "sends native json_schema when native: true with hash format" do
       response_format = {
         type: "json_schema",
         json_schema: weather_schema
@@ -168,7 +168,17 @@ RSpec.describe OpenRouter::Client do
       ).and_return(mock_response)
 
       messages = [{ role: "user", content: "What's the weather in London?" }]
-      client.complete(messages, response_format:)
+      client.complete(messages, response_format:, native: true)
+    end
+
+    it "sends a json_object request (not json_schema) by default" do
+      expect(client).to receive(:post).with(
+        path: "/chat/completions",
+        parameters: hash_including(response_format: { type: "json_object" })
+      ).and_return(mock_response)
+
+      messages = [{ role: "user", content: "What's the weather in London?" }]
+      client.complete(messages, response_format: weather_schema)
     end
 
     it "returns Response object with structured output" do

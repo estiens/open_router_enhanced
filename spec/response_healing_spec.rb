@@ -32,7 +32,7 @@ RSpec.describe "Response Healing" do
         )
         response.client = client
 
-        result = response.structured_output(auto_heal: true)
+        result = response.structured_output(mode: :strict, auto_heal: true)
         expect(result).to eq({ "name" => "John", "age" => 30 })
 
         # Verify healing was attempted
@@ -51,7 +51,7 @@ RSpec.describe "Response Healing" do
         # Should not call the healing client
         expect(client).not_to receive(:complete)
 
-        result = response.structured_output(auto_heal: true)
+        result = response.structured_output(mode: :strict, auto_heal: true)
         expect(result).to eq({ "name" => "John", "age" => 30 })
       end
     end
@@ -64,7 +64,7 @@ RSpec.describe "Response Healing" do
         )
 
         expect do
-          response.structured_output(auto_heal: false)
+          response.structured_output(mode: :strict, auto_heal: false)
         end.to raise_error(OpenRouter::StructuredOutputError)
       end
     end
@@ -78,7 +78,7 @@ RSpec.describe "Response Healing" do
         # No client set
 
         expect do
-          response.structured_output(auto_heal: true)
+          response.structured_output(mode: :strict, auto_heal: true)
         end.to raise_error(OpenRouter::StructuredOutputError)
       end
     end
@@ -110,7 +110,7 @@ RSpec.describe "Response Healing" do
         )
         response.client = client
 
-        result = response.structured_output(auto_heal: true)
+        result = response.structured_output(mode: :strict, auto_heal: true)
         expect(result).to eq({ "name" => "John", "age" => 30 })
       end
     end
@@ -139,7 +139,7 @@ RSpec.describe "Response Healing" do
         healed_response = double("Response", content: valid_json)
         expect(client).to receive(:complete).and_return(healed_response)
 
-        result = response.structured_output(auto_heal: true)
+        result = response.structured_output(mode: :strict, auto_heal: true)
         expect(result).to eq({ "name" => "John", "age" => 30 })
       end
     end
@@ -163,7 +163,7 @@ RSpec.describe "Response Healing" do
         hash_including(model: "anthropic/claude-3-haiku")
       ).and_return(healed_response)
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
     end
 
     it "respects custom max_heal_attempts" do
@@ -180,7 +180,7 @@ RSpec.describe "Response Healing" do
       response.client = custom_client
 
       expect do
-        response.structured_output(auto_heal: true)
+        response.structured_output(mode: :strict, auto_heal: true)
       end.to raise_error(OpenRouter::StructuredOutputError)
     end
   end
@@ -206,7 +206,7 @@ RSpec.describe "Response Healing" do
         healed_response
       end
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
     end
 
     it "includes schema information in healing prompts when available" do
@@ -229,7 +229,7 @@ RSpec.describe "Response Healing" do
         healed_response
       end
 
-      response.structured_output(auto_heal: true)
+      response.structured_output(mode: :strict, auto_heal: true)
     end
   end
 end

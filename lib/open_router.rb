@@ -56,11 +56,11 @@ module OpenRouter
     # Capability validation configuration
     attr_accessor :strict_mode
 
-    # Automatic forcing configuration
-    attr_accessor :auto_force_on_unsupported_models
-
-    # Default structured output mode configuration
-    attr_accessor :default_structured_output_mode
+    # Default validation strictness for structured outputs.
+    # false (default): best-effort, return parsed JSON as-is.
+    # true: raise StructuredOutputError when the response doesn't match the schema.
+    # Overridden per-call by the `strict:` option.
+    attr_accessor :structured_output_strict
 
     # Optional logger. When set, gem warnings are routed through it (e.g. Rails.logger).
     # When nil (default), warnings go to Kernel.warn → $stderr.
@@ -99,11 +99,8 @@ module OpenRouter
       # Capability validation defaults
       self.strict_mode = ENV.fetch("OPENROUTER_STRICT_MODE", "false").downcase == "true"
 
-      # Auto forcing defaults
-      self.auto_force_on_unsupported_models = ENV.fetch("OPENROUTER_AUTO_FORCE", "true").downcase == "true"
-
-      # Default structured output mode
-      self.default_structured_output_mode = ENV.fetch("OPENROUTER_DEFAULT_MODE", "strict").to_sym
+      # Default structured output validation strictness (loose/best-effort by default)
+      self.structured_output_strict = ENV.fetch("OPENROUTER_STRUCTURED_STRICT", "false").downcase == "true"
     end
 
     def access_token

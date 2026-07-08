@@ -186,7 +186,7 @@ RSpec.describe "OpenRouter Error Handling", :vcr do
           [{ role: "user", content: "Give me structured output" }],
           model: "openai/gpt-4o-mini",
           response_format: invalid_schema,
-          force_structured_output: false, # Force native mode to test schema validation
+          native: true, # Native json_schema mode surfaces provider-side schema validation
           max_tokens: 500
         )
       end.to raise_error(OpenRouter::ServerError) do |error|

@@ -2,7 +2,10 @@
 
 require "spec_helper"
 
-RSpec.describe "Force structured output on unsupported models" do
+# Structured outputs default to a widely-supported json_object request with the
+# schema described in the prompt. Native provider-side json_schema is opt-in via
+# `native: true`. The model capability registry never gates the request.
+RSpec.describe "Structured output request modes" do
   let(:schema) do
     OpenRouter::Schema.define("test_user") do
       string :name, required: true
@@ -19,31 +22,17 @@ RSpec.describe "Force structured output on unsupported models" do
 
   let(:messages) { [{ role: "user", content: "Create a user" }] }
 
-  # Mock model data for testing
-  before do
-    allow(OpenRouter::ModelRegistry).to receive(:has_capability?) do |model, capability|
-      case [model, capability]
-      when ["supported-model", :structured_outputs]
-        true
-      when ["unsupported-model", :structured_outputs]
-        false
-      else
-        false
-      end
-    end
-  end
-
   describe "Client#complete" do
     let(:client) { OpenRouter::Client.new(access_token: "test") }
 
-    context "with force_structured_output: true" do
-      it "does NOT send response_format to API" do
+    context "by default (json_object + prompt-injected schema)" do
+      it "sends response_format json_object, never json_schema" do
         expect(client).to receive(:post) do |path:, parameters:|
-          expect(parameters).not_to have_key(:response_format)
+          expect(parameters[:response_format]).to eq({ type: "json_object" })
           { "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] }
         end
 
-        client.complete(messages, model: "any-model", response_format:, force_structured_output: true)
+        client.complete(messages, model: "any-model", response_format:)
       end
 
       it "injects schema instructions into messages" do
@@ -53,7 +42,7 @@ RSpec.describe "Force structured output on unsupported models" do
           { "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] }
         end
 
-        client.complete(messages, model: "any-model", response_format:, force_structured_output: true)
+        client.complete(messages, model: "any-model", response_format:)
 
         expect(injected_messages).to have_attributes(size: 2)
         expect(injected_messages.last[:role]).to eq("system")
@@ -61,33 +50,32 @@ RSpec.describe "Force structured output on unsupported models" do
         expect(injected_messages.last[:content]).to include("schema")
       end
 
-      it "returns Response with forced_extraction flag" do
+      it "returns a Response flagged for lenient extraction" do
         allow(client).to receive(:post).and_return({ "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] })
 
-        response = client.complete(messages, model: "any-model", response_format:, force_structured_output: true)
+        response = client.complete(messages, model: "any-model", response_format:)
 
         expect(response).to be_a(OpenRouter::Response)
-        expect(response.instance_variable_get(:@forced_extraction)).to be true
+        expect(response.forced_extraction).to be true
       end
 
-      it "warns about forcing on any model" do
+      it "does not consult the model registry for capability" do
+        expect(OpenRouter::ModelRegistry).not_to receive(:has_capability?)
         allow(client).to receive(:post).and_return({ "choices" => [{ "message" => { "content" => "{}" } }] })
 
-        # When explicitly forcing, no warning is expected (it's intentional)
-        expect do
-          client.complete(messages, model: "unsupported-model", response_format:, force_structured_output: true)
-        end.not_to output(/warning/i).to_stderr
+        client.complete(messages, model: "some-obscure-model", response_format:)
       end
     end
 
-    context "with force_structured_output: false" do
-      it "sends response_format to API normally" do
+    context "with native: true" do
+      it "sends native json_schema response_format" do
         expect(client).to receive(:post) do |path:, parameters:|
-          expect(parameters).to have_key(:response_format)
+          expect(parameters[:response_format][:type]).to eq("json_schema")
+          expect(parameters[:response_format][:json_schema]).to be_a(Hash)
           { "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] }
         end
 
-        client.complete(messages, model: "supported-model", response_format:, force_structured_output: false)
+        client.complete(messages, model: "supported-model", response_format:, native: true)
       end
 
       it "does not inject schema instructions" do
@@ -97,88 +85,20 @@ RSpec.describe "Force structured output on unsupported models" do
           { "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] }
         end
 
-        client.complete(messages, model: "supported-model", response_format:, force_structured_output: false)
-      end
-    end
-
-    context "with force_structured_output: nil (auto-detect)" do
-      it "auto-forces when model lacks structured_outputs capability" do
-        expect(client).to receive(:post) do |path:, parameters:|
-          expect(parameters).not_to have_key(:response_format) # Should be forced
-          { "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] }
-        end
-
-        expect do
-          client.complete(messages, model: "unsupported-model", response_format:)
-        end.to output(/doesn't support native structured outputs.*Automatically using forced extraction/).to_stderr
+        client.complete(messages, model: "supported-model", response_format:, native: true)
       end
 
-      it "uses native format when model supports structured outputs" do
-        expect(client).to receive(:post) do |path:, parameters:|
-          expect(parameters).to have_key(:response_format)  # Should use native
-          { "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] }
-        end
+      it "returns a Response without the lenient-extraction flag" do
+        allow(client).to receive(:post).and_return({ "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] })
 
-        client.complete(messages, model: "supported-model", response_format:)
-      end
+        response = client.complete(messages, model: "supported-model", response_format:, native: true)
 
-      it "skips auto-detection for model arrays (fallbacks)" do
-        expect(client).to receive(:post) do |path:, parameters:|
-          expect(parameters).to have_key(:response_format)  # Should use native
-          { "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] }
-        end
-
-        client.complete(messages, model: %w[unsupported-model supported-model], response_format:)
-      end
-
-      it "skips auto-detection for openrouter/auto" do
-        expect(client).to receive(:post) do |path:, parameters:|
-          expect(parameters).to have_key(:response_format)  # Should use native
-          { "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] }
-        end
-
-        client.complete(messages, model: "openrouter/auto", response_format:)
-      end
-
-      context "respects configuration.auto_force_on_unsupported_models flag" do
-        context "when auto_force_on_unsupported_models is false" do
-          it "should NOT auto-force for unsupported models" do
-            # Configure to disable auto-forcing
-            allow(client.configuration).to receive(:auto_force_on_unsupported_models).and_return(false)
-
-            # Should use native mode (include response_format in API call) instead of forcing
-            expect(client).to receive(:post) do |path:, parameters:|
-              expect(parameters).to have_key(:response_format) # Should use native, not force
-              { "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] }
-            end
-
-            # Should NOT output warning about auto-forcing
-            expect do
-              client.complete(messages, model: "unsupported-model", response_format:)
-            end.not_to output(/Automatically using forced extraction/).to_stderr
-          end
-        end
-
-        context "when auto_force_on_unsupported_models is true" do
-          it "should auto-force for unsupported models (current behavior)" do
-            # Configure to enable auto-forcing
-            allow(client.configuration).to receive(:auto_force_on_unsupported_models).and_return(true)
-
-            expect(client).to receive(:post) do |path:, parameters:|
-              expect(parameters).not_to have_key(:response_format) # Should be forced
-              { "choices" => [{ "message" => { "content" => '{"name": "John", "age": 30}' } }] }
-            end
-
-            expect do
-              client.complete(messages, model: "unsupported-model", response_format:)
-            end.to output(/doesn't support native structured outputs.*Automatically using forced extraction/).to_stderr
-          end
-        end
+        expect(response.forced_extraction).to be false
       end
     end
 
     context "without response_format" do
-      it "does not force or modify anything" do
+      it "does not add response_format or inject anything" do
         original_messages = messages.dup
         expect(client).to receive(:post) do |path:, parameters:|
           expect(parameters[:messages]).to eq(original_messages)
@@ -186,12 +106,12 @@ RSpec.describe "Force structured output on unsupported models" do
           { "choices" => [{ "message" => { "content" => "Regular response" } }] }
         end
 
-        client.complete(messages, model: "unsupported-model")
+        client.complete(messages, model: "any-model")
       end
     end
   end
 
-  describe "Response#structured_output with forced extraction" do
+  describe "Response#structured_output with lenient extraction" do
     context "with JSON in markdown code blocks" do
       let(:response_content) do
         <<~CONTENT
@@ -247,14 +167,14 @@ RSpec.describe "Force structured output on unsupported models" do
         response.client = mock_client
       end
 
-      it "sends full response content to first heal attempt" do
+      it "sends full response content to first heal attempt (strict mode)" do
         expect(response).to receive(:heal_structured_response) do |content, _schema|
           expect(content).to include("```json") # Full response, not just JSON
           expect(content).to include("twenty-five")
           { "name" => "Bob", "age" => 25 }
         end
 
-        result = response.structured_output(auto_heal: true)
+        result = response.structured_output(mode: :strict, auto_heal: true)
         expect(result).to eq({ "name" => "Bob", "age" => 25 })
       end
 
@@ -267,7 +187,7 @@ RSpec.describe "Force structured output on unsupported models" do
         expect(result).to eq({ "name" => "Bob", "age" => 25 })
       end
 
-      it "returns extracted JSON without validation in gentle mode" do
+      it "returns extracted JSON without validation or healing in gentle mode" do
         # Gentle mode should not attempt healing
         expect(response).not_to receive(:heal_structured_response)
 
@@ -296,7 +216,7 @@ RSpec.describe "Force structured output on unsupported models" do
           { "name" => "Generated", "age" => 0 }
         end
 
-        result = response.structured_output(auto_heal: true)
+        result = response.structured_output(mode: :strict, auto_heal: true)
         expect(result).to eq({ "name" => "Generated", "age" => 0 })
       end
     end
@@ -316,15 +236,13 @@ RSpec.describe "Force structured output on unsupported models" do
     let(:client) { OpenRouter::Client.new(access_token: "test") }
 
     it "creates clear format instructions" do
-      allow(client).to receive(:post).and_return({ "choices" => [{ "message" => { "content" => "{}" } }] })
-
       injected_messages = nil
       expect(client).to receive(:post) do |path:, parameters:|
         injected_messages = parameters[:messages]
         { "choices" => [{ "message" => { "content" => "{}" } }] }
       end
 
-      client.complete(messages, model: "any-model", response_format:, force_structured_output: true)
+      client.complete(messages, model: "any-model", response_format:)
 
       instruction = injected_messages.last[:content]
       expect(instruction).to include("JSON")

@@ -10,13 +10,14 @@ module OpenRouter
   class Response
     include OpenRouter::ResponseParsing
 
-    attr_reader :raw_response, :response_format, :forced_extraction
+    attr_reader :raw_response, :response_format, :forced_extraction, :strict
     attr_accessor :client
 
-    def initialize(raw_response, response_format: nil, forced_extraction: false)
+    def initialize(raw_response, response_format: nil, forced_extraction: false, strict: false)
       @raw_response = raw_response.is_a?(Hash) ? raw_response.with_indifferent_access : {}
       @response_format = response_format
       @forced_extraction = forced_extraction
+      @strict = strict
       @client = nil
     end
 
@@ -80,14 +81,7 @@ module OpenRouter
 
     # Structured output methods
     def structured_output(mode: nil, auto_heal: nil)
-      # Use global default mode if not specified
-      if mode.nil?
-        mode = if @client&.configuration.respond_to?(:default_structured_output_mode)
-                 @client.configuration.default_structured_output_mode || :strict
-               else
-                 :strict
-               end
-      end
+      mode ||= default_structured_output_mode
       # Validate mode parameter
       raise ArgumentError, "Invalid mode: #{mode}. Must be :strict or :gentle." unless %i[strict gentle].include?(mode)
 
@@ -103,6 +97,10 @@ module OpenRouter
                       end
 
         result = parse_and_heal_structured_output(auto_heal: should_heal)
+
+        # In the json_object path (lenient extraction) a parse failure yields nil rather
+        # than raising. Strict mode must surface that as an error rather than returning nil.
+        raise StructuredOutputError, "Failed to parse structured output from response" if result.nil?
 
         # Only validate after parsing if healing is disabled (healing handles its own validation)
         if result && !should_heal
@@ -259,6 +257,14 @@ module OpenRouter
 
     def error_message
       @raw_response.dig("error", "message")
+    end
+
+    private
+
+    # :strict raises on schema mismatch; :gentle returns best-effort. Driven by the
+    # `strict:` flag resolved at request time (per-call option or configured default).
+    def default_structured_output_mode
+      @strict ? :strict : :gentle
     end
   end
 end

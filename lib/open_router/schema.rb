@@ -28,23 +28,36 @@ module OpenRouter
       new(name, builder.to_h, strict:)
     end
 
-    # Convert to the format expected by OpenRouter API
+    # Convert to the format expected by OpenRouter API.
+    #
+    # This is the *honest* representation: it respects the `required` arrays
+    # exactly as declared, so fields you left optional stay optional. It is what
+    # we describe to the model (prompt injection), what we validate against, and
+    # what we hand the healer — keeping "what we ask for" and "what we accept" in
+    # agreement. The provider-strict, all-required form lives in #to_strict_h and
+    # is used only when serializing a native `json_schema` request.
     def to_h
-      # Apply OpenRouter-specific transformations
-      openrouter_schema = @schema.dup
-
-      # OpenRouter/Azure requires ALL properties to be in the required array
-      # even if they are logically optional. This is a deviation from JSON Schema spec
-      # but necessary for compatibility.
-      if openrouter_schema[:properties]&.any?
-        all_properties = openrouter_schema[:properties].keys.map(&:to_s)
-        openrouter_schema[:required] = all_properties
-      end
-
       {
         name: @name,
         strict: @strict,
-        schema: openrouter_schema
+        schema: @schema
+      }
+    end
+
+    # Provider-strict form for native `json_schema` decoding.
+    #
+    # OpenRouter / OpenAI strict mode requires EVERY object — at every nesting
+    # level, including nested objects and array items — to list all of its
+    # properties in its `required` array; a nested `required: []` gets a 400.
+    # We satisfy that WITHOUT silently making optional fields mandatory: any
+    # property that was not declared required is made nullable (its type gains
+    # "null"), which is exactly how strict mode expresses optionality. The model
+    # may then return `null` for it instead of being forced to invent a value.
+    def to_strict_h
+      {
+        name: @name,
+        strict: @strict,
+        schema: enforce_all_required(@schema)
       }
     end
 
@@ -120,6 +133,51 @@ module OpenRouter
     end
 
     private
+
+    # Recursively force every object to list all its properties in `required`,
+    # keeping declared-optional properties optional by making them nullable.
+    # Reads each node's OWN existing `required` before overwriting, so nested
+    # optionality is preserved at every level.
+    def enforce_all_required(node)
+      case node
+      when Hash
+        transformed = node.each_with_object({}) { |(key, value), acc| acc[key] = enforce_all_required(value) }
+
+        props = transformed[:properties] || transformed["properties"]
+        if props.is_a?(Hash) && props.any?
+          key = transformed.key?(:properties) ? :required : "required"
+          already_required = Array(transformed[key]).map(&:to_s)
+          props.each do |prop_name, prop_def|
+            next if already_required.include?(prop_name.to_s)
+
+            props[prop_name] = make_nullable(prop_def)
+          end
+          transformed[key] = props.keys.map(&:to_s)
+        end
+
+        transformed
+      when Array
+        node.map { |element| enforce_all_required(element) }
+      else
+        node
+      end
+    end
+
+    # Add "null" to a property's type union so it can be omitted (as null) under
+    # strict mode. Leaves the property untouched if it has no determinable type.
+    def make_nullable(prop_def)
+      return prop_def unless prop_def.is_a?(Hash)
+
+      type_key = if prop_def.key?(:type) then :type
+                 elsif prop_def.key?("type") then "type"
+                 end
+      return prop_def unless type_key
+
+      types = Array(prop_def[type_key]).map(&:to_s)
+      return prop_def if types.include?("null")
+
+      prop_def.merge(type_key => types + ["null"])
+    end
 
     def validate_schema!
       raise ArgumentError, "Schema name is required" if @name.nil? || @name.empty?

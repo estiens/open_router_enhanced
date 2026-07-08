@@ -273,8 +273,10 @@ RSpec.describe OpenRouter::Response do
 
       response = OpenRouter::Response.new(bad_response, response_format:)
 
+      # Loose (default) mode is graceful; strict surfaces the parse failure.
+      expect(response.structured_output).to be_nil
       expect do
-        response.structured_output
+        response.structured_output(mode: :strict)
       end.to raise_error(OpenRouter::StructuredOutputError, /parse/)
     end
 

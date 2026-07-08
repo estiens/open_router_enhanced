@@ -24,77 +24,56 @@ RSpec.describe "End-to-end structured output scenarios" do
 
   let(:messages) { [{ role: "user", content: "Create a user profile" }] }
 
-  # Mock model capabilities for testing
-  before do
-    allow(OpenRouter::ModelRegistry).to receive(:has_capability?) do |model, capability|
-      case model
-      when "native-model"
-        capability == :structured_outputs
-      when "unsupported-model"
-        false
-      when "vision-model"
-        %i[vision structured_outputs].include?(capability)
-      else
-        false
-      end
-    end
-  end
+  describe "default json_object path (no native flag)" do
+    it "requests a json_object and injects the schema, then parses the result" do
+      json_response = '{"name": "Alice Johnson", "age": 28, "email": "alice@example.com", "role": "editor", "status": "active"}'
 
-  describe "model without native structured output support" do
-    context "with auto-detection (default behavior)" do
-      it "automatically forces extraction and succeeds" do
-        # Mock the API response with clean JSON output
-        json_response = '{"name": "Alice Johnson", "age": 28, "email": "alice@example.com", "role": "editor", "status": "active"}'
+      expect(client).to receive(:post) do |path:, parameters:|
+        # Widely-supported json_object request — never native json_schema by default.
+        expect(parameters[:response_format]).to eq({ type: "json_object" })
+        # Schema described in an injected system message.
+        expect(parameters[:messages].last[:role]).to eq("system")
+        expect(parameters[:messages].last[:content]).to include("JSON")
 
-        expect(client).to receive(:post) do |path:, parameters:|
-          # Should NOT include response_format (would cause 400)
-          expect(parameters).not_to have_key(:response_format)
-          # Should include injected schema instructions
-          expect(parameters[:messages].last[:role]).to eq("system")
-          expect(parameters[:messages].last[:content]).to include("valid JSON matching this exact schema")
-
-          { "choices" => [{ "message" => { "content" => json_response } }] }
-        end
-
-        response = client.complete(messages, model: "unsupported-model", response_format:)
-
-        result = response.structured_output
-        expect(result).to eq({
-                               "name" => "Alice Johnson",
-                               "age" => 28,
-                               "email" => "alice@example.com",
-                               "role" => "editor",
-                               "status" => "active"
-                             })
+        { "choices" => [{ "message" => { "content" => json_response } }] }
       end
 
-      it "warns about auto-forcing on unsupported model" do
-        allow(client).to receive(:post).and_return({
-                                                     "choices" => [{ "message" => { "content" => '{"name": "Test", "age": 25, "email": "test@example.com", "role": "viewer", "status": "active"}' } }]
-                                                   })
+      response = client.complete(messages, model: "any-model", response_format:)
 
-        expect do
-          client.complete(messages, model: "unsupported-model", response_format:)
-        end.to output(/doesn't support native structured outputs.*using forced extraction mode/).to_stderr
-      end
+      result = response.structured_output
+      expect(result).to eq({
+                             "name" => "Alice Johnson",
+                             "age" => 28,
+                             "email" => "alice@example.com",
+                             "role" => "editor",
+                             "status" => "active"
+                           })
     end
 
-    context "with explicit force_structured_output: true" do
-      it "injects clear schema instructions into prompt" do
-        injected_messages = nil
+    it "does not warn about capability or forced extraction" do
+      allow(client).to receive(:post).and_return({
+                                                   "choices" => [{ "message" => { "content" => '{"name": "Test", "age": 25, "email": "test@example.com", "role": "viewer", "status": "active"}' } }]
+                                                 })
 
-        expect(client).to receive(:post) do |path:, parameters:|
-          injected_messages = parameters[:messages]
-          { "choices" => [{ "message" => { "content" => "{}" } }] }
-        end
+      expect do
+        client.complete(messages, model: "some-obscure-model", response_format:)
+      end.not_to output(/forced extraction|doesn't support/i).to_stderr
+    end
 
-        client.complete(messages, model: "unsupported-model", response_format:, force_structured_output: true)
+    it "injects clear schema instructions into the prompt" do
+      injected_messages = nil
 
-        instruction = injected_messages.last[:content]
-        expect(instruction).to include("valid JSON matching this exact schema")
-        expect(instruction).to include(user_schema.to_h.to_json)
-        expect(instruction).to include("ONLY the JSON object")
+      expect(client).to receive(:post) do |path:, parameters:|
+        injected_messages = parameters[:messages]
+        { "choices" => [{ "message" => { "content" => "{}" } }] }
       end
+
+      client.complete(messages, model: "any-model", response_format:)
+
+      instruction = injected_messages.last[:content]
+      expect(instruction).to include("JSON")
+      expect(instruction).to include(user_schema.to_h.to_json)
+      expect(instruction).to include("ONLY")
     end
 
     context "with malformed JSON requiring healing" do
@@ -118,7 +97,7 @@ RSpec.describe "End-to-end structured output scenarios" do
         '{"name": "Bob Wilson", "age": 32, "email": "bob@example.com", "role": "admin", "status": "active"}'
       end
 
-      it "heals malformed JSON with full context" do
+      it "heals malformed JSON with full context in strict mode" do
         mock_client = double("client",
                              configuration: double(
                                auto_heal_responses: true,
@@ -137,11 +116,10 @@ RSpec.describe "End-to-end structured output scenarios" do
           OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => healed_response } }] })
         end
 
-        response = client.complete(messages, model: "unsupported-model", response_format:,
-                                             force_structured_output: true)
+        response = client.complete(messages, model: "any-model", response_format:)
         response.client = mock_client
 
-        result = response.structured_output(auto_heal: true)
+        result = response.structured_output(mode: :strict, auto_heal: true)
 
         # Should include full response context in healing
         expect(healing_prompt).to include("Here's the user data")
@@ -166,8 +144,7 @@ RSpec.describe "End-to-end structured output scenarios" do
                                                       "choices" => [{ "message" => { "content" => malformed_json } }]
                                                     })
 
-        response = client.complete(messages, model: "unsupported-model", response_format:,
-                                             force_structured_output: true)
+        response = client.complete(messages, model: "any-model", response_format:)
 
         result = response.structured_output(mode: :gentle)
         expect(result).to be_nil # Returns nil instead of raising
@@ -180,8 +157,7 @@ RSpec.describe "End-to-end structured output scenarios" do
                                                       "choices" => [{ "message" => { "content" => valid_json } }]
                                                     })
 
-        response = client.complete(messages, model: "unsupported-model", response_format:,
-                                             force_structured_output: true)
+        response = client.complete(messages, model: "any-model", response_format:)
 
         result = response.structured_output(mode: :gentle)
         expect(result["name"]).to eq("Test")
@@ -189,13 +165,10 @@ RSpec.describe "End-to-end structured output scenarios" do
     end
   end
 
-  describe "model with native structured output support" do
-    it "uses native format by default" do
+  describe "native: true (provider-side json_schema)" do
+    it "sends a native json_schema response_format and leaves messages untouched" do
       expect(client).to receive(:post) do |path:, parameters:|
-        # Should include response_format for native support
-        expect(parameters).to have_key(:response_format)
         expect(parameters[:response_format][:type]).to eq("json_schema")
-        # Should NOT modify messages
         expect(parameters[:messages]).to eq(messages)
 
         {
@@ -207,60 +180,42 @@ RSpec.describe "End-to-end structured output scenarios" do
         }
       end
 
-      response = client.complete(messages, model: "native-model", response_format:)
+      response = client.complete(messages, model: "native-model", response_format:, native: true)
 
       result = response.structured_output
       expect(result["name"]).to eq("Native User")
     end
 
-    it "can force extraction even on supported models when explicitly requested" do
-      expect(client).to receive(:post) do |path:, parameters:|
-        # Should NOT include response_format when forcing
-        expect(parameters).not_to have_key(:response_format)
-        # Should inject instructions
-        expect(parameters[:messages].size).to be > messages.size
-
-        { "choices" => [{ "message" => { "content" => '{"name": "Forced User", "age": 25, "email": "forced@example.com", "role": "admin", "status": "active"}' } }] }
-      end
-
-      response = client.complete(messages, model: "native-model", response_format:, force_structured_output: true)
-
-      result = response.structured_output
-      expect(result["name"]).to eq("Forced User")
-    end
-
-    it "respects mode setting for native responses" do
+    it "respects gentle mode on parse failure for native responses" do
       allow(client).to receive(:post).and_return({
                                                    "choices" => [{ "message" => { "content" => '{"invalid": json}' } }]
                                                  })
 
-      response = client.complete(messages, model: "native-model", response_format:)
+      response = client.complete(messages, model: "native-model", response_format:, native: true)
 
-      # Gentle mode should return nil on parse failure
       result = response.structured_output(mode: :gentle)
       expect(result).to be_nil
     end
   end
 
   describe "mixed model scenarios" do
-    it "handles model arrays (fallbacks) without forcing" do
+    it "handles model arrays (fallbacks) with the json_object path" do
       expect(client).to receive(:post) do |path:, parameters:|
-        # Should use native format for fallback arrays
-        expect(parameters).to have_key(:response_format)
-        expect(parameters[:models]).to eq(%w[unsupported-model native-model])
+        expect(parameters[:response_format]).to eq({ type: "json_object" })
+        expect(parameters[:models]).to eq(%w[model-a model-b])
 
         { "choices" => [{ "message" => { "content" => '{"name": "Fallback User", "age": 30, "email": "fallback@example.com", "role": "viewer", "status": "active"}' } }] }
       end
 
-      response = client.complete(messages, model: %w[unsupported-model native-model], response_format:)
+      response = client.complete(messages, model: %w[model-a model-b], response_format:)
 
       result = response.structured_output
       expect(result["name"]).to eq("Fallback User")
     end
 
-    it "handles openrouter/auto without forcing" do
+    it "handles openrouter/auto with the json_object path" do
       expect(client).to receive(:post) do |path:, parameters:|
-        expect(parameters).to have_key(:response_format)
+        expect(parameters[:response_format]).to eq({ type: "json_object" })
         expect(parameters[:model]).to eq("openrouter/auto")
 
         { "choices" => [{ "message" => { "content" => '{"name": "Auto User", "age": 28, "email": "auto@example.com", "role": "editor", "status": "active"}' } }] }
@@ -274,69 +229,51 @@ RSpec.describe "End-to-end structured output scenarios" do
   end
 
   describe "configuration-driven behavior" do
-    context "with global configuration" do
+    context "with structured_output_strict enabled globally" do
       before do
         OpenRouter.configure do |config|
-          config.auto_force_on_unsupported_models = true
-          config.default_structured_output_mode = :gentle
+          config.structured_output_strict = true
           config.auto_heal_responses = false
         end
       end
 
       after do
-        # Reset configuration
         OpenRouter.configure do |config|
-          config.auto_force_on_unsupported_models = nil
-          config.default_structured_output_mode = :strict
-          config.auto_heal_responses = true
+          config.structured_output_strict = false
+          config.auto_heal_responses = false
         end
       end
 
-      it "respects global auto-force configuration" do
-        allow(client).to receive(:post).and_return({
-                                                     "choices" => [{ "message" => { "content" => '{"configured": true}' } }]
-                                                   })
-
-        # Should auto-force based on config
-        expect do
-          client.complete(messages, model: "unsupported-model", response_format:)
-        end.to output(/using forced extraction mode/).to_stderr
-      end
-
-      it "respects default mode configuration" do
+      it "raises on parse failure by default when strict is configured" do
         allow(client).to receive(:post).and_return({
                                                      "choices" => [{ "message" => { "content" => '{"bad": json}' } }]
                                                    })
 
-        response = client.complete(messages, model: "native-model", response_format:)
+        response = client.complete(messages, model: "any-model", response_format:)
 
-        # Should use gentle mode by default
-        result = response.structured_output
-        expect(result).to be_nil # Gentle mode returns nil on failure
+        expect { response.structured_output }.to raise_error(OpenRouter::StructuredOutputError)
       end
     end
 
     context "with per-request overrides" do
-      it "allows per-request mode override" do
+      it "allows per-request strict override on a loose default" do
         allow(client).to receive(:post).and_return({
                                                      "choices" => [{ "message" => { "content" => '{"name": "Override", "age": 25, "email": "test@example.com", "role": "viewer", "status": "active"}' } }]
                                                    })
 
-        response = client.complete(messages, model: "native-model", response_format:)
+        response = client.complete(messages, model: "any-model", response_format:)
 
-        # Override default mode per request
         result = response.structured_output(mode: :strict)
         expect(result["name"]).to eq("Override")
       end
 
-      it "allows per-request force override" do
+      it "allows per-request native override" do
         expect(client).to receive(:post) do |path:, parameters:|
-          expect(parameters).not_to have_key(:response_format) # Should be forced
+          expect(parameters[:response_format][:type]).to eq("json_schema")
           { "choices" => [{ "message" => { "content" => '{"name": "Override User", "age": 32, "email": "override@example.com", "role": "admin", "status": "active"}' } }] }
         end
 
-        # Explicitly force on supported model
-        response = client.complete(messages, model: "native-model", response_format:, force_structured_output: true)
+        response = client.complete(messages, model: "native-model", response_format:, native: true)
 
         result = response.structured_output
         expect(result["name"]).to eq("Override User")
@@ -352,11 +289,10 @@ RSpec.describe "End-to-end structured output scenarios" do
                                                    "choices" => [{ "message" => { "content" => complex_response } }]
                                                  })
 
-      response = client.complete(messages, model: "native-model", response_format:)
+      response = client.complete(messages, model: "any-model", response_format:)
 
       result = response.structured_output
 
-      # Verify all schema constraints are met
       expect(result["name"]).to be_a(String)
       expect(result["age"]).to be_a(Integer)
       expect(result["email"]).to match(/@/)
@@ -364,7 +300,7 @@ RSpec.describe "End-to-end structured output scenarios" do
       expect(%w[active inactive]).to include(result["status"])
     end
 
-    it "gracefully handles edge cases in forced extraction" do
+    it "gracefully handles edge cases in lenient extraction" do
       edge_case_responses = [
         "No JSON found in this response at all",
         "```json\n// This is a comment\n{}\n```",
@@ -377,29 +313,23 @@ RSpec.describe "End-to-end structured output scenarios" do
                                                      "choices" => [{ "message" => { "content" => response_content } }]
                                                    })
 
-        response = client.complete(messages, model: "unsupported-model", response_format:,
-                                             force_structured_output: true)
+        response = client.complete(messages, model: "any-model", response_format:)
 
-        # Gentle mode should handle gracefully
         result = response.structured_output(mode: :gentle)
         expect(result).to be_a(Hash).or(be_nil)
       end
     end
 
     it "maintains performance with frequent structured output calls" do
-      # Simulate multiple calls to ensure warnings don't spam
       5.times do
         allow(client).to receive(:post).and_return({
                                                      "choices" => [{ "message" => { "content" => '{"name": "Performance User", "age": 25, "email": "perf@example.com", "role": "viewer", "status": "active"}' } }]
                                                    })
 
-        response = client.complete(messages, model: "unsupported-model", response_format:)
+        response = client.complete(messages, model: "any-model", response_format:)
         result = response.structured_output
         expect(result["name"]).to eq("Performance User")
       end
-
-      # Should only see one warning despite multiple calls
-      # (This is tested more thoroughly in the warning specs)
     end
   end
 
@@ -416,16 +346,15 @@ RSpec.describe "End-to-end structured output scenarios" do
                              healer_model: "gpt-3.5-turbo"
                            ))
 
-      # Mock healing attempts that continue to fail
       allow(mock_client).to receive(:complete).and_return(
         OpenRouter::Response.new({ "choices" => [{ "message" => { "content" => '{"still": "broken"' } }] })
       )
 
-      response = client.complete(messages, model: "unsupported-model", response_format:, force_structured_output: true)
+      response = client.complete(messages, model: "any-model", response_format:)
       response.client = mock_client
 
       expect do
-        response.structured_output(auto_heal: true)
+        response.structured_output(mode: :strict, auto_heal: true)
       end.to raise_error(OpenRouter::StructuredOutputError, /after 2 healing attempts/)
     end
 
@@ -441,14 +370,13 @@ RSpec.describe "End-to-end structured output scenarios" do
                              healer_model: "gpt-3.5-turbo"
                            ))
 
-      # Mock healing request that fails with network error
       allow(mock_client).to receive(:complete).and_raise(StandardError, "Network timeout")
 
-      response = client.complete(messages, model: "native-model", response_format:)
+      response = client.complete(messages, model: "native-model", response_format:, native: true)
       response.client = mock_client
 
       expect do
-        response.structured_output(auto_heal: true)
+        response.structured_output(mode: :strict, auto_heal: true)
       end.to raise_error(OpenRouter::StructuredOutputError, /Failed to heal JSON after \d+ healing attempts/)
     end
   end

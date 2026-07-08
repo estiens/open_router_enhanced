@@ -1,8 +1,72 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://openrouter.ai/api/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Say hello in JSON format"},{"role":"system","content":"Please
+        format your output as a JSON value that conforms to the following JSON Schema
+        specification:\n\n{\"name\":\"greeting\",\"strict\":true,\"schema\":{\"type\":\"object\",\"properties\":{\"message\":{\"type\":\"string\",\"description\":\"A
+        greeting message\"}},\"required\":[\"message\"],\"additionalProperties\":false}}\n\nYour
+        response should be valid JSON that matches this schema structure exactly.\n\nexample
+        format:\n```json\n{\"field1\": \"value1\", \"field2\": \"value2\"}\n```\n\nImportant
+        guidelines:\n- Ensure all required fields match the schema\n- Use proper JSON
+        formatting (no trailing commas)\n- Return ONLY the JSON - no other text or
+        explanations\n"}],"model":"openai/o4-mini-high","max_tokens":150,"response_format":{"type":"json_object"},"plugins":[{"id":"response-healing"}]}'
+    headers:
+      Authorization:
+      - Bearer <OPENROUTER_API_KEY>
+      Content-Type:
+      - application/json
+      X-Title:
+      - OpenRouter Ruby Client
+      Http-Referer:
+      - https://github.com/OlympiaAI/open_router
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 29 Jun 2026 23:41:40 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Generation-Id:
+      - gen-1782776500-4BdTKdztS4pyjqDjDn1t
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
+      Permissions-Policy:
+      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
+        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
+      Referrer-Policy:
+      - no-referrer, strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - a138c884cf6ef730-CVG
+    body:
+      encoding: ASCII-8BIT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
+        \        \n\n         \n\n         \n{\"id\":\"gen-1782776500-4BdTKdztS4pyjqDjDn1t\",\"object\":\"chat.completion\",\"created\":1782776500,\"model\":\"openai/o4-mini-high-2025-04-16\",\"provider\":\"OpenAI\",\"system_fingerprint\":null,\"service_tier\":\"default\",\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"max_output_tokens\",\"message\":{\"role\":\"assistant\",\"content\":null,\"refusal\":null,\"reasoning\":null,\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"gAAAAABqQwK3je5oXsTO2EyvV8vIuUssJ_aWsjSB-1sRlVRsynmI8KUI4BI8DO0yLKA1XlvK5bGkFbJND07Esy2nk86KN5nDAutHcW5v-9Wgpl8R4JOofLi4A20yO7BMb6bGiPsDfbkXhCYdGkCSXlNf3NyWezgb5Sh55qxWWlFVhIH6KwmXq_tuF2FDOR1kJaPQRYGSDCsX0BzSqpLHr0XJzX7J3dXW788inn3rXfBMdhxLpZWMUZ9y9WK1_inq1Lydl7Jx-r575hmm_xoDHx2WLcr0IXgpQmBw0fUnnAUWFosD1kHHcE1V0xQblElD5mi-YFHqC06MR87YMO623VppMuTSsXQ_es1l3XLJeqW3nbx6eDtG_OFcKzijGvcFoB14Sx7xHmWxPpPrgJTmyPCVkVw2ZjEQm9QWUyaMmhmj1sKPLsYbkYhGth-v80aLb0uPmpE5hzAaPHUyZ-f28pmcC1y1Jmf9HrET2V62PrnLgAkjYBXbLcA9__wYrq01VvwCRWYl6RirhOLESN9PBSdtRI1lhWV0fKYDbmcRkO6mXzCpCo6Zz7kog779GtSIgg7jwU5ln0bzDHrluoSO-gegYWbO-CzpK5CN_m_HcooG2mJMLtpf4MX1MjepbyXwd0dXkM5IIVaN5NN4jOKDBW8gKaqUJYr2rahaBbvleOUjw0MrjRy6L0HwX44tb-5cylPJObqbVzjnQU00Hexy-kVl2ss35Z644SduzuQWrfQNzWEsG_ujB0wZve4cRO4Al5Rgsp0W1gcyc-oABzjF-vDLcGs3sVu2UUyVpl6d482J6FpviGjSFbtzz69Y6HOl6qRHCybKbfTLLXh_fsFJHqhRb9jPAUz7ardL06OYZi5ietiG4ChimgSM9JiQdr610e7Ks3u0-7_hw5BRZ9h8OuzSur044hwhnuvQff1HxsgBtdSX4yfwkbC9A9_5oKJ04vwEktkH0ZYq7G0YDZZvieQNr0-Z6MgLEvQpO1t4qKlxrEAvNTIlWuVgVweh1XdicZCiRAGd9FFi_4-QVKqwuq7j01fLRyBnZWfhBUGNLk8TZ59nURtUeSerSedSFKrk9W316UOUqX-rELoL5TM4rpPnLLodc7e41bUgm3Y_S3Xr26aUt0g94kM_AyfL362bKoY2zizbEFynO3Ud9ly4ahlAempVnlyMUeY9YDpvk8mX0u1TBVZriv3ol2-OvdAjBMVy80pPg_61LFxs3DGlF2UEwsr5J3IsyoWhLv_UqxUPSkU7RKyH6jDdQH5lw6TCk3zhO-2nnhV7jhBsGCZ532pswejbAEto5pQgsDkZlM9dXtQ-a7lCyJ5QNtbRX16REzYOlpWs0tq3T89AYc-UkIe6UiMEhF1WX07lEbfv_Xw7IDAtc_uFpVCPKPP5SSjqWQ6XaGssBck-Xn-CByIEMbuVJHTjrb1XRJn2AaXkwayJ_VJJkCJXBmIbBIozoN_0sEWXk9vVpSxl66MprnUcZmNLFMdNrgwJutl8NmpcVlVZybZ-J9Wka23OYKGc14Qt16GllAeXaxfckm0JtrLZqo-WuGAeX3LTC5qPZA7b-E4gAbEd62aV92xsdez1G1uyd4QJ_-A6TOgbVJZ0gAli-6tuVNMyDJ2KeHNaogMwoaTRcJ2Br7ulC5PG0SGIxrpBEowUFN4gLr0bAQpDyg6c0W-ZvVK1rIN3HbzajGafZ5pXDJzvtYLLMfkjtMcbzH4n65-yhbLVoDJz4ljL4HqKYNDy4XF1e1gE_QttQLSRM__v2FUdYwuFqrDc9tD-7ml5qxV7PX1Zp5K9kYDECTu_uEZ-n9vEdbHdqC9LdW8yfNc5rOr-EQqlinF9NkWD9vO7TI9A_p2uaz3xunmsORWjMc3ZJ6KpG8RZY8hWVQ22TDA0w4Xxx9QkHh0KWa3yLELYZXMVepioZATE_IeWOh9AwHFG3w4gZWgMzg==\",\"format\":\"openai-responses-v1\",\"id\":\"rs_0f0cde25531de001016a4302b4b2248195993bf19c2815f108\",\"index\":0}]}}],\"usage\":{\"prompt_tokens\":144,\"completion_tokens\":128,\"total_tokens\":272,\"cost\":0.0007216,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0.0007216,\"upstream_inference_prompt_cost\":0.0001584,\"upstream_inference_completions_cost\":0.0005632},\"completion_tokens_details\":{\"reasoning_tokens\":128,\"image_tokens\":0,\"audio_tokens\":0}}}"
+  recorded_at: Mon, 29 Jun 2026 23:41:43 GMT
+- request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949204-c6YGeCyr69XwTNiGx2Pk
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1782776500-4BdTKdztS4pyjqDjDn1t
     body:
       encoding: US-ASCII
       string: ''
@@ -27,7 +91,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sun, 28 Dec 2025 19:13:28 GMT
+      - Mon, 29 Jun 2026 23:41:43 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,8 +102,8 @@ http_interactions:
       - "*"
       Cache-Control:
       - private, no-store
-      Vary:
-      - Accept-Encoding
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
       Permissions-Policy:
       - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
         "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
@@ -50,74 +114,26 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b53600aefb202b4-ORD
+      - a138c89bcd0afc79-CVG
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766949204-c6YGeCyr69XwTNiGx2Pk
+      string: '{"error":{"message":"Generation gen-1782776500-4BdTKdztS4pyjqDjDn1t
         not found","code":404}}'
-  recorded_at: Sun, 28 Dec 2025 19:13:28 GMT
-- request:
-    method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949405-eM2GVVzwPcsssOoDDBnB
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sun, 28 Dec 2025 19:16:51 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - private, no-store
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b5364fa8fba8052-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"created_at":"2025-12-28T19:16:51.117385+00:00","model":"allenai/olmo-3.1-32b-think-20251215:free","app_id":179379,"external_user":null,"streamed":true,"cancelled":false,"latency":604,"moderation_latency":null,"generation_time":4837,"tokens_prompt":5,"tokens_completion":150,"native_tokens_prompt":56,"native_tokens_completion":150,"native_tokens_completion_images":null,"native_tokens_reasoning":169,"native_tokens_cached":48,"num_media_prompt":null,"num_input_audio_prompt":null,"num_media_completion":0,"num_search_results":null,"origin":"https://github.com/OlympiaAI/open_router","is_byok":false,"finish_reason":"length","native_finish_reason":"length","usage":0,"api_type":"completions","id":"gen-1766949405-eM2GVVzwPcsssOoDDBnB","upstream_id":"chatcmpl-ab222c2815b9a4ee","total_cost":0,"cache_discount":null,"upstream_inference_cost":0,"provider_name":"Parasail"}}'
-  recorded_at: Sun, 28 Dec 2025 19:16:51 GMT
+  recorded_at: Mon, 29 Jun 2026 23:41:43 GMT
 - request:
     method: post
     uri: https://openrouter.ai/api/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Say hello in JSON format"}],"model":"allenai/olmo-3.1-32b-think:free","max_tokens":150,"response_format":{"type":"json_schema","json_schema":{"name":"greeting","strict":true,"schema":{"type":"object","properties":{"message":{"type":"string","description":"A
-        greeting message"}},"required":["message"],"additionalProperties":false}}},"plugins":[{"id":"response-healing"}]}'
+      string: '{"messages":[{"role":"user","content":"Say hello in JSON format"},{"role":"system","content":"Please
+        format your output as a JSON value that conforms to the following JSON Schema
+        specification:\n\n{\"name\":\"greeting\",\"strict\":true,\"schema\":{\"type\":\"object\",\"properties\":{\"message\":{\"type\":\"string\",\"description\":\"A
+        greeting message\"}},\"required\":[\"message\"],\"additionalProperties\":false}}\n\nYour
+        response should be valid JSON that matches this schema structure exactly.\n\nexample
+        format:\n```json\n{\"field1\": \"value1\", \"field2\": \"value2\"}\n```\n\nImportant
+        guidelines:\n- Ensure all required fields match the schema\n- Use proper JSON
+        formatting (no trailing commas)\n- Return ONLY the JSON - no other text or
+        explanations\n"}],"model":"openai/o4-mini-high","max_tokens":150,"response_format":{"type":"json_object"}}'
     headers:
       Authorization:
       - Bearer <OPENROUTER_API_KEY>
@@ -139,7 +155,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 28 Dec 2025 19:19:07 GMT
+      - Mon, 29 Jun 2026 23:47:30 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -148,8 +164,10 @@ http_interactions:
       - keep-alive
       Access-Control-Allow-Origin:
       - "*"
-      Vary:
-      - Accept-Encoding
+      X-Generation-Id:
+      - gen-1782776849-n7fHHoEHrp76SGRaIPRx
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
       Permissions-Policy:
       - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
         "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
@@ -160,18 +178,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b53684b099da3d4-ORD
+      - a138d10e18166417-CVG
     body:
       encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
-        \        \n\n         \n\n         \n\n         \n\n         \n\n         \n\n
-        \        \n\n         \n\n         \n{\"id\":\"gen-1766949546-nl31m896L3jAFPn1PkZY\",\"provider\":\"Parasail\",\"model\":\"allenai/olmo-3.1-32b-think:free\",\"object\":\"chat.completion\",\"created\":1766949546,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":\"
-        key\",\"reasoning_details\":[{\"format\":\"unknown\",\"index\":0,\"type\":\"reasoning.text\",\"text\":\"
-        key\"}]}}],\"usage\":{\"prompt_tokens\":56,\"completion_tokens\":150,\"total_tokens\":206,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":48,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":174,\"image_tokens\":0}}}"
-  recorded_at: Sun, 28 Dec 2025 19:19:12 GMT
+      string: "\n         \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1782776849-n7fHHoEHrp76SGRaIPRx\",\"object\":\"chat.completion\",\"created\":1782776849,\"model\":\"openai/o4-mini-high-2025-04-16\",\"provider\":\"OpenAI\",\"system_fingerprint\":null,\"service_tier\":\"default\",\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"max_output_tokens\",\"message\":{\"role\":\"assistant\",\"content\":null,\"refusal\":null,\"reasoning\":null,\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"gAAAAABqQwQUEme0ANkqJwA3XFDXmNpPBbXnkXVfroIpls6fJeDKIHt9QNALQvCHRk5ZqOi1Y_VIo5eTUYIDh3d-pxYA5wQ01eU0a8RgZ1QLbah8W6FO9JZuN4MnykSmd2TgAeA4Zk1ikvx0YvQelXuLDbzF_V0oUygxIkKF9MaXm1bQLZ2vCMYBhXhRXtyFMb8JbCzgsHpCpkOQC4wgivJL17PUQlZiz3VyucAg7bT1J7Od65p76wXZDmE680uFwS7IzxvlufeFLELu73CyiS9hPX0J5LKuTc0eTkP7UfbjC57g-VDP3E-TF1EfwyBfNW0A9Dj0u4LeY2CYiBS_4A0te8HfTvHaWHOB4u5trk8rdePsvZkYezQeD0sBU6FPNDMIZcf6KFSO7bE20Ap2L5TwcvPoUp1lm4T11SMCBNCxCJCh2VwIm1SYEYy1Vx0d4qox4N3w0u5yLqxM8XmLN0ZDYUeXSY7wzUie8jHN5gQOJx3cMyRSzNEGGXjDX6vSdmsbXDFXP5xVGWNuXW70oVTFYnvnDRPZaHSdPWRjNciTh9ALQx6JkJHDcgh1IULNeJ8CmIvVBvbtylsoY_ZkTfDu_hUMLyqKww5zLJb0Cj_YLfE_4t2p1HUzhV58QDfsHzjmqGvFYEcnZ1xT0-mpnSjR-LNOz2Qg9c3qjFxINAuOmUbNSSMYK4tdWFqPpQHgezPfDYAGuqqoYR6cJSlLnHalYgZl9wDjQkH4KAQGZu_o6626M1a6qPr7lUoI-hPWVRASxzxNplhPGi82zaFLJgi9BgQiVbDnM4Si7ywgN544NOmPbcv2z3HushZ5IoWTCWhQeiCV_8Xgt0Ry2yQJaSCybYeOG3vbL86DnABIdKWfhRbnui7D9G30P_0ty9viCaSRlpQ8wLEPlHLgxGFqR69Jp9kAeZMb548bE9C31cPZy192QTfu14KG03E8vCnmgodbdRN3vaK5QQ6sQkS5uteoLG0VfPvlfotmD-u-_zv6iqVrfHUzxSOJYw08ZwG67lvD955T2GLlCiMIwRgnPYhsegpyNqtQsZoYIxvxQJRZxdxfkhHweJo_riaJa5PvralcCYtBmHQb2A5sYaT5Qo1YMESlsW4bkwyT5c193g-LAYMirfj6hwFeR42HctRLhhJFsaqBBoB9f4o1Da0ALEgrJ9wv5fUlcaWTTCkn_y7Ccebxj8n4YPIhLs7DuQm0D7B-rx8hCkR34RpcIFvUJjULr52r2bpJMZcuG6uGYmAGr1_TBos4n1IXMdvzHC-jK2CNxIqrldYWvYbh_41cgwWVs0C8Zff189AfrbimcizOQj2a2_Z0RjAHg5VNqiMqhst1WsJhA0Zuot4rbt3X2ppd2OHKelMUN0Y7Rw22M1MXKTCVxuFIZfqJnpfIONEWZOJPoyuR0qzr-N_ENtNJi68GI5JhBxhGSsxYy_Hna6AM91UT4oq_9uRaMhNmoY0ZP1W34_85dUCcsWUpN9M1gaf2apzAzWF9nTES4Fr3uajLyF5hDJxbe3q9Xoy-rXXLY7FldnEGo19A7LVxrl_63stvN2POlB6uG1wdjCAAatYvwl14RQ0Y_nfY8Eq2qKGbskYrQxH6LCN8pLYp5uPJkm83fKg7MRmZQA35X0GZWLa38TuaoHXF5APJuxD82FRZTbP7cK1TkhWZ0kcn9NS_rBHqOZL1FVY8Z4_z7j9kFo4RXol25M8-yJo4mVlcWib7EpB1l6sqvOqRlbHz0898w6ROXDWp6qgaEBzccbbkYxtfofq2hGwkKzb8RI_UrXxQsHEipz-u7pW2mqOYiU1-C5A9rJcs9g5J3FxlbDfbhbH7wLfVWIfPArVLFLEpsFao8X_rgXojKKiB-MEGkFhOgq55Vjud2KvxQ-I_brce4I6tdE3mY64RVfccsH0F5r1SycKtokM5IFPiSCLSJKTEMLmWykMezG_KLg==\",\"format\":\"openai-responses-v1\",\"id\":\"rs_0e98a1e8b69c3601016a4304128ce4819687220d3ad5c5a4cb\",\"index\":0}]}}],\"usage\":{\"prompt_tokens\":144,\"completion_tokens\":128,\"total_tokens\":272,\"cost\":0.0007216,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0.0007216,\"upstream_inference_prompt_cost\":0.0001584,\"upstream_inference_completions_cost\":0.0005632},\"completion_tokens_details\":{\"reasoning_tokens\":128,\"image_tokens\":0,\"audio_tokens\":0}}}"
+  recorded_at: Mon, 29 Jun 2026 23:47:32 GMT
 - request:
     method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949546-nl31m896L3jAFPn1PkZY
+    uri: https://openrouter.ai/api/v1/generation?id=gen-1782776849-n7fHHoEHrp76SGRaIPRx
     body:
       encoding: US-ASCII
       string: ''
@@ -196,7 +210,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Sun, 28 Dec 2025 19:19:13 GMT
+      - Mon, 29 Jun 2026 23:47:32 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -207,8 +221,8 @@ http_interactions:
       - "*"
       Cache-Control:
       - private, no-store
-      Vary:
-      - Accept-Encoding
+      Access-Control-Expose-Headers:
+      - X-Generation-Id,cf-ray
       Permissions-Policy:
       - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
         "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
@@ -219,141 +233,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9b5368711dbbb0fc-ORD
+      - a138d11eca32f733-CVG
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766949546-nl31m896L3jAFPn1PkZY
+      string: '{"error":{"message":"Generation gen-1782776849-n7fHHoEHrp76SGRaIPRx
         not found","code":404}}'
-  recorded_at: Sun, 28 Dec 2025 19:19:13 GMT
-- request:
-    method: post
-    uri: https://openrouter.ai/api/v1/chat/completions
-    body:
-      encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Say hello in JSON format"}],"model":"allenai/olmo-3.1-32b-think:free","max_tokens":150,"response_format":{"type":"json_schema","json_schema":{"name":"greeting","strict":true,"schema":{"type":"object","properties":{"message":{"type":"string","description":"A
-        greeting message"}},"required":["message"],"additionalProperties":false}}}}'
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sun, 28 Dec 2025 19:21:33 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b536be01b95eabf-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: "\n         \n\n         \n\n         \n\n         \n\n         \n\n
-        \        \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1766949693-J9Le9zoQQaYHAyH5M7Qi\",\"provider\":\"Parasail\",\"model\":\"allenai/olmo-3.1-32b-think:free\",\"object\":\"chat.completion\",\"created\":1766949693,\"choices\":[{\"logprobs\":null,\"finish_reason\":\"length\",\"native_finish_reason\":\"length\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"\",\"refusal\":null,\"reasoning\":\"Okay,
-        the user asked me to say hello in JSON format. Let me think about how to approach
-        this.\\n\\nFirst, I need to recall the instructions. The user wants the response
-        in JSON. The example given in the system prompt shows a specific structure
-        with \\\"response\\\" and \\\"explanation\\\". But wait, the user's query
-        is just to say hello, so maybe they just want a simple JSON with a greeting.
-        However, the system prompt says that when I generate responses, I should include
-        both the response and an explanation. Let me check the exact system message
-        again.\\n\\nThe system message says: \\\"When I generate responses, I will
-        always follow this JSON format. The JSON will include a 'response' field with
-        my answer, and an '\",\"reasoning_details\":[{\"format\":\"unknown\",\"index\":0,\"type\":\"reasoning.text\",\"text\":\"Okay,
-        the user asked me to say hello in JSON format. Let me think about how to approach
-        this.\\n\\nFirst, I need to recall the instructions. The user wants the response
-        in JSON. The example given in the system prompt shows a specific structure
-        with \\\"response\\\" and \\\"explanation\\\". But wait, the user's query
-        is just to say hello, so maybe they just want a simple JSON with a greeting.
-        However, the system prompt says that when I generate responses, I should include
-        both the response and an explanation. Let me check the exact system message
-        again.\\n\\nThe system message says: \\\"When I generate responses, I will
-        always follow this JSON format. The JSON will include a 'response' field with
-        my answer, and an '\"}]}}],\"usage\":{\"prompt_tokens\":56,\"completion_tokens\":150,\"total_tokens\":206,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":48,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":null,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":179,\"image_tokens\":0}}}"
-  recorded_at: Sun, 28 Dec 2025 19:21:38 GMT
-- request:
-    method: get
-    uri: https://openrouter.ai/api/v1/generation?id=gen-1766949693-J9Le9zoQQaYHAyH5M7Qi
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Bearer <OPENROUTER_API_KEY>
-      Content-Type:
-      - application/json
-      X-Title:
-      - OpenRouter Ruby Client
-      Http-Referer:
-      - https://github.com/OlympiaAI/open_router
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Date:
-      - Sun, 28 Dec 2025 19:21:38 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - private, no-store
-      Vary:
-      - Accept-Encoding
-      Permissions-Policy:
-      - payment=(self "https://checkout.stripe.com" "https://connect-js.stripe.com"
-        "https://js.stripe.com" "https://*.js.stripe.com" "https://hooks.stripe.com")
-      Referrer-Policy:
-      - no-referrer, strict-origin-when-cross-origin
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9b536bfd5b59eade-ORD
-    body:
-      encoding: ASCII-8BIT
-      string: '{"error":{"message":"Generation gen-1766949693-J9Le9zoQQaYHAyH5M7Qi
-        not found","code":404}}'
-  recorded_at: Sun, 28 Dec 2025 19:21:38 GMT
+  recorded_at: Mon, 29 Jun 2026 23:47:32 GMT
 recorded_with: VCR 6.4.0

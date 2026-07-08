@@ -127,14 +127,29 @@ RSpec.describe "OpenRouter Client Capability Validation" do
       end.to raise_error(OpenRouter::CapabilityError, /tool calling.*missing :function_calling/)
     end
 
-    it "raises CapabilityError for unsupported structured outputs" do
+    it "raises CapabilityError for unsupported native structured outputs" do
+      # Only the opt-in native json_schema path enforces capability; the default
+      # json_object path works on every model and is never gated.
       expect do
         client.complete(
           [{ role: "user", content: "Hello" }],
           model: "basic/text-model",
-          response_format: { type: "json_schema", json_schema: { name: "test" } }
+          response_format: { type: "json_schema", json_schema: { name: "test", schema: { type: "object", properties: {} } } },
+          native: true
         )
       end.to raise_error(OpenRouter::CapabilityError, /structured outputs.*missing :structured_outputs/)
+    end
+
+    it "does not gate the default json_object structured-output path" do
+      allow(client).to receive(:post).and_return({ "choices" => [{ "message" => { "content" => "{}" } }] })
+
+      expect do
+        client.complete(
+          [{ role: "user", content: "Hello" }],
+          model: "basic/text-model",
+          response_format: { type: "json_schema", json_schema: { name: "test", schema: { type: "object", properties: {} } } }
+        )
+      end.not_to raise_error
     end
 
     it "raises CapabilityError for unsupported vision" do

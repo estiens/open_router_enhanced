@@ -93,6 +93,69 @@ RSpec.describe OpenRouter::Schema do
       expect(hash[:schema][:properties]).to be_a(Hash)
       expect(hash[:schema][:required]).to be_an(Array)
     end
+
+    it "respects declared optionality — optional fields are NOT forced into required" do
+      schema = OpenRouter::Schema.define("user") do
+        string :name, required: true
+        string :nickname
+        integer :age
+      end
+
+      hash = schema.to_h
+
+      expect(hash[:schema][:required]).to eq(["name"])
+      # optional fields keep their plain (non-nullable) type in the honest form
+      expect(hash[:schema][:properties][:nickname][:type]).to eq("string")
+    end
+
+    it "keeps nested objects honest about their own optional fields" do
+      schema = OpenRouter::Schema.define("user") do
+        object :address, required: true do
+          string :street, required: true
+          string :zip
+        end
+      end
+
+      address = schema.to_h[:schema][:properties][:address]
+      expect(address[:required]).to eq(["street"])
+    end
+  end
+
+  describe "#to_strict_h (native json_schema form)" do
+    let(:schema) do
+      OpenRouter::Schema.define("user") do
+        string :name, required: true
+        string :nickname
+        object :address, required: true do
+          string :street, required: true
+          string :zip
+        end
+      end
+    end
+
+    it "lists every property in required so strict providers don't 400" do
+      hash = schema.to_strict_h
+
+      expect(hash[:schema][:required]).to contain_exactly("name", "nickname", "address")
+      expect(hash[:schema][:properties][:address][:required]).to contain_exactly("street", "zip")
+    end
+
+    it "expresses optionality by making optional fields nullable, not mandatory-with-a-real-value" do
+      hash = schema.to_strict_h
+
+      expect(hash[:schema][:properties][:nickname][:type]).to eq(%w[string null])
+      expect(hash[:schema][:properties][:address][:properties][:zip][:type]).to eq(%w[string null])
+      # required fields stay strictly typed
+      expect(hash[:schema][:properties][:name][:type]).to eq("string")
+    end
+
+    it "does not mutate the underlying schema" do
+      schema.to_strict_h
+
+      expect(schema.pure_schema[:required]).to contain_exactly("name", "address")
+      expect(schema.pure_schema[:properties][:nickname][:type]).to eq("string")
+      expect(schema.pure_schema[:properties][:address][:required]).to eq(["street"])
+    end
   end
 
   describe "validation" do
