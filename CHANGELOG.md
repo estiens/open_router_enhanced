@@ -1,5 +1,16 @@
 ## [Unreleased]
 
+## [2.3.0] - 2026-07-08
+
+### Fixed
+
+- **Structured output schemas now honor optional keys.** `Schema#to_h` previously forced *every* property — at every nesting level — into the `required` array, so fields declared with `required: false` (the DSL default) were silently made mandatory in the prompt, the native `json_schema` payload, and the healer. `to_h` now emits the schema honestly, respecting the `required` arrays exactly as declared. Optional fields stay optional and the model may omit them.
+- `to_h` and local validation now agree, so what is described to the model matches what is accepted.
+
+### Added
+
+- `Schema#to_strict_h` — the provider-strict form for native `json_schema` decoding. It still lists every property in `required` (so strict providers don't `400` on nested `required: []`), but expresses optionality the correct way: fields not declared required are made **nullable** (their type gains `"null"`) rather than mandatory. The native serialization path uses this form automatically for strict schemas.
+
 ## [2.0.0] - 2025-12-28
 
 ### Overview

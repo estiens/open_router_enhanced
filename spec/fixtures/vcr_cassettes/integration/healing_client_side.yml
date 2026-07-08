@@ -238,7 +238,7 @@ http_interactions:
         name\"},\"price\":{\"type\":\"number\",\"description\":\"Price in dollars\"},\"tags\":{\"type\":\"array\",\"description\":\"Product
         tags\",\"items\":{\"type\":\"string\",\"description\":\"Tag name\"}},\"metadata\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\",\"description\":\"Product
         SKU\"},\"in_stock\":{\"type\":\"boolean\",\"description\":\"Availability\"}},\"required\":[\"sku\",\"in_stock\"],\"description\":\"Additional
-        metadata\",\"additionalProperties\":false}},\"required\":[\"name\",\"price\",\"tags\",\"metadata\"],\"additionalProperties\":false}}\n\nYour
+        metadata\",\"additionalProperties\":false}},\"required\":[\"name\",\"price\",\"tags\"],\"additionalProperties\":false}}\n\nYour
         response should be valid JSON that matches this schema structure exactly.\n\nexample
         format:\n```json\n{\"field1\": \"value1\", \"field2\": \"value2\"}\n```\n\nImportant
         guidelines:\n- Ensure all required fields match the schema\n- Use proper JSON

@@ -94,15 +94,22 @@ module OpenRouter
       case response_format
       when Hash
         if response_format[:json_schema].is_a?(Schema)
-          response_format.merge(json_schema: response_format[:json_schema].to_h)
+          response_format.merge(json_schema: native_schema_hash(response_format[:json_schema]))
         else
           response_format
         end
       when Schema
-        { type: "json_schema", json_schema: response_format.to_h }
+        { type: "json_schema", json_schema: native_schema_hash(response_format) }
       else
         response_format
       end
+    end
+
+    # Provider-side json_schema decoding requires every property in `required`.
+    # For strict schemas we emit the all-required-with-nullable-optionals form so
+    # the request doesn't 400; non-strict schemas are sent honestly.
+    def native_schema_hash(schema)
+      schema.strict ? schema.to_strict_h : schema.to_h
     end
 
     def inject_schema_instructions!(messages, schema)

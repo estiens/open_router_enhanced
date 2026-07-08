@@ -232,7 +232,7 @@ http_interactions:
         format your output as a JSON value that conforms to the following JSON Schema
         specification:\n\n{\"name\":\"greeting_response\",\"strict\":true,\"schema\":{\"type\":\"object\",\"properties\":{\"greeting\":{\"type\":\"string\",\"description\":\"A
         greeting message\"},\"language\":{\"type\":\"string\",\"description\":\"Language
-        of the greeting\"}},\"required\":[\"greeting\",\"language\"],\"additionalProperties\":false}}\n\nYour
+        of the greeting\"}},\"required\":[\"greeting\"],\"additionalProperties\":false}}\n\nYour
         response should be valid JSON that matches this schema structure exactly.\n\nexample
         format:\n```json\n{\"field1\": \"value1\", \"field2\": \"value2\"}\n```\n\nImportant
         guidelines:\n- Ensure all required fields match the schema\n- Use proper JSON
